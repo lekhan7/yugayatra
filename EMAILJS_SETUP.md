@@ -8,16 +8,16 @@ Add the following environment variables to your `.env` file:
 
 ```env
 VITE_EMAILJS_PUBLIC_KEY=ILkAUZ-VN8UndJpaz
-VITE_EMAILJS_SERVICE_ID=template_dbhoswn
-VITE_EMAILJS_TEMPLATE_ID=service_wf6euii
+VITE_EMAILJS_SERVICE_ID=service_wf6euii
+VITE_EMAILJS_TEMPLATE_ID=template_dbhoswn
 ```
 
 ## How to Get EmailJS Credentials
 
 1. Go to [EmailJS](https://www.emailjs.com/)
 2. Sign up for a FREE account
-3. Create an Email Service with ID: `template_dbhoswn`
-4. Create an Email Template with ID: `service_wf6euii`
+3. Create an Email Service with ID: `service_wf6euii`
+4. Create an Email Template with ID: `template_dbhoswn`
 5. Copy your Public Key from the dashboard
 6. Replace the placeholder values in your `.env` file
 
@@ -45,14 +45,37 @@ VITE_EMAILJS_TEMPLATE_ID=service_wf6euii
 - No CC fields or PRO features required
 - Direct delivery to applicant's email address
 
-## Email Content
-The email includes:
-- Professional formatting with emojis
-- Applicant's full name and applied role
-- Congratulations message with impressive formatting
-- "Next Steps" section with clear instructions
-- Company branding and signature
-- Email appears in TWO sections within message content
+## Email Template Setup
+
+### EmailJS Template Content:
+Create an EmailJS template with the following content and variables:
+
+**Subject:**
+```
+Congratulations! Your Internship Application Has Been Approved
+```
+
+**Email Body:**
+```
+Hi {{fullName}},
+
+We're excited to inform you that your application for the {{role}} Internship has been successfully reviewed and approved.
+
+Best regards,
+Team YugaYatra
+```
+
+**Important Template Variables:**
+- `{{fullName}}` - Will be replaced with applicant's full name
+- `{{role}}` - Will be replaced with the internship role
+- `{{email}}` - Will be replaced with applicant's email (if needed in template)
+
+### Template Variable Mapping:
+The code sends these parameters to EmailJS:
+- `fullName` → `{{fullName}}` in template
+- `role` → `{{role}}` in template  
+- `email` → `{{email}}` in template
+- `subject` → Email subject line
 
 ## Error Handling
 - If email sending fails, application status is still updated
@@ -74,6 +97,12 @@ To test the functionality:
 
 ## Troubleshooting
 
+### If emails show `${fullName}` instead of actual name:
+1. **Check Template Variables**: Ensure your EmailJS template uses `{{fullName}}` not `${fullName}`
+2. **Verify Parameter Names**: The code sends `fullName` parameter, template should use `{{fullName}}`
+3. **Check Template Setup**: Follow the "Email Template Setup" section above exactly
+4. **Test Parameters**: Check browser console for "🧪 Testing email parameters" logs
+
 ### If emails aren't reaching applicants:
 1. **Check Credentials**: Verify your EmailJS service ID, template ID, and public key
 2. **Check Console**: Look for error messages in browser console
@@ -83,6 +112,7 @@ To test the functionality:
 ### Common Issues:
 - **Invalid Credentials**: Double-check your EmailJS setup
 - **Template Not Found**: Ensure template ID is correct
+- **Variable Mismatch**: Template variables must match parameter names exactly
 - **Rate Limiting**: EmailJS has generous free tier limits
 - **Spam Filters**: Ask applicants to check spam folders
 

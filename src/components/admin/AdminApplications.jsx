@@ -25,8 +25,6 @@ const AdminApplications = () => {
   })
 
   useEffect(() => {
-    // Test template interpolation on component mount
-    testTemplateInterpolation()
     checkAuthAndFetch()
   }, [])
 
@@ -188,125 +186,81 @@ const AdminApplications = () => {
   }
 
   // Test function to verify template interpolation
-  const testTemplateInterpolation = () => {
-    console.log('🧪 Testing template interpolation...')
+  const testEmailTemplate = () => {
+    const testApplication = {
+      full_name: 'John Doe',
+      email: 'john.doe@example.com',
+      role: 'Software Developer'
+    }
     
-    const testFullName = 'John Doe'
-    const testRole = 'Software Developer'
-    const testEmail = 'john@example.com'
+    console.log('🧪 Testing email template with:', testApplication)
     
-    const testMessage = `Hi ${testFullName},
+    const testMessage = `
+Hi ${testApplication.full_name},
 
-We are excited to inform you that your application for the ${testRole} Internship has been successfully reviewed and approved.
+We're excited to inform you that your application for the ${testApplication.role} Internship has been successfully reviewed and approved.
 
 Best regards,
-Team`
-
-    console.log('✅ Test message generated:', testMessage)
+Team
+`
     
-    // Check for literal placeholders
-    if (testMessage.includes('${fullName}') || testMessage.includes('${role}')) {
-      console.error('❌ Template interpolation test FAILED - literal placeholders found')
-      return false
-    } else {
-      console.log('✅ Template interpolation test PASSED - no literal placeholders found')
-      return true
+    console.log('✅ Test message generated:', testMessage)
+    return testMessage
+  }
+
+  // Test function to verify template parameters
+  const testEmailParameters = (application) => {
+    console.log('🧪 Testing email parameters with application:', application)
+    
+    const testParams = {
+      fullName: application.full_name,
+      name: application.full_name,
+      role: application.role,
+      email: application.email,
+      subject: "Congratulations! Your Internship Application Has Been Approved"
     }
+    
+    console.log('✅ EmailJS parameters that will be sent:', testParams)
+    
+    // Verify all required fields exist
+    const missing = []
+    if (!testParams.fullName) missing.push('fullName')
+    if (!testParams.role) missing.push('role')
+    if (!testParams.email) missing.push('email')
+    
+    if (missing.length > 0) {
+      console.error('❌ Missing required parameters:', missing)
+      return false
+    }
+    
+    console.log('✅ All required parameters present')
+    return true
   }
 
   const sendAcceptanceEmail = async (application) => {
     try {
       console.log('📧 Sending acceptance email to:', application.email)
-      
-      // Debug: Verify the application data
-      console.log('🔍 DEBUG - Application data:', {
-        full_name: application.full_name,
+      console.log('👤 Applicant data:', {
+        fullName: application.full_name,
         role: application.role,
         email: application.email
       })
       
-      // Ensure we have the required data
-      const fullName = application.full_name || 'Applicant'
-      const role = application.role || 'Internship Position'
-      const email = application.email
+      // Test parameters before sending
+      if (!testEmailParameters(application)) {
+        throw new Error('Email parameters validation failed')
+      }
       
-      console.log('🔍 DEBUG - Extracted values:', {
-        fullName,
-        role,
-        email
-      })
-      
+      // Simple template parameters for EmailJS - let EmailJS handle the template
       const templateParams = {
-        name: fullName,
-        user_name: fullName,
-        recipient_name: fullName,
-        email: email,
-        to_email: email,
-        recipient_email: email,
-        role: role,
-        position: role,
-        subject: "🌟 EXCLUSIVE OPPORTUNITY! Your YugaYatra Internship Journey Begins! 🚀",
-        message: `🎊 CONGRATULATIONS, ${fullName.toUpperCase()}! 🎊
-
-We are absolutely THRILLED to inform you that your application for the prestigious **${role}** internship position at YugaYatra Retail (OPC) Pvt Ltd has been SELECTED and APPROVED! 🏆
-
-✨ WHY YOU STOOD OUT:
-Your exceptional profile, skills, and passion truly impressed our selection committee among hundreds of talented candidates. You're not just selected - you're CHOSEN! 🌟
-
-🚀 YOUR EXCITING JOURNEY AHEAD:
-
-1️⃣ **IMMEDIATE NEXT STEPS:**
-   • Our senior talent acquisition team will contact you within 24-48 hours
-   • Prepare for an engaging conversation about your vision and goals
-   • Get ready to discuss your start date and onboarding process
-
-2️⃣ **WHAT TO EXPECT:**
-   • Hands-on experience with real industry projects
-   • Mentorship from industry experts
-   • Certificate of completion & potential full-time opportunities
-   • A vibrant, innovative work culture
-
-3️⃣ **PREPARATION CHECKLIST:**
-   • ✅ Keep your phone and email accessible
-   • ✅ Prepare any questions about the role
-   • ✅ Think about your availability and start date preferences
-
-💫 WHY YUGAYATRA?
-We're not just offering an internship - we're offering a LAUNCHPAD for your career! Join a team that values innovation, growth, and making a real impact.
-
-📞 CONTACT INFORMATION:
-If you have any immediate questions, feel free to reach out to us at hr@yugayatra.com
-
-🌈 WELCOME TO THE FUTURE OF RETAIL INNOVATION!
-We're counting down the days until you join our amazing team!
-
-With immense excitement,
-The Talent Acquisition Team
-YugaYatra Retail (OPC) Pvt Ltd
-🏢 Corporate Office | 🌐 www.yugayatra.com
-
----
-P.S. This is your moment to shine! We believe in your potential and can't wait to see the incredible things you'll accomplish with us! ✨
-
-📧 Email: ${email}`
+        fullName: application.full_name,
+        name: application.full_name,
+        role: application.role,
+        email: application.email,
+        subject: "Congratulations! Your Internship Application Has Been Approved"
       }
 
-      console.log('📨 DEBUG - Sending email with params:', {
-        name: templateParams.name,
-        email: templateParams.email,
-        role: templateParams.role,
-        subject: templateParams.subject,
-        messageLength: templateParams.message.length
-      })
-      
-      // Debug: Check if the message contains actual values
-      console.log('� DEBUG - Message preview (first 200 chars):', templateParams.message.substring(0, 200))
-      
-      // Check for literal ${} placeholders in the message
-      if (templateParams.message.includes('${fullName}') || templateParams.message.includes('${role}')) {
-        console.error('❌ ERROR: Template literals not interpolated! Found literal placeholders in message')
-        throw new Error('Template interpolation failed - literal placeholders found in message')
-      }
+      console.log('📨 Template params being sent to EmailJS:', templateParams)
 
       const response = await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -347,6 +301,24 @@ P.S. This is your moment to shine! We believe in your potential and can't wait t
         throw fetchError
       }
 
+      console.log('📋 Retrieved application for status update:', {
+        id: application.id,
+        fullName: application.full_name,
+        role: application.role,
+        email: application.email,
+        currentStatus: application.status,
+        newStatus: status
+      })
+
+      // Verify required fields for email sending
+      if (status === 'accepted' && (!application.full_name || !application.role)) {
+        console.error('❌ Cannot accept application - missing required fields:', {
+          fullName: application.full_name,
+          role: application.role
+        })
+        throw new Error('Application is missing required name or role information')
+      }
+
       // Update the status in Supabase
       const { error } = await supabase
         .from('internship_applications')
@@ -370,30 +342,6 @@ P.S. This is your moment to shine! We believe in your potential and can't wait t
       // Send email only if status is 'accepted'
       if (status === 'accepted') {
         console.log('📧 Application accepted, sending email...')
-        
-        // Debug: Verify application data before sending email
-        console.log('🔍 DEBUG - Application data for email:', {
-          id: application.id,
-          full_name: application.full_name,
-          email: application.email,
-          role: application.role,
-          status: application.status
-        })
-        
-        // Ensure we have the required fields
-        if (!application.full_name || !application.email || !application.role) {
-          console.error('❌ Missing required fields for email:', {
-            full_name: application.full_name,
-            email: application.email,
-            role: application.role
-          })
-          setToast({
-            show: true,
-            message: 'Application Accepted but Email Failed (Missing Data)',
-            type: 'warning'
-          })
-          return
-        }
         
         const emailResult = await sendAcceptanceEmail(application)
         
