@@ -133,6 +133,14 @@ export const signInAdmin = async (email, password) => {
   })
   
   if (error) throw error
+  
+  // Check if user is admin
+  const isAdmin = await checkAdminAccess(email)
+  if (!isAdmin) {
+    await signOutAdmin()
+    throw new Error('Access denied. Admin privileges required.')
+  }
+  
   return data
 }
 
@@ -156,4 +164,119 @@ export const checkAdminAccess = async (email) => {
   
   if (error) throw error
   return data !== null
+}
+
+// Verify current user is admin
+export const verifyAdminAccess = async () => {
+  try {
+    const user = await getCurrentUser()
+    if (!user || !user.email) {
+      throw new Error('No authenticated user found')
+    }
+    
+    const isAdmin = await checkAdminAccess(user.email)
+    if (!isAdmin) {
+      throw new Error('Admin access required')
+    }
+    
+    return true
+  } catch (error) {
+    console.error('Admin verification failed:', error)
+    throw error
+  }
+}
+
+// Services functions
+export const getServices = async () => {
+  const { data, error } = await supabase
+    .from('services')
+    .select('*')
+    .eq('is_active', true)
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+export const getServiceBySlug = async (slug) => {
+  const { data, error } = await supabase
+    .from('services')
+    .select('*')
+    .eq('slug', slug)
+    .eq('is_active', true)
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+// Admin services CRUD functions
+export const getAllServices = async () => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('services')
+    .select('*')
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+export const createService = async (serviceData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('services')
+    .insert([serviceData])
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const updateService = async (id, serviceData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('services')
+    .update(serviceData)
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const deleteService = async (id) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('services')
+    .delete()
+    .eq('id', id)
+  
+  if (error) throw error
+  return data
+}
+
+export const toggleServiceActive = async (id, isActive) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('services')
+    .update({ is_active: isActive })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
 }
