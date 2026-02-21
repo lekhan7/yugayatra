@@ -12,14 +12,14 @@ import Admin from './pages/Admin'
 
 function App() {
   const location = useLocation()
-  const isAdminPage = location.pathname === '/admin'
+  const isAdminPage = location.pathname.startsWith('/yugyatra-admin')
 
   return (
     <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
       {!isAdminPage && <Navbar />}
       {!isAdminPage && <ScrollProgressBar />}
       <Routes>
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/yugyatra-admin" element={<Admin />} />
         <Route path="/" element={
           <>
             <motion.div
