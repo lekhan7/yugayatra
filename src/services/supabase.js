@@ -92,6 +92,33 @@ export const getFileUrl = (bucket, path) => {
   return data.publicUrl
 }
 
+export const createSignedUrl = async (bucket, path, expiresIn = 60) => {
+  const { data, error } = await supabase.storage
+    .from(bucket)
+    .createSignedUrl(path, expiresIn)
+  
+  if (error) throw error
+  return data.signedUrl
+}
+
+export const uploadResume = async (file) => {
+  const fileExt = file.name.split('.').pop()
+  const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`
+  const filePath = `resumes/${fileName}`
+  
+  const { data, error } = await supabase.storage
+    .from('resumes')
+    .upload(filePath, file)
+  
+  if (error) throw error
+  
+  return {
+    path: filePath,
+    fileName: file.name,
+    fullPath: data.path
+  }
+}
+
 // Authentication functions
 export const signInAdmin = async (email, password) => {
   const { data, error } = await supabase.auth.signInWithPassword({

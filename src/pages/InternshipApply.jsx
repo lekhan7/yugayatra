@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, CheckCircle, Loader2 } from 'lucide-react'
+import { ArrowLeft, CheckCircle, Loader2, Upload, X, FileText } from 'lucide-react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { submitInternshipApplication } from '../services/supabase'
+import { submitInternshipApplication, uploadResume } from '../services/supabase'
 import FormInput from '../components/FormInput'
 
 const InternshipApply = () => {
@@ -22,6 +22,8 @@ const InternshipApply = () => {
     motivation: ''
   })
 
+  const [resumeFile, setResumeFile] = useState(null)
+  const [resumeError, setResumeError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [toast, setToast] = useState({ open: false, message: '', type: 'success' })
@@ -45,6 +47,39 @@ const InternshipApply = () => {
     })
   }
 
+  const handleResumeChange = (e) => {
+    const file = e.target.files[0]
+    setResumeError('')
+    
+    if (!file) {
+      setResumeFile(null)
+      return
+    }
+
+    // Check file type
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+    if (!allowedTypes.includes(file.type)) {
+      setResumeError('Please upload a PDF, DOC, or DOCX file')
+      setResumeFile(null)
+      return
+    }
+
+    // Check file size (5MB)
+    const maxSize = 5 * 1024 * 1024
+    if (file.size > maxSize) {
+      setResumeError('File must be under 5MB')
+      setResumeFile(null)
+      return
+    }
+
+    setResumeFile(file)
+  }
+
+  const removeResume = () => {
+    setResumeFile(null)
+    setResumeError('')
+  }
+
   const validate = () => {
     const nextErrors = {}
 
@@ -64,8 +99,13 @@ const InternshipApply = () => {
     if (!formData.education.trim()) nextErrors.education = 'Education is required.'
     if (!formData.skills.trim()) nextErrors.skills = 'Skills are required.'
 
+    if (!resumeFile) {
+      setResumeError('Resume is required')
+      return false
+    }
+
     setErrors(nextErrors)
-    return Object.keys(nextErrors).length === 0
+    return Object.keys(nextErrors).length === 0 && !resumeError
   }
 
   const handleSubmit = async (e) => {
@@ -77,6 +117,13 @@ const InternshipApply = () => {
     setIsSubmitting(true)
 
     try {
+      // Step 1: Upload resume
+      let resumeData = null
+      if (resumeFile) {
+        resumeData = await uploadResume(resumeFile)
+      }
+
+      // Step 2: Submit application with resume data
       const payload = {
         full_name: formData.fullName.trim(),
         email: formData.email.trim(),
@@ -85,7 +132,10 @@ const InternshipApply = () => {
         education: formData.education.trim(),
         experience: formData.experience.trim() || '',
         skills: formData.skills.trim(),
-        motivation: formData.motivation.trim() || ''
+        motivation: formData.motivation.trim() || '',
+        resume_url: resumeData?.path || '',
+        resume_filename: resumeData?.fileName || '',
+        status: 'pending'
       }
 
       await submitInternshipApplication(payload)
@@ -103,6 +153,7 @@ const InternshipApply = () => {
         skills: '',
         motivation: ''
       })
+      setResumeFile(null)
     } catch (err) {
       setFormError(err?.message || 'Failed to submit application. Please try again.')
       showToast('Submission failed. Please try again.', 'error')
@@ -265,6 +316,67 @@ const InternshipApply = () => {
                     rows={4}
                     placeholder="Why do you want to join this internship?"
                   />
+                </section>
+
+                <section className="space-y-4">
+                  <h2 className="text-lg font-semibold text-text-main dark:text-white">Resume Upload</h2>
+
+                  <div className="space-y-3">
+                    <label className="block text-sm font-medium text-text-main dark:text-white">
+                      Upload Resume (PDF/DOC/DOCX - Max 5MB) <span className="text-red-500">*</span>
+                    </label>
+                    
+                    {!resumeFile ? (
+                      <div className="relative">
+                        <input
+                          type="file"
+                          id="resume"
+                          accept=".pdf,.doc,.docx"
+                          onChange={handleResumeChange}
+                          className="hidden"
+                        />
+                        <label
+                          htmlFor="resume"
+                          className="flex items-center justify-center w-full p-6 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 transition-colors bg-white/50 dark:bg-gray-800/50"
+                        >
+                          <div className="text-center">
+                            <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" />
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                              Click to upload or drag and drop
+                            </p>
+                            <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                              PDF, DOC, DOCX (MAX. 5MB)
+                            </p>
+                          </div>
+                        </label>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                        <div className="flex items-center">
+                          <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-3" />
+                          <div>
+                            <p className="text-sm font-medium text-gray-900 dark:text-white">
+                              {resumeFile.name}
+                            </p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                              {(resumeFile.size / 1024 / 1024).toFixed(2)} MB
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={removeResume}
+                          className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      </div>
+                    )}
+
+                    {resumeError && (
+                      <p className="text-sm text-red-600 dark:text-red-400">{resumeError}</p>
+                    )}
+                  </div>
                 </section>
 
                 {formError ? (

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Search, Filter, Eye, Check, X, Download, Mail, User, Calendar, Briefcase, GraduationCap } from 'lucide-react'
-import { supabase } from '../../services/supabase'
+import { supabase, createSignedUrl } from '../../services/supabase'
 
 const ApplicationsManager = ({ applications, onApplicationsChange }) => {
   const [filteredApplications, setFilteredApplications] = useState([])
@@ -117,11 +117,19 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
     }
   }
 
-  const viewResume = (resumeUrl) => {
-    if (resumeUrl) {
-      window.open(resumeUrl, '_blank')
-    } else {
+  const viewResume = async (resumeUrl, resumeFilename) => {
+    if (!resumeUrl) {
       alert('Resume not available')
+      return
+    }
+
+    try {
+      // Generate signed URL for secure access
+      const signedUrl = await createSignedUrl('resumes', resumeUrl, 60)
+      window.open(signedUrl, '_blank')
+    } catch (error) {
+      console.error('Error generating resume URL:', error)
+      alert('Error opening resume. Please try again.')
     }
   }
 
@@ -297,7 +305,7 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
                       </button>
                       {application.resume_url && (
                         <button
-                          onClick={() => viewResume(application.resume_url)}
+                          onClick={() => viewResume(application.resume_url, application.resume_filename)}
                           className="text-purple-600 hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-300 p-1 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded transition-colors"
                           title="View Resume"
                         >
@@ -454,40 +462,51 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
                     </span>
                   </div>
                   
-                  {(!selectedApplication.status || selectedApplication.status === 'pending') && (
-                    <div className="flex space-x-3">
+                  <div className="flex space-x-3">
+                    {selectedApplication.resume_url && (
                       <button
-                        onClick={() => {
-                          updateApplicationStatus(selectedApplication.id, 'accepted')
-                          closeModal()
-                        }}
-                        disabled={updatingId === selectedApplication.id}
-                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                        onClick={() => viewResume(selectedApplication.resume_url, selectedApplication.resume_filename)}
+                        className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 flex items-center space-x-2"
                       >
-                        {updatingId === selectedApplication.id ? (
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                        ) : (
-                          <Check size={16} />
-                        )}
-                        <span>Accept</span>
+                        <Download size={16} />
+                        <span>View Resume</span>
                       </button>
-                      <button
-                        onClick={() => {
-                          updateApplicationStatus(selectedApplication.id, 'rejected')
-                          closeModal()
-                        }}
-                        disabled={updatingId === selectedApplication.id}
-                        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
-                      >
-                        {updatingId === selectedApplication.id ? (
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                        ) : (
-                          <X size={16} />
-                        )}
-                        <span>Reject</span>
-                      </button>
-                    </div>
-                  )}
+                    )}
+                    {(!selectedApplication.status || selectedApplication.status === 'pending') && (
+                      <>
+                        <button
+                          onClick={() => {
+                            updateApplicationStatus(selectedApplication.id, 'accepted')
+                            closeModal()
+                          }}
+                          disabled={updatingId === selectedApplication.id}
+                          className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                        >
+                          {updatingId === selectedApplication.id ? (
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                          ) : (
+                            <Check size={16} />
+                          )}
+                          <span>Accept</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            updateApplicationStatus(selectedApplication.id, 'rejected')
+                            closeModal()
+                          }}
+                          disabled={updatingId === selectedApplication.id}
+                          className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                        >
+                          {updatingId === selectedApplication.id ? (
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                          ) : (
+                            <X size={16} />
+                          )}
+                          <span>Reject</span>
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
