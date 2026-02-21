@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../../services/supabase'
 import StatusTabs from './StatusTabs'
 import ApplicationsTable from './ApplicationsTable'
+import emailjs from '@emailjs/browser'
+
+// Initialize EmailJS
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
 
 const AdminApplications = () => {
   const [applications, setApplications] = useState([])
@@ -15,7 +19,9 @@ const AdminApplications = () => {
   console.log('🔧 Environment check:', {
     supabaseUrl: import.meta.env.VITE_SUPABASE_URL ? '✅ Set' : '❌ Missing',
     supabaseKey: import.meta.env.VITE_SUPABASE_ANON_KEY ? '✅ Set' : '❌ Missing',
-    web3formsKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ? '✅ Set' : '❌ Missing'
+    emailjsKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ? '✅ Set' : '❌ Missing',
+    emailjsService: import.meta.env.VITE_EMAILJS_SERVICE_ID ? '✅ Set' : '❌ Missing',
+    emailjsTemplate: import.meta.env.VITE_EMAILJS_TEMPLATE_ID ? '✅ Set' : '❌ Missing'
   })
 
   useEffect(() => {
@@ -183,55 +189,87 @@ const AdminApplications = () => {
     try {
       console.log('📧 Sending acceptance email to:', application.email)
       
-      const emailData = {
-        access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
-        to: application.email,
-        subject: "🎉 Internship Application Approved!",
-        from_name: "YugaYatra Retail (OPC) Pvt Ltd",
+      const templateParams = {
+        name: application.full_name,
+        user_name: application.full_name,
+        recipient_name: application.full_name,
+        email: application.email,
+        to_email: application.email,
+        recipient_email: application.email,
+        role: application.role,
+        position: application.role,
+        subject: "🌟 EXCLUSIVE OPPORTUNITY! Your YugaYatra Internship Journey Begins! 🚀",
         message: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2 style="color: #10b981; margin-bottom: 20px;">🎉 Congratulations! Your Internship Application Has Been Accepted</h2>
-            
-            <p>Hi ${application.full_name},</p>
-            
-            <p>We're excited to inform you that your application for the <strong>${application.role}</strong> internship has been successfully reviewed and approved.</p>
-            
-            <p>Our team was impressed with your background and skills.</p>
-            
-            <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
-              <h3 style="color: #374151; margin-top: 0;">What's Next?</h3>
-              <ul style="color: #4b5563; line-height: 1.6;">
-                <li>✔ Our team will contact you soon with further instructions.</li>
-                <li>✔ Please keep an eye on your email.</li>
-                <li>✔ Prepare for the next stage.</li>
-              </ul>
-            </div>
-            
-            <p>We're excited to have you onboard!</p>
-            
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
-              <p style="margin: 0; color: #6b7280;">Best Regards,<br>
-              <strong>YugaYatra Retail (OPC) Pvt Ltd</strong></p>
-            </div>
-          </div>
+🎊 CONGRATULATIONS, ${application.full_name.toUpperCase()}! 🎊
+
+We are absolutely THRILLED to inform you that your application for the prestigious **${application.role}** internship position at YugaYatra Retail (OPC) Pvt Ltd has been SELECTED and APPROVED! 🏆
+
+✨ WHY YOU STOOD OUT:
+Your exceptional profile, skills, and passion truly impressed our selection committee among hundreds of talented candidates. You're not just selected - you're CHOSEN! 🌟
+
+🚀 YOUR EXCITING JOURNEY AHEAD:
+
+1️⃣ **IMMEDIATE NEXT STEPS:**
+   • Our senior talent acquisition team will contact you within 24-48 hours
+   • Prepare for an engaging conversation about your vision and goals
+   • Get ready to discuss your start date and onboarding process
+
+2️⃣ **WHAT TO EXPECT:**
+   • Hands-on experience with real industry projects
+   • Mentorship from industry experts
+   • Certificate of completion & potential full-time opportunities
+   • A vibrant, innovative work culture
+
+3️⃣ **PREPARATION CHECKLIST:**
+   • ✅ Keep your phone and email accessible
+   • ✅ Prepare any questions about the role
+   • ✅ Think about your availability and start date preferences
+
+💫 WHY YUGAYATRA?
+We're not just offering an internship - we're offering a LAUNCHPAD for your career! Join a team that values innovation, growth, and making a real impact.
+
+📞 CONTACT INFORMATION:
+If you have any immediate questions, feel free to reach out to us at hr@yugayatra.com
+
+🌈 WELCOME TO THE FUTURE OF RETAIL INNOVATION!
+We're counting down the days until you join our amazing team!
+
+With immense excitement,
+The Talent Acquisition Team
+YugaYatra Retail (OPC) Pvt Ltd
+🏢 Corporate Office | 🌐 www.yugayatra.com
+
+---
+P.S. This is your moment to shine! We believe in your potential and can't wait to see the incredible things you'll accomplish with us! ✨
+
+📧 Email: ${application.email}
         `
       }
 
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(emailData)
+      console.log('📨 Sending email with params:', {
+        name: application.full_name,
+        email: application.email,
+        role: application.role,
+        subject: templateParams.subject
       })
+      console.log('📋 Full application data:', application)
 
-      if (!response.ok) {
-        throw new Error(`Email service responded with status: ${response.status}`)
+      const response = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+
+      console.log('📬 EmailJS response:', response)
+
+      if (response.status === 200) {
+        console.log('✅ Email sent successfully')
+        return { success: true, result: response }
+      } else {
+        console.error('❌ Email sending failed:', response.text)
+        throw new Error(response.text || 'Email send failed')
       }
-
-      const result = await response.json()
-      console.log('✅ Email sent successfully:', result)
-      return { success: true, result }
 
     } catch (error) {
       console.error('❌ Error sending email:', error)
@@ -284,7 +322,7 @@ const AdminApplications = () => {
         if (emailResult.success) {
           setToast({
             show: true,
-            message: 'Application Accepted & Email Sent Successfully',
+            message: 'Application Accepted & Email Sent',
             type: 'success'
           })
         } else {
