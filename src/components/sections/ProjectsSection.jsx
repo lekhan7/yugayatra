@@ -1,4 +1,5 @@
-import { motion, useEffect, useState } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { supabase } from '../../services/supabase'
 import { ExternalLink, Globe, Calendar, Users, Code, Palette, TrendingUp, ShoppingBag, User, FileText, Briefcase, Zap, Bell, School, Utensils, BookOpen, Newspaper, GraduationCap, Scale } from 'lucide-react'
 
