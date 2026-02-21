@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Moon, Sun, Code, Briefcase, Users, Award, FileText, Trophy, User, MessageSquare, HelpCircle, Home, Settings, MapPin } from 'lucide-react'
+import { Menu, X, Moon, Sun, Code, Briefcase, Users, Award, FileText, Trophy, User, MessageSquare, HelpCircle, Home, Settings, MapPin, Globe } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,6 +29,7 @@ const Navbar = () => {
     { name: 'Journey', href: '#journey-timeline', icon: MapPin },
    { name: 'Services', href: '#services', icon: Briefcase },
    { name: 'Achievements', href: '#achievements', icon: Trophy },
+   { name: 'Projects', href: '#projects', icon: Globe },
     { name: 'Alumni', href: '#alumni', icon: User },
     { name: 'Blog', href: '#blog', icon: FileText },
     { name: 'Quiz', href: '#quiz', icon: MessageSquare },

@@ -7,7 +7,7 @@ import AboutSection from '../components/sections/AboutSection'
 import JourneyTimeline from '../components/sections/JourneyTimeline'
 import ServicesSection from '../components/sections/ServicesSection'
 import AchievementSection from '../components/sections/AchievementSection'
-import PortfolioSection from '../components/sections/PortfolioSection'
+import ProjectsSection from '../components/sections/ProjectsSection'
 import AlumniSection from '../components/sections/AlumniSection'
 import TestimonialsSection from '../components/sections/TestimonialsSection'
 import BlogSection from '../components/sections/BlogSection'
@@ -37,7 +37,7 @@ const Home = () => {
       <AchievementSection />
 
       {/* Projects Section */}
-      <PortfolioSection />
+      <ProjectsSection />
 
       {/* Alumni Section */}
       <AlumniSection />
