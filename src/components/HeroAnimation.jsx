@@ -6,7 +6,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 const HeroAnimation = () => {
   const containerRef = useRef(null)
-  const shakeContainerRef = useRef(null)
   const bowRef = useRef(null)
   const arrowRef = useRef(null)
   const stringRef = useRef(null)
@@ -210,8 +209,8 @@ const HeroAnimation = () => {
       duration: 0.5,
       ease: "power2.in"
     }, "-=0.4")
-    // Enhanced screen shake effect for shake container only
-    tl.to(shakeContainerRef.current, {
+    // Enhanced screen shake effect for entire screen
+    tl.to("body", {
       x: "+=4",
       y: "+=2",
       rotation: "+=0.5",
@@ -220,8 +219,8 @@ const HeroAnimation = () => {
       yoyo: true,
       ease: "power2.inOut"
     }, "-=0.3")
-    // Return shake container to normal position within a second
-    .to(shakeContainerRef.current, {
+    // Return page to normal position within a second
+    .to("body", {
       x: 0,
       y: 0,
       rotation: 0,
@@ -242,8 +241,6 @@ const HeroAnimation = () => {
 
   return (
     <div ref={containerRef} className="relative w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-purple-50 overflow-hidden">
-      {/* Shake container for screen effects */}
-      <div ref={shakeContainerRef} className="shake-container absolute inset-0 flex items-center justify-center">
       
       {/* Sound Toggle */}
       <button
@@ -626,7 +623,6 @@ const HeroAnimation = () => {
             }}
           />
         ))}
-      </div>
       </div>
     </div>
   )

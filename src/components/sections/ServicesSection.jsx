@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import { 
   Code, 
   Palette, 
@@ -17,8 +16,6 @@ import { useNavigate } from 'react-router-dom'
 
 const ServicesSection = () => {
   const navigate = useNavigate()
-  const [isApplyOpen, setIsApplyOpen] = useState(false)
-  const [selectedRole, setSelectedRole] = useState('')
 
   const services = [
     {
@@ -214,8 +211,8 @@ const ServicesSection = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        setSelectedRole(service.title)
-                        setIsApplyOpen(true)
+                        const encodedRole = encodeURIComponent(service.title)
+                        navigate(`/internship/apply/${encodedRole}`)
                       }}
                       className="px-4 py-2 rounded-lg bg-gradient-to-r from-accent-main to-blue-600 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
                     >
@@ -228,47 +225,6 @@ const ServicesSection = () => {
           </div>
         </div>
       </div>
-
-      {isApplyOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          <button
-            type="button"
-            onClick={() => setIsApplyOpen(false)}
-            className="absolute inset-0 bg-black/50"
-            aria-label="Close"
-          />
-
-          <div className="relative w-full max-w-md bg-card-bg rounded-2xl shadow-2xl border border-border-light p-6">
-            <h4 className="text-xl font-bold text-text-main">Apply for Internship</h4>
-            <p className="mt-2 text-text-light">
-              You are applying for:
-              <span className="font-semibold text-text-main"> {selectedRole}</span>
-            </p>
-
-            <div className="mt-6 flex items-center justify-end gap-3">
-              <button
-                type="button"
-                onClick={() => setIsApplyOpen(false)}
-                className="px-4 py-2 rounded-lg border border-border-light text-text-main hover:bg-bg-main transition-colors"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setIsApplyOpen(false)
-                  navigate(`/internship/apply/${encodeURIComponent(selectedRole)}`)
-                }}
-                className="px-4 py-2 rounded-lg bg-gradient-to-r from-accent-main to-blue-600 text-white font-semibold hover:shadow-lg transition-all"
-              >
-                Continue
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
- 
 
       {/* CTA Section */}
       <div className="py-20 bg-gradient-to-r from-accent-main to-blue-600">

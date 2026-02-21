@@ -24,10 +24,14 @@ const AdminDashboard = ({ user, onLogout }) => {
         .select('*')
         .order('created_at', { ascending: false })
 
-      if (error) throw error
+      if (error && error.code !== 'PGRST116') {
+        throw error
+      }
+      
       setInternshipApplications(data || [])
     } catch (error) {
       console.error('Error fetching applications:', error)
+      setInternshipApplications([])
     } finally {
       setLoading(false)
     }
@@ -39,6 +43,8 @@ const AdminDashboard = ({ user, onLogout }) => {
       onLogout()
     } catch (error) {
       console.error('Error signing out:', error)
+      // Still call onLogout even if signOut fails
+      onLogout()
     }
   }
 
