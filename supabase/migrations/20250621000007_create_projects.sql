@@ -102,6 +102,7 @@ CREATE POLICY "Public users can view technologies of active projects"
         AND projects.is_active = true
     ));
 
+
 -- Authenticated users have full access to project_technologies
 CREATE POLICY "Authenticated users have full access to project_technologies"
     ON public.project_technologies
