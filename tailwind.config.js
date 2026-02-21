@@ -67,7 +67,7 @@ export default {
         },
         counter: {
           '0%': { transform: 'scale(0.5)', opacity: '0' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
+          '100%': { transform: 'scale(1)', opacity: '1)' },
         },
         'card-tilt': {
           '0%': { transform: 'perspective(1000px) rotateY(0deg)' },
@@ -82,4 +82,4 @@ export default {
   plugins: [
     require('@tailwindcss/typography'),
   ],
-}
+};
