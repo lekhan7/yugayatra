@@ -1,0 +1,46 @@
+import { motion } from 'framer-motion'
+import { ArrowRight, ChevronRight, Code, Palette } from 'lucide-react'
+import HeroAnimation from '../HeroAnimation'
+
+const HeroSection = () => {
+  return (
+    <section id="home" className="min-h-screen bg-bg-main relative overflow-hidden">
+      {/* Hero Animation */}
+      <HeroAnimation />
+
+      {/* CTA Buttons positioned at bottom */}
+      <div className="absolute bottom-20 left-0 right-0 z-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.5 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center px-4"
+        >
+          <motion.a
+            href="#internships"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn-primary inline-flex items-center justify-center group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <Code className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+            Explore Opportunities
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.a>
+          
+          <motion.a
+            href="#about"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn-secondary inline-flex items-center justify-center group bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300"
+          >
+            <Palette className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+            Learn More
+            <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.a>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+export default HeroSection
