@@ -133,7 +133,7 @@ const InternshipApply = () => {
         experience: formData.experience.trim() || '',
         skills: formData.skills.trim(),
         motivation: formData.motivation.trim() || '',
-        resume_url: resumeData?.path || '',
+        resume_url: resumeData?.publicUrl || '',
         resume_filename: resumeData?.fileName || '',
         status: 'pending'
       }

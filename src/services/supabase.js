@@ -104,18 +104,24 @@ export const createSignedUrl = async (bucket, path, expiresIn = 60) => {
 export const uploadResume = async (file) => {
   const fileExt = file.name.split('.').pop()
   const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`
-  const filePath = `resumes/${fileName}`
-  
+  const filePath = fileName // Only filename, no nested folder
+
   const { data, error } = await supabase.storage
     .from('resumes')
     .upload(filePath, file)
-  
+
   if (error) throw error
-  
+
+  // Generate public URL
+  const { data: publicUrlData } = supabase
+    .storage
+    .from('resumes')
+    .getPublicUrl(filePath)
+
   return {
     path: filePath,
-    fileName: file.name,
-    fullPath: data.path
+    fileName: fileName,
+    publicUrl: publicUrlData.publicUrl
   }
 }
 

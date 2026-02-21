@@ -1,12 +1,17 @@
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from 'framer-motion'
-import { Star, Quote, ArrowRight, TrendingUp, Users, Award, Clock } from 'lucide-react'
+import { Star, Quote, ArrowRight, TrendingUp, Users, Award, Clock, Plus } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import TestimonialSubmissionModal from '../TestimonialSubmissionModal'
+import { getApprovedTestimonials } from '../../services/testimonials'
 
 const TestimonialsSection = () => {
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: containerRef })
   const [hoveredCard, setHoveredCard] = useState(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [testimonials, setTestimonials] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   
   // Parallax effects
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -50])
@@ -15,51 +20,24 @@ const TestimonialsSection = () => {
   
   // Spring animations
   const springScale = useSpring(scale, { stiffness: 100, damping: 20 })
-  
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      role: 'CEO, TechStart',
-      content: 'YugaYatra Retail (OPC) Pvt Ltd transformed our digital presence completely. Their team is exceptional! They delivered beyond our expectations and continue to support us every step of the way.',
-      rating: 5,
-      image: '/api/placeholder/100/100'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Founder, InnovateCo',
-      content: 'Professional, innovative, and reliable. They delivered our complex project on time and within budget. The quality of work exceeded our expectations.',
-      rating: 5,
-      image: '/api/placeholder/100/100'
-    },
-    {
-      name: 'Emily Davis',
-      role: 'Marketing Director, GrowthHub',
-      content: 'The best digital partner we\'ve worked with. Their strategic approach to digital marketing helped us achieve our goals faster than we imagined.',
-      rating: 5,
-      image: '/api/placeholder/100/100'
-    },
-    {
-      name: 'Robert Wilson',
-      role: 'CTO, DataFlow Systems',
-      content: 'Outstanding technical expertise and problem-solving skills. They built our platform from scratch and it\'s performing beyond our expectations.',
-      rating: 5,
-      image: '/api/placeholder/100/100'
-    },
-    {
-      name: 'Lisa Anderson',
-      role: 'Product Manager, CloudTech',
-      content: 'Incredible attention to detail and user experience. They understood our requirements perfectly and delivered a solution that our users love.',
-      rating: 5,
-      image: '/api/placeholder/100/100'
-    },
-    {
-      name: 'David Martinez',
-      role: 'Operations Head, RetailMax',
-      content: 'Transformative solutions that actually work. Their team helped us digitize our entire operation and the results have been remarkable.',
-      rating: 5,
-      image: '/api/placeholder/100/100'
+
+  // Fetch testimonials from database
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const result = await getApprovedTestimonials()
+        if (result.success) {
+          setTestimonials(result.data)
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error)
+      } finally {
+        setLoading(false)
+      }
     }
-  ]
+
+    fetchTestimonials()
+  }, [])
 
   // Animation variants
   const containerVariants = {
@@ -184,21 +162,50 @@ const TestimonialsSection = () => {
         className="py-20 bg-bg-main relative z-10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                variants={cardVariants}
-                whileHover="hover"
-                onHoverStart={() => setHoveredCard(index)}
-                onHoverEnd={() => setHoveredCard(null)}
-                className="bg-card-bg rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-border-light relative overflow-hidden group"
+          {/* Add Review Button */}
+          <div className="flex justify-center mb-8">
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <Plus className="w-5 h-5" />
+              <span>Add Your Review</span>
+            </motion.button>
+          </div>
+
+          {/* Loading State */}
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
+            </div>
+          ) : (
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {testimonials.length === 0 ? (
+                <div className="col-span-full text-center py-20">
+                  <Quote className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                  <p className="text-xl text-gray-500 dark:text-gray-400">
+                    No testimonials yet. Be the first to share your experience!
+                  </p>
+                </div>
+              ) : (
+                testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={testimonial.id}
+                    variants={cardVariants}
+                    whileHover="hover"
+                    onHoverStart={() => setHoveredCard(index)}
+                    onHoverEnd={() => setHoveredCard(null)}
+                    className="bg-card-bg rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-border-light relative overflow-hidden group"
               >
                 {/* Animated Background Gradient */}
                 <motion.div
@@ -229,7 +236,7 @@ const TestimonialsSection = () => {
 
                   {/* Rating with Star Animation */}
                   <motion.div className="flex justify-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                       <motion.div
                         key={i}
                         initial={{ rotate: -180, scale: 0 }}
@@ -253,7 +260,7 @@ const TestimonialsSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
                   >
-                    "{testimonial.content}"
+                    "{testimonial.description}"
                   </motion.p>
 
                   {/* Author Info */}
@@ -269,7 +276,7 @@ const TestimonialsSection = () => {
                       transition={{ duration: 0.5 }}
                     >
                       <span className="text-white font-bold text-xl">
-                        {testimonial.name.split(' ').map(n => n[0]).join('')}
+                        {testimonial.full_name.split(' ').map(n => n[0]).join('')}
                       </span>
                     </motion.div>
                     <motion.h4 
@@ -277,7 +284,7 @@ const TestimonialsSection = () => {
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {testimonial.name}
+                      {testimonial.full_name}
                     </motion.h4>
                     <motion.p 
                       className="text-accent-main text-sm"
@@ -285,13 +292,15 @@ const TestimonialsSection = () => {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.1 + 0.7 }}
                     >
-                      {testimonial.role}
+                      {testimonial.email}
                     </motion.p>
                   </motion.div>
                 </div>
               </motion.div>
-            ))}
-          </motion.div>
+                ))
+              )}
+            </motion.div>
+          )}
         </div>
       </motion.div>
 
@@ -460,6 +469,12 @@ const TestimonialsSection = () => {
           </motion.div>
         </div>
       </motion.div>
+
+      {/* Testimonial Submission Modal */}
+      <TestimonialSubmissionModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   )
 }

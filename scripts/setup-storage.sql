@@ -6,25 +6,23 @@ INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_typ
 VALUES (
   'resumes', 
   'resumes', 
-  false, -- Private bucket (requires signed URLs)
+  true, -- Public bucket (allows public URLs)
   5242880, -- 5MB in bytes
   ARRAY['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 ) ON CONFLICT (id) DO NOTHING;
 
 -- 2. Set up Row Level Security (RLS) policies for the resumes bucket
 
--- Allow authenticated users to upload resumes
-CREATE POLICY "Users can upload resumes" ON storage.objects
+-- Allow anyone to upload resumes (public bucket)
+CREATE POLICY "Anyone can upload resumes" ON storage.objects
 FOR INSERT WITH CHECK (
-  bucket_id = 'resumes' AND
-  auth.role() = 'authenticated'
+  bucket_id = 'resumes'
 );
 
--- Allow authenticated users to read their own resumes
-CREATE POLICY "Users can read own resumes" ON storage.objects
+-- Allow anyone to read resumes (public bucket)
+CREATE POLICY "Anyone can read resumes" ON storage.objects
 FOR SELECT USING (
-  bucket_id = 'resumes' AND
-  auth.role() = 'authenticated'
+  bucket_id = 'resumes'
 );
 
 -- Allow service role to manage all resumes (for admin access)
