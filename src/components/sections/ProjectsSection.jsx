@@ -1,137 +1,95 @@
-import { motion } from 'framer-motion'
+import { motion, useEffect, useState } from 'framer-motion'
+import { supabase } from '../../services/supabase'
 import { ExternalLink, Globe, Calendar, Users, Code, Palette, TrendingUp, ShoppingBag, User, FileText, Briefcase, Zap, Bell, School, Utensils, BookOpen, Newspaper, GraduationCap, Scale } from 'lucide-react'
 
 const ProjectsSection = () => {
-  const projects = [
-    {
-      id: 1,
-      name: 'GateBell.in',
-      category: 'IoT, Web App',
-      description: 'A smart visitor management system designed to streamline office operations by automating guest check-ins, enhancing security, and providing real-time analytics for office administrators.',
-      icon: Bell,
-      features: [
-        'Automated visitor registration and check-in process',
-        'Real-time notifications for office staff',
-        'Integration with IoT-enabled doorbells',
-        'Detailed visitor logs and analytics dashboard'
-      ],
-      technologies: ['React', 'Node.js', 'MQTT', 'AWS IoT', 'MongoDB'],
-      link: 'https://gatebell.in',
-      color: 'from-blue-500 to-cyan-600'
-    },
-    {
-      id: 2,
-      name: 'SchoolDekho.in',
-      category: 'EdTech, Location-based',
-      description: 'A comprehensive platform for parents and students to find and compare schools nearby based on location, ratings, facilities, and educational offerings, making the school selection process easier and more informed.',
-      icon: School,
-      features: [
-        'Location-based school search with interactive map',
-        'Detailed school profiles with photos and virtual tours',
-        'Parent reviews and ratings system',
-        'School comparison tool for informed decision making'
-      ],
-      technologies: ['React', 'Express', 'MongoDB', 'Google Maps API', 'Cloudinary'],
-      link: 'https://schooldekho.in',
-      color: 'from-green-500 to-emerald-600'
-    },
-    {
-      id: 3,
-      name: 'FoodCaravan.in',
-      category: 'FoodTech, Web App',
-      description: 'An online food delivery platform that connects local customers with nearby restaurants, offering a seamless ordering experience with real-time tracking and personalized recommendations.',
-      icon: Utensils,
-      features: [
-        'User-friendly interface for browsing menus',
-        'Real-time order tracking with GPS',
-        'Personalized restaurant and dish recommendations',
-        'Secure payment gateway integration'
-      ],
-      technologies: ['Next.js', 'Express', 'PostgreSQL', 'Firebase', 'Stripe'],
-      link: 'https://foodcaravan.in',
-      color: 'from-orange-500 to-red-600'
-    },
-    {
-      id: 4,
-      name: 'SatyaPandey.com',
-      category: 'Portfolio, Blog',
-      description: 'A personal portfolio and blog for Satya Pandey, showcasing professional achievements, projects, and thought leadership articles on technology, design, and innovation.',
-      icon: User,
-      features: [
-        'Responsive portfolio showcasing projects',
-        'Blog section with rich text formatting',
-        'SEO optimization for better visibility',
-        'Contact form for inquiries'
-      ],
-      technologies: ['Gatsby', 'GraphQL', 'Tailwind CSS', 'Contentful'],
-      link: 'https://satyapandey.com',
-      color: 'from-purple-500 to-pink-600'
-    },
-    {
-      id: 5,
-      name: 'MyPressWala.in',
-      category: 'Media, SaaS',
-      description: 'A SaaS platform for businesses to distribute press releases and news updates, providing tools for creating, scheduling, and analyzing the reach of media content across multiple channels.',
-      icon: Newspaper,
-      features: [
-        'Press release creation with templates',
-        'Distribution to major news outlets',
-        'Analytics for tracking media reach',
-        'Scheduling and automated publishing'
-      ],
-      technologies: ['Vue.js', 'Laravel', 'MySQL', 'Google Analytics API'],
-      link: 'https://mypresswala.in',
-      color: 'from-indigo-500 to-blue-600'
-    },
-    {
-      id: 6,
-      name: '12thFailJobs.com',
-      category: 'Job Portal, EdTech',
-      description: 'A job portal dedicated to freshers and students with a 12th pass qualification, offering access to entry-level job opportunities, career guidance, and resume-building tools.',
-      icon: Briefcase,
-      features: [
-        'Job listings tailored for 12th pass candidates',
-        'Resume builder with templates',
-        'Career advice and interview preparation resources',
-        'Employer dashboard for posting jobs'
-      ],
-      technologies: ['Angular', 'Django', 'SQLite', 'AWS S3'],
-      link: 'https://12thfailjobs.com',
-      color: 'from-teal-500 to-cyan-600'
-    },
-    {
-      id: 7,
-      name: 'TheBrightLearn.in',
-      category: 'EdTech, LMS',
-      description: 'An online learning management system (LMS) for students and professionals, offering courses, quizzes, and progress tracking to support continuous learning and skill development.',
-      icon: BookOpen,
-      features: [
-        'Interactive courses with video and text content',
-        'Quizzes and assessments for knowledge checks',
-        'Progress tracking and certificates of completion',
-        'Discussion forums for peer interaction'
-      ],
-      technologies: ['React', 'Ruby on Rails', 'PostgreSQL', 'AWS CloudFront'],
-      link: 'https://thebrightlearn.in',
-      color: 'from-yellow-500 to-orange-600'
-    },
-    {
-      id: 8,
-      name: 'MyDivorce.in',
-      category: 'LegalTech, Consultation',
-      description: 'A comprehensive online platform providing legal assistance and guidance for divorce proceedings, offering expert consultation, document preparation, and step-by-step support throughout the legal process.',
-      icon: Scale,
-      features: [
-        'Expert legal consultation and guidance',
-        'Document preparation and filing assistance',
-        'Step-by-step divorce process guidance',
-        'Confidential and secure case management'
-      ],
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
-      link: 'https://mydivorce.in',
-      color: 'from-slate-500 to-gray-600'
+  const [projects, setProjects] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchProjects()
+  }, [])
+
+  const fetchProjects = async () => {
+    try {
+      setLoading(true)
+      const { data: projectsData, error: projectsError } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('is_active', true)
+        .order('display_order', { ascending: true })
+
+      if (projectsError) throw projectsError
+
+      // Fetch features and technologies for each project
+      const projectsWithDetails = await Promise.all(
+        projectsData.map(async (project) => {
+          const [{ data: featuresData }, { data: technologiesData }] = await Promise.all([
+            supabase
+              .from('project_features')
+              .select('*')
+              .eq('project_id', project.id)
+              .order('display_order', { ascending: true }),
+            supabase
+              .from('project_technologies')
+              .select('*')
+              .eq('project_id', project.id)
+              .order('display_order', { ascending: true })
+          ])
+
+          return {
+            ...project,
+            icon: getIconComponent(project.icon_name),
+            features: featuresData?.map(f => f.feature_text) || [],
+            technologies: technologiesData?.map(t => t.technology_name) || [],
+            link: project.website_url
+          }
+        })
+      )
+
+      setProjects(projectsWithDetails)
+    } catch (error) {
+      console.error('Error fetching projects:', error)
+      // Fallback to empty array if error occurs
+      setProjects([])
+    } finally {
+      setLoading(false)
     }
-  ]
+  }
+
+  const getIconComponent = (iconName) => {
+    const iconMap = {
+      'Bell': Bell,
+      'School': School,
+      'Utensils': Utensils,
+      'User': User,
+      'Newspaper': Newspaper,
+      'Briefcase': Briefcase,
+      'BookOpen': BookOpen,
+      'Scale': Scale,
+      'Globe': Globe,
+      'Code': Code,
+      'Palette': Palette,
+      'TrendingUp': TrendingUp,
+      'ShoppingBag': ShoppingBag,
+      'FileText': FileText,
+      'Zap': Zap,
+      'Calendar': Calendar
+    }
+    return iconMap[iconName] || Globe
+  }
+
+  if (loading) {
+    return (
+      <section id="projects" className="py-20 bg-bg-main dark:bg-text-main transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="projects" className="py-20 bg-bg-main dark:bg-text-main transition-colors duration-300">
@@ -169,7 +127,7 @@ const ProjectsSection = () => {
               <div className="bg-card-bg dark:bg-card-bg/10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-border-light dark:border-white/10 h-full flex flex-col">
                 
                 {/* Project Header */}
-                <div className={`h-32 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+                <div className={`h-32 bg-gradient-to-br ${project.color_gradient} relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-black/20"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-white text-center">

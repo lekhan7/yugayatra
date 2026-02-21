@@ -5,6 +5,7 @@ import {
   FileText, 
   MessageSquare, 
   Briefcase,
+  Globe,
   Menu,
   X,
   LogOut,
@@ -20,6 +21,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
     { id: 'content', label: 'Content Manager', icon: FileText },
     { id: 'testimonials', label: 'Testimonials', icon: MessageSquare },
     { id: 'services', label: 'Services', icon: Briefcase },
+    { id: 'projects', label: 'Projects', icon: Globe },
   ]
 
   return (
