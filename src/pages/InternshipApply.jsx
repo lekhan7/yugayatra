@@ -12,14 +12,13 @@ const InternshipApply = () => {
   const role = useMemo(() => (roleParam ? decodeURIComponent(roleParam) : ''), [roleParam])
 
   const [formData, setFormData] = useState({
-    fullName: '',
+    full_name: '',
     email: '',
     phone: '',
     role: '',
     education: '',
     experience: '',
-    skills: '',
-    motivation: ''
+    skills: ''
   })
 
   const [resumeFile, setResumeFile] = useState(null)
@@ -132,7 +131,6 @@ const InternshipApply = () => {
         education: formData.education.trim(),
         experience: formData.experience.trim() || '',
         skills: formData.skills.trim(),
-        motivation: formData.motivation.trim() || '',
         resume_url: resumeData?.publicUrl || '',
         resume_filename: resumeData?.fileName || '',
         status: 'pending'
@@ -150,8 +148,7 @@ const InternshipApply = () => {
         role: '',
         education: '',
         experience: '',
-        skills: '',
-        motivation: ''
+        skills: ''
       })
       setResumeFile(null)
     } catch (err) {
@@ -302,20 +299,6 @@ const InternshipApply = () => {
                       error={errors.skills}
                     />
                   </div>
-                </section>
-
-                <section className="space-y-4">
-                  <h2 className="text-lg font-semibold text-text-main dark:text-white">About</h2>
-
-                  <FormInput
-                    id="motivation"
-                    label="About / Motivation (optional)"
-                    as="textarea"
-                    value={formData.motivation}
-                    onChange={(e) => setField('motivation', e.target.value)}
-                    rows={4}
-                    placeholder="Why do you want to join this internship?"
-                  />
                 </section>
 
                 <section className="space-y-4">

@@ -209,8 +209,8 @@ const HeroAnimation = () => {
       duration: 0.5,
       ease: "power2.in"
     }, "-=0.4")
-    // Enhanced screen shake effect for entire screen
-    tl.to("body", {
+    // Enhanced screen shake effect for hero section only
+    tl.to(containerRef.current, {
       x: "+=4",
       y: "+=2",
       rotation: "+=0.5",
@@ -219,8 +219,8 @@ const HeroAnimation = () => {
       yoyo: true,
       ease: "power2.inOut"
     }, "-=0.3")
-    // Return page to normal position within a second
-    .to("body", {
+    // Return hero section to normal position within a second
+    .to(containerRef.current, {
       x: 0,
       y: 0,
       rotation: 0,

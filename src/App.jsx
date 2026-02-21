@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollProgressBar from './components/ScrollProgressBar'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 // Import pages
 import Home from './pages/Home'
@@ -11,14 +11,17 @@ import InternshipApply from './pages/InternshipApply'
 import Admin from './pages/Admin'
 
 function App() {
+  const location = useLocation()
+  const isAdminPage = location.pathname === '/admin'
+
   return (
     <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
-      <ScrollProgressBar />
+      {!isAdminPage && <Navbar />}
+      {!isAdminPage && <ScrollProgressBar />}
       <Routes>
         <Route path="/admin" element={<Admin />} />
         <Route path="/" element={
           <>
-            <Navbar />
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

@@ -1,0 +1,89 @@
+import { Check, X, Eye } from 'lucide-react'
+
+const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
+  const getStatusBadge = (status) => {
+    const statusColor = {
+      pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 border-yellow-200 dark:border-yellow-800',
+      accepted: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 border-green-200 dark:border-green-800',
+      rejected: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 border-red-200 dark:border-red-800'
+    }
+
+    return (
+      <span className={`px-3 py-1 inline-flex items-center text-xs leading-5 font-semibold rounded-full border ${statusColor[status]}`}>
+        {status.charAt(0).toUpperCase() + status.slice(1)}
+      </span>
+    )
+  }
+
+  const currentStatus = application.status || 'pending'
+
+  return (
+    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm font-medium text-gray-900 dark:text-white">
+          {application.full_name}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900 dark:text-white">
+          {application.email}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900 dark:text-white">
+          {application.phone}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900 dark:text-white">
+          {application.role}
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        {getStatusBadge(currentStatus)}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <button
+          onClick={() => onViewResume(application.resume_url)}
+          disabled={!application.resume_url}
+          className={`inline-flex items-center px-3 py-2 text-xs font-medium rounded transition-colors ${
+            application.resume_url
+              ? 'bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800'
+              : 'bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-700 dark:text-gray-500'
+          }`}
+        >
+          <Eye size={14} className="mr-1" />
+          View Resume
+        </button>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="flex space-x-2">
+          {currentStatus === 'pending' ? (
+            <>
+              <button
+                onClick={() => onUpdateStatus(application.id, 'accepted')}
+                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900 dark:text-green-200 dark:hover:bg-green-800 transition-colors"
+              >
+                <Check size={14} className="mr-1" />
+                Accept
+              </button>
+              <button
+                onClick={() => onUpdateStatus(application.id, 'rejected')}
+                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-red-100 text-red-800 hover:bg-red-200 dark:bg-red-900 dark:text-red-200 dark:hover:bg-red-800 transition-colors"
+              >
+                <X size={14} className="mr-1" />
+                Reject
+              </button>
+            </>
+          ) : (
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              No actions available
+            </span>
+          )}
+        </div>
+      </td>
+    </tr>
+  )
+}
+
+export default ApplicationRow

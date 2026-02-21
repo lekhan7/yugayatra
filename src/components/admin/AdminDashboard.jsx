@@ -1,41 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { supabase } from '../../services/supabase'
 import AdminSidebar from './AdminSidebar'
 import Dashboard from './Dashboard'
-import ApplicationsManager from './ApplicationsManager'
+import AdminApplications from './AdminApplications'
 import ContentManager from './ContentManager'
 import TestimonialsManager from './TestimonialsManager'
 import ServicesManager from './ServicesManager'
 
 const AdminDashboard = ({ user, onLogout }) => {
   const [activeSection, setActiveSection] = useState('dashboard')
-  const [internshipApplications, setInternshipApplications] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetchInternshipApplications()
-  }, [])
-
-  const fetchInternshipApplications = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('internship_applications')
-        .select('*')
-        .order('created_at', { ascending: false })
-
-      if (error && error.code !== 'PGRST116') {
-        throw error
-      }
-      
-      setInternshipApplications(data || [])
-    } catch (error) {
-      console.error('Error fetching applications:', error)
-      setInternshipApplications([])
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const handleLogout = async () => {
     try {
@@ -51,15 +25,9 @@ const AdminDashboard = ({ user, onLogout }) => {
   const renderContent = () => {
     switch (activeSection) {
       case 'dashboard':
-        return <Dashboard 
-          internshipApplications={internshipApplications} 
-          loading={loading}
-        />
+        return <Dashboard />
       case 'applications':
-        return <ApplicationsManager 
-          applications={internshipApplications}
-          onApplicationsChange={setInternshipApplications}
-        />
+        return <AdminApplications />
       case 'content':
         return <ContentManager />
       case 'testimonials':
@@ -67,10 +35,7 @@ const AdminDashboard = ({ user, onLogout }) => {
       case 'services':
         return <ServicesManager />
       default:
-        return <Dashboard 
-          internshipApplications={internshipApplications} 
-          loading={loading}
-        />
+        return <Dashboard />
     }
   }
 
