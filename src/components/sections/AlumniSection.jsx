@@ -61,8 +61,8 @@ const AlumniSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
-              Our <span className="gradient-text">Alumni</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-6">
+              Our Alumni
             </h2>
             <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
               Success stories from our talented graduates who are making waves in the industry
@@ -89,8 +89,8 @@ const AlumniSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
-            Our <span className="gradient-text">Alumni</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-6">
+            Our Alumni
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
             Success stories from our talented graduates who are making waves in the industry
@@ -135,7 +135,7 @@ const AlumniSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl font-bold text-text-main mb-4">
+            <h3 className="text-3xl font-bold text-accent-main mb-4">
               Featured Alumni
             </h3>
             <p className="text-lg text-text-light">
@@ -303,7 +303,7 @@ const AlumniSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl font-bold text-text-main mb-4">
+            <h3 className="text-3xl font-bold text-accent-main mb-4">
               All Alumni Success Stories
             </h3>
             <p className="text-lg text-text-light">

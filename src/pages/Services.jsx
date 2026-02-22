@@ -72,10 +72,8 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
-              Our <span className="text-accent-main">Services</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
+            <h1 className="text-5xl md:text-6xl font-bold text-accent-main mb-6">Our Services</h1>
+            <p className="text-xl md:text-2xl text-accent-main max-w-3xl mx-auto">
               Comprehensive digital solutions to accelerate your business growth and transformation
             </p>
           </motion.div>
@@ -102,7 +100,7 @@ const Services = () => {
                     className="group"
                   >
                     <div className="bg-card-bg dark:bg-card-bg/10 rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10 hover:border-border-light flex flex-col">
-                      <div className={`w-16 h-16 bg-gradient-to-r ${service.icon_bg_color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <div className="w-16 h-16 bg-accent-main rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                         {React.createElement(getIcon(service.icon_name), { className: "w-8 h-8 text-white" })}
                       </div>
                       <h3 className="text-2xl font-bold text-text-main dark:text-white mb-4">
@@ -177,7 +175,7 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-4xl font-bold text-accent-main mb-4">
               What We Offer
             </h2>
             <p className="text-xl text-text-light dark:text-white/70 max-w-2xl mx-auto">
@@ -196,7 +194,7 @@ const Services = () => {
                   className="bg-card-bg dark:bg-card-bg/10 rounded-2xl p-8 shadow-lg border border-border-light dark:border-white/10"
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`w-20 h-20 bg-gradient-to-r ${service.icon_bg_color} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                    <div className="w-20 h-20 bg-accent-main rounded-xl flex items-center justify-center flex-shrink-0">
                       {React.createElement(getIcon(service.icon_name), { className: "w-10 h-10 text-white" })}
                     </div>
                     <div className="flex-1">
@@ -242,7 +240,7 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent mb-4">
               Our Process
             </h2>
             <p className="text-xl text-text-light dark:text-white/70">
@@ -264,7 +262,7 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-light rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-accent-main rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-bold text-xl">{item.step}</span>
                 </div>
                 <h3 className="text-xl font-bold text-text-main dark:text-white mb-2">
@@ -288,7 +286,7 @@ const Services = () => {
             transition={{ duration: 0.6 }}
           >
             <Zap className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent mb-4">
               Ready to Get Started?
             </h2>
             <p className="text-xl text-white/90 mb-8">

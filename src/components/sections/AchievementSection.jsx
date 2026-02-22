@@ -247,20 +247,20 @@ const AchievementSection = () => {
 
   const getCategoryColor = (category) => {
     const colors = {
-      'Intellectual Property': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-purple-200',
+      'Intellectual Property': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-gold',
       'Business Registration': 'bg-accent-light/20 text-accent-dark/80 dark:bg-accent-dark/60 dark:text-accent-light/30',
-      'Tax Registration': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200',
-      'Government Recognition': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-      'Company Registration': 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold dark:text-red-200'
+      'Tax Registration': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-light',
+      'Government Recognition': 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold',
+      'Company Registration': 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold'
     }
     return colors[category] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
   }
 
   const getStatusColor = (status) => {
     const colors = {
-      'Active': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200',
+      'Active': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-light',
       'Registered': 'bg-accent-light/20 text-accent-dark/80 dark:bg-accent-dark/60 dark:text-accent-light/30',
-      'Recognized': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-purple-200'
+      'Recognized': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-gold'
     }
     return colors[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
   }
@@ -333,7 +333,7 @@ const AchievementSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
-            Our <span className="text-accent-main">Achievements</span>
+            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">Our Achievements</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
             Certifications, milestones, and recognition that validate our commitment to excellence
@@ -353,7 +353,7 @@ const AchievementSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl font-bold text-text-main dark:text-white mb-4">
+            <h3 className="text-3xl font-bold text-accent-main mb-4">
               Our Impact
             </h3>
             <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCertificateStatusColor('Active')}`}>
@@ -398,7 +398,7 @@ const AchievementSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-4">
               Legal Information & Certificates
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">

@@ -140,7 +140,7 @@ const Achievements = () => {
             className="text-center"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
-              Our <span className="text-accent-main">Achievements</span>
+              <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">Our Achievements</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
               Certifications, milestones, and recognition that validate our commitment to excellence
@@ -158,7 +158,7 @@ const Achievements = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-4xl font-bold text-accent-main mb-4">
               Certifications & Licenses
             </h2>
             <p className="text-xl text-text-light dark:text-white/70">

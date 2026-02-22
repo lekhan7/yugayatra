@@ -112,20 +112,20 @@ const LegalSection = () => {
 
   const getCategoryColor = (category) => {
     const colors = {
-      'Intellectual Property': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-purple-200',
+      'Intellectual Property': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-gold',
       'Business Registration': 'bg-accent-light/20 text-accent-dark/80 dark:bg-accent-dark/60 dark:text-accent-light/30',
-      'Tax Registration': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200',
-      'Government Recognition': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-      'Company Registration': 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold dark:text-red-200'
+      'Tax Registration': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-light',
+      'Government Recognition': 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold',
+      'Company Registration': 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold'
     }
     return colors[category] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
   }
 
   const getStatusColor = (status) => {
     const colors = {
-      'Active': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200',
+      'Active': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-light',
       'Registered': 'bg-accent-light/20 text-accent-dark/80 dark:bg-accent-dark/60 dark:text-accent-light/30',
-      'Recognized': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-purple-200'
+      'Recognized': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-gold'
     }
     return colors[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
   }
@@ -172,7 +172,7 @@ const LegalSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-4">
             Legal Information & Certificates
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -307,7 +307,7 @@ const LegalSection = () => {
                             </a>
                             <button
                               onClick={() => handleDownloadDocument(selectedDocument.image, selectedDocument.title)}
-                              className="flex items-center space-x-2 px-3 py-2 bg-accent-dark text-white text-sm rounded-lg hover:bg-green-700 transition-colors duration-300"
+                              className="flex items-center space-x-2 px-3 py-2 bg-accent-dark text-white text-sm rounded-lg hover:bg-accent-dark transition-colors duration-300"
                             >
                               <Download className="w-4 h-4" />
                               <span>Download</span>

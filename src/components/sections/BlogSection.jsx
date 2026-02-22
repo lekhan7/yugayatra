@@ -64,7 +64,7 @@ const BlogSection = () => {
           className="text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
-            Blog & <span className="gradient-text">Insights</span>
+            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">Blog & Insights</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
             Latest news, trends, and insights from our team

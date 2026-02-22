@@ -176,7 +176,7 @@ const InternshipsSection = () => {
             transition={{ duration: 0.6 }}
             className="text-white"
           >
-            <h3 className="text-4xl font-bold mb-4">Our Impact</h3>
+            <h3 className="text-4xl font-bold text-accent-main mb-4">Our Impact</h3>
             <p className="text-xl mb-8">Numbers that speak for themselves</p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

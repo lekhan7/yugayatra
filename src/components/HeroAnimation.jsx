@@ -268,7 +268,7 @@ const HeroAnimation = () => {
   }, [soundEnabled])
 
   return (
-    <div ref={containerRef} className="relative w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-purple-50 overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-blue-50 overflow-hidden">
       
       {/* Sound Toggle */}
       <button
@@ -601,14 +601,14 @@ const HeroAnimation = () => {
       {/* Enhanced Glowing Trail for light theme */}
       <div
         ref={glowTrailRef}
-        className="absolute left-40 top-1/2 transform -translate-y-1/2 w-96 h-3 bg-gradient-to-r from-transparent via-blue-300/60 via-purple-300/60 to-transparent blur-xl will-change-transform"
+        className="absolute left-40 top-1/2 transform -translate-y-1/2 w-96 h-3 bg-gradient-to-r from-transparent via-accent-light/60 via-accent-light/60 to-transparent blur-xl will-change-transform"
         style={{ transformOrigin: 'left center' }}
       />
 
       {/* Enhanced Arrow Trail for light theme */}
       <div
         ref={trailRef}
-        className="absolute left-40 top-1/2 transform -translate-y-1/2 w-96 h-1.5 bg-gradient-to-r from-accent-gold/80 via-orange-400/80 via-amber-500/80 to-transparent will-change-transform"
+        className="absolute left-40 top-1/2 transform -translate-y-1/2 w-96 h-1.5 bg-gradient-to-r from-accent-gold/80 via-accent-gold/80 via-accent-gold/80 to-transparent will-change-transform"
         style={{ transformOrigin: 'left center' }}
       />
 
@@ -617,7 +617,7 @@ const HeroAnimation = () => {
         <h1 className="text-7xl md:text-9xl font-black text-gray-800 mb-4">
           <span 
             ref={yugaTextRef}
-            className="inline-block mr-3 bg-gradient-to-r from-accent-dark/60 via-accent-main to-accent-gold bg-clip-text text-transparent will-change-transform"
+            className="inline-block mr-3 bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent will-change-transform"
           >
             Yuga
           </span>
@@ -631,7 +631,7 @@ const HeroAnimation = () => {
         
         {/* Subtitle */}
         <div className="text-2xl md:text-3xl font-light text-gray-600 max-w-4xl mx-auto opacity-0 animate-fade-in-up [animation-delay:2.5s]">
-          <span className="bg-gradient-to-r from-accent-main to-accent-gold bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">
             Shaping Tomorrow's Workforce Today
           </span>
         </div>
@@ -643,7 +643,7 @@ const HeroAnimation = () => {
           <div
             key={i}
             ref={el => particlesRef.current[i] = el}
-            className="moving-dot absolute bg-accent-light/60/60 rounded-full will-change-transform"
+            className="moving-dot absolute bg-accent-light/60 rounded-full will-change-transform"
             style={{
               width: `${4 + Math.random() * 4}px`,
               height: `${4 + Math.random() * 4}px`,

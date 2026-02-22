@@ -136,11 +136,11 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'accepted':
-        return 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200 border-accent-main/30 dark:border-accent-dark'
+        return 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-light border-accent-main/30 dark:border-accent-dark'
       case 'rejected':
-        return 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold dark:text-red-200 border-accent-gold/30 dark:border-accent-gold'
+        return 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold border-accent-gold/30 dark:border-accent-gold'
       default:
-        return 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-yellow-200 border-yellow-200 dark:border-yellow-800'
+        return 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold border-accent-gold/30 dark:border-accent-gold'
     }
   }
 
@@ -306,7 +306,7 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
                       {application.resume_url && (
                         <button
                           onClick={() => viewResume(application.resume_url, application.resume_filename)}
-                          className="text-accent-dark hover:text-purple-900 dark:text-accent-light dark:hover:text-accent-light p-1 hover:bg-purple-50 dark:hover:bg-accent-dark/20 rounded transition-colors"
+                          className="text-accent-dark hover:text-accent-gold dark:text-accent-light dark:hover:text-accent-light p-1 hover:bg-accent-gold/10 dark:hover:bg-accent-dark/20 rounded transition-colors"
                           title="View Resume"
                         >
                           <Download size={16} />
@@ -329,7 +329,7 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
                           <button
                             onClick={() => updateApplicationStatus(application.id, 'rejected')}
                             disabled={updatingId === application.id}
-                            className="text-accent-gold hover:text-accent-gold dark:text-accent-gold/80 dark:hover:text-red-300 disabled:opacity-50 disabled:cursor-not-allowed p-1 hover:bg-accent-gold/10 dark:hover:bg-accent-gold/20 rounded transition-colors"
+                            className="text-accent-gold hover:text-accent-gold dark:text-accent-gold/80 dark:hover:text-accent-gold disabled:opacity-50 disabled:cursor-not-allowed p-1 hover:bg-accent-gold/10 dark:hover:bg-accent-gold/20 rounded transition-colors"
                             title="Reject"
                           >
                             {updatingId === application.id ? (
@@ -466,7 +466,7 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
                     {selectedApplication.resume_url && (
                       <button
                         onClick={() => viewResume(selectedApplication.resume_url, selectedApplication.resume_filename)}
-                        className="px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-purple-700 flex items-center space-x-2"
+                        className="px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-accent-gold flex items-center space-x-2"
                       >
                         <Download size={16} />
                         <span>View Resume</span>
@@ -480,7 +480,7 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
                             closeModal()
                           }}
                           disabled={updatingId === selectedApplication.id}
-                          className="px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                          className="px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
                         >
                           {updatingId === selectedApplication.id ? (
                             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
@@ -495,7 +495,7 @@ const ApplicationsManager = ({ applications, onApplicationsChange }) => {
                             closeModal()
                           }}
                           disabled={updatingId === selectedApplication.id}
-                          className="px-4 py-2 bg-accent-gold text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                          className="px-4 py-2 bg-accent-gold text-white rounded-lg hover:bg-accent-gold disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
                         >
                           {updatingId === selectedApplication.id ? (
                             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>

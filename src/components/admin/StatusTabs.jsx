@@ -12,11 +12,11 @@ const StatusTabs = ({ activeTab, setActiveTab, stats }) => {
     if (isActive) {
       switch (color) {
         case 'yellow':
-          return `${baseClasses} bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-yellow-200 border border-yellow-200 dark:border-yellow-800`
+          return `${baseClasses} bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold border border-accent-gold/30 dark:border-accent-gold`
         case 'green':
-          return `${baseClasses} bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200 border border-accent-main/30 dark:border-accent-dark`
+          return `${baseClasses} bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-light border border-accent-main/30 dark:border-accent-dark`
         case 'red':
-          return `${baseClasses} bg-accent-gold/20 text-red-800 dark:bg-accent-gold dark:text-red-200 border border-accent-gold/30 dark:border-accent-gold`
+          return `${baseClasses} bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold border border-accent-gold/30 dark:border-accent-gold`
         default:
           return `${baseClasses} bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200`
       }
@@ -28,11 +28,11 @@ const StatusTabs = ({ activeTab, setActiveTab, stats }) => {
   const getCountClasses = (color) => {
     switch (color) {
       case 'yellow':
-        return 'bg-yellow-200 text-accent-gold dark:bg-accent-gold dark:text-yellow-200'
+        return 'bg-accent-gold text-accent-gold dark:bg-accent-gold dark:text-accent-gold'
       case 'green':
-        return 'bg-green-200 text-accent-dark dark:bg-accent-dark dark:text-green-200'
+        return 'bg-accent-main/30 text-accent-dark dark:bg-accent-dark dark:text-accent-light'
       case 'red':
-        return 'bg-red-200 text-red-800 dark:bg-accent-gold dark:text-red-200'
+        return 'bg-accent-gold text-accent-gold dark:bg-accent-gold dark:text-accent-gold'
       default:
         return 'bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200'
     }

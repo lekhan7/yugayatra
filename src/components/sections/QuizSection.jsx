@@ -139,7 +139,7 @@ const QuizSection = () => {
               <Brain className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h2 className="text-4xl font-bold text-text-main mb-4">
+          <h2 className="text-4xl font-bold text-accent-main mb-4">
             Find Your Perfect Internship
           </h2>
           <p className="text-lg text-text-light max-w-2xl mx-auto">
@@ -242,8 +242,8 @@ const QuizSection = () => {
                         transition={{ duration: 2.5, ease: "easeOut" }}
                         className="relative"
                       >
-                        <div className="absolute inset-0 bg-yellow-400 rounded-full blur-xl opacity-60 scale-150"></div>
-                        <div className="relative bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full p-12 shadow-2xl">
+                        <div className="absolute inset-0 bg-accent-gold rounded-full blur-xl opacity-60 scale-150"></div>
+                        <div className="relative bg-gradient-to-r from-blue-400 to-blue-500 rounded-full p-12 shadow-2xl">
                           <div className="flex flex-col items-center">
                             <Star className="w-24 h-24 text-white mb-4" />
                             <div className="text-white text-3xl font-bold">Perfect Match!</div>
@@ -264,7 +264,7 @@ const QuizSection = () => {
                             className="absolute top-1/2 left-1/2 w-8 h-8"
                             style={{ transform: 'translate(-50%, -50%)' }}
                           >
-                            <div className="w-full h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                            <div className="w-full h-full bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"></div>
                           </motion.div>
                         ))}
                       </motion.div>

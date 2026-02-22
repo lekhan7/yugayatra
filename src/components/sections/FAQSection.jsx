@@ -114,7 +114,7 @@ const FAQSection = () => {
               <HelpCircle className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h2 className="text-4xl font-bold text-text-main mb-4">
+          <h2 className="text-4xl font-bold text-accent-main mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-text-light max-w-2xl mx-auto">

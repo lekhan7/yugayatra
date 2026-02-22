@@ -31,7 +31,7 @@ const FormInput = ({
           aria-describedby={error ? `${id}-error` : undefined}
           className={`w-full px-4 py-3 rounded-xl border bg-white/40 backdrop-blur-md shadow-[0_10px_30px_rgba(13,37,69,0.08)] transition-colors outline-none text-text-main placeholder:text-text-light/80 ${
             error
-              ? 'border-red-300 focus:ring-2 focus:ring-red-400/60'
+              ? 'border-accent-gold focus:ring-2 focus:ring-blue-400/60'
               : 'border-border-light focus:ring-2 focus:ring-cyan-400/60 focus:border-transparent'
           } ${as === 'textarea' ? 'resize-none' : ''} ${inputClassName}`}
           {...props}

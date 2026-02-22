@@ -66,7 +66,7 @@ const ServicesSection = () => {
           className="text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
-            Our <span className="gradient-text">Services</span>
+            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">Our Services</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
             Comprehensive digital solutions to accelerate your business growth and transformation
@@ -94,7 +94,7 @@ const ServicesSection = () => {
                   className="group"
                 >
                   <div className="bg-card-bg rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light group-hover:scale-105 flex flex-col">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${service.icon_bg_color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="w-16 h-16 bg-accent-main rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                       {React.createElement(getIcon(service.icon_name), { className: "w-8 h-8 text-white" })}
                     </div>
                     <h3 className="text-2xl font-bold text-text-main mb-4">

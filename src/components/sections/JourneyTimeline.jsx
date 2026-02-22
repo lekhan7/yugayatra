@@ -20,11 +20,11 @@ const JourneyTimeline = () => {
     {
       id: 1,
       position: 10,
-      title: "Our Beginning",
+      title: "The Beginning",
       date: "2020",
       description: "YugaYatra started with a vision to bridge the gap between education and industry.",
       icon: <MapPin className="w-6 h-6" />,
-      color: "from-accent-dark to-accent-main",
+      color: "from-accent-dark via-accent-main to-accent-gold",
       details: [
         "Founded by industry professionals",
         "Initial team of 5 members",
@@ -38,7 +38,7 @@ const JourneyTimeline = () => {
       date: "2021",
       description: "Successfully placed our first batch of 100+ interns in top companies.",
       icon: <Award className="w-6 h-6" />,
-      color: "from-accent-main to-accent-gold",
+      color: "from-accent-main via-accent-gold to-accent-dark",
       details: [
         "100+ internships completed",
         "Partnered with 15 companies",
@@ -52,7 +52,7 @@ const JourneyTimeline = () => {
       date: "2022",
       description: "Expanded our services to multiple cities and introduced new training programs.",
       icon: <TrendingUp className="w-6 h-6" />,
-      color: "from-accent-gold to-accent-dark",
+      color: "from-accent-gold via-accent-light to-accent-dark",
       details: [
         "Expanded to 5 cities",
         "Launched 10 new courses",
@@ -66,7 +66,7 @@ const JourneyTimeline = () => {
       date: "2023",
       description: "Built a strong community of 1000+ students and professionals.",
       icon: <Users className="w-6 h-6" />,
-      color: "from-accent-dark to-accent-main",
+      color: "from-accent-dark via-accent-main to-accent-light",
       details: [
         "1000+ active community members",
         "50+ corporate partners",
@@ -80,7 +80,7 @@ const JourneyTimeline = () => {
       date: "2024+",
       description: "Continuing to shape tomorrow's workforce with innovative solutions.",
       icon: <Target className="w-6 h-6" />,
-      color: "from-accent-main to-accent-dark",
+      color: "from-accent-main via-accent-gold to-accent-dark",
       details: [
         "AI-powered learning platform",
         "Global expansion plans",
@@ -369,7 +369,7 @@ const JourneyTimeline = () => {
           {/* Arrow pointing down to milestone */}
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-white" />
           
-          <div className={`inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${stop.color} text-white mb-3`}>
+          <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent-main text-white mb-3">
             {stop.icon}
           </div>
           <h3 className="text-base font-bold text-gray-800 mb-2">{stop.title}</h3>
@@ -410,10 +410,10 @@ const JourneyTimeline = () => {
             top: '10%',
             left: '50%',
             transform: 'translateX(-50%)',
-            background: 'linear-gradient(135deg, white 0%, #f0f9ff 100%)'
+            background: 'linear-gradient(135deg, white 0%, #f0fdf4 100%)'
           }}
         >
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-accent-main to-indigo-600 text-white mb-4">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-accent-main to-accent-dark text-white mb-4">
             <Target className="w-6 h-6" />
           </div>
           <h3 className="text-xl font-bold text-gray-800 mb-3">Journey Complete!</h3>
@@ -444,14 +444,14 @@ const JourneyTimeline = () => {
   )
 
   return (
-    <section id="journey-timeline" ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 overflow-hidden py-20">
+    <section id="journey-timeline" ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-white via-accent-light/20 to-accent-gold/20 overflow-hidden py-20">
       {/* Section Title */}
       <div className="text-center mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-black bg-gradient-to-r from-accent-main via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4"
+          className="text-5xl md:text-6xl font-black bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent mb-4"
         >
           Our Journey Timeline
         </motion.h2>
@@ -476,7 +476,7 @@ const JourneyTimeline = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full h-16">
               {/* Yellow Timeline Line */}
-              <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-2 bg-yellow-400 rounded-full shadow-lg z-10"></div>
+              <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-2 bg-accent-gold rounded-full shadow-lg z-10"></div>
               
               {/* Car */}
               <div
@@ -592,7 +592,7 @@ const JourneyTimeline = () => {
 
               {/* Finish Flag on Timeline */}
               <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
-                <div className="w-6 h-20 bg-gradient-to-b from-red-500 to-accent-dark rounded-full shadow-lg"></div>
+                <div className="w-6 h-20 bg-gradient-to-b from-accent-gold to-accent-dark rounded-full shadow-lg"></div>
                 <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-accent-gold/100 text-white text-xs px-2 py-1 rounded-full font-bold">
                   FINISH
                 </div>
@@ -601,7 +601,7 @@ const JourneyTimeline = () => {
           </div>
           
           {/* Road Lines */}
-          <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-1 bg-yellow-400 opacity-80"></div>
+          <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-1 bg-accent-gold opacity-80"></div>
           <div className="absolute top-1/2 transform -translate-y-1/2 w-full">
             {[...Array(20)].map((_, i) => (
               <div
@@ -628,7 +628,7 @@ const JourneyTimeline = () => {
               className="text-center"
               style={{ marginLeft: `${stop.position}%`, transform: 'translateX(-50%)' }}
             >
-              <div className={`inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${stop.color} text-white mb-2 shadow-lg`}>
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent-main text-white mb-2 shadow-lg">
                 {stop.icon}
               </div>
             </motion.div>

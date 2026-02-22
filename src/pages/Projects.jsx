@@ -215,7 +215,7 @@ const Projects = () => {
             className="text-center"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
-              Our <span className="text-accent-main">Projects</span>
+              <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">Our Projects</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
               Explore our portfolio of innovative digital solutions across various industries

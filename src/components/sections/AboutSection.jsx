@@ -38,7 +38,7 @@ const AboutSection = () => {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-black text-text-main mb-6">
-            About <span className="gradient-text">YugaYatra Retail (OPC) Pvt Ltd</span>
+            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">About YugaYatra Retail (OPC) Pvt Ltd</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-4xl mx-auto">
             We are a leading educational technology company dedicated to shaping tomorrow's workforce through innovative internship programs and skill development initiatives.
@@ -120,7 +120,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center p-6"
               >
-                <div className="text-4xl md:text-5xl font-black gradient-text mb-2 counter">
+                <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent mb-2 counter">
                   {stat.number}
                 </div>
                 <p className="text-text-main">

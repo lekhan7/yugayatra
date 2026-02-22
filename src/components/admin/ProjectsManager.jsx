@@ -49,12 +49,12 @@ const iconOptions = [
 
 const colorOptions = [
   { name: 'Blue to Cyan', value: 'from-accent-dark/100 to-cyan-600' },
-  { name: 'Green to Emerald', value: 'from-accent-main to-emerald-600' },
+  { name: 'Green to Emerald', value: 'from-accent-main to-accent-dark' },
   { name: 'Orange to Red', value: 'from-accent-gold to-accent-dark' },
   { name: 'Purple to Pink', value: 'from-accent-main to-accent-gold' },
   { name: 'Indigo to Blue', value: 'from-accent-main to-accent-main' },
   { name: 'Teal to Cyan', value: 'from-teal-500 to-cyan-600' },
-  { name: 'Yellow to Orange', value: 'from-accent-gold to-orange-600' },
+  { name: 'Yellow to Orange', value: 'from-accent-gold to-accent-gold' },
   { name: 'Slate to Gray', value: 'from-slate-500 to-gray-600' }
 ]
 
@@ -559,7 +559,7 @@ const ProjectsManager = () => {
           {projects.map((project) => {
             const IconComponent = getIconComponent(project.icon_name)
             return (
-              <div key={project.id} className={`border ${project.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
+              <div key={project.id} className={`border ${project.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-accent-gold'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
                 <div className="flex justify-between items-start mb-4">
                   <div className={`p-3 ${project.is_active ? 'bg-accent-light/20 dark:bg-accent-dark/60/20' : 'bg-accent-gold/20 dark:bg-accent-gold/20'} rounded-lg`}>
                     <IconComponent className={project.is_active ? 'text-accent-main dark:text-accent-light/60' : 'text-accent-gold dark:text-accent-gold/80'} size={24} />
@@ -574,7 +574,7 @@ const ProjectsManager = () => {
                     </button>
                     <button
                       onClick={() => handleToggleActive(project.id, !project.is_active)}
-                      className="p-2 text-accent-gold hover:bg-yellow-50 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                       title={project.is_active ? 'Deactivate' : 'Activate'}
                     >
                       {project.is_active ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -590,7 +590,7 @@ const ProjectsManager = () => {
                 </div>
                 
                 <div className="mb-2">
-                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${project.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
+                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${project.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
                     {project.is_active ? 'Active' : 'Inactive'}
                   </span>
                   <span className="ml-2 inline-block px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400">

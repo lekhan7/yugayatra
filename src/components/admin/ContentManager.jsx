@@ -167,7 +167,7 @@ const ContentManager = () => {
                         <button
                           onClick={() => saveContent(section.id)}
                           disabled={saving}
-                          className="flex items-center space-x-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+                          className="flex items-center space-x-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-accent-dark disabled:opacity-50"
                         >
                           <Save size={16} />
                           <span>{saving ? 'Saving...' : 'Save'}</span>

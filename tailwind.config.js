@@ -10,19 +10,19 @@ export default {
       colors: {
         'bg-main': '#FFFFFF',
         'text-main': '#1F2937',
-        'accent-main': '#064E3B', // Forest Green
-        'accent-dark': '#04382A', // Darker Forest Green
-        'accent-gold': '#D97706', // Gold
-        'accent-light': '#34D399',
+        'accent-main': '#059669', // Dark Mint for headings
+        'accent-dark': '#047857', // Very Dark Mint
+        'accent-gold': '#6EE7B7', // Light Mint for other elements
+        'accent-light': '#A7F3D0', // Very Light Mint
         'text-light': '#374151',
         'border-light': '#E5E7EB',
         'card-bg': '#FFFFFF',
         // Legacy colors for transition
         primary: '#FFFFFF',
-        accent: '#064E3B',
-        secondary: '#D97706',
+        accent: '#059669',
+        secondary: '#6EE7B7',
         dark: '#1F2937',
-        gold: '#D97706',
+        mint: '#059669',
         'soft-gray': '#F9FAFB',
       },
       fontFamily: {

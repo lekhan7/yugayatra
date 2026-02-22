@@ -157,7 +157,7 @@ const Dashboard = ({ internshipApplications, loading }) => {
                 <FileText className="text-accent-dark dark:text-accent-light mb-2" size={24} />
                 <p className="text-sm font-medium text-gray-900 dark:text-white">Update Content</p>
               </button>
-              <button className="p-4 bg-purple-50 dark:bg-accent-dark/20 border border-accent-main/30 dark:border-accent-dark rounded-lg hover:bg-accent-main/20 dark:hover:bg-accent-dark/30 transition-colors">
+              <button className="p-4 bg-accent-gold/10 dark:bg-accent-dark/20 border border-accent-main/30 dark:border-accent-dark rounded-lg hover:bg-accent-main/20 dark:hover:bg-accent-dark/30 transition-colors">
                 <MessageSquare className="text-accent-dark dark:text-accent-light mb-2" size={24} />
                 <p className="text-sm font-medium text-gray-900 dark:text-white">Manage Testimonials</p>
               </button>

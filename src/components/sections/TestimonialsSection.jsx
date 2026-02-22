@@ -140,10 +140,10 @@ const TestimonialsSection = () => {
           className="text-center"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-text-main mb-6"
+            className="text-4xl md:text-5xl font-bold text-accent-main mb-6"
             style={{ scale: springScale }}
           >
-            Client <span className="gradient-text">Testimonials</span>
+            Client Testimonials
           </motion.h2>
           <motion.p 
             className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto"
@@ -316,7 +316,7 @@ const TestimonialsSection = () => {
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold text-text-main mb-4">
+            <h3 className="text-4xl font-bold text-accent-main mb-4">
               Our Impact
             </h3>
             <motion.p 

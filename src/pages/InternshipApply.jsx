@@ -349,7 +349,7 @@ const InternshipApply = () => {
                         <button
                           type="button"
                           onClick={removeResume}
-                          className="text-accent-gold hover:text-accent-gold dark:text-accent-gold/80 dark:hover:text-red-300"
+                          className="text-accent-gold hover:text-accent-gold dark:text-accent-gold/80 dark:hover:text-accent-gold"
                         >
                           <X className="w-5 h-5" />
                         </button>

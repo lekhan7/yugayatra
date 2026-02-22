@@ -398,7 +398,7 @@ const TeamManager = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
             {teamMembers.map((member) => (
-              <div key={member.id} className={`border ${member.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
+              <div key={member.id} className={`border ${member.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-accent-gold'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
                 <div className="flex justify-between items-start mb-4">
                   <div className={`p-3 ${member.is_active ? 'bg-accent-light/20 dark:bg-accent-dark/60/20' : 'bg-accent-gold/20 dark:bg-accent-gold/20'} rounded-lg`}>
                     <Users className={member.is_active ? 'text-accent-main dark:text-accent-light/60' : 'text-accent-gold dark:text-accent-gold/80'} size={24} />
@@ -413,7 +413,7 @@ const TeamManager = () => {
                     </button>
                     <button
                       onClick={() => handleToggleActive(member.id, !member.is_active)}
-                      className="p-2 text-accent-gold hover:bg-yellow-50 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                       title={member.is_active ? 'Deactivate' : 'Activate'}
                     >
                       {member.is_active ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -429,7 +429,7 @@ const TeamManager = () => {
                 </div>
                 
                 <div className="mb-2">
-                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${member.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
+                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${member.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
                     {member.is_active ? 'Active' : 'Inactive'}
                   </span>
                 </div>

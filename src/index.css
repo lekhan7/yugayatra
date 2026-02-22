@@ -32,7 +32,7 @@
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, #064E3B, #D97706);
+    background: linear-gradient(135deg, #059669, #6EE7B7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -59,7 +59,7 @@
     animation: typing 3s steps(40) infinite;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 2px solid #064E3B;
+    border-right: 2px solid #059669;
   }
   
   .card-tilt {
@@ -165,8 +165,8 @@
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 10px #064E3B; }
-  to { box-shadow: 0 0 20px #064E3B, 0 0 30px #064E3B; }
+  from { box-shadow: 0 0 10px #059669; }
+  to { box-shadow: 0 0 20px #059669, 0 0 30px #059669; }
 }
 
 @keyframes typing {
@@ -296,21 +296,21 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #064E3B, #064E3B);
+  background: linear-gradient(135deg, #059669, #059669);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #064E3B, #064E3B);
+  background: linear-gradient(135deg, #059669, #059669);
 }
 
 /* Selection */
 ::selection {
-  background: #064E3B;
+  background: #059669;
   color: white;
 }
 
 ::-moz-selection {
-  background: #064E3B;
+  background: #059669;
   color: white;
 }

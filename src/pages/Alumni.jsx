@@ -91,8 +91,8 @@ const Alumni = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
-              Our <span className="text-accent-main">Alumni</span>
+            <h1 className="text-5xl md:text-6xl font-bold text-accent-main mb-6">
+              Our Alumni
             </h1>
             <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
               Success stories from our talented graduates who are making waves in the industry
@@ -138,7 +138,7 @@ const Alumni = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-4xl font-bold text-accent-main mb-4">
               Featured Alumni
             </h2>
             <p className="text-xl text-text-light dark:text-white/70">
@@ -299,7 +299,7 @@ const Alumni = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main mb-4">
+            <h2 className="text-4xl font-bold text-accent-main mb-4">
               All Alumni Success Stories
             </h2>
             <p className="text-xl md:text-2xl text-text-light">

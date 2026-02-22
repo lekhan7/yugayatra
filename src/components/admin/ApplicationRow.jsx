@@ -3,9 +3,9 @@ import { Check, X, Eye } from 'lucide-react'
 const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
   const getStatusBadge = (status) => {
     const statusColor = {
-      pending: 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-yellow-200 border-yellow-200 dark:border-yellow-800',
-      accepted: 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200 border-accent-main/30 dark:border-accent-dark',
-      rejected: 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold dark:text-red-200 border-accent-gold/30 dark:border-accent-gold'
+      pending: 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold border-accent-gold/30 dark:border-accent-gold',
+      accepted: 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-light border-accent-main/30 dark:border-accent-dark',
+      rejected: 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold border-accent-gold/30 dark:border-accent-gold'
     }
 
     return (
@@ -62,14 +62,14 @@ const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
             <>
               <button
                 onClick={() => onUpdateStatus(application.id, 'accepted')}
-                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-accent-main/20 text-accent-dark hover:bg-green-200 dark:bg-accent-dark dark:text-green-200 dark:hover:bg-accent-dark transition-colors"
+                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-accent-main/20 text-accent-dark hover:bg-accent-main/30 dark:bg-accent-dark dark:text-accent-light dark:hover:bg-accent-dark transition-colors"
               >
                 <Check size={14} className="mr-1" />
                 Accept
               </button>
               <button
                 onClick={() => onUpdateStatus(application.id, 'rejected')}
-                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-accent-gold/20 text-red-800 hover:bg-red-200 dark:bg-accent-gold dark:text-red-200 dark:hover:bg-accent-gold transition-colors"
+                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-accent-gold/20 text-accent-gold hover:bg-accent-gold dark:bg-accent-gold dark:text-accent-gold dark:hover:bg-accent-gold transition-colors"
               >
                 <X size={14} className="mr-1" />
                 Reject

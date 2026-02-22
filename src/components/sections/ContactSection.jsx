@@ -75,8 +75,8 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
-            Get in <span className="gradient-text">Touch</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-6">
+            Get in Touch
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
             We'd love to hear from you. Send us a message and we'll respond as soon as possible.
@@ -85,7 +85,7 @@ const ContactSection = () => {
       </div>
 
       {/* Contact Content */}
-      <div className="py-20 bg-bg-main">
+      <div className="py-20 bg-bg-main dark:bg-text-main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Row: Send Message and Contact Information */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-start">
@@ -315,15 +315,15 @@ const ContactSection = () => {
                 className="bg-gradient-to-r from-accent-main to-accent-main rounded-xl p-6 text-white h-64"
               >
                 <div className="space-y-4 w-full">
-                  <div className="border-l-4 border-green-400 pl-4">
+                  <div className="border-l-4 border-accent-main pl-4">
                     <p className="text-sm uppercase text-gray-200">Monday - Friday</p>
                     <p className="text-lg font-bold">9:00 AM - 6:00 PM</p>
                   </div>
-                  <div className="border-l-4 border-green-400 pl-4 mt-4">
+                  <div className="border-l-4 border-accent-main pl-4 mt-4">
                     <p className="text-sm uppercase text-gray-200">Saturday</p>
                     <p className="text-lg font-bold">10:00 AM - 4:00 PM</p>
                   </div>
-                  <div className="border-l-4 border-green-400 pl-4 mt-4">
+                  <div className="border-l-4 border-accent-main pl-4 mt-4">
                     <p className="text-sm uppercase text-gray-200">Sunday</p>
                     <p className="text-lg font-bold">Closed</p>
                   </div>

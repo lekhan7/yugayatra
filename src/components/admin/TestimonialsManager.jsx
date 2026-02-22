@@ -209,7 +209,7 @@ const TestimonialsManager = () => {
                         <span className={`inline-flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${
                           testimonial.status === 'pending' ? 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold/20 dark:text-accent-gold/80' :
                           testimonial.status === 'accepted' ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' :
-                          'bg-accent-gold/20 text-red-800 dark:bg-accent-gold/20 dark:text-accent-gold/80'
+                          'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold/20 dark:text-accent-gold/80'
                         }`}>
                           {testimonial.status === 'pending' && <Clock className="w-3 h-3" />}
                           {testimonial.status === 'accepted' && <Check className="w-3 h-3" />}
@@ -246,7 +246,7 @@ const TestimonialsManager = () => {
                           <button
                             onClick={() => handleApprove(testimonial.id)}
                             disabled={updatingId === testimonial.id}
-                            className="flex items-center space-x-1 px-3 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm"
+                            className="flex items-center space-x-1 px-3 py-2 bg-accent-dark text-white rounded-lg hover:bg-accent-dark disabled:opacity-50 text-sm"
                           >
                             <Check className="w-4 h-4" />
                             <span>Approve</span>
@@ -254,7 +254,7 @@ const TestimonialsManager = () => {
                           <button
                             onClick={() => handleReject(testimonial.id)}
                             disabled={updatingId === testimonial.id}
-                            className="flex items-center space-x-1 px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-red-700 disabled:opacity-50 text-sm"
+                            className="flex items-center space-x-1 px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-accent-gold disabled:opacity-50 text-sm"
                           >
                             <XCircle className="w-4 h-4" />
                             <span>Reject</span>
