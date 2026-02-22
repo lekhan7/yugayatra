@@ -374,12 +374,14 @@ const About = () => {
               Whether you're looking to enhance your skills or transform your business, we're here to help
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
+              <a
+                href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300"
               >
                 Get in Touch
-              </Link>
+              </a>
               <Link
                 to="/services"
                 className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-accent-main transition-all duration-300"

@@ -230,7 +230,9 @@ const TeamSection = () => {
             We're always looking for talented individuals who share our passion for innovation and excellence
           </p>
           <a
-            href="#contact"
+            href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-gradient-to-r from-accent-main to-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center"
           >
             Get in Touch

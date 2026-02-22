@@ -216,7 +216,9 @@ const ProjectsSection = () => {
             Let's collaborate to bring your vision to life.
           </p>
           <motion.a
-            href="mailto:yugayatra@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-white text-accent-main px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
