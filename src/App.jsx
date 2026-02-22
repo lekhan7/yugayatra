@@ -9,17 +9,18 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import InternshipApply from './pages/InternshipApply'
 import Admin from './pages/Admin'
+import Legal from './pages/Legal'
 
 function App() {
   const location = useLocation()
-  const isAdminPage = location.pathname.startsWith('/yugyatra-admin')
+  const isAdminPage = location.pathname === '/admin'
 
   return (
     <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
       {!isAdminPage && <Navbar />}
       {!isAdminPage && <ScrollProgressBar />}
       <Routes>
-        <Route path="/yugyatra-admin" element={<Admin />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/" element={
           <>
             <motion.div
@@ -50,6 +51,15 @@ function App() {
             >
               <InternshipApply />
             </motion.div>
+        } />
+        <Route path="/legal" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Legal />
+          </motion.div>
         } />
       </Routes>
     </div>

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Moon, Sun, Code, Briefcase, Users, Award, FileText, Trophy, User, MessageSquare, HelpCircle, Home, Settings, MapPin, Globe } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { Menu, X, Moon, Sun, Home, MapPin, Briefcase, Globe, User, MessageSquare, FileText } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isDark, setIsDark] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,22 +26,26 @@ const Navbar = () => {
   }, [isDark])
 
   const navLinks = [
-    { name: 'Home', href: '#hero', icon: Home }, 
-    { name: 'About', href: '#about', icon: Users },
-    { name: 'Journey', href: '#journey-timeline', icon: MapPin },
-   { name: 'Services', href: '#services', icon: Briefcase },
-   { name: 'Achievements', href: '#achievements', icon: Trophy },
-   { name: 'Projects', href: '#projects', icon: Globe },
-    { name: 'Alumni', href: '#alumni', icon: User },
-    { name: 'Blog', href: '#blog', icon: FileText },
-    { name: 'Quiz', href: '#quiz', icon: MessageSquare },
-    { name: 'Contact', href: '#contact', icon: MessageSquare }
+    { name: 'Home', href: '#hero', icon: Home, isRoute: false }, 
+    { name: 'Journey', href: '#journey-timeline', icon: MapPin, isRoute: false },
+    { name: 'Services', href: '#services', icon: Briefcase, isRoute: false },
+    { name: 'Projects', href: '#projects', icon: Globe, isRoute: false },
+    { name: 'Alumni', href: '#alumni', icon: User, isRoute: false },
+    { name: 'Find Contacts', href: '#contact', icon: MessageSquare, isRoute: false },
+    { name: 'Legal Information', href: '/legal', icon: FileText, isRoute: true }
   ]
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+  const handleNavClick = (link) => {
+    if (link.isRoute) {
+      // Navigate to route
+      window.location.href = link.href
+    } else {
+      // Scroll to section
+      const sectionId = link.href.substring(1)
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
     setIsOpen(false)
   }
@@ -65,41 +71,37 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+          <div className="hidden md:flex items-center space-x-1">
+            {navLinks.map((link, index) => (
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href.substring(1))}
-                className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-text-light hover:text-accent-main"
+                className="group relative flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-text-light hover:text-white hover:bg-accent-main hover:scale-105 hover:shadow-lg"
+                style={{
+                  animationDelay: `${index * 100}ms`
+                }}
               >
-                <link.icon className="w-4 h-4" />
-                <span>{link.name}</span>
+                <link.icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+                <span className="transition-all duration-300 group-hover:font-semibold">{link.name}</span>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-main to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </button>
             ))}
           </div>
 
           {/* Right Side Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-lg text-text-light hover:text-accent-main transition-colors duration-200"
+              className="p-2 rounded-lg text-text-light hover:text-accent-main hover:bg-white/10 transition-all duration-300"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-
-            {/* CTA Button */}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="hidden sm:flex items-center bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300"
-            >
-              Get Started
             </button>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-text-light hover:text-accent-main transition-colors duration-200"
+              className="md:hidden p-2 rounded-lg text-text-light hover:text-accent-main hover:bg-white/10 transition-all duration-300"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -109,24 +111,21 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-card-bg border-t border-border-light">
+        <div className="md:hidden bg-card-bg/95 backdrop-blur-sm border-t border-border-light animate-in slide-in-from-top duration-300">
           <div className="px-4 sm:px-6 lg:px-8 py-4 space-y-2">
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href.substring(1))}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-text-light hover:text-accent-main"
+                className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-text-light hover:text-white hover:bg-accent-main hover:scale-[1.02] hover:shadow-md"
+                style={{
+                  animationDelay: `${index * 50}ms`
+                }}
               >
-                <link.icon className="w-4 h-4" />
-                <span>{link.name}</span>
+                <link.icon className="w-5 h-5 transition-transform duration-300" />
+                <span className="transition-all duration-300">{link.name}</span>
               </button>
             ))}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="flex items-center bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300"
-            >
-              Get Started
-            </button>
           </div>
         </div>
       )}
