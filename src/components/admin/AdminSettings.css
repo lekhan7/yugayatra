@@ -1,0 +1,168 @@
+/* Admin Settings CSS Custom Properties */
+:root {
+  /* Default color scheme - will be overridden by settings */
+  --admin-primary-color: #3b82f6;
+  --admin-secondary-color: #8b5cf6;
+  --admin-accent-color: #10b981;
+  --admin-background-color: #ffffff;
+  --admin-surface-color: #f9fafb;
+  --admin-text-color: #111827;
+
+  /* Default typography - will be overridden by settings */
+  --admin-font-family: 'Inter', system-ui, sans-serif;
+  --admin-font-size: 16px;
+  --admin-font-weight: 400;
+  --admin-line-height: 1.5;
+
+  /* Default animations - will be overridden by settings */
+  --admin-animation-duration: 300ms;
+  --admin-animation-easing: ease-in-out;
+}
+
+/* Apply custom properties to admin components */
+.admin-panel {
+  color: var(--admin-text-color);
+  background-color: var(--admin-background-color);
+  font-family: var(--admin-font-family);
+  font-size: var(--admin-font-size);
+  font-weight: var(--admin-font-weight);
+  line-height: var(--admin-line-height);
+}
+
+.admin-panel .admin-primary {
+  color: var(--admin-primary-color);
+}
+
+.admin-panel .admin-secondary {
+  color: var(--admin-secondary-color);
+}
+
+.admin-panel .admin-accent {
+  color: var(--admin-accent-color);
+}
+
+.admin-panel .admin-surface {
+  background-color: var(--admin-surface-color);
+}
+
+/* Animation classes that respect settings */
+.admin-panel .admin-animate {
+  animation-duration: var(--admin-animation-duration);
+  animation-timing-function: var(--admin-animation-easing);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .admin-panel .admin-animate,
+  .admin-panel .admin-animate * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* When reduced motion is explicitly set */
+:root {
+  --admin-reduced-motion: no-preference;
+}
+
+@media (prefers-reduced-motion: reduce), (prefers-reduced-motion: reduce) {
+  :root {
+    --admin-reduced-motion: reduce;
+  }
+}
+
+/* Layout direction support */
+.admin-panel[dir="rtl"] {
+  direction: rtl;
+}
+
+.admin-panel[dir="ltr"] {
+  direction: ltr;
+}
+
+/* Spacing classes */
+.admin-panel.spacing-compact {
+  --spacing-unit: 0.5rem;
+}
+
+.admin-panel.spacing-normal {
+  --spacing-unit: 1rem;
+}
+
+.admin-panel.spacing-relaxed {
+  --spacing-unit: 1.5rem;
+}
+
+.admin-panel.spacing-spacious {
+  --spacing-unit: 2rem;
+}
+
+/* Component visibility */
+.admin-panel .component-hidden {
+  display: none !important;
+}
+
+/* Sidebar positioning */
+.admin-panel.sidebar-left .admin-sidebar {
+  order: -1;
+}
+
+.admin-panel.sidebar-right .admin-sidebar {
+  order: 1;
+}
+
+/* Typography size classes */
+.admin-panel.font-small {
+  --admin-font-size: 14px;
+}
+
+.admin-panel.font-medium {
+  --admin-font-size: 16px;
+}
+
+.admin-panel.font-large {
+  --admin-font-size: 18px;
+}
+
+.admin-panel.font-extra-large {
+  --admin-font-size: 20px;
+}
+
+/* Font weight classes */
+.admin-panel.font-light {
+  --admin-font-weight: 300;
+}
+
+.admin-panel.font-normal {
+  --admin-font-weight: 400;
+}
+
+.admin-panel.font-medium {
+  --admin-font-weight: 500;
+}
+
+.admin-panel.font-semibold {
+  --admin-font-weight: 600;
+}
+
+.admin-panel.font-bold {
+  --admin-font-weight: 700;
+}
+
+/* Line height classes */
+.admin-panel.leading-tight {
+  --admin-line-height: 1.25;
+}
+
+.admin-panel.leading-normal {
+  --admin-line-height: 1.5;
+}
+
+.admin-panel.leading-relaxed {
+  --admin-line-height: 1.75;
+}
+
+.admin-panel.leading-loose {
+  --admin-line-height: 2;
+}

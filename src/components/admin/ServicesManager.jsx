@@ -6,18 +6,27 @@ import {
   Save, 
   X, 
   Code, 
-  Palette, 
-  TrendingUp, 
-  Users, 
   Database, 
   Cloud, 
   Smartphone, 
   Globe,
-  Briefcase,
+  Terminal,
+  GitBranch,
+  Cpu,
+  Server,
+  Monitor,
+  Code2,
+  Braces,
+  FileCode,
+  Package,
+  Layers,
+  Zap,
   Settings,
   Target,
   Eye,
-  EyeOff
+  EyeOff,
+  ChevronDown,
+  ChevronRight
 } from 'lucide-react'
 import { 
   getAllServices, 
@@ -32,13 +41,20 @@ const ServicesManager = () => {
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState(null)
+  const [expandedCategories, setExpandedCategories] = useState({
+    coding: true,
+    mobile: false,
+    digitalMarketing: false,
+    electronics: false,
+    digital: false
+  })
   const { success, error: showError } = useNotification()
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
     short_description: '',
     icon_name: 'Code',
-    icon_bg_color: 'from-accent-dark/100 to-accent-main',
+    icon_bg_color: 'from-accent-main to-olive-200',
     features: [''],
     technologies: [''],
     apply_enabled: true,
@@ -49,29 +65,73 @@ const ServicesManager = () => {
   })
   const [saving, setSaving] = useState(false)
 
-  const iconOptions = [
-    { name: 'Code', icon: Code },
-    { name: 'Palette', icon: Palette },
-    { name: 'TrendingUp', icon: TrendingUp },
-    { name: 'Users', icon: Users },
-    { name: 'Database', icon: Database },
-    { name: 'Cloud', icon: Cloud },
-    { name: 'Smartphone', icon: Smartphone },
-    { name: 'Globe', icon: Globe },
-    { name: 'Briefcase', icon: Briefcase },
-    { name: 'Settings', icon: Settings },
-    { name: 'Target', icon: Target }
-  ]
+  const iconCategories = {
+  coding: {
+    name: 'Coding & Programming',
+    icons: [
+      { name: 'Code', icon: Code },
+      { name: 'Code2', icon: Code2 },
+      { name: 'Braces', icon: Braces },
+      { name: 'FileCode', icon: FileCode },
+      { name: 'Terminal', icon: Terminal },
+      { name: 'GitBranch', icon: GitBranch },
+      { name: 'Package', icon: Package },
+      { name: 'Layers', icon: Layers }
+    ]
+  },
+  mobile: {
+    name: 'Mobile Application',
+    icons: [
+      { name: 'Smartphone', icon: Smartphone },
+      { name: 'Monitor', icon: Monitor },
+      { name: 'Globe', icon: Globe }
+    ]
+  },
+  digitalMarketing: {
+    name: 'Digital Marketing',
+    icons: [
+      { name: 'Target', icon: Target },
+      { name: 'Zap', icon: Zap },
+      { name: 'Globe', icon: Globe }
+    ]
+  },
+  electronics: {
+    name: 'Electronics & Hardware',
+    icons: [
+      { name: 'Cpu', icon: Cpu },
+      { name: 'Server', icon: Server },
+      { name: 'Monitor', icon: Monitor },
+      { name: 'Zap', icon: Zap }
+    ]
+  },
+  digital: {
+    name: 'Digital & Cloud Services',
+    icons: [
+      { name: 'Cloud', icon: Cloud },
+      { name: 'Database', icon: Database },
+      { name: 'Server', icon: Server },
+      { name: 'Globe', icon: Globe },
+      { name: 'Settings', icon: Settings }
+    ]
+  }
+}
+
+const toggleCategory = (category) => {
+  setExpandedCategories(prev => ({
+    ...prev,
+    [category]: !prev[category]
+  }))
+}
 
   const colorOptions = [
-    'from-accent-dark/100 to-accent-main',
-    'from-accent-main to-accent-dark',
-    'from-accent-main to-accent-dark',
-    'from-accent-gold to-accent-dark',
-    'from-cyan-500 to-cyan-600',
-    'from-accent-main to-accent-dark',
-    'from-pink-500 to-accent-gold',
-    'from-accent-main to-accent-main'
+    'from-accent-main to-olive-200',
+    'from-olive-300 to-olive-400',
+    'from-olive-200 to-olive-300',
+    'from-olive-400 to-olive-500',
+    'from-olive-500 to-olive-600',
+    'from-olive-600 to-olive-700',
+    'from-olive-700 to-olive-800',
+    'from-olive-800 to-olive-900'
   ]
 
   useEffect(() => {
@@ -102,7 +162,7 @@ const ServicesManager = () => {
       slug: '',
       short_description: '',
       icon_name: 'Code',
-      icon_bg_color: 'from-accent-dark/100 to-accent-main',
+      icon_bg_color: 'from-accent-main to-olive-200',
       features: [''],
       technologies: [''],
       apply_enabled: true,
@@ -261,14 +321,18 @@ const ServicesManager = () => {
   }
 
   const getIconComponent = (iconName) => {
-    const icon = iconOptions.find(opt => opt.name === iconName)
-    return icon ? icon.icon : Briefcase
+  // Search through all categories to find the icon
+  for (const category of Object.values(iconCategories)) {
+    const icon = category.icons.find(opt => opt.name === iconName)
+    if (icon) return icon.icon
   }
+  return Code
+}
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
       </div>
     )
   }
@@ -329,24 +393,57 @@ const ServicesManager = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Icon
-              </label>
-              <select
-                value={formData.icon_name}
-                onChange={(e) => setFormData(prev => ({ ...prev, icon_name: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-              >
-                {iconOptions.map(option => (
-                  <option key={option.name} value={option.name}>
-                    {option.name}
-                  </option>
-                ))}
-              </select>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Select Icon
+            </label>
+            <div className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 max-h-64 overflow-y-auto">
+              {Object.entries(iconCategories).map(([categoryKey, category]) => (
+                <div key={categoryKey} className="mb-4">
+                  <button
+                    type="button"
+                    onClick={() => toggleCategory(categoryKey)}
+                    className="flex items-center justify-between w-full text-left font-medium text-gray-900 dark:text-white mb-2 hover:text-accent-main transition-colors"
+                  >
+                    <span>{category.name}</span>
+                    {expandedCategories[categoryKey] ? (
+                      <ChevronDown size={16} />
+                    ) : (
+                      <ChevronRight size={16} />
+                    )}
+                  </button>
+                  
+                  {expandedCategories[categoryKey] && (
+                    <div className="grid grid-cols-4 gap-2 ml-2">
+                      {category.icons.map((iconOption) => {
+                        const IconComponent = iconOption.icon
+                        return (
+                          <button
+                            key={iconOption.name}
+                            type="button"
+                            onClick={() => setFormData(prev => ({ ...prev, icon_name: iconOption.name }))}
+                            className={`p-3 rounded-lg border-2 transition-all ${
+                              formData.icon_name === iconOption.name
+                                ? 'border-accent-main bg-accent-main/10'
+                                : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
+                            }`}
+                            title={iconOption.name}
+                          >
+                            <IconComponent size={20} className="mx-auto" />
+                          </button>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+              Selected: {formData.icon_name}
+            </p>
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Icon Background Color
@@ -422,7 +519,7 @@ const ServicesManager = () => {
                 {formData.features.length > 1 && (
                   <button
                     onClick={() => removeFeature(index)}
-                    className="px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-accent-gold"
+                    className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                   >
                     <X size={16} />
                   </button>
@@ -431,7 +528,7 @@ const ServicesManager = () => {
             ))}
             <button
               onClick={addFeature}
-              className="mt-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-accent-dark"
+              className="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
             >
               Add Feature
             </button>
@@ -453,7 +550,7 @@ const ServicesManager = () => {
                 {formData.technologies.length > 1 && (
                   <button
                     onClick={() => removeTechnology(index)}
-                    className="px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-accent-gold"
+                    className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                   >
                     <X size={16} />
                   </button>
@@ -462,7 +559,7 @@ const ServicesManager = () => {
             ))}
             <button
               onClick={addTechnology}
-              className="mt-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-accent-dark"
+              className="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
             >
               Add Technology
             </button>
@@ -501,7 +598,7 @@ const ServicesManager = () => {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
           >
             <Save size={16} />
             <span>{saving ? 'Saving...' : (editingId ? 'Update' : 'Add')} Service</span>
@@ -540,29 +637,29 @@ const ServicesManager = () => {
             {services.map((service) => {
               const IconComponent = getIconComponent(service.icon_name)
               return (
-                <div key={service.id} className={`border ${service.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-accent-gold'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
+                <div key={service.id} className={`border ${service.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-red-200 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
                   <div className="flex justify-between items-start mb-4">
-                    <div className={`p-3 ${service.is_active ? 'bg-accent-light/20 dark:bg-accent-dark/60/20' : 'bg-accent-gold/20 dark:bg-accent-gold/20'} rounded-lg`}>
-                      <IconComponent className={service.is_active ? 'text-accent-main dark:text-accent-light/60' : 'text-accent-gold dark:text-accent-gold/80'} size={24} />
+                    <div className={`p-3 ${service.is_active ? 'bg-blue-100 dark:bg-blue-900/20' : 'bg-red-100 dark:bg-red-900/20'} rounded-lg`}>
+                      <IconComponent className={service.is_active ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'} size={24} />
                     </div>
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handleEdit(service)}
-                        className="p-2 text-accent-main hover:bg-accent-light/10 dark:text-accent-light/60 dark:hover:bg-accent-dark/60/20 rounded-lg transition-colors"
+                        className="p-2 text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
                         title="Edit"
                       >
                         <Edit2 size={16} />
                       </button>
                       <button
                         onClick={() => handleToggleActive(service.id, !service.is_active)}
-                        className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
+                        className="p-2 text-yellow-600 hover:bg-yellow-50 dark:text-yellow-400 dark:hover:bg-yellow-900/20 rounded-lg transition-colors"
                         title={service.is_active ? 'Deactivate' : 'Activate'}
                       >
                         {service.is_active ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
                       <button
                         onClick={() => handleDelete(service.id)}
-                        className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
+                        className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                         title="Delete"
                       >
                         <Trash2 size={16} />
@@ -571,7 +668,7 @@ const ServicesManager = () => {
                   </div>
                   
                   <div className="mb-2">
-                    <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${service.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
+                    <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${service.is_active ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'}`}>
                       {service.is_active ? 'Active' : 'Inactive'}
                     </span>
                     <span className="ml-2 inline-block px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400">
@@ -591,7 +688,7 @@ const ServicesManager = () => {
                     <div className="space-y-1 mb-4">
                       {service.features.slice(0, 3).map((feature, index) => (
                         <div key={index} className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-accent-main rounded-full"></div>
+                          <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                           <span className="text-xs text-gray-600 dark:text-gray-400">{feature}</span>
                         </div>
                       ))}

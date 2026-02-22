@@ -298,7 +298,7 @@ const ProjectRequestModal = ({ isOpen, onClose }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 bg-gradient-to-r from-olive-200 to-olive-300 text-white rounded-lg hover:from-olive-300 hover:to-olive-900 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50"
+                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>

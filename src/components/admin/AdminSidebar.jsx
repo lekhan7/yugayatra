@@ -12,7 +12,8 @@ import {
   LogOut,
   User,
   PenTool,
-  UserPlus
+  UserPlus,
+  Send
 } from 'lucide-react'
 
 const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
@@ -21,8 +22,8 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'applications', label: 'Applications', icon: Users },
-    { id: 'content', label: 'Content Manager', icon: FileText },
-    { id: 'testimonials', label: 'Testimonials', icon: MessageSquare },
+    { id: 'project-requests', label: 'Project Requests', icon: Send },
+        { id: 'testimonials', label: 'Testimonials', icon: MessageSquare },
     { id: 'services', label: 'Services', icon: Briefcase },
     { id: 'projects', label: 'Projects', icon: Globe },
     { id: 'alumni', label: 'Alumni', icon: GraduationCap },
@@ -35,7 +36,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
       {/* Toggle Button */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute -right-3 top-6 bg-accent-main text-white rounded-full p-1 hover:bg-accent-dark transition-colors"
+        className="absolute -right-3 top-6 bg-blue-600 text-white rounded-full p-1 hover:bg-blue-700 transition-colors"
       >
         {isCollapsed ? <Menu size={16} /> : <X size={16} />}
       </button>
@@ -43,7 +44,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
       {/* Logo */}
       <div className="p-6 border-b border-gray-200 dark:border-gray-700">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-accent-main rounded-lg flex items-center justify-center">
+          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-lg">A</span>
           </div>
           {!isCollapsed && (
@@ -66,7 +67,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
                   onClick={() => setActiveSection(item.id)}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
                     activeSection === item.id
-                      ? 'bg-accent-main text-white'
+                      ? 'bg-blue-600 text-white'
                       : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
@@ -95,7 +96,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
           </div>
           <button
             onClick={onLogout}
-            className="w-full flex items-center space-x-2 px-3 py-2 text-sm text-accent-gold dark:text-accent-gold/80 hover:bg-accent-gold/10 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
+            className="w-full flex items-center space-x-2 px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
           >
             <LogOut size={16} />
             <span>Logout</span>

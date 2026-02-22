@@ -40,12 +40,12 @@ export const sendProjectAcceptanceEmail = async (projectRequest) => {
   try {
     console.log('🚀 Sending project acceptance email:', {
       email: projectRequest.email,
-      projectName: projectRequest.project_title
+      projectTitle: projectRequest.project_title
     })
 
 const templateParams = {
   clientName: projectRequest.name,
-  projectName: projectRequest.project_title,
+  projectTitle: projectRequest.project_title,
   email: projectRequest.email,
   project_description: projectRequest.project_description,
   phone: projectRequest.phone || 'Not provided',

@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence 
 import { Star, Quote, ArrowRight, TrendingUp, Users, Award, Clock, Plus } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import TestimonialSubmissionModal from '../TestimonialSubmissionModal'
+import ProjectRequestModal from '../ProjectRequestModal'
 import { getApprovedTestimonials } from '../../services/testimonials'
 
 const TestimonialsSection = () => {
@@ -12,6 +13,7 @@ const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([])
   const [loading, setLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false)
   
   // Parallax effects
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -50])
@@ -447,8 +449,8 @@ const TestimonialsSection = () => {
             >
               Let us help you achieve your digital transformation goals
             </motion.p>
-            <motion.a 
-              href="#contact" 
+            <motion.button 
+              onClick={() => setIsProjectModalOpen(true)}
               className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 inline-flex items-center group"
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -465,7 +467,7 @@ const TestimonialsSection = () => {
               >
                 <ArrowRight className="w-5 h-5" />
               </motion.div>
-            </motion.a>
+            </motion.button>
           </motion.div>
         </div>
       </motion.div>
@@ -474,6 +476,12 @@ const TestimonialsSection = () => {
       <TestimonialSubmissionModal 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+      />
+
+      {/* Project Request Modal */}
+      <ProjectRequestModal 
+        isOpen={isProjectModalOpen}
+        onClose={() => setIsProjectModalOpen(false)}
       />
     </section>
   )
