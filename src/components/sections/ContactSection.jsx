@@ -236,7 +236,7 @@ const ContactSection = () => {
                 </p>
               </div>
 
-              <div className="space-y-6 flex-grow flex flex-col justify-end">
+              <div className="space-y-6 flex-grow flex flex-col justify-end" style={{paddingBottom: '0px'}}>
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.title}
@@ -244,6 +244,7 @@ const ContactSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="flex items-start space-x-4 p-6 bg-card-bg dark:bg-card-bg/10 rounded-xl border border-border-light dark:border-white/10 hover:shadow-lg transition-shadow duration-300"
+                    style={{marginBottom: index === contactInfo.length - 1 ? '0px' : '24px'}}
                   >
                     <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <info.icon className="w-6 h-6 text-white" />
