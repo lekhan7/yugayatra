@@ -140,7 +140,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center p-8 rounded-2xl bg-bg-main hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-text-main mb-4">
@@ -181,7 +181,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center p-6 bg-card-bg rounded-xl shadow-lg"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-4">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-text-main mb-2">
@@ -258,7 +258,7 @@ const About = () => {
           </motion.div>
 
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-accent-main to-blue-600"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-accent-main to-accent-main"></div>
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
@@ -324,7 +324,7 @@ const About = () => {
                   'Continuous support and guidance'
                 ].map((strength, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-accent-main mt-1 flex-shrink-0" />
                     <p className="text-text-light">{strength}</p>
                   </div>
                 ))}
@@ -359,7 +359,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-accent-main to-blue-600">
+      <section className="py-20 bg-gradient-to-r from-accent-main to-accent-main">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

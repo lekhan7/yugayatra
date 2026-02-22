@@ -182,11 +182,11 @@ const Projects = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'Live':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+        return 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/30 dark:text-accent-light'
       case 'In Development':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
+        return 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold/30 dark:text-accent-gold/80'
       case 'Coming Soon':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+        return 'bg-accent-light/20 text-accent-main'
       default:
         return 'bg-bg-main text-text-main dark:bg-card-bg/10 dark:text-white/70'
     }
@@ -206,7 +206,7 @@ const Projects = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-accent-light/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -239,7 +239,7 @@ const Projects = () => {
                 onClick={() => openModal(project)}
               >
                 {/* Project Image */}
-                <div className="h-48 bg-gradient-to-br from-accent-main to-blue-600 relative">
+                <div className="h-48 bg-gradient-to-br from-accent-main to-accent-light relative">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-white text-center">
                       <div className="text-4xl mb-2">🚀</div>
@@ -277,7 +277,7 @@ const Projects = () => {
                     {project.techStack.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium dark:bg-blue-900/30 dark:text-blue-300"
+                        className="bg-accent-light/20 text-accent-main px-2 py-1 rounded-full text-xs font-medium"
                       >
                         {tech}
                       </span>
@@ -295,7 +295,7 @@ const Projects = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-accent-main text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                        className="p-2 bg-accent-main text-white rounded-lg hover:bg-accent-light transition-colors duration-200"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -312,7 +312,7 @@ const Projects = () => {
                         </a>
                       )}
                     </div>
-                    <button className="text-accent-main dark:text-blue-300 font-medium text-sm hover:text-blue-700 transition-colors duration-200">
+                    <button className="text-accent-main font-medium text-sm hover:text-accent-light transition-colors duration-200">
                       View Details
                     </button>
                   </div>
@@ -364,7 +364,7 @@ const Projects = () => {
               </div>
 
               {/* Project Image */}
-              <div className="h-64 bg-gradient-to-br from-accent-main to-blue-600 rounded-xl mb-6 flex items-center justify-center">
+              <div className="h-64 bg-gradient-to-br from-accent-main to-accent-light rounded-xl mb-6 flex items-center justify-center">
                 <div className="text-white text-center">
                   <div className="text-6xl mb-2">🚀</div>
                   <p className="text-lg opacity-90">{selectedProject.name}</p>
@@ -419,7 +419,7 @@ const Projects = () => {
                     {selectedProject.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="bg-blue-100 text-blue-800 px-3 py-2 rounded-lg text-sm font-medium dark:bg-blue-900/30 dark:text-blue-300"
+                        className="bg-accent-light/20 text-accent-main px-3 py-2 rounded-lg text-sm font-medium"
                       >
                         {tech}
                       </span>
@@ -435,7 +435,7 @@ const Projects = () => {
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-2 bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                        className="flex items-center space-x-2 bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-accent-light transition-colors duration-200"
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Visit Website</span>

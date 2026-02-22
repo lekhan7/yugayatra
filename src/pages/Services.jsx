@@ -64,7 +64,7 @@ const Services = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-accent-light/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -115,7 +115,7 @@ const Services = () => {
                       <div className="space-y-3 mb-6">
                         {service.features.slice(0, 3).map((feature, idx) => (
                           <div key={idx} className="flex items-center text-sm text-text-light dark:text-white/70">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-accent-main mr-2 flex-shrink-0" />
                             {feature}
                           </div>
                         ))}
@@ -125,7 +125,7 @@ const Services = () => {
                         {service.technologies.slice(0, 3).map((tech, idx) => (
                           <span
                             key={idx}
-                            className="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-xs font-medium"
+                            className="px-3 py-1 bg-accent-light/20 text-accent-main rounded-full text-xs font-medium"
                           >
                             {tech}
                           </span>
@@ -139,7 +139,7 @@ const Services = () => {
                             const encodedRole = encodeURIComponent(service.title)
                             window.location.href = `/internship/apply/${encodedRole}`
                           }}
-                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-blue-600 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
+                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-accent-light text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
                         >
                           Apply
                         </button>
@@ -156,7 +156,7 @@ const Services = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowAll(!showAll)}
-                    className="bg-accent-main text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300 inline-flex items-center"
+                    className="bg-accent-main text-white px-8 py-3 rounded-full font-semibold hover:bg-accent-light transition-colors duration-300 inline-flex items-center"
                   >
                     {showAll ? 'Show Less' : 'Show More'}
                     <Eye className="w-5 h-5 ml-2" />
@@ -209,7 +209,7 @@ const Services = () => {
                       <div className="space-y-2 mb-6">
                         {service.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center text-text-light dark:text-white/70">
-                            <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                            <CheckCircle className="w-5 h-5 text-accent-main mr-3 flex-shrink-0" />
                             {feature}
                           </div>
                         ))}
@@ -264,7 +264,7 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-light rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-bold text-xl">{item.step}</span>
                 </div>
                 <h3 className="text-xl font-bold text-text-main dark:text-white mb-2">
@@ -280,7 +280,7 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-accent-main to-blue-600">
+      <section className="py-20 bg-gradient-to-r from-accent-main to-accent-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

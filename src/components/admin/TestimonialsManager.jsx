@@ -99,7 +99,7 @@ const TestimonialsManager = () => {
       <Star
         key={i}
         size={16}
-        className={i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}
+        className={i < rating ? 'text-accent-gold/80 fill-current' : 'text-gray-300'}
       />
     ))
   }
@@ -107,7 +107,7 @@ const TestimonialsManager = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
       </div>
     )
   }
@@ -125,9 +125,9 @@ const TestimonialsManager = () => {
         <div className="border-b border-gray-200 dark:border-gray-700">
           <nav className="flex space-x-8 px-6" aria-label="Tabs">
             {[
-              { id: 'pending', label: 'Pending', icon: Clock, color: 'text-yellow-600' },
-              { id: 'accepted', label: 'Accepted', icon: Check, color: 'text-green-600' },
-              { id: 'rejected', label: 'Rejected', icon: XCircle, color: 'text-red-600' },
+              { id: 'pending', label: 'Pending', icon: Clock, color: 'text-accent-gold' },
+              { id: 'accepted', label: 'Accepted', icon: Check, color: 'text-accent-dark' },
+              { id: 'rejected', label: 'Rejected', icon: XCircle, color: 'text-accent-gold' },
               { id: 'all', label: 'All', icon: MessageSquare, color: 'text-gray-600' }
             ].map((tab) => (
               <button
@@ -155,7 +155,7 @@ const TestimonialsManager = () => {
         <div className="p-6">
           {loading ? (
             <div className="flex items-center justify-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
             </div>
           ) : testimonials.length === 0 ? (
             <div className="text-center py-12">
@@ -175,7 +175,7 @@ const TestimonialsManager = () => {
                     <div className="flex-1">
                       {/* Header */}
                       <div className="flex items-center space-x-3 mb-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-gradient-to-br from-accent-main to-accent-main rounded-full flex items-center justify-center">
                           <span className="text-white font-bold text-sm">
                             {testimonial.full_name.split(' ').map(n => n[0]).join('')}
                           </span>
@@ -207,9 +207,9 @@ const TestimonialsManager = () => {
                       {/* Status Badge */}
                       <div className="mb-3">
                         <span className={`inline-flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${
-                          testimonial.status === 'pending' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300' :
-                          testimonial.status === 'accepted' ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300' :
-                          'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300'
+                          testimonial.status === 'pending' ? 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold/20 dark:text-accent-gold/80' :
+                          testimonial.status === 'accepted' ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' :
+                          'bg-accent-gold/20 text-red-800 dark:bg-accent-gold/20 dark:text-accent-gold/80'
                         }`}>
                           {testimonial.status === 'pending' && <Clock className="w-3 h-3" />}
                           {testimonial.status === 'accepted' && <Check className="w-3 h-3" />}
@@ -246,7 +246,7 @@ const TestimonialsManager = () => {
                           <button
                             onClick={() => handleApprove(testimonial.id)}
                             disabled={updatingId === testimonial.id}
-                            className="flex items-center space-x-1 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm"
+                            className="flex items-center space-x-1 px-3 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm"
                           >
                             <Check className="w-4 h-4" />
                             <span>Approve</span>
@@ -254,7 +254,7 @@ const TestimonialsManager = () => {
                           <button
                             onClick={() => handleReject(testimonial.id)}
                             disabled={updatingId === testimonial.id}
-                            className="flex items-center space-x-1 px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 text-sm"
+                            className="flex items-center space-x-1 px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-red-700 disabled:opacity-50 text-sm"
                           >
                             <XCircle className="w-4 h-4" />
                             <span>Reject</span>

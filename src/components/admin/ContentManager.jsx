@@ -132,7 +132,7 @@ const ContentManager = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
       </div>
     )
   }
@@ -156,7 +156,7 @@ const ContentManager = () => {
               <div className="p-6 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <Icon className="text-blue-600" size={24} />
+                    <Icon className="text-accent-main" size={24} />
                     <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                       {section.label}
                     </h2>
@@ -167,7 +167,7 @@ const ContentManager = () => {
                         <button
                           onClick={() => saveContent(section.id)}
                           disabled={saving}
-                          className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+                          className="flex items-center space-x-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
                         >
                           <Save size={16} />
                           <span>{saving ? 'Saving...' : 'Save'}</span>
@@ -183,7 +183,7 @@ const ContentManager = () => {
                       <>
                         <button
                           onClick={() => setEditingSection(section.id)}
-                          className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                          className="flex items-center space-x-2 px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark"
                         >
                           <Edit2 size={16} />
                           <span>Edit</span>

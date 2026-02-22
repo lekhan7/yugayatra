@@ -128,7 +128,7 @@ const TestimonialsSection = () => {
           variants={floatingVariants}
           initial="initial"
           animate="animate"
-          className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent-main rounded-full filter blur-3xl"
         />
       </motion.div>
 
@@ -170,7 +170,7 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-accent-main text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Plus className="w-5 h-5" />
               <span>Add Your Review</span>
@@ -209,7 +209,7 @@ const TestimonialsSection = () => {
               >
                 {/* Animated Background Gradient */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-accent-main/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-accent-main/10 to-accent-main/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   initial={{ scale: 0, rotate: 0 }}
                   whileHover={{ scale: 2, rotate: 180 }}
                   transition={{ duration: 0.5 }}
@@ -271,7 +271,7 @@ const TestimonialsSection = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
                   >
                     <motion.div 
-                      className="w-16 h-16 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3"
+                      className="w-16 h-16 bg-gradient-to-br from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-3"
                       whileHover={{ scale: 1.1, rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
@@ -350,7 +350,7 @@ const TestimonialsSection = () => {
               >
                 {/* Animated Background */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-accent-main/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-accent-main/5 to-accent-main/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   initial={{ scale: 0 }}
                   whileHover={{ scale: 1.5 }}
                   transition={{ duration: 0.5 }}
@@ -400,7 +400,7 @@ const TestimonialsSection = () => {
 
       {/* CTA Section */}
       <motion.div 
-        className="py-20 bg-gradient-to-r from-accent-main to-blue-600 relative overflow-hidden"
+        className="py-20 bg-gradient-to-r from-accent-main to-accent-main relative overflow-hidden"
         style={{ scale: springScale }}
       >
         {/* Animated Background Elements */}

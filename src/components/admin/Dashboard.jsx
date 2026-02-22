@@ -48,28 +48,28 @@ const Dashboard = ({ internshipApplications, loading }) => {
       title: 'Total Applications',
       value: stats.totalApplications,
       icon: Users,
-      color: 'bg-blue-500',
+      color: 'bg-accent-light/100',
       trend: '+12%'
     },
     {
       title: 'Pending Review',
       value: stats.pendingApplications,
       icon: FileText,
-      color: 'bg-yellow-500',
+      color: 'bg-accent-gold',
       trend: '+5%'
     },
     {
       title: 'Accepted',
       value: stats.acceptedApplications,
       icon: TrendingUp,
-      color: 'bg-green-500',
+      color: 'bg-accent-main/100',
       trend: '+8%'
     },
     {
       title: 'Testimonials',
       value: stats.totalTestimonials,
       icon: MessageSquare,
-      color: 'bg-purple-500',
+      color: 'bg-accent-main',
       trend: '+3%'
     }
   ]
@@ -78,7 +78,7 @@ const Dashboard = ({ internshipApplications, loading }) => {
     <div className="space-y-6">
       {loading ? (
         <div className="flex items-center justify-center py-12">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-main"></div>
         </div>
       ) : (
         <>
@@ -100,7 +100,7 @@ const Dashboard = ({ internshipApplications, loading }) => {
                       <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
                         {stat.value}
                       </p>
-                      <p className="text-sm text-green-600 mt-2">{stat.trend}</p>
+                      <p className="text-sm text-accent-dark mt-2">{stat.trend}</p>
                     </div>
                     <div className={`${stat.color} p-3 rounded-lg`}>
                       <Icon className="text-white" size={24} />
@@ -116,7 +116,7 @@ const Dashboard = ({ internshipApplications, loading }) => {
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Recent Activity</h2>
             <div className="space-y-4">
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-accent-light/100 rounded-full"></div>
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-900 dark:text-white">
                     New application received
@@ -125,7 +125,7 @@ const Dashboard = ({ internshipApplications, loading }) => {
                 </div>
               </div>
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-accent-main/100 rounded-full"></div>
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-900 dark:text-white">
                     Application approved
@@ -134,7 +134,7 @@ const Dashboard = ({ internshipApplications, loading }) => {
                 </div>
               </div>
               <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-accent-main rounded-full"></div>
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-900 dark:text-white">
                     New testimonial added
@@ -149,16 +149,16 @@ const Dashboard = ({ internshipApplications, loading }) => {
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <button className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
-                <Users className="text-blue-600 dark:text-blue-400 mb-2" size={24} />
+              <button className="p-4 bg-accent-light/10 dark:bg-accent-dark/60/20 border border-accent-light/30 dark:border-accent-dark/80 rounded-lg hover:bg-accent-light/20 dark:hover:bg-accent-dark/60/30 transition-colors">
+                <Users className="text-accent-main dark:text-accent-light/60 mb-2" size={24} />
                 <p className="text-sm font-medium text-gray-900 dark:text-white">Review Applications</p>
               </button>
-              <button className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
-                <FileText className="text-green-600 dark:text-green-400 mb-2" size={24} />
+              <button className="p-4 bg-accent-main/10 dark:bg-accent-dark/20 border border-accent-main/30 dark:border-accent-dark rounded-lg hover:bg-accent-main/20 dark:hover:bg-accent-dark/30 transition-colors">
+                <FileText className="text-accent-dark dark:text-accent-light mb-2" size={24} />
                 <p className="text-sm font-medium text-gray-900 dark:text-white">Update Content</p>
               </button>
-              <button className="p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors">
-                <MessageSquare className="text-purple-600 dark:text-purple-400 mb-2" size={24} />
+              <button className="p-4 bg-purple-50 dark:bg-accent-dark/20 border border-accent-main/30 dark:border-accent-dark rounded-lg hover:bg-accent-main/20 dark:hover:bg-accent-dark/30 transition-colors">
+                <MessageSquare className="text-accent-dark dark:text-accent-light mb-2" size={24} />
                 <p className="text-sm font-medium text-gray-900 dark:text-white">Manage Testimonials</p>
               </button>
             </div>

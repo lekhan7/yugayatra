@@ -107,7 +107,7 @@ const ServicesSection = () => {
                     <div className="space-y-3 mb-6">
                       {service.features.slice(0, 3).map((feature, idx) => (
                         <div key={idx} className="flex items-center text-sm text-text-light">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-accent-main mr-2 flex-shrink-0" />
                           {feature}
                         </div>
                       ))}
@@ -132,7 +132,7 @@ const ServicesSection = () => {
                             const encodedRole = encodeURIComponent(service.title)
                             navigate(`/internship/apply/${encodedRole}`)
                           }}
-                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-blue-600 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
+                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-accent-main text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
                         >
                           Apply
                         </button>
@@ -150,7 +150,7 @@ const ServicesSection = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowAll(!showAll)}
-                    className="bg-accent-main text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300 inline-flex items-center"
+                    className="bg-accent-main text-white px-8 py-3 rounded-full font-semibold hover:bg-accent-dark transition-colors duration-300 inline-flex items-center"
                   >
                     {showAll ? 'Show Less' : 'Show More'}
                     <Eye className="w-5 h-5 ml-2" />
@@ -163,7 +163,7 @@ const ServicesSection = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-r from-accent-main to-blue-600">
+      <div className="py-20 bg-gradient-to-r from-accent-main to-accent-main">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

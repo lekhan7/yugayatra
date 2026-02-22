@@ -247,20 +247,20 @@ const AchievementSection = () => {
 
   const getCategoryColor = (category) => {
     const colors = {
-      'Intellectual Property': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-      'Business Registration': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-      'Tax Registration': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+      'Intellectual Property': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-purple-200',
+      'Business Registration': 'bg-accent-light/20 text-accent-dark/80 dark:bg-accent-dark/60 dark:text-accent-light/30',
+      'Tax Registration': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200',
       'Government Recognition': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-      'Company Registration': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+      'Company Registration': 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold dark:text-red-200'
     }
     return colors[category] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
   }
 
   const getStatusColor = (status) => {
     const colors = {
-      'Active': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'Registered': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-      'Recognized': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
+      'Active': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200',
+      'Registered': 'bg-accent-light/20 text-accent-dark/80 dark:bg-accent-dark/60 dark:text-accent-light/30',
+      'Recognized': 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-purple-200'
     }
     return colors[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
   }
@@ -296,28 +296,28 @@ const AchievementSection = () => {
   const getTypeColor = (type) => {
     switch (type) {
       case 'Legal':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-accent-main'
       case 'Government':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-accent-main'
       case 'Tax':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-accent-main'
       case 'Food Safety':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-accent-main'
       default:
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-accent-main'
     }
   }
 
   const getCertificateStatusColor = (status) => {
     switch (status) {
       case 'Active':
-        return 'bg-green-100 text-green-800'
+        return 'bg-accent-main/20 text-accent-dark'
       case 'Certified':
-        return 'bg-blue-100 text-blue-800'
+        return 'bg-accent-light/20 text-accent-dark/80'
       case 'Valid':
-        return 'bg-purple-100 text-purple-800'
+        return 'bg-accent-main/20 text-accent-dark'
       case 'Pending':
-        return 'bg-yellow-100 text-yellow-800'
+        return 'bg-accent-gold/20 text-accent-gold'
       default:
         return 'bg-bg-main text-text-main'
     }
@@ -378,7 +378,7 @@ const AchievementSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-10 h-10 text-white" />
                 </div>
                 <h4 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h4>
@@ -453,7 +453,7 @@ const AchievementSection = () => {
                   </div>
 
                   {/* Action Button */}
-                  <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium">
+                  <div className="flex items-center text-accent-main dark:text-accent-light/60 font-medium">
                     <span>View Document Details</span>
                     <span className="ml-2">→</span>
                   </div>
@@ -523,11 +523,11 @@ const AchievementSection = () => {
                   {/* About This Document Section */}
                   <div className="mt-8">
                     <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-                      <FileText className="w-6 h-6 mr-3 text-blue-600 dark:text-blue-400" />
+                      <FileText className="w-6 h-6 mr-3 text-accent-main dark:text-accent-light/60" />
                       About This {selectedDocument.category.includes('Registration') ? 'Certificate' : 'Document'}
                     </h4>
                     
-                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800 mb-6">
+                    <div className="bg-accent-light/10 dark:bg-accent-dark/60/20 rounded-lg p-6 border border-accent-light/30 dark:border-accent-dark/80 mb-6">
                       <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
                         {selectedDocument.details.description}
                       </p>
@@ -547,7 +547,7 @@ const AchievementSection = () => {
                               <ul className="space-y-2">
                                 {value.map((item, index) => (
                                   <li key={index} className="text-sm text-gray-700 dark:text-gray-300 flex items-start">
-                                    <span className="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                                    <span className="text-accent-main dark:text-accent-light/60 mr-2">•</span>
                                     {item}
                                   </li>
                                 ))}

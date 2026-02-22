@@ -91,14 +91,14 @@ const NotificationItem = ({ notification, onClose }) => {
   const getStyles = () => {
     switch (notification.type) {
       case 'success':
-        return 'bg-green-500 text-white border-green-600'
+        return 'bg-accent-main/100 text-white border-accent-dark'
       case 'error':
-        return 'bg-red-500 text-white border-red-600'
+        return 'bg-accent-gold/100 text-white border-accent-gold'
       case 'warning':
-        return 'bg-yellow-500 text-black border-yellow-600'
+        return 'bg-accent-gold text-black border-accent-gold'
       case 'info':
       default:
-        return 'bg-blue-500 text-white border-blue-600'
+        return 'bg-accent-light/100 text-white border-accent-main'
     }
   }
 

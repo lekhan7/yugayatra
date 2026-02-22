@@ -56,7 +56,7 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-accent-main rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">Y</span>
               </div>
               <h3 className="text-xl font-bold">YugaYatra Retail (OPC) Pvt Ltd</h3>
@@ -141,7 +141,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium"
+                className="w-full bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors duration-200 font-medium"
               >
                 Subscribe
               </button>
@@ -204,7 +204,7 @@ const Footer = () => {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-40"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-40"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" />

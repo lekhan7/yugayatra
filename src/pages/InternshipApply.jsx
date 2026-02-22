@@ -160,7 +160,7 @@ const InternshipApply = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-bg-main via-white to-blue-50 dark:from-text-main dark:via-text-main dark:to-text-main pt-24 pb-16 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-bg-main via-white to-accent-light/20 pt-24 pb-16 overflow-x-hidden">
       <div className="max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -190,10 +190,10 @@ const InternshipApply = () => {
 
           <div className="p-6 sm:p-8">
             {isSubmitted ? (
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-8 text-center">
-                <CheckCircle className="w-14 h-14 text-green-600 mx-auto mb-3" />
-                <h2 className="text-2xl font-bold text-green-800 dark:text-green-300">Submitted</h2>
-                <p className="mt-2 text-green-700 dark:text-green-400">
+              <div className="bg-accent-main/10 dark:bg-accent-dark/20 border border-accent-main/30 dark:border-accent-dark rounded-2xl p-8 text-center">
+                <CheckCircle className="w-14 h-14 text-accent-dark mx-auto mb-3" />
+                <h2 className="text-2xl font-bold text-accent-dark dark:text-accent-light">Submitted</h2>
+                <p className="mt-2 text-accent-dark dark:text-accent-light">
                   We received your application. We’ll reach out soon.
                 </p>
               </div>
@@ -306,7 +306,7 @@ const InternshipApply = () => {
 
                   <div className="space-y-3">
                     <label className="block text-sm font-medium text-text-main dark:text-white">
-                      Upload Resume (PDF/DOC/DOCX - Max 5MB) <span className="text-red-500">*</span>
+                      Upload Resume (PDF/DOC/DOCX - Max 5MB) <span className="text-accent-gold">*</span>
                     </label>
                     
                     {!resumeFile ? (
@@ -320,7 +320,7 @@ const InternshipApply = () => {
                         />
                         <label
                           htmlFor="resume"
-                          className="flex items-center justify-center w-full p-6 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 transition-colors bg-white/50 dark:bg-gray-800/50"
+                          className="flex items-center justify-center w-full p-6 border-2 border-dashed border-border-light rounded-lg cursor-pointer hover:border-accent-main transition-colors bg-white/50"
                         >
                           <div className="text-center">
                             <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" />
@@ -334,9 +334,9 @@ const InternshipApply = () => {
                         </label>
                       </div>
                     ) : (
-                      <div className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                      <div className="flex items-center justify-between p-4 bg-accent-light/20 border border-accent-light rounded-lg">
                         <div className="flex items-center">
-                          <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-3" />
+                          <FileText className="w-5 h-5 text-accent-main mr-3" />
                           <div>
                             <p className="text-sm font-medium text-gray-900 dark:text-white">
                               {resumeFile.name}
@@ -349,7 +349,7 @@ const InternshipApply = () => {
                         <button
                           type="button"
                           onClick={removeResume}
-                          className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+                          className="text-accent-gold hover:text-accent-gold dark:text-accent-gold/80 dark:hover:text-red-300"
                         >
                           <X className="w-5 h-5" />
                         </button>
@@ -357,21 +357,21 @@ const InternshipApply = () => {
                     )}
 
                     {resumeError && (
-                      <p className="text-sm text-red-600 dark:text-red-400">{resumeError}</p>
+                      <p className="text-sm text-accent-gold dark:text-accent-gold/80">{resumeError}</p>
                     )}
                   </div>
                 </section>
 
                 {formError ? (
-                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-                    <p className="text-red-700 dark:text-red-400 text-sm">{formError}</p>
+                  <div className="bg-accent-gold/10 dark:bg-accent-gold/20 border border-accent-gold/30 dark:border-accent-gold rounded-lg p-4">
+                    <p className="text-accent-gold dark:text-accent-gold/80 text-sm">{formError}</p>
                   </div>
                 ) : null}
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold shadow-[0_16px_40px_rgba(26,110,199,0.25)] hover:shadow-[0_18px_50px_rgba(26,110,199,0.35)] transform hover:scale-[1.01] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full bg-gradient-to-r from-cyan-600 to-accent-main text-white px-8 py-4 rounded-xl font-semibold shadow-[0_16px_40px_rgba(26,110,199,0.25)] hover:shadow-[0_18px_50px_rgba(26,110,199,0.35)] transform hover:scale-[1.01] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <>
@@ -392,8 +392,8 @@ const InternshipApply = () => {
             <div
               className={`px-4 py-3 rounded-xl shadow-xl border backdrop-blur text-sm font-medium ${
                 toast.type === 'success'
-                  ? 'bg-green-50/90 border-green-200 text-green-900'
-                  : 'bg-red-50/90 border-red-200 text-red-900'
+                  ? 'bg-accent-main/10/90 border-accent-main/30 text-accent-dark'
+                  : 'bg-accent-gold/10/90 border-accent-gold/30 text-accent-gold'
               }`}
             >
               {toast.message}

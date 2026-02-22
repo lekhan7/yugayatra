@@ -258,7 +258,7 @@ const AlumniManager = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
       </div>
     )
   }
@@ -461,7 +461,7 @@ const AlumniManager = () => {
                 {formData.achievements.length > 1 && (
                   <button
                     onClick={() => removeAchievement(index)}
-                    className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                    className="px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-red-700"
                   >
                     <X size={16} />
                   </button>
@@ -470,7 +470,7 @@ const AlumniManager = () => {
             ))}
             <button
               onClick={addAchievement}
-              className="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              className="mt-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700"
             >
               Add Achievement
             </button>
@@ -492,7 +492,7 @@ const AlumniManager = () => {
                 {formData.skills.length > 1 && (
                   <button
                     onClick={() => removeSkill(index)}
-                    className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                    className="px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-red-700"
                   >
                     <X size={16} />
                   </button>
@@ -501,7 +501,7 @@ const AlumniManager = () => {
             ))}
             <button
               onClick={addSkill}
-              className="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              className="mt-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700"
             >
               Add Skill
             </button>
@@ -512,7 +512,7 @@ const AlumniManager = () => {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark disabled:opacity-50"
           >
             <Save size={16} />
             <span>{saving ? 'Saving...' : (editingId ? 'Update' : 'Add')} Alumni</span>
@@ -549,29 +549,29 @@ const AlumniManager = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
             {alumni.map((alumniItem) => (
-              <div key={alumniItem.id} className={`border ${alumniItem.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-red-200 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
+              <div key={alumniItem.id} className={`border ${alumniItem.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
                 <div className="flex justify-between items-start mb-4">
-                  <div className={`p-3 ${alumniItem.is_active ? 'bg-blue-100 dark:bg-blue-900/20' : 'bg-red-100 dark:bg-red-900/20'} rounded-lg`}>
-                    <Users className={alumniItem.is_active ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'} size={24} />
+                  <div className={`p-3 ${alumniItem.is_active ? 'bg-accent-light/20 dark:bg-accent-dark/60/20' : 'bg-accent-gold/20 dark:bg-accent-gold/20'} rounded-lg`}>
+                    <Users className={alumniItem.is_active ? 'text-accent-main dark:text-accent-light/60' : 'text-accent-gold dark:text-accent-gold/80'} size={24} />
                   </div>
                   <div className="flex space-x-2">
                     <button
                       onClick={() => handleEdit(alumniItem)}
-                      className="p-2 text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-main hover:bg-accent-light/10 dark:text-accent-light/60 dark:hover:bg-accent-dark/60/20 rounded-lg transition-colors"
                       title="Edit"
                     >
                       <Edit2 size={16} />
                     </button>
                     <button
                       onClick={() => handleToggleActive(alumniItem.id, !alumniItem.is_active)}
-                      className="p-2 text-yellow-600 hover:bg-yellow-50 dark:text-yellow-400 dark:hover:bg-yellow-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-gold hover:bg-yellow-50 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                       title={alumniItem.is_active ? 'Deactivate' : 'Activate'}
                     >
                       {alumniItem.is_active ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
                     <button
                       onClick={() => handleDelete(alumniItem.id)}
-                      className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                       title="Delete"
                     >
                       <Trash2 size={16} />
@@ -580,7 +580,7 @@ const AlumniManager = () => {
                 </div>
                 
                 <div className="mb-2">
-                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${alumniItem.is_active ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'}`}>
+                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${alumniItem.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
                     {alumniItem.is_active ? 'Active' : 'Inactive'}
                   </span>
                   <span className="ml-2 inline-block px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400">
@@ -592,7 +592,7 @@ const AlumniManager = () => {
                   {alumniItem.name}
                 </h3>
                 
-                <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-1">
+                <p className="text-accent-main dark:text-accent-light/60 font-medium text-sm mb-1">
                   {alumniItem.role}
                 </p>
                 
@@ -617,7 +617,7 @@ const AlumniManager = () => {
                   <div className="space-y-1 mb-3">
                     {alumniItem.achievements.slice(0, 2).map((achievement, index) => (
                       <div key={index} className="flex items-center space-x-2">
-                        <Award className="w-3 h-3 text-blue-600" />
+                        <Award className="w-3 h-3 text-accent-main" />
                         <span className="text-xs text-gray-600 dark:text-gray-400">{achievement}</span>
                       </div>
                     ))}
@@ -646,7 +646,7 @@ const AlumniManager = () => {
 
                 <div className="flex space-x-2 text-xs text-gray-500 dark:text-gray-400">
                   {alumniItem.linkedin && (
-                    <a href={alumniItem.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                    <a href={alumniItem.linkedin} target="_blank" rel="noopener noreferrer" className="text-accent-main hover:text-accent-dark/80">
                       LinkedIn
                     </a>
                   )}

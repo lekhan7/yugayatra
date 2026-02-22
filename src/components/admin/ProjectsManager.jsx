@@ -48,13 +48,13 @@ const iconOptions = [
 ]
 
 const colorOptions = [
-  { name: 'Blue to Cyan', value: 'from-blue-500 to-cyan-600' },
-  { name: 'Green to Emerald', value: 'from-green-500 to-emerald-600' },
-  { name: 'Orange to Red', value: 'from-orange-500 to-red-600' },
-  { name: 'Purple to Pink', value: 'from-purple-500 to-pink-600' },
-  { name: 'Indigo to Blue', value: 'from-indigo-500 to-blue-600' },
+  { name: 'Blue to Cyan', value: 'from-accent-dark/100 to-cyan-600' },
+  { name: 'Green to Emerald', value: 'from-accent-main to-emerald-600' },
+  { name: 'Orange to Red', value: 'from-accent-gold to-accent-dark' },
+  { name: 'Purple to Pink', value: 'from-accent-main to-accent-gold' },
+  { name: 'Indigo to Blue', value: 'from-accent-main to-accent-main' },
   { name: 'Teal to Cyan', value: 'from-teal-500 to-cyan-600' },
-  { name: 'Yellow to Orange', value: 'from-yellow-500 to-orange-600' },
+  { name: 'Yellow to Orange', value: 'from-accent-gold to-orange-600' },
   { name: 'Slate to Gray', value: 'from-slate-500 to-gray-600' }
 ]
 
@@ -69,7 +69,7 @@ const ProjectsManager = () => {
     description: '',
     website_url: '',
     icon_name: 'Bell',
-    color_gradient: 'from-blue-500 to-cyan-600',
+    color_gradient: 'from-accent-dark/100 to-cyan-600',
     display_order: 0,
     is_active: true
   })
@@ -257,7 +257,7 @@ const ProjectsManager = () => {
       description: '',
       website_url: '',
       icon_name: 'Bell',
-      color_gradient: 'from-blue-500 to-cyan-600',
+      color_gradient: 'from-accent-dark/100 to-cyan-600',
       display_order: 0,
       is_active: true
     })
@@ -292,7 +292,7 @@ const ProjectsManager = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
       </div>
     )
   }
@@ -303,7 +303,7 @@ const ProjectsManager = () => {
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Projects Management</h2>
         <button
           onClick={() => setShowAddForm(true)}
-          className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          className="flex items-center space-x-2 bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors"
         >
           <Plus size={20} />
           <span>Add Project</span>
@@ -456,7 +456,7 @@ const ProjectsManager = () => {
                         <button
                           type="button"
                           onClick={() => removeFeature(index)}
-                          className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                          className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                         >
                           <X size={16} />
                         </button>
@@ -466,7 +466,7 @@ const ProjectsManager = () => {
                   <button
                     type="button"
                     onClick={addFeature}
-                    className="text-blue-600 hover:text-blue-700 dark:text-blue-400 text-sm font-medium"
+                    className="text-accent-main hover:text-accent-dark dark:text-accent-light/60 text-sm font-medium"
                   >
                     + Add Feature
                   </button>
@@ -489,7 +489,7 @@ const ProjectsManager = () => {
                         <button
                           type="button"
                           onClick={() => removeTechnology(index)}
-                          className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                          className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                         >
                           <X size={16} />
                         </button>
@@ -499,7 +499,7 @@ const ProjectsManager = () => {
                   <button
                     type="button"
                     onClick={addTechnology}
-                    className="text-blue-600 hover:text-blue-700 dark:text-blue-400 text-sm font-medium"
+                    className="text-accent-main hover:text-accent-dark dark:text-accent-light/60 text-sm font-medium"
                   >
                     + Add Technology
                   </button>
@@ -511,7 +511,7 @@ const ProjectsManager = () => {
                     id="is_active"
                     checked={formData.is_active}
                     onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="rounded border-gray-300 text-accent-main focus:ring-blue-500"
                   />
                   <label htmlFor="is_active" className="text-sm text-gray-700 dark:text-gray-300">
                     Active (visible on website)
@@ -528,7 +528,7 @@ const ProjectsManager = () => {
                   </button>
                   <button
                     type="submit"
-                    className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center space-x-2 bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors"
                   >
                     <Save size={16} />
                     <span>{editingProject ? 'Update' : 'Save'}</span>
@@ -549,7 +549,7 @@ const ProjectsManager = () => {
           <p className="text-gray-500 dark:text-gray-400 mb-4">Get started by adding your first project</p>
           <button
             onClick={() => setShowAddForm(true)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors"
           >
             Add Project
           </button>
@@ -559,29 +559,29 @@ const ProjectsManager = () => {
           {projects.map((project) => {
             const IconComponent = getIconComponent(project.icon_name)
             return (
-              <div key={project.id} className={`border ${project.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-red-200 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
+              <div key={project.id} className={`border ${project.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
                 <div className="flex justify-between items-start mb-4">
-                  <div className={`p-3 ${project.is_active ? 'bg-blue-100 dark:bg-blue-900/20' : 'bg-red-100 dark:bg-red-900/20'} rounded-lg`}>
-                    <IconComponent className={project.is_active ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'} size={24} />
+                  <div className={`p-3 ${project.is_active ? 'bg-accent-light/20 dark:bg-accent-dark/60/20' : 'bg-accent-gold/20 dark:bg-accent-gold/20'} rounded-lg`}>
+                    <IconComponent className={project.is_active ? 'text-accent-main dark:text-accent-light/60' : 'text-accent-gold dark:text-accent-gold/80'} size={24} />
                   </div>
                   <div className="flex space-x-2">
                     <button
                       onClick={() => handleEdit(project)}
-                      className="p-2 text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-main hover:bg-accent-light/10 dark:text-accent-light/60 dark:hover:bg-accent-dark/60/20 rounded-lg transition-colors"
                       title="Edit"
                     >
                       <Edit2 size={16} />
                     </button>
                     <button
                       onClick={() => handleToggleActive(project.id, !project.is_active)}
-                      className="p-2 text-yellow-600 hover:bg-yellow-50 dark:text-yellow-400 dark:hover:bg-yellow-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-gold hover:bg-yellow-50 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                       title={project.is_active ? 'Deactivate' : 'Activate'}
                     >
                       {project.is_active ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
                     <button
                       onClick={() => handleDelete(project.id)}
-                      className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                       title="Delete"
                     >
                       <Trash2 size={16} />
@@ -590,7 +590,7 @@ const ProjectsManager = () => {
                 </div>
                 
                 <div className="mb-2">
-                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${project.is_active ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'}`}>
+                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${project.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
                     {project.is_active ? 'Active' : 'Inactive'}
                   </span>
                   <span className="ml-2 inline-block px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400">
@@ -614,7 +614,7 @@ const ProjectsManager = () => {
                   <div className="space-y-1 mb-4">
                     {project.features.slice(0, 2).map((feature, index) => (
                       <div key={index} className="flex items-center space-x-2">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <div className="w-1.5 h-1.5 bg-accent-main rounded-full"></div>
                         <span className="text-xs text-gray-600 dark:text-gray-400">{feature}</span>
                       </div>
                     ))}
@@ -642,7 +642,7 @@ const ProjectsManager = () => {
                 )}
 
                 {project.website_url && (
-                  <div className="text-xs text-blue-600 dark:text-blue-400 truncate">
+                  <div className="text-xs text-accent-main dark:text-accent-light/60 truncate">
                     🌐 {project.website_url}
                   </div>
                 )}

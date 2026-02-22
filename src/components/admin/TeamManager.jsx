@@ -197,7 +197,7 @@ const TeamManager = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
       </div>
     )
   }
@@ -361,7 +361,7 @@ const TeamManager = () => {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark disabled:opacity-50"
           >
             <Save size={16} />
             <span>{saving ? 'Saving...' : (editingId ? 'Update' : 'Add')} Team Member</span>
@@ -398,29 +398,29 @@ const TeamManager = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
             {teamMembers.map((member) => (
-              <div key={member.id} className={`border ${member.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-red-200 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
+              <div key={member.id} className={`border ${member.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
                 <div className="flex justify-between items-start mb-4">
-                  <div className={`p-3 ${member.is_active ? 'bg-blue-100 dark:bg-blue-900/20' : 'bg-red-100 dark:bg-red-900/20'} rounded-lg`}>
-                    <Users className={member.is_active ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'} size={24} />
+                  <div className={`p-3 ${member.is_active ? 'bg-accent-light/20 dark:bg-accent-dark/60/20' : 'bg-accent-gold/20 dark:bg-accent-gold/20'} rounded-lg`}>
+                    <Users className={member.is_active ? 'text-accent-main dark:text-accent-light/60' : 'text-accent-gold dark:text-accent-gold/80'} size={24} />
                   </div>
                   <div className="flex space-x-2">
                     <button
                       onClick={() => handleEdit(member)}
-                      className="p-2 text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-main hover:bg-accent-light/10 dark:text-accent-light/60 dark:hover:bg-accent-dark/60/20 rounded-lg transition-colors"
                       title="Edit"
                     >
                       <Edit2 size={16} />
                     </button>
                     <button
                       onClick={() => handleToggleActive(member.id, !member.is_active)}
-                      className="p-2 text-yellow-600 hover:bg-yellow-50 dark:text-yellow-400 dark:hover:bg-yellow-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-gold hover:bg-yellow-50 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                       title={member.is_active ? 'Deactivate' : 'Activate'}
                     >
                       {member.is_active ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
                     <button
                       onClick={() => handleDelete(member.id)}
-                      className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                      className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                       title="Delete"
                     >
                       <Trash2 size={16} />
@@ -429,7 +429,7 @@ const TeamManager = () => {
                 </div>
                 
                 <div className="mb-2">
-                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${member.is_active ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'}`}>
+                  <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${member.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
                     {member.is_active ? 'Active' : 'Inactive'}
                   </span>
                 </div>
@@ -438,7 +438,7 @@ const TeamManager = () => {
                   {member.name}
                 </h3>
                 
-                <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-2">
+                <p className="text-accent-main dark:text-accent-light/60 font-medium text-sm mb-2">
                   {member.position}
                 </p>
 
@@ -458,7 +458,7 @@ const TeamManager = () => {
 
                 <div className="flex space-x-2 text-xs text-gray-500 dark:text-gray-400">
                   {member.linkedin_url && (
-                    <a href={member.linkedin_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 flex items-center">
+                    <a href={member.linkedin_url} target="_blank" rel="noopener noreferrer" className="text-accent-main hover:text-accent-dark/80 flex items-center">
                       <Linkedin size={12} className="mr-1" />
                       LinkedIn
                     </a>

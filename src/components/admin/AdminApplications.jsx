@@ -451,7 +451,7 @@ Team
         <button
           onClick={fetchApplications}
           disabled={loading}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+          className="px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
         >
           {loading ? (
             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
@@ -510,10 +510,10 @@ Team
       {toast.show && (
         <div className={`fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 z-50 ${
           toast.type === 'success' 
-            ? 'bg-green-500 text-white' 
+            ? 'bg-accent-main/100 text-white' 
             : toast.type === 'warning'
-            ? 'bg-yellow-500 text-white'
-            : 'bg-red-500 text-white'
+            ? 'bg-accent-gold text-white'
+            : 'bg-accent-gold/100 text-white'
         }`}>
           <span className="font-medium">{toast.message}</span>
         </div>

@@ -29,7 +29,7 @@ const TeamSection = () => {
       <section id="team" className="py-20 bg-card-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
           </div>
         </div>
       </section>
@@ -96,7 +96,7 @@ const TeamSection = () => {
             >
               <div className="bg-card-bg dark:bg-card-bg/10 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10">
                 {/* Image Section */}
-                <div className="relative h-64 bg-gradient-to-br from-accent-main/20 to-blue-600/20 overflow-hidden">
+                <div className="relative h-64 bg-gradient-to-br from-accent-main/20 to-accent-main/20 overflow-hidden">
                   {member.image_url ? (
                     <img
                       src={member.image_url}
@@ -119,7 +119,7 @@ const TeamSection = () => {
                           rel="noopener noreferrer"
                           className="p-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-colors duration-200"
                         >
-                          <Linkedin className="w-4 h-4 text-blue-600" />
+                          <Linkedin className="w-4 h-4 text-accent-main" />
                         </a>
                       )}
                       {member.twitter_url && (
@@ -173,7 +173,7 @@ const TeamSection = () => {
                         href={member.linkedin_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent-main hover:text-blue-600 transition-colors duration-200"
+                        className="text-accent-main hover:text-accent-main transition-colors duration-200"
                       >
                         <ExternalLink className="w-4 h-4" />
                       </a>
@@ -192,7 +192,7 @@ const TeamSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-accent-main to-blue-600 rounded-2xl p-8 text-center">
+          <div className="bg-gradient-to-r from-accent-main to-accent-main rounded-2xl p-8 text-center">
             <h3 className="text-2xl font-bold text-white mb-8">
               Our Team by the Numbers
             </h3>
@@ -233,7 +233,7 @@ const TeamSection = () => {
             href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-accent-main to-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center"
+            className="bg-gradient-to-r from-accent-main to-accent-main text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center"
           >
             Get in Touch
             <ExternalLink className="w-5 h-5 ml-2" />

@@ -98,28 +98,28 @@ const Achievements = () => {
   const getTypeColor = (type) => {
     switch (type) {
       case 'Legal':
-        return 'from-blue-500 to-blue-600'
+        return 'from-accent-dark/100 to-accent-main'
       case 'Government':
-        return 'from-green-500 to-green-600'
+        return 'from-accent-main to-accent-dark'
       case 'Tax':
-        return 'from-purple-500 to-purple-600'
+        return 'from-accent-main to-accent-dark'
       case 'Food Safety':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-accent-main'
       default:
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-accent-main'
     }
   }
 
   const getStatusColor = (status) => {
     switch (status) {
       case 'Active':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+        return 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/30 dark:text-accent-light'
       case 'Certified':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+        return 'bg-accent-light/20 text-accent-dark/80 dark:bg-accent-dark/60/30 dark:text-accent-light/40'
       case 'Valid':
-        return 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'
+        return 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/30 dark:text-accent-light'
       case 'Pending':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
+        return 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold/30 dark:text-accent-gold/80'
       default:
         return 'bg-bg-main text-text-main dark:bg-card-bg/10 dark:text-white/70'
     }
@@ -131,7 +131,7 @@ const Achievements = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-accent-light/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -236,7 +236,7 @@ const Achievements = () => {
               initial={{ height: 0 }}
               whileInView={{ height: "100%" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gradient-to-b from-accent-main to-blue-600"
+              className="absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gradient-to-b from-accent-main to-accent-main"
             />
             
             {/* Animated dotted line overlay */}
@@ -352,7 +352,7 @@ const Achievements = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h3>

@@ -72,7 +72,7 @@ const AboutSection = () => {
                 whileHover={{ scale: 1.05 }}
                 className="text-center p-8 rounded-2xl bg-card-bg shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-text-main mb-4">

@@ -13,6 +13,13 @@ import Admin from './pages/Admin'
 import Legal from './pages/Legal'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
+import Services from './pages/Services'
+import Projects from './pages/Projects'
+import Alumni from './pages/Alumni'
+import Quiz from './pages/Quiz'
+import Contact from './pages/Contact'
+import About from './pages/About'
+import Achievements from './pages/Achievements'
 
 function App() {
   const location = useLocation()
@@ -66,6 +73,83 @@ function App() {
             transition={{ duration: 0.5 }}
           >
             <Legal />
+          </motion.div>
+        } />
+        <Route path="/services" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Services />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/projects" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Projects />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/alumni" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Alumni />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/quiz" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Quiz />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/contact" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Contact />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/about" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <About />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/achievements" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Achievements />
+            <Footer />
+            <ScrollToTop />
           </motion.div>
         } />
         <Route path="/blog" element={

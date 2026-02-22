@@ -20,7 +20,7 @@ const HeroSection = () => {
             href="#services"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="inline-flex items-center justify-center group bg-gradient-to-r from-accent-main to-accent-dark text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Code className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
             Explore Opportunities

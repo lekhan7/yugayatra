@@ -24,7 +24,7 @@ const JourneyTimeline = () => {
       date: "2020",
       description: "YugaYatra started with a vision to bridge the gap between education and industry.",
       icon: <MapPin className="w-6 h-6" />,
-      color: "from-blue-500 to-purple-600",
+      color: "from-accent-dark to-accent-main",
       details: [
         "Founded by industry professionals",
         "Initial team of 5 members",
@@ -38,7 +38,7 @@ const JourneyTimeline = () => {
       date: "2021",
       description: "Successfully placed our first batch of 100+ interns in top companies.",
       icon: <Award className="w-6 h-6" />,
-      color: "from-green-500 to-teal-600",
+      color: "from-accent-main to-accent-gold",
       details: [
         "100+ internships completed",
         "Partnered with 15 companies",
@@ -52,7 +52,7 @@ const JourneyTimeline = () => {
       date: "2022",
       description: "Expanded our services to multiple cities and introduced new training programs.",
       icon: <TrendingUp className="w-6 h-6" />,
-      color: "from-orange-500 to-red-600",
+      color: "from-accent-gold to-accent-dark",
       details: [
         "Expanded to 5 cities",
         "Launched 10 new courses",
@@ -66,7 +66,7 @@ const JourneyTimeline = () => {
       date: "2023",
       description: "Built a strong community of 1000+ students and professionals.",
       icon: <Users className="w-6 h-6" />,
-      color: "from-purple-500 to-pink-600",
+      color: "from-accent-dark to-accent-main",
       details: [
         "1000+ active community members",
         "50+ corporate partners",
@@ -80,7 +80,7 @@ const JourneyTimeline = () => {
       date: "2024+",
       description: "Continuing to shape tomorrow's workforce with innovative solutions.",
       icon: <Target className="w-6 h-6" />,
-      color: "from-indigo-500 to-blue-600",
+      color: "from-accent-main to-accent-dark",
       details: [
         "AI-powered learning platform",
         "Global expansion plans",
@@ -381,14 +381,14 @@ const JourneyTimeline = () => {
           <div className="space-y-1 mb-3">
             {stop.details.map((detail, index) => (
               <div key={index} className="flex items-start">
-                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mt-1 mr-2 flex-shrink-0"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-accent-dark/100 to-accent-dark mt-1 mr-2 flex-shrink-0"></div>
                 <span className="text-gray-700 text-xs">{detail}</span>
               </div>
             ))}
           </div>
           <button
             onClick={() => setActiveStop(null)}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-xs"
+            className="w-full bg-gradient-to-r from-accent-main to-accent-dark text-white px-3 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-xs"
           >
             Continue Journey
           </button>
@@ -413,28 +413,28 @@ const JourneyTimeline = () => {
             background: 'linear-gradient(135deg, white 0%, #f0f9ff 100%)'
           }}
         >
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white mb-4">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-accent-main to-indigo-600 text-white mb-4">
             <Target className="w-6 h-6" />
           </div>
           <h3 className="text-xl font-bold text-gray-800 mb-3">Journey Complete!</h3>
           <p className="text-gray-700 mb-4 text-sm leading-relaxed">Thank you for joining us on our incredible journey!</p>
           <div className="space-y-2 mb-4 text-left inline-block">
             <div className="flex items-center">
-              <Award className="w-4 h-4 mr-2 text-yellow-500" />
+              <Award className="w-4 h-4 mr-2 text-accent-gold" />
               <span className="text-gray-700 text-sm">5 Major Milestones Achieved</span>
             </div>
             <div className="flex items-center">
-              <Users className="w-4 h-4 mr-2 text-blue-500" />
+              <Users className="w-4 h-4 mr-2 text-accent-light/100" />
               <span className="text-gray-700 text-sm">1000+ Community Members</span>
             </div>
             <div className="flex items-center">
-              <TrendingUp className="w-4 h-4 mr-2 text-green-500" />
+              <TrendingUp className="w-4 h-4 mr-2 text-accent-main" />
               <span className="text-gray-700 text-sm">Continuing to Grow</span>
             </div>
           </div>
           <button
             onClick={() => setShowFinalPopup(false)}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+            className="w-full bg-gradient-to-r from-accent-main to-accent-dark text-white px-4 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
           >
             Close
           </button>
@@ -451,7 +451,7 @@ const JourneyTimeline = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4"
+          className="text-5xl md:text-6xl font-black bg-gradient-to-r from-accent-main via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4"
         >
           Our Journey Timeline
         </motion.h2>
@@ -553,7 +553,7 @@ const JourneyTimeline = () => {
                   
                   {/* Motion Effect */}
                   {isAnimating && (
-                    <div className="absolute -inset-4 bg-blue-400/30 rounded-full blur-xl animate-pulse" />
+                    <div className="absolute -inset-4 bg-accent-light/60/30 rounded-full blur-xl animate-pulse" />
                   )}
                   
                   {/* Exhaust/Smoke effect when moving */}
@@ -592,8 +592,8 @@ const JourneyTimeline = () => {
 
               {/* Finish Flag on Timeline */}
               <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
-                <div className="w-6 h-20 bg-gradient-to-b from-red-500 to-red-600 rounded-full shadow-lg"></div>
-                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                <div className="w-6 h-20 bg-gradient-to-b from-red-500 to-accent-dark rounded-full shadow-lg"></div>
+                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-accent-gold/100 text-white text-xs px-2 py-1 rounded-full font-bold">
                   FINISH
                 </div>
               </div>
@@ -656,7 +656,7 @@ const JourneyTimeline = () => {
         </p>
         <button
           onClick={restartAnimation}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2"
+          className="bg-gradient-to-r from-accent-main to-accent-dark text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />

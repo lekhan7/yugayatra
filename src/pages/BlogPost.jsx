@@ -74,7 +74,7 @@ const BlogPost = () => {
         <Navbar />
         <ScrollToTop />
         <div className="flex items-center justify-center py-20">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
         </div>
       </div>
     )
@@ -95,7 +95,7 @@ const BlogPost = () => {
             </p>
             <Link 
               to="/blog"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-accent-main text-white rounded-lg hover:bg-accent-dark transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
@@ -124,7 +124,7 @@ const BlogPost = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
           </div>
         ) : (
-          <div className="h-96 bg-gradient-to-br from-accent-main to-blue-600 flex items-center justify-center">
+          <div className="h-96 bg-gradient-to-br from-accent-main to-accent-main flex items-center justify-center">
             <div className="text-white text-center">
               <div className="text-8xl mb-4">📝</div>
               <p className="text-xl opacity-90">Featured Image</p>
@@ -145,7 +145,7 @@ const BlogPost = () => {
                   {post.category}
                 </span>
                 {post.is_featured && (
-                  <span className="bg-yellow-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                  <span className="bg-accent-gold text-white px-4 py-2 rounded-full text-sm font-medium">
                     Featured
                   </span>
                 )}
@@ -232,7 +232,7 @@ const BlogPost = () => {
                   <div className="flex flex-wrap gap-3">
                     <button
                       onClick={shareOnFacebook}
-                      className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="flex items-center px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark transition-colors"
                     >
                       <Facebook className="w-4 h-4 mr-2" />
                       Facebook
@@ -246,7 +246,7 @@ const BlogPost = () => {
                     </button>
                     <button
                       onClick={shareOnLinkedIn}
-                      className="flex items-center px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+                      className="flex items-center px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-accent-dark/80 transition-colors"
                     >
                       <Linkedin className="w-4 h-4 mr-2" />
                       LinkedIn
@@ -273,7 +273,7 @@ const BlogPost = () => {
                 </button>
                 <Link
                   to="/blog"
-                  className="flex items-center px-6 py-3 bg-accent-main text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="flex items-center px-6 py-3 bg-accent-main text-white rounded-lg hover:bg-accent-dark transition-colors"
                 >
                   View All Posts
                   <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />

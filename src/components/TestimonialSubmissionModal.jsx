@@ -128,7 +128,7 @@ const TestimonialSubmissionModal = ({ isOpen, onClose }) => {
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-accent-main to-accent-main rounded-full flex items-center justify-center">
                 <Star className="w-5 h-5 text-white" />
               </div>
               <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -219,8 +219,8 @@ const TestimonialSubmissionModal = ({ isOpen, onClose }) => {
                 animate={{ opacity: 1, y: 0 }}
                 className={`p-3 rounded-lg flex items-center space-x-2 ${
                   submitStatus.type === 'success' 
-                    ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300' 
-                    : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300'
+                    ? 'bg-accent-main/10 dark:bg-accent-dark/20 text-accent-dark dark:text-accent-light' 
+                    : 'bg-accent-gold/10 dark:bg-accent-gold/20 text-accent-gold dark:text-accent-gold/80'
                 }`}
               >
                 {submitStatus.type === 'success' ? (
@@ -236,7 +236,7 @@ const TestimonialSubmissionModal = ({ isOpen, onClose }) => {
             <button
               type="submit"
               disabled={isSubmitting || submitStatus?.type === 'success'}
-              className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-blue-600 text-white font-semibold rounded-lg hover:from-accent-dark hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-accent-main focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+              className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-accent-main text-white font-semibold rounded-lg hover:from-accent-dark hover:to-accent-dark focus:outline-none focus:ring-2 focus:ring-accent-main focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
             >
               {isSubmitting ? (
                 <>

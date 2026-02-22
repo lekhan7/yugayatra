@@ -38,7 +38,7 @@ const ServicesManager = () => {
     slug: '',
     short_description: '',
     icon_name: 'Code',
-    icon_bg_color: 'from-blue-500 to-blue-600',
+    icon_bg_color: 'from-accent-dark/100 to-accent-main',
     features: [''],
     technologies: [''],
     apply_enabled: true,
@@ -64,14 +64,14 @@ const ServicesManager = () => {
   ]
 
   const colorOptions = [
-    'from-blue-500 to-blue-600',
-    'from-purple-500 to-purple-600',
-    'from-green-500 to-green-600',
-    'from-red-500 to-red-600',
+    'from-accent-dark/100 to-accent-main',
+    'from-accent-main to-accent-dark',
+    'from-accent-main to-accent-dark',
+    'from-red-500 to-accent-dark',
     'from-cyan-500 to-cyan-600',
-    'from-indigo-500 to-indigo-600',
-    'from-pink-500 to-pink-600',
-    'from-accent-main to-blue-600'
+    'from-accent-main to-indigo-600',
+    'from-pink-500 to-accent-gold',
+    'from-accent-main to-accent-main'
   ]
 
   useEffect(() => {
@@ -102,7 +102,7 @@ const ServicesManager = () => {
       slug: '',
       short_description: '',
       icon_name: 'Code',
-      icon_bg_color: 'from-blue-500 to-blue-600',
+      icon_bg_color: 'from-accent-dark/100 to-accent-main',
       features: [''],
       technologies: [''],
       apply_enabled: true,
@@ -268,7 +268,7 @@ const ServicesManager = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
       </div>
     )
   }
@@ -422,7 +422,7 @@ const ServicesManager = () => {
                 {formData.features.length > 1 && (
                   <button
                     onClick={() => removeFeature(index)}
-                    className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                    className="px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-red-700"
                   >
                     <X size={16} />
                   </button>
@@ -431,7 +431,7 @@ const ServicesManager = () => {
             ))}
             <button
               onClick={addFeature}
-              className="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              className="mt-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700"
             >
               Add Feature
             </button>
@@ -453,7 +453,7 @@ const ServicesManager = () => {
                 {formData.technologies.length > 1 && (
                   <button
                     onClick={() => removeTechnology(index)}
-                    className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                    className="px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-red-700"
                   >
                     <X size={16} />
                   </button>
@@ -462,7 +462,7 @@ const ServicesManager = () => {
             ))}
             <button
               onClick={addTechnology}
-              className="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              className="mt-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-green-700"
             >
               Add Technology
             </button>
@@ -501,7 +501,7 @@ const ServicesManager = () => {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark disabled:opacity-50"
           >
             <Save size={16} />
             <span>{saving ? 'Saving...' : (editingId ? 'Update' : 'Add')} Service</span>
@@ -540,29 +540,29 @@ const ServicesManager = () => {
             {services.map((service) => {
               const IconComponent = getIconComponent(service.icon_name)
               return (
-                <div key={service.id} className={`border ${service.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-red-200 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
+                <div key={service.id} className={`border ${service.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-accent-gold/30 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
                   <div className="flex justify-between items-start mb-4">
-                    <div className={`p-3 ${service.is_active ? 'bg-blue-100 dark:bg-blue-900/20' : 'bg-red-100 dark:bg-red-900/20'} rounded-lg`}>
-                      <IconComponent className={service.is_active ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'} size={24} />
+                    <div className={`p-3 ${service.is_active ? 'bg-accent-light/20 dark:bg-accent-dark/60/20' : 'bg-accent-gold/20 dark:bg-accent-gold/20'} rounded-lg`}>
+                      <IconComponent className={service.is_active ? 'text-accent-main dark:text-accent-light/60' : 'text-accent-gold dark:text-accent-gold/80'} size={24} />
                     </div>
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handleEdit(service)}
-                        className="p-2 text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                        className="p-2 text-accent-main hover:bg-accent-light/10 dark:text-accent-light/60 dark:hover:bg-accent-dark/60/20 rounded-lg transition-colors"
                         title="Edit"
                       >
                         <Edit2 size={16} />
                       </button>
                       <button
                         onClick={() => handleToggleActive(service.id, !service.is_active)}
-                        className="p-2 text-yellow-600 hover:bg-yellow-50 dark:text-yellow-400 dark:hover:bg-yellow-900/20 rounded-lg transition-colors"
+                        className="p-2 text-accent-gold hover:bg-yellow-50 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                         title={service.is_active ? 'Deactivate' : 'Activate'}
                       >
                         {service.is_active ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
                       <button
                         onClick={() => handleDelete(service.id)}
-                        className="p-2 text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                        className="p-2 text-accent-gold hover:bg-accent-gold/10 dark:text-accent-gold/80 dark:hover:bg-accent-gold/20 rounded-lg transition-colors"
                         title="Delete"
                       >
                         <Trash2 size={16} />
@@ -571,7 +571,7 @@ const ServicesManager = () => {
                   </div>
                   
                   <div className="mb-2">
-                    <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${service.is_active ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'}`}>
+                    <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${service.is_active ? 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark/20 dark:text-accent-light' : 'bg-accent-gold/20 text-red-800 dark:bg-accent-gold/20 dark:text-accent-gold/80'}`}>
                       {service.is_active ? 'Active' : 'Inactive'}
                     </span>
                     <span className="ml-2 inline-block px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400">
@@ -591,7 +591,7 @@ const ServicesManager = () => {
                     <div className="space-y-1 mb-4">
                       {service.features.slice(0, 3).map((feature, index) => (
                         <div key={index} className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                          <div className="w-1.5 h-1.5 bg-accent-main rounded-full"></div>
                           <span className="text-xs text-gray-600 dark:text-gray-400">{feature}</span>
                         </div>
                       ))}

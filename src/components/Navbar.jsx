@@ -66,7 +66,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div onClick={() => handleNavClick({ href: '#hero', isRoute: false })} className="flex items-center space-x-2 cursor-pointer">
-            <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-accent-main rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">Y</span>
             </div>
             <span className="text-xl font-bold text-text-main">
@@ -87,7 +87,7 @@ const Navbar = () => {
               >
                 <link.icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
                 <span className="transition-all duration-300 group-hover:font-semibold">{link.name}</span>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-main to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-main to-accent-main opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </button>
             ))}
           </div>

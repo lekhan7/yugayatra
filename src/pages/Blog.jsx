@@ -71,7 +71,7 @@ const Blog = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-accent-light/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -133,7 +133,7 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
             </div>
           ) : (
             <>
@@ -148,7 +148,7 @@ const Blog = () => {
                     className="bg-card-bg dark:bg-card-bg/10 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10"
                   >
                     {/* Post Image */}
-                    <div className="h-48 bg-gradient-to-br from-accent-main to-blue-600 relative">
+                    <div className="h-48 bg-gradient-to-br from-accent-main to-accent-main relative">
                       {post.featured_image ? (
                         <img 
                           src={post.featured_image} 
@@ -207,7 +207,7 @@ const Blog = () => {
 
                         <button 
                           onClick={() => shareOnLinkedIn()}
-                          className="text-accent-main dark:text-blue-300 font-semibold flex items-center hover:text-blue-700 transition-colors duration-200"
+                          className="text-accent-main dark:text-accent-light/40 font-semibold flex items-center hover:text-accent-dark transition-colors duration-200"
                         >
                           Read More
                           <ArrowRight className="w-4 h-4 ml-1" />
@@ -258,7 +258,7 @@ const Blog = () => {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white"
               />
-              <button className="bg-accent-main text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
+              <button className="bg-accent-main text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-dark transition-colors duration-300">
                 Subscribe
               </button>
             </div>

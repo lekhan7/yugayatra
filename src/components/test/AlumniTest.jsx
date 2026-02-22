@@ -28,7 +28,7 @@ const AlumniTest = () => {
     return (
       <div className="p-8">
         <h2 className="text-2xl font-bold mb-4">Alumni API Test</h2>
-        <div className="text-blue-600">Loading alumni data...</div>
+        <div className="text-accent-main">Loading alumni data...</div>
       </div>
     )
   }
@@ -37,10 +37,10 @@ const AlumniTest = () => {
     return (
       <div className="p-8">
         <h2 className="text-2xl font-bold mb-4">Alumni API Test</h2>
-        <div className="text-red-600">Error: {error}</div>
+        <div className="text-accent-gold">Error: {error}</div>
         <button 
           onClick={testAlumniFetch}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="mt-4 px-4 py-2 bg-accent-main text-white rounded hover:bg-accent-dark"
         >
           Retry
         </button>
@@ -53,7 +53,7 @@ const AlumniTest = () => {
       <h2 className="text-2xl font-bold mb-4">Alumni API Test</h2>
       
       <div className="mb-4">
-        <span className="text-green-600 font-semibold">
+        <span className="text-accent-dark font-semibold">
           ✓ Successfully fetched {alumni.length} alumni records
         </span>
       </div>
@@ -62,12 +62,12 @@ const AlumniTest = () => {
         {alumni.map((person) => (
           <div key={person.id} className="border rounded-lg p-4 bg-gray-50">
             <h3 className="font-bold text-lg">{person.name}</h3>
-            <p className="text-blue-600">{person.role}</p>
+            <p className="text-accent-main">{person.role}</p>
             <p className="text-gray-600">{person.company} • {person.location}</p>
             <p className="text-sm text-gray-500">Batch {person.batch}</p>
             
             {person.quote && (
-              <blockquote className="mt-2 pl-4 border-l-4 border-blue-500 italic text-gray-700">
+              <blockquote className="mt-2 pl-4 border-l-4 border-accent-light/100 italic text-gray-700">
                 "{person.quote}"
               </blockquote>
             )}
@@ -88,7 +88,7 @@ const AlumniTest = () => {
                 <strong>Skills:</strong>
                 <div className="flex flex-wrap gap-1 mt-1">
                   {person.skills.map((skill, index) => (
-                    <span key={index} className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">
+                    <span key={index} className="px-2 py-1 bg-accent-light/20 text-accent-dark/80 rounded text-xs">
                       {skill}
                     </span>
                   ))}

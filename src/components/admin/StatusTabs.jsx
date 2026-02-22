@@ -12,11 +12,11 @@ const StatusTabs = ({ activeTab, setActiveTab, stats }) => {
     if (isActive) {
       switch (color) {
         case 'yellow':
-          return `${baseClasses} bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 border border-yellow-200 dark:border-yellow-800`
+          return `${baseClasses} bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-yellow-200 border border-yellow-200 dark:border-yellow-800`
         case 'green':
-          return `${baseClasses} bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 border border-green-200 dark:border-green-800`
+          return `${baseClasses} bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-green-200 border border-accent-main/30 dark:border-accent-dark`
         case 'red':
-          return `${baseClasses} bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 border border-red-200 dark:border-red-800`
+          return `${baseClasses} bg-accent-gold/20 text-red-800 dark:bg-accent-gold dark:text-red-200 border border-accent-gold/30 dark:border-accent-gold`
         default:
           return `${baseClasses} bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200`
       }
@@ -28,11 +28,11 @@ const StatusTabs = ({ activeTab, setActiveTab, stats }) => {
   const getCountClasses = (color) => {
     switch (color) {
       case 'yellow':
-        return 'bg-yellow-200 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-200'
+        return 'bg-yellow-200 text-accent-gold dark:bg-accent-gold dark:text-yellow-200'
       case 'green':
-        return 'bg-green-200 text-green-800 dark:bg-green-800 dark:text-green-200'
+        return 'bg-green-200 text-accent-dark dark:bg-accent-dark dark:text-green-200'
       case 'red':
-        return 'bg-red-200 text-red-800 dark:bg-red-800 dark:text-red-200'
+        return 'bg-red-200 text-red-800 dark:bg-accent-gold dark:text-red-200'
       default:
         return 'bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-gray-200'
     }

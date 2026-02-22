@@ -122,7 +122,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-red-600 dark:text-red-400 text-sm text-center"
+              className="text-accent-gold dark:text-accent-gold/80 text-sm text-center"
             >
               {error}
             </motion.div>

@@ -43,7 +43,7 @@ const AlumniSection = () => {
       <section id="alumni" className="py-20 bg-card-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
           </div>
         </div>
       </section>
@@ -115,7 +115,7 @@ const AlumniSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h3>
@@ -164,7 +164,7 @@ const AlumniSection = () => {
                                 className="w-48 h-48 mx-auto lg:mx-0 rounded-full object-cover"
                               />
                             ) : (
-                              <div className="w-48 h-48 mx-auto lg:mx-0 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
+                              <div className="w-48 h-48 mx-auto lg:mx-0 bg-gradient-to-br from-accent-main to-accent-main rounded-full flex items-center justify-center">
                                 <Users className="w-24 h-24 text-white/50" />
                               </div>
                             )}
@@ -329,7 +329,7 @@ const AlumniSection = () => {
                       className="w-16 h-16 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="w-16 h-16 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-accent-main to-accent-main rounded-full flex items-center justify-center">
                       <Users className="w-8 h-8 text-white/50" />
                     </div>
                   )}
@@ -358,7 +358,7 @@ const AlumniSection = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-r from-accent-main to-blue-600">
+      <div className="py-20 bg-gradient-to-r from-accent-main to-accent-main">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

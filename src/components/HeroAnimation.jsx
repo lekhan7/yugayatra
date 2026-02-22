@@ -608,7 +608,7 @@ const HeroAnimation = () => {
       {/* Enhanced Arrow Trail for light theme */}
       <div
         ref={trailRef}
-        className="absolute left-40 top-1/2 transform -translate-y-1/2 w-96 h-1.5 bg-gradient-to-r from-yellow-500/80 via-orange-400/80 via-amber-500/80 to-transparent will-change-transform"
+        className="absolute left-40 top-1/2 transform -translate-y-1/2 w-96 h-1.5 bg-gradient-to-r from-accent-gold/80 via-orange-400/80 via-amber-500/80 to-transparent will-change-transform"
         style={{ transformOrigin: 'left center' }}
       />
 
@@ -617,13 +617,13 @@ const HeroAnimation = () => {
         <h1 className="text-7xl md:text-9xl font-black text-gray-800 mb-4">
           <span 
             ref={yugaTextRef}
-            className="inline-block mr-3 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent will-change-transform"
+            className="inline-block mr-3 bg-gradient-to-r from-accent-dark/60 via-accent-main to-accent-gold bg-clip-text text-transparent will-change-transform"
           >
             Yuga
           </span>
           <span 
             ref={yatraTextRef}
-            className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 bg-clip-text text-transparent"
+            className="inline-block bg-gradient-to-r from-accent-main via-accent-gold to-accent-dark bg-clip-text text-transparent will-change-transform"
           >
             Yatra
           </span>
@@ -631,7 +631,9 @@ const HeroAnimation = () => {
         
         {/* Subtitle */}
         <div className="text-2xl md:text-3xl font-light text-gray-600 max-w-4xl mx-auto opacity-0 animate-fade-in-up [animation-delay:2.5s]">
-          Shaping Tomorrow's Workforce Today
+          <span className="bg-gradient-to-r from-accent-main to-accent-gold bg-clip-text text-transparent">
+            Shaping Tomorrow's Workforce Today
+          </span>
         </div>
       </div>
 
@@ -641,7 +643,7 @@ const HeroAnimation = () => {
           <div
             key={i}
             ref={el => particlesRef.current[i] = el}
-            className="moving-dot absolute bg-blue-400/60 rounded-full will-change-transform"
+            className="moving-dot absolute bg-accent-light/60/60 rounded-full will-change-transform"
             style={{
               width: `${4 + Math.random() * 4}px`,
               height: `${4 + Math.random() * 4}px`,

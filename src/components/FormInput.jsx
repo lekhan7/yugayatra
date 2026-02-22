@@ -39,7 +39,7 @@ const FormInput = ({
       </motion.div>
 
       {error ? (
-        <p id={`${id}-error`} className="mt-2 text-xs font-medium text-red-600">
+        <p id={`${id}-error`} className="mt-2 text-xs font-medium text-accent-gold">
           {error}
         </p>
       ) : null}

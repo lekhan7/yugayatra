@@ -5,7 +5,7 @@ const ApplicationsTable = ({ applications, loading, onUpdateStatus, onViewResume
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
         <div className="p-8 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main mx-auto"></div>
           <p className="mt-4 text-gray-600 dark:text-gray-400">Loading applications...</p>
         </div>
       </div>

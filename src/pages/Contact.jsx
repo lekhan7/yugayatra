@@ -75,7 +75,7 @@ const Contact = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-accent-light/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -111,13 +111,13 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-8 text-center"
+                  className="bg-accent-main/10 dark:bg-accent-dark/20 border border-accent-main/30 dark:border-accent-dark rounded-2xl p-8 text-center"
                 >
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-green-800 dark:text-green-300 mb-2">
+                  <CheckCircle className="w-16 h-16 text-accent-main mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-accent-dark dark:text-accent-light mb-2">
                     Thank You!
                   </h3>
-                  <p className="text-green-700 dark:text-green-400">
+                  <p className="text-accent-dark dark:text-accent-light">
                     Your message has been sent successfully. We'll get back to you soon.
                   </p>
                 </motion.div>
@@ -204,15 +204,15 @@ const Contact = () => {
                   </div>
 
                   {error && (
-                    <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-                      <p className="text-red-700 dark:text-red-400">{error}</p>
+                    <div className="bg-accent-gold/10 dark:bg-accent-gold/20 border border-accent-gold/30 dark:border-accent-gold rounded-lg p-4">
+                      <p className="text-accent-gold dark:text-accent-gold/80">{error}</p>
                     </div>
                   )}
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-accent-main to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-gradient-to-r from-accent-main to-accent-main text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <span>Sending...</span>
@@ -252,7 +252,7 @@ const Contact = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="flex items-start space-x-4 p-6 bg-card-bg dark:bg-card-bg/10 rounded-xl border border-border-light dark:border-white/10 hover:shadow-lg transition-shadow duration-300"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-accent-main rounded-lg flex items-center justify-center flex-shrink-0">
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -262,7 +262,7 @@ const Contact = () => {
                       {info.href.startsWith('mailto') || info.href.startsWith('tel') ? (
                         <a
                           href={info.href}
-                          className="text-accent-main dark:text-blue-300 hover:text-blue-700 transition-colors duration-200"
+                          className="text-accent-main dark:text-accent-light/40 hover:text-accent-dark transition-colors duration-200"
                         >
                           {info.content}
                         </a>
@@ -281,7 +281,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-gradient-to-r from-accent-main to-blue-600 rounded-xl p-6 text-white"
+                className="bg-gradient-to-r from-accent-main to-accent-main rounded-xl p-6 text-white"
               >
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <Clock className="w-5 h-5 mr-2" />

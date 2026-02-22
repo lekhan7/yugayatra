@@ -8,18 +8,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-main': '#EEF5FD',
-        'text-main': '#0D2545',
-        'accent-main': '#1A6EC7',
-        'text-light': '#5B6B7C',
-        'border-light': '#DCE6F2',
+        'bg-main': '#FFFFFF',
+        'text-main': '#1F2937',
+        'accent-main': '#064E3B', // Forest Green
+        'accent-dark': '#04382A', // Darker Forest Green
+        'accent-gold': '#D97706', // Gold
+        'accent-light': '#34D399',
+        'text-light': '#374151',
+        'border-light': '#E5E7EB',
         'card-bg': '#FFFFFF',
         // Legacy colors for transition
-        primary: '#EEF5FD',
-        accent: '#1A6EC7',
-        secondary: '#5B6B7C',
-        dark: '#0D2545',
-        'soft-gray': '#F7F7F7',
+        primary: '#FFFFFF',
+        accent: '#064E3B',
+        secondary: '#D97706',
+        dark: '#1F2937',
+        gold: '#D97706',
+        'soft-gray': '#F9FAFB',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
