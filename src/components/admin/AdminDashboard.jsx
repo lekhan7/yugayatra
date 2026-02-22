@@ -11,6 +11,7 @@ import ProjectsManager from './ProjectsManager'
 import AlumniManager from './AlumniManager'
 import BlogManager from './BlogManager'
 import TeamManager from './TeamManager'
+import ToastProvider from './ToastProvider'
 
 const AdminDashboard = ({ user, onLogout }) => {
   const [activeSection, setActiveSection] = useState('dashboard')
@@ -53,6 +54,7 @@ const AdminDashboard = ({ user, onLogout }) => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <ToastProvider />
       <div className="flex">
         {/* Sidebar */}
         <AdminSidebar 

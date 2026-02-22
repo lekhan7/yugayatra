@@ -23,6 +23,8 @@ const AdminLogin = ({ onLoginSuccess }) => {
     setError('')
 
     try {
+      console.log('🔐 Attempting admin login for:', formData.email)
+
       // Step 1: Authenticate with Supabase Auth
       const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
         email: formData.email,
@@ -30,15 +32,21 @@ const AdminLogin = ({ onLoginSuccess }) => {
       })
 
       if (authError) {
-        throw new Error('Invalid credentials')
+        console.error('❌ Authentication error:', authError)
+        throw new Error('Invalid email or password')
       }
+
+      console.log('✅ Authentication successful:', authData.user?.email)
 
       // Step 2: Get the authenticated user
       const { data: { user }, error: userError } = await supabase.auth.getUser()
       
       if (userError || !user) {
+        console.error('❌ User retrieval error:', userError)
         throw new Error('Authentication failed')
       }
+
+      console.log('✅ User retrieved:', user.email)
 
       // Step 3: Check if user email exists in admins table
       const { data: adminData, error: adminError } = await supabase
@@ -48,17 +56,24 @@ const AdminLogin = ({ onLoginSuccess }) => {
         .maybeSingle()
 
       if (adminError) {
-        throw new Error('Database error')
+        console.error('❌ Admin check error:', adminError)
+        throw new Error('Database error during admin verification')
       }
 
       if (!adminData) {
+        console.error('❌ Access denied for:', user.email)
+        // Sign out the user since they don't have admin privileges
+        await supabase.auth.signOut()
         throw new Error('Access Denied. Admin privileges required.')
       }
+
+      console.log('✅ Admin access verified for:', user.email)
 
       // Step 4: Login successful - notify parent component
       onLoginSuccess(user)
 
     } catch (err) {
+      console.error('💥 Login failed:', err.message)
       setError(err.message)
     } finally {
       setLoading(false)
