@@ -93,7 +93,7 @@ const ServicesSection = () => {
                   whileHover={{ y: -5 }}
                   className="group"
                 >
-                  <div className="bg-card-bg rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light group-hover:scale-105">
+                  <div className="bg-card-bg rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light group-hover:scale-105 flex flex-col">
                     <div className={`w-16 h-16 bg-gradient-to-r ${service.icon_bg_color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       {React.createElement(getIcon(service.icon_name), { className: "w-8 h-8 text-white" })}
                     </div>
@@ -124,8 +124,12 @@ const ServicesSection = () => {
                       ))}
                     </div>
 
+<<<<<<< HEAD
                     <div className="flex items-center justify-between gap-4">
                      
+=======
+                    <div className="mt-auto flex justify-center">
+>>>>>>> a77f62b6a1ca117ea3663ea04ff887e8eb67b7e0
                       {service.apply_enabled && (
                         <button
                           type="button"
@@ -133,7 +137,7 @@ const ServicesSection = () => {
                             const encodedRole = encodeURIComponent(service.title)
                             navigate(`/internship/apply/${encodedRole}`)
                           }}
-                          className="px-4 py-2 rounded-lg bg-gradient-to-r from-accent-main to-blue-600 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
+                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-blue-600 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
                         >
                           Apply
                         </button>
