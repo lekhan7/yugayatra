@@ -280,3 +280,338 @@ export const toggleServiceActive = async (id, isActive) => {
   if (error) throw error
   return data
 }
+
+// Alumni functions
+export const getAlumni = async () => {
+  const { data, error } = await supabase
+    .from('alumni')
+    .select('*')
+    .eq('is_active', true)
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+// Admin alumni CRUD functions
+export const getAllAlumni = async () => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .select('*')
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+export const createAlumni = async (alumniData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .insert([alumniData])
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const updateAlumni = async (id, alumniData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .update(alumniData)
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const deleteAlumni = async (id) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .delete()
+    .eq('id', id)
+  
+  if (error) throw error
+  return data
+}
+
+export const toggleAlumniActive = async (id, isActive) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .update({ is_active: isActive })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+// Blog functions
+export const getBlogPosts = async () => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('is_active', true)
+    .order('published_at', { ascending: false })
+  
+  if (error) throw error
+  return data
+}
+
+export const getBlogPostBySlug = async (slug) => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('slug', slug)
+    .eq('is_active', true)
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const getFeaturedBlogPosts = async () => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('is_active', true)
+    .eq('is_featured', true)
+    .order('published_at', { ascending: false })
+    .limit(3)
+  
+  if (error) throw error
+  return data
+}
+
+export const getBlogPostsByCategory = async (category) => {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('is_active', true)
+    .eq('category', category)
+    .order('published_at', { ascending: false })
+  
+  if (error) throw error
+  return data
+}
+
+// Admin blog CRUD functions
+export const getAllBlogPosts = async () => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .order('created_at', { ascending: false })
+  
+  if (error) throw error
+  return data
+}
+
+export const createBlogPost = async (blogData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .insert([blogData])
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const updateBlogPost = async (id, blogData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .update(blogData)
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const deleteBlogPost = async (id) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .delete()
+    .eq('id', id)
+  
+  if (error) throw error
+  return data
+}
+
+export const toggleBlogPostActive = async (id, isActive) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .update({ is_active: isActive })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const toggleBlogPostFeatured = async (id, isFeatured) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .update({ is_featured: isFeatured })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+// Blog image upload functions
+export const uploadBlogImage = async (file) => {
+  const fileExt = file.name.split('.').pop()
+  const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`
+  const filePath = fileName
+
+  const { data, error } = await supabase.storage
+    .from('blog-images')
+    .upload(filePath, file)
+
+  if (error) throw error
+
+  // Generate public URL
+  const { data: publicUrlData } = supabase
+    .storage
+    .from('blog-images')
+    .getPublicUrl(filePath)
+
+  return {
+    path: filePath,
+    fileName: fileName,
+    publicUrl: publicUrlData.publicUrl
+  }
+}
+
+export const deleteBlogImage = async (filePath) => {
+  const { data, error } = await supabase.storage
+    .from('blog-images')
+    .remove([filePath])
+
+  if (error) throw error
+  return data
+}
+
+// Team members functions
+export const getTeamMembers = async () => {
+  const { data, error } = await supabase
+    .from('team_members')
+    .select('*')
+    .eq('is_active', true)
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+// Admin team CRUD functions
+export const getAllTeamMembers = async () => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .select('*')
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+export const createTeamMember = async (memberData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .insert([memberData])
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const updateTeamMember = async (id, memberData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .update(memberData)
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const deleteTeamMember = async (id) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .delete()
+    .eq('id', id)
+  
+  if (error) throw error
+  return data
+}
+
+export const toggleTeamMemberActive = async (id, isActive) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .update({ is_active: isActive })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}

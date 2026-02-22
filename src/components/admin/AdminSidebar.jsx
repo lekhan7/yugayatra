@@ -6,10 +6,13 @@ import {
   MessageSquare, 
   Briefcase,
   Globe,
+  GraduationCap,
   Menu,
   X,
   LogOut,
-  User
+  User,
+  PenTool,
+  UserPlus
 } from 'lucide-react'
 
 const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
@@ -22,6 +25,9 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
     { id: 'testimonials', label: 'Testimonials', icon: MessageSquare },
     { id: 'services', label: 'Services', icon: Briefcase },
     { id: 'projects', label: 'Projects', icon: Globe },
+    { id: 'alumni', label: 'Alumni', icon: GraduationCap },
+    { id: 'team', label: 'Team', icon: UserPlus },
+    { id: 'blog', label: 'Blog & Insights', icon: PenTool },
   ]
 
   return (

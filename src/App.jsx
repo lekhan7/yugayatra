@@ -4,11 +4,15 @@ import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollProgressBar from './components/ScrollProgressBar'
 import { Route, Routes, useLocation } from 'react-router-dom'
+import NotificationProvider from './context/NotificationContext'
 
 // Import pages
 import Home from './pages/Home'
 import InternshipApply from './pages/InternshipApply'
 import Admin from './pages/Admin'
+import Legal from './pages/Legal'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 
 function App() {
   const location = useLocation()
@@ -19,7 +23,11 @@ function App() {
       {!isAdminPage && <Navbar />}
       {!isAdminPage && <ScrollProgressBar />}
       <Routes>
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={
+          <NotificationProvider>
+            <Admin />
+          </NotificationProvider>
+        } />
         <Route path="/" element={
           <>
             <motion.div
@@ -50,6 +58,37 @@ function App() {
             >
               <InternshipApply />
             </motion.div>
+        } />
+        <Route path="/legal" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Legal />
+          </motion.div>
+        } />
+        <Route path="/blog" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Blog />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/blog/:slug" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <BlogPost />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
         } />
       </Routes>
     </div>

@@ -17,6 +17,12 @@ const HeroAnimation = () => {
   const [soundEnabled, setSoundEnabled] = useState(false)
 
   useEffect(() => {
+    // Check if GSAP is available
+    if (typeof gsap === 'undefined') {
+      console.log('GSAP not loaded')
+      return
+    }
+
     const tl = gsap.timeline({
       defaults: { ease: "power2.inOut" }
     })
@@ -47,22 +53,38 @@ const HeroAnimation = () => {
     }
 
     // Initial setup - hide Yuga text initially
-    gsap.set(yugaTextRef.current, { opacity: 0, scale: 0.8 })
-    gsap.set(yatraTextRef.current, { opacity: 1, scale: 1 })
-    gsap.set(bowRef.current, { x: -100, opacity: 0 })
-    gsap.set(arrowRef.current, { x: -100, opacity: 0 })
-    gsap.set(stringRef.current, { opacity: 0 })
-    gsap.set(trailRef.current, { opacity: 0 })
-    gsap.set(glowTrailRef.current, { opacity: 0 })
+    if (yugaTextRef.current) {
+      gsap.set(yugaTextRef.current, { opacity: 0, scale: 0.8 })
+    }
+    if (yatraTextRef.current) {
+      gsap.set(yatraTextRef.current, { opacity: 1, scale: 1 })
+    }
+    if (bowRef.current) {
+      gsap.set(bowRef.current, { x: -100, opacity: 0 })
+    }
+    if (arrowRef.current) {
+      gsap.set(arrowRef.current, { x: -100, opacity: 0 })
+    }
+    if (stringRef.current) {
+      gsap.set(stringRef.current, { opacity: 0 })
+    }
+    if (trailRef.current) {
+      gsap.set(trailRef.current, { opacity: 0 })
+    }
+    if (glowTrailRef.current) {
+      gsap.set(glowTrailRef.current, { opacity: 0 })
+    }
     
     // Setup particles
     particlesRef.current.forEach((particle, i) => {
-      gsap.set(particle, {
-        opacity: 0,
-        scale: 0,
-        x: Math.random() * 100 - 50,
-        y: Math.random() * 100 - 50
-      })
+      if (particle) {
+        gsap.set(particle, {
+          opacity: 0,
+          scale: 0,
+          x: Math.random() * 100 - 50,
+          y: Math.random() * 100 - 50
+        })
+      }
     })
 
     // Animation sequence with enhanced bow and arrow movements
@@ -117,33 +139,39 @@ const HeroAnimation = () => {
       onStart: () => {
         playArrowSound()
         // Create enhanced glowing trail effect
-        gsap.to(trailRef.current, {
-          opacity: 0.9,
-          scaleX: 1.2,
-          scaleY: 1.5,
-          duration: 0.4,
-          ease: "power2.out"
-        })
-        gsap.to(glowTrailRef.current, {
-          opacity: 0.7,
-          scaleX: 1.3,
-          scaleY: 2,
-          duration: 0.4,
-          ease: "power2.out"
-        })
+        if (trailRef.current) {
+          gsap.to(trailRef.current, {
+            opacity: 0.9,
+            scaleX: 1.2,
+            scaleY: 1.5,
+            duration: 0.4,
+            ease: "power2.out"
+          })
+        }
+        if (glowTrailRef.current) {
+          gsap.to(glowTrailRef.current, {
+            opacity: 0.7,
+            scaleX: 1.3,
+            scaleY: 2,
+            duration: 0.4,
+            ease: "power2.out"
+          })
+        }
         // Animate particles with more dynamic movement
         particlesRef.current.forEach((particle, i) => {
-          const angle = (Math.PI * 2 * i) / particlesRef.current.length
-          const distance = 100 + Math.random() * 150
-          gsap.to(particle, {
-            opacity: 0.8,
-            scale: 1.2,
-            x: Math.cos(angle) * distance,
-            y: Math.sin(angle) * distance,
-            duration: 1.2 + Math.random() * 0.6,
-            ease: "power2.out",
-            delay: i * 0.03
-          })
+          if (particle) {
+            const angle = (Math.PI * 2 * i) / particlesRef.current.length
+            const distance = 100 + Math.random() * 150
+            gsap.to(particle, {
+              opacity: 0.8,
+              scale: 1.2,
+              x: Math.cos(angle) * distance,
+              y: Math.sin(angle) * distance,
+              duration: 1.2 + Math.random() * 0.6,
+              ease: "power2.out",
+              delay: i * 0.03
+            })
+          }
         })
       }
     })
@@ -612,6 +640,7 @@ const HeroAnimation = () => {
         {[...Array(120)].map((_, i) => (
           <div
             key={i}
+            ref={el => particlesRef.current[i] = el}
             className="moving-dot absolute bg-blue-400/60 rounded-full will-change-transform"
             style={{
               width: `${4 + Math.random() * 4}px`,

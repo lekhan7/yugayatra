@@ -11,9 +11,10 @@ import ProjectsSection from '../components/sections/ProjectsSection'
 import AlumniSection from '../components/sections/AlumniSection'
 import TestimonialsSection from '../components/sections/TestimonialsSection'
 import BlogSection from '../components/sections/BlogSection'
-import CareersSection from '../components/sections/CareersSection'
-import ProfileSection from '../components/sections/ProfileSection'
+import TeamSection from '../components/sections/TeamSection'
 import ContactSection from '../components/sections/ContactSection'
+import QuizSection from '../components/sections/QuizSection'
+import FAQSection from '../components/sections/FAQSection'
 
 const Home = () => {
   return (
@@ -42,17 +43,20 @@ const Home = () => {
       {/* Alumni Section */}
       <AlumniSection />
 
+      {/* Team Section */}
+      <TeamSection />
+
       {/* Testimonials Section */}
       <TestimonialsSection />
 
       {/* Blog Section */}
       <BlogSection />
 
-      {/* Careers Section */}
-      <CareersSection />
+      {/* Quiz Section */}
+      <QuizSection />
 
-      {/* Profile Section */}
-      <ProfileSection />
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Contact Section */}
       <ContactSection />

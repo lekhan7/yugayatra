@@ -1,66 +1,29 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Users, Star, Calendar, MapPin, ExternalLink, ChevronLeft, ChevronRight, Quote, Award, Building } from 'lucide-react'
+import { getAlumni } from '../../services/supabase'
 
 const AlumniSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [alumni, setAlumni] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const alumni = [
-    {
-      id: 1,
-      name: 'Ganesh Lagad',
-      role: 'Full Stack Developer',
-      company: 'Tech Solutions Inc.',
-      location: 'Bangalore, India',
-      image: '/api/placeholder/300/300',
-      batch: '2024',
-      quote: 'YugaYatra Retail (OPC) Pvt Ltd provided me with the perfect platform to transition from learning to real-world application. The mentorship and hands-on projects were invaluable.',
-      achievements: [
-        'Led development of 5+ enterprise applications',
-        'Mentored 20+ junior developers',
-        'Published technical articles on Medium'
-      ],
-      skills: ['React', 'Node.js', 'MongoDB', 'AWS', 'TypeScript'],
-      linkedin: '#',
-      github: '#'
-    },
-    {
-      id: 2,
-      name: 'Aashritha Reddy',
-      role: 'Digital Marketing Manager',
-      company: 'Growth Labs',
-      location: 'Hyderabad, India',
-      image: '/api/placeholder/300/300',
-      batch: '2024',
-      quote: 'The digital marketing program at YugaYatra Retail (OPC) Pvt Ltd gave me practical skills that I could immediately apply. The industry connections I made were crucial for my career.',
-      achievements: [
-        'Increased brand engagement by 150%',
-        'Managed $500K+ ad spend budget',
-        'Won Digital Marketing Excellence Award 2024'
-      ],
-      skills: ['SEO', 'Google Ads', 'Social Media', 'Analytics', 'Content Strategy'],
-      linkedin: '#',
-      github: '#'
-    },
-    {
-      id: 3,
-      name: 'Samyuktha Nakirikanti',
-      role: 'UX/UI Designer',
-      company: 'Design Studio Pro',
-      location: 'Pune, India',
-      image: '/api/placeholder/300/300',
-      batch: '2024',
-      quote: 'The design training at YugaYatra Retail (OPC) Pvt Ltd was comprehensive and industry-relevant. I learned not just tools, but the thinking process behind great design.',
-      achievements: [
-        'Designed 15+ mobile applications',
-        'Improved user conversion by 40%',
-        'Featured in Design Weekly Magazine'
-      ],
-      skills: ['Figma', 'Adobe XD', 'Prototyping', 'User Research', 'Design Systems'],
-      linkedin: '#',
-      github: '#'
+  useEffect(() => {
+    fetchAlumni()
+  }, [])
+
+  const fetchAlumni = async () => {
+    try {
+      const data = await getAlumni()
+      setAlumni(data)
+    } catch (error) {
+      console.error('Error fetching alumni:', error)
+      // Fallback to empty array if there's an error
+      setAlumni([])
+    } finally {
+      setLoading(false)
     }
-  ]
+  }
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % alumni.length)
@@ -72,6 +35,49 @@ const AlumniSection = () => {
 
   const goToSlide = (index) => {
     setCurrentIndex(index)
+  }
+
+  // Handle loading state
+  if (loading) {
+    return (
+      <section id="alumni" className="py-20 bg-card-bg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Handle empty state
+  if (alumni.length === 0) {
+    return (
+      <section id="alumni" className="py-20 bg-card-bg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
+              Our <span className="gradient-text">Alumni</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+              Success stories from our talented graduates who are making waves in the industry
+            </p>
+          </motion.div>
+          <div className="text-center py-12">
+            <Users className="mx-auto text-gray-400 mb-4" size={48} />
+            <p className="text-gray-500 dark:text-gray-400">No alumni featured yet</p>
+            <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
+              Check back soon to see success stories from our graduates
+            </p>
+          </div>
+        </div>
+      </section>
+    )
   }
 
   return (
@@ -151,9 +157,17 @@ const AlumniSection = () => {
                         {/* Left Column - Image and Basic Info */}
                         <div className="text-center lg:text-left">
                           <div className="relative mb-6">
-                            <div className="w-48 h-48 mx-auto lg:mx-0 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
-                              <Users className="w-24 h-24 text-white/50" />
-                            </div>
+                            {person.image ? (
+                              <img
+                                src={person.image}
+                                alt={person.name}
+                                className="w-48 h-48 mx-auto lg:mx-0 rounded-full object-cover"
+                              />
+                            ) : (
+                              <div className="w-48 h-48 mx-auto lg:mx-0 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
+                                <Users className="w-24 h-24 text-white/50" />
+                              </div>
+                            )}
                             <div className="absolute bottom-0 right-0 lg:right-0 lg:bottom-0 bg-accent-main text-white px-3 py-1 rounded-full text-xs font-medium">
                               Batch {person.batch}
                             </div>
@@ -177,18 +191,26 @@ const AlumniSection = () => {
                           </div>
 
                           <div className="flex space-x-3 justify-center lg:justify-start">
-                            <a
-                              href={person.linkedin}
-                              className="p-2 bg-bg-main text-accent-main rounded-lg border border-border-light hover:bg-card-bg transition-colors duration-200"
-                            >
-                              <Users className="w-5 h-5" />
-                            </a>
-                            <a
-                              href={person.github}
-                              className="p-2 bg-bg-main text-text-light rounded-lg border border-border-light hover:bg-card-bg transition-colors duration-200"
-                            >
-                              <ExternalLink className="w-5 h-5" />
-                            </a>
+                            {person.linkedin && (
+                              <a
+                                href={person.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 bg-bg-main text-accent-main rounded-lg border border-border-light hover:bg-card-bg transition-colors duration-200"
+                              >
+                                <Users className="w-5 h-5" />
+                              </a>
+                            )}
+                            {person.github && (
+                              <a
+                                href={person.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 bg-bg-main text-text-light rounded-lg border border-border-light hover:bg-card-bg transition-colors duration-200"
+                              >
+                                <ExternalLink className="w-5 h-5" />
+                              </a>
+                            )}
                           </div>
                         </div>
 
@@ -300,9 +322,17 @@ const AlumniSection = () => {
                 className="bg-card-bg dark:bg-card-bg/10 rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-border-light dark:border-white/10"
               >
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
-                    <Users className="w-8 h-8 text-white/50" />
-                  </div>
+                  {person.image ? (
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      className="w-16 h-16 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-16 h-16 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
+                      <Users className="w-8 h-8 text-white/50" />
+                    </div>
+                  )}
                   <div>
                     <h3 className="text-lg font-bold text-text-main dark:text-white">
                       {person.name}

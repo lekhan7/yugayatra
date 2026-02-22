@@ -56,7 +56,7 @@ const Services = () => {
     fetchServices()
   }, [])
 
-  const displayedServices = showAll ? services : services.slice(0, 3)
+  const displayedServices = showAll ? services : services.slice(0, 6)
 
   return (
     <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
@@ -101,7 +101,7 @@ const Services = () => {
                     whileHover={{ y: -5, scale: 1.02 }}
                     className="group"
                   >
-                    <div className="bg-card-bg dark:bg-card-bg/10 rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10 hover:border-border-light">
+                    <div className="bg-card-bg dark:bg-card-bg/10 rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10 hover:border-border-light flex flex-col">
                       <div className={`w-16 h-16 bg-gradient-to-r ${service.icon_bg_color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                         {React.createElement(getIcon(service.icon_name), { className: "w-8 h-8 text-white" })}
                       </div>
@@ -132,17 +132,25 @@ const Services = () => {
                         ))}
                       </div>
 
-                      <button className="text-accent-main dark:text-blue-300 font-semibold flex items-center group-hover:text-blue-700 transition-colors duration-200">
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                      </button>
+                      <div className="mt-auto flex justify-center">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const encodedRole = encodeURIComponent(service.title)
+                            window.location.href = `/internship/apply/${encodedRole}`
+                          }}
+                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-blue-600 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
+                        >
+                          Apply
+                        </button>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
               </div>
 
               {/* Show More Button */}
-              {services.length > 3 && (
+              {services.length > 6 && (
                 <div className="text-center mt-12">
                   <motion.button
                     whileHover={{ scale: 1.05 }}

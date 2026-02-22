@@ -238,47 +238,7 @@ const About = () => {
       </section>
 
       {/* Legal Information */}
-      <section className="py-20 bg-card-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-text-main mb-4">
-              Legal Information
-            </h2>
-            <p className="text-xl text-text-light">
-              Fully compliant and registered company
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {legalInfo.map((info, index) => (
-              <motion.div
-                key={info.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-bg-main rounded-xl p-6 border border-border-light"
-              >
-                <div className="flex items-start space-x-3">
-                  <FileText className="w-5 h-5 text-accent-main mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-text-main mb-1">
-                      {info.label}
-                    </h4>
-                    <p className="text-text-light font-mono text-sm">
-                      {info.value}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+ 
 
       {/* Timeline */}
       <section className="py-20 bg-bg-main">
