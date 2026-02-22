@@ -12,7 +12,8 @@ import {
   LogOut,
   User,
   PenTool,
-  UserPlus
+  UserPlus,
+  Send
 } from 'lucide-react'
 
 const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
@@ -21,6 +22,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'applications', label: 'Applications', icon: Users },
+    { id: 'project-requests', label: 'Project Requests', icon: Send },
     { id: 'content', label: 'Content Manager', icon: FileText },
     { id: 'testimonials', label: 'Testimonials', icon: MessageSquare },
     { id: 'services', label: 'Services', icon: Briefcase },

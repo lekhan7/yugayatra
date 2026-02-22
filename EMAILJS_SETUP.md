@@ -1,7 +1,9 @@
 # EmailJS Email Integration Setup
 
 ## Overview
-This application now includes automatic email sending functionality when an admin accepts an internship application using EmailJS service.
+This application now includes automatic email sending functionality for:
+- Internship application approvals using EmailJS service
+- Project request approvals using EmailJS service
 
 ## Environment Variables
 Add the following environment variables to your `.env` file:
@@ -17,20 +19,19 @@ VITE_EMAILJS_TEMPLATE_ID=template_dbhoswn
 1. Go to [EmailJS](https://www.emailjs.com/)
 2. Sign up for a FREE account
 3. Create an Email Service with ID: `service_wf6euii`
-4. Create an Email Template with ID: `template_dbhoswn`
+4. Create Email Templates (see templates below)
 5. Copy your Public Key from the dashboard
 6. Replace the placeholder values in your `.env` file
 
 ## Email Functionality
 
-### When Accept Button is Clicked:
-1. ✅ Application status is updated to 'accepted' in Supabase
-2. ✅ Email is sent using EmailJS FREE plan directly to applicant
-3. ✅ Success toast message is shown
+### Internship Applications:
+- **Accept Button**: Updates status to 'accepted' + sends email to applicant
+- **Reject Button**: Updates status to 'rejected' (no email sent)
 
-### When Reject Button is Clicked:
-1. ✅ Application status is updated to 'rejected' in Supabase
-2. ❌ NO email is sent (as requested)
+### Project Requests:
+- **Accept Button**: Updates status to 'accepted' + sends email to client
+- **Reject Button**: Updates status to 'rejected' (no email sent)
 
 ## How It Works
 
@@ -43,12 +44,11 @@ VITE_EMAILJS_TEMPLATE_ID=template_dbhoswn
 ### Email Delivery:
 - Email is sent directly to the address specified in template parameters
 - No CC fields or PRO features required
-- Direct delivery to applicant's email address
+- Direct delivery to recipient's email address
 
 ## Email Template Setup
 
-### EmailJS Template Content:
-Create an EmailJS template with the following content and variables:
+### Template 1: Internship Acceptance
 
 **Subject:**
 ```
@@ -65,20 +65,68 @@ Best regards,
 Team YugaYatra
 ```
 
-**Important Template Variables:**
-- `{{fullName}}` - Will be replaced with applicant's full name
-- `{{role}}` - Will be replaced with the internship role
-- `{{email}}` - Will be replaced with applicant's email (if needed in template)
+**Template Variables:**
+- `{{fullName}}` - Applicant's full name
+- `{{role}}` - Internship role
+- `{{email}}` - Applicant's email (if needed in template)
 
-### Template Variable Mapping:
-The code sends these parameters to EmailJS:
+### Template 2: Project Request Acceptance
+
+**Subject:**
+```
+Great News! Your Project Request Has Been Approved
+```
+
+**Email Body:**
+```
+Hi {{name}},
+
+We're thrilled to inform you that your project request "{{project_name}}" has been reviewed and approved!
+
+Project Details:
+- Title: {{project_name}}
+- Description: {{project_description}}
+- Budget Range: {{budget_range}}
+- Timeline: {{timeline}}
+- Contact: {{phone}}
+
+Our team is excited to work with you on this project. We'll be in touch soon to discuss the next steps and schedule a consultation call.
+
+Thank you for choosing YugaYatra for your project!
+
+Best regards,
+Team YugaYatra
+```
+
+**Template Variables:**
+- `{{name}}` - Client's full name
+- `{{email}}` - Client's email
+- `{{project_name}}` - Project title
+- `{{project_description}}` - Project description
+- `{{phone}}` - Client's phone number
+- `{{budget_range}}` - Budget range
+- `{{timeline}}` - Expected timeline
+
+## Template Parameter Mapping
+
+### Internship Applications:
 - `fullName` → `{{fullName}}` in template
 - `role` → `{{role}}` in template  
 - `email` → `{{email}}` in template
 - `subject` → Email subject line
 
+### Project Requests:
+- `name` → `{{name}}` in template
+- `email` → `{{email}}` in template
+- `project_name` → `{{project_name}}` in template
+- `project_description` → `{{project_description}}` in template
+- `phone` → `{{phone}}` in template
+- `budget_range` → `{{budget_range}}` in template
+- `timeline` → `{{timeline}}` in template
+- `subject` → Email subject line
+
 ## Error Handling
-- If email sending fails, application status is still updated
+- If email sending fails, application/request status is still updated
 - Warning toast is shown for email failures
 - Detailed error logging for debugging
 
@@ -90,31 +138,31 @@ The code sends these parameters to EmailJS:
 ## Testing
 To test the functionality:
 1. Ensure you have valid EmailJS credentials
-2. Create a test application or use existing one
+2. Create a test application/project request
 3. Click "Accept" button
 4. Check browser console for logs
-5. Verify email is received by applicant
+5. Verify email is received by recipient
 
 ## Troubleshooting
 
-### If emails show `${fullName}` instead of actual name:
-1. **Check Template Variables**: Ensure your EmailJS template uses `{{fullName}}` not `${fullName}`
-2. **Verify Parameter Names**: The code sends `fullName` parameter, template should use `{{fullName}}`
+### If emails show variable names instead of actual values:
+1. **Check Template Variables**: Ensure your EmailJS template uses `{{variableName}}` not `${variableName}`
+2. **Verify Parameter Names**: The code sends specific parameter names, template should use matching `{{parameterName}}`
 3. **Check Template Setup**: Follow the "Email Template Setup" section above exactly
-4. **Test Parameters**: Check browser console for "🧪 Testing email parameters" logs
+4. **Test Parameters**: Check browser console for parameter logs
 
-### If emails aren't reaching applicants:
+### If emails aren't reaching recipients:
 1. **Check Credentials**: Verify your EmailJS service ID, template ID, and public key
 2. **Check Console**: Look for error messages in browser console
-3. **Check Spam**: Applicant should check spam/junk folders
-4. **Verify Email**: Ensure applicant's email address is correct
+3. **Check Spam**: Recipients should check spam/junk folders
+4. **Verify Email**: Ensure recipient's email address is correct
 
 ### Common Issues:
 - **Invalid Credentials**: Double-check your EmailJS setup
 - **Template Not Found**: Ensure template ID is correct
 - **Variable Mismatch**: Template variables must match parameter names exactly
 - **Rate Limiting**: EmailJS has generous free tier limits
-- **Spam Filters**: Ask applicants to check spam folders
+- **Spam Filters**: Ask recipients to check spam folders
 
 ## Request Format
 The implementation uses the following EmailJS API format:

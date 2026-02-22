@@ -4,6 +4,7 @@ import { supabase } from '../../services/supabase'
 import AdminSidebar from './AdminSidebar'
 import Dashboard from './Dashboard'
 import AdminApplications from './AdminApplications'
+import ProjectRequestsManager from './ProjectRequestsManager'
 import ContentManager from './ContentManager'
 import TestimonialsManager from './TestimonialsManager'
 import ServicesManager from './ServicesManager'
@@ -32,6 +33,8 @@ const AdminDashboard = ({ user, onLogout }) => {
         return <Dashboard />
       case 'applications':
         return <AdminApplications />
+      case 'project-requests':
+        return <ProjectRequestsManager />
       case 'content':
         return <ContentManager />
       case 'testimonials':

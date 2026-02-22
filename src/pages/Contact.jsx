@@ -11,7 +11,8 @@ const Contact = () => {
     email: '',
     phone: '',
     company: '',
-    message: ''
+    message: '',
+    botcheck: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -30,16 +31,35 @@ const Contact = () => {
     setError('')
 
     try {
-      // Simulate form submission - replace with actual Supabase integration
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      setIsSubmitted(true)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: ''
+      const web3FormData = new FormData()
+      web3FormData.append('access_key', import.meta.env.VITE_WEB3FORMS_ACCESS_KEY)
+      web3FormData.append('name', formData.name)
+      web3FormData.append('email', formData.email)
+      web3FormData.append('phone', formData.phone)
+      web3FormData.append('company', formData.company)
+      web3FormData.append('message', formData.message)
+      web3FormData.append('botcheck', formData.botcheck)
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: web3FormData
       })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setIsSubmitted(true)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+          botcheck: ''
+        })
+      } else {
+        setError('Failed to submit form. Please try again.')
+      }
     } catch (err) {
       setError('Failed to submit form. Please try again.')
       console.error('Error submitting form:', err)
@@ -223,6 +243,16 @@ const Contact = () => {
                       </>
                     )}
                   </button>
+
+                  {/* Honeypot Spam Protection */}
+                  <input
+                    type="checkbox"
+                    name="botcheck"
+                    className="hidden"
+                    style={{ display: 'none' }}
+                    checked={formData.botcheck}
+                    onChange={(e) => setFormData({ ...formData, botcheck: e.target.checked })}
+                  />
                 </form>
               )}
             </motion.div>

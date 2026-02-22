@@ -615,3 +615,61 @@ export const toggleTeamMemberActive = async (id, isActive) => {
   if (error) throw error
   return data
 }
+
+// Project requests functions
+export const submitProjectRequest = async (requestData) => {
+  const { data, error } = await supabase
+    .from('project_requests')
+    .insert([requestData])
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const getProjectRequests = async () => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('project_requests')
+    .select('*')
+    .order('created_at', { ascending: false })
+  
+  if (error) throw error
+  return data
+}
+
+export const updateProjectRequestStatus = async (id, status, adminNotes = null) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const updateData = { status }
+  if (adminNotes !== null) {
+    updateData.admin_notes = adminNotes
+  }
+  
+  const { data, error } = await supabase
+    .from('project_requests')
+    .update(updateData)
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const deleteProjectRequest = async (id) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('project_requests')
+    .delete()
+    .eq('id', id)
+  
+  if (error) throw error
+  return data
+}
