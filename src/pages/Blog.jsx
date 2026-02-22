@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { Search, Calendar, User, Tag, Clock, ArrowRight, Filter } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 import { getBlogPosts, getBlogPostsByCategory } from '../services/supabase'
 
@@ -71,7 +70,7 @@ const Blog = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-mint-50 to-mint-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -79,10 +78,10 @@ const Blog = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold" style={{color: '#0D3D2B'}}>
               Blog & <span className="text-accent-main">Insights</span>
             </h1>
-            <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-text-main max-w-3xl mx-auto">
               Latest news, trends, and insights from our team of experts
             </p>
           </motion.div>
@@ -95,19 +94,19 @@ const Blog = () => {
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search Bar */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-light w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-main w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white"
+                className="w-full pl-10 pr-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main"
               />
             </div>
 
             {/* Category Filter */}
             <div className="flex items-center space-x-2">
-              <Filter className="w-5 h-5 text-text-light dark:text-white/70" />
+              <Filter className="w-5 h-5 text-text-main" />
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <button
@@ -133,7 +132,7 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
             </div>
           ) : (
             <>
@@ -148,7 +147,7 @@ const Blog = () => {
                     className="bg-card-bg dark:bg-card-bg/10 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10"
                   >
                     {/* Post Image */}
-                    <div className="h-48 bg-gradient-to-br from-accent-main to-blue-600 relative">
+                    <div className="h-48 bg-gradient-to-br from-accent-main to-mint-200 relative">
                       {post.featured_image ? (
                         <img 
                           src={post.featured_image} 
@@ -172,7 +171,7 @@ const Blog = () => {
 
                     {/* Post Content */}
                     <div className="p-6">
-                      <div className="flex items-center text-sm text-text-light dark:text-white/70 mb-3">
+                      <div className="flex items-center text-sm text-text-main mb-3">
                         <Calendar className="w-4 h-4 mr-1" />
                         <span>{new Date(post.published_at || post.created_at).toLocaleDateString()}</span>
                         <span className="mx-2">•</span>
@@ -180,11 +179,11 @@ const Blog = () => {
                         <span>{post.read_time || 5} min read</span>
                       </div>
 
-                      <h3 className="text-xl font-bold text-text-main dark:text-white mb-3 line-clamp-2">
+                      <h3 className="text-xl font-bold text-text-main mb-3 line-clamp-2">
                         {post.title}
                       </h3>
 
-                      <p className="text-text-light dark:text-white/70 mb-4 line-clamp-3">
+                      <p className="text-text-main mb-4 line-clamp-3">
                         {post.excerpt || 'Read more about this topic...'}
                       </p>
 
@@ -192,7 +191,7 @@ const Blog = () => {
                         {post.tags && post.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
-                            className="bg-bg-main text-text-light px-2 py-1 rounded-full text-xs font-medium border border-border-light dark:bg-card-bg/10 dark:text-white/70 dark:border-white/10"
+                            className="bg-bg-main text-text-main px-2 py-1 rounded-full text-xs font-medium border border-border-light dark:bg-card-bg/10 text-text-main dark:border-white/10"
                           >
                             #{tag}
                           </span>
@@ -200,14 +199,14 @@ const Blog = () => {
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center text-sm text-text-light dark:text-white/70">
+                        <div className="flex items-center text-sm text-text-main">
                           <User className="w-4 h-4 mr-1" />
                           <span>{post.author}</span>
                         </div>
 
                         <button 
                           onClick={() => shareOnLinkedIn()}
-                          className="text-accent-main dark:text-blue-300 font-semibold flex items-center hover:text-blue-700 transition-colors duration-200"
+                          className="text-accent-main dark:text-mint-300 font-semibold flex items-center hover:text-mint-700 transition-colors duration-200"
                         >
                           Read More
                           <ArrowRight className="w-4 h-4 ml-1" />
@@ -224,11 +223,11 @@ const Blog = () => {
                   animate={{ opacity: 1 }}
                   className="text-center py-12"
                 >
-                  <div className="text-text-light text-6xl mb-4">🔍</div>
-                  <h3 className="text-xl font-semibold text-text-main dark:text-white mb-2">
+                  <div className="text-text-main text-6xl mb-4">🔍</div>
+                  <h3 className="text-xl font-semibold text-text-main mb-2">
                     No articles found
                   </h3>
-                  <p className="text-text-light dark:text-white/70">
+                  <p className="text-text-main">
                     Try adjusting your search or filter criteria
                   </p>
                 </motion.div>
@@ -246,19 +245,19 @@ const Blog = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-text-main mb-4">
               Stay Updated
             </h2>
-            <p className="text-xl text-text-light dark:text-white/70 mb-8">
+            <p className="text-xl text-text-main mb-8">
               Subscribe to our newsletter for the latest insights and updates
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white"
+                className="flex-1 px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main"
               />
-              <button className="bg-accent-main text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
+              <button className="bg-accent-main text-text-main px-6 py-3 rounded-lg font-semibold hover:bg-mint-300 transition-colors duration-300">
                 Subscribe
               </button>
             </div>
@@ -266,7 +265,6 @@ const Blog = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

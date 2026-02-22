@@ -253,7 +253,7 @@ const ProjectRequestModal = ({ isOpen, onClose }) => {
                           rows={field.rows || 3}
                           required={field.required}
                           disabled={isSubmitting}
-                          className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white placeholder-gray-400 disabled:opacity-50"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-olive-300 focus:border-transparent dark:bg-gray-700 dark:text-white placeholder-gray-400 disabled:opacity-50"
                         />
                       ) : field.type === 'select' ? (
                         <select
@@ -261,7 +261,7 @@ const ProjectRequestModal = ({ isOpen, onClose }) => {
                           value={formData[field.name]}
                           onChange={handleInputChange}
                           disabled={isSubmitting}
-                          className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white disabled:opacity-50 appearance-none"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-olive-300 focus:border-transparent dark:bg-gray-700 dark:text-white disabled:opacity-50 appearance-none"
                         >
                           {field.options?.map((option) => (
                             <option key={option.value} value={option.value}>
@@ -278,7 +278,7 @@ const ProjectRequestModal = ({ isOpen, onClose }) => {
                           placeholder={field.placeholder}
                           required={field.required}
                           disabled={isSubmitting}
-                          className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white placeholder-gray-400 disabled:opacity-50"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-olive-300 focus:border-transparent dark:bg-gray-700 dark:text-white placeholder-gray-400 disabled:opacity-50"
                         />
                       )}
                     </div>
@@ -298,7 +298,7 @@ const ProjectRequestModal = ({ isOpen, onClose }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50"
+                    className="px-6 py-3 bg-gradient-to-r from-olive-200 to-olive-300 text-white rounded-lg hover:from-olive-300 hover:to-olive-900 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>

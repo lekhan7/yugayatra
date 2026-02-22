@@ -63,7 +63,7 @@ const BlogSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{color: '#252B0D'}}>
             Blog & <span className="gradient-text">Insights</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
@@ -95,7 +95,7 @@ const BlogSection = () => {
           {/* Blog Grid */}
           {loading ? (
             <div className="flex items-center justify-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-olive-300"></div>
             </div>
           ) : (
             <>
@@ -111,7 +111,7 @@ const BlogSection = () => {
                   >
                     <div className="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light">
                       {/* Blog Image */}
-                      <div className="relative h-48 bg-gradient-to-br from-accent-main to-blue-600 flex items-center justify-center">
+                      <div className="relative h-48 bg-gradient-to-br from-accent-main to-olive-200 flex items-center justify-center">
                         {post.featured_image ? (
                           <img 
                             src={post.featured_image} 
@@ -186,7 +186,7 @@ const BlogSection = () => {
                         {/* Read More */}
                         <button 
                           onClick={() => shareOnLinkedIn()}
-                          className="text-accent-main font-semibold flex items-center group-hover:text-blue-700 transition-colors duration-200"
+                          className="text-accent-main font-semibold flex items-center group-hover:text-olive-700 transition-colors duration-200"
                         >
                           Read More
                           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
@@ -215,7 +215,7 @@ const BlogSection = () => {
           <div className="text-center mt-12">
             <Link 
               to="/blog"
-              className="bg-gradient-to-r from-accent-main to-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center"
+              className="bg-gradient-to-r from-accent-main to-olive-200 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center"
             >
               View All Posts
               <ArrowRight className="ml-2 w-5 h-5" />

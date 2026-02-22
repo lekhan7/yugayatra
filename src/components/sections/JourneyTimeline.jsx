@@ -24,7 +24,7 @@ const JourneyTimeline = () => {
       date: "2020",
       description: "YugaYatra started with a vision to bridge the gap between education and industry.",
       icon: <MapPin className="w-6 h-6" />,
-      color: "from-blue-500 to-purple-600",
+      color: "from-mint-500 to-mint-600",
       details: [
         "Founded by industry professionals",
         "Initial team of 5 members",
@@ -80,7 +80,7 @@ const JourneyTimeline = () => {
       date: "2024+",
       description: "Continuing to shape tomorrow's workforce with innovative solutions.",
       icon: <Target className="w-6 h-6" />,
-      color: "from-indigo-500 to-blue-600",
+      color: "from-mint-500 to-mint-600",
       details: [
         "AI-powered learning platform",
         "Global expansion plans",
@@ -363,7 +363,7 @@ const JourneyTimeline = () => {
           className="absolute z-[99999] w-72 bg-white rounded-xl shadow-2xl p-5 border-2 border-gray-200"
           style={{ 
             ...position,
-            background: `linear-gradient(135deg, white 0%, ${stop.color.includes('blue') ? '#f0f9ff' : stop.color.includes('green') ? '#f0fdf4' : stop.color.includes('orange') ? '#fff7ed' : stop.color.includes('purple') ? '#faf5ff' : '#f0f9ff'} 100%)`
+            background: `linear-gradient(135deg, white 0%, #f6f7f0 100%)`
           }}
         >
           {/* Arrow pointing down to milestone */}
@@ -381,14 +381,14 @@ const JourneyTimeline = () => {
           <div className="space-y-1 mb-3">
             {stop.details.map((detail, index) => (
               <div key={index} className="flex items-start">
-                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mt-1 mr-2 flex-shrink-0"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-mint-500 to-mint-600 mt-1 mr-2 flex-shrink-0"></div>
                 <span className="text-gray-700 text-xs">{detail}</span>
               </div>
             ))}
           </div>
           <button
             onClick={() => setActiveStop(null)}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-xs"
+            className="w-full bg-gradient-to-r from-mint-500 to-mint-600 text-text-main px-3 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-xs"
           >
             Continue Journey
           </button>
@@ -410,10 +410,10 @@ const JourneyTimeline = () => {
             top: '10%',
             left: '50%',
             transform: 'translateX(-50%)',
-            background: 'linear-gradient(135deg, white 0%, #f0f9ff 100%)'
+            background: 'linear-gradient(135deg, white 0%, #f6f7f0 100%)'
           }}
         >
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white mb-4">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-mint-200 to-mint-300 text-text-main mb-4">
             <Target className="w-6 h-6" />
           </div>
           <h3 className="text-xl font-bold text-gray-800 mb-3">Journey Complete!</h3>
@@ -424,7 +424,7 @@ const JourneyTimeline = () => {
               <span className="text-gray-700 text-sm">5 Major Milestones Achieved</span>
             </div>
             <div className="flex items-center">
-              <Users className="w-4 h-4 mr-2 text-blue-500" />
+              <Users className="w-4 h-4 mr-2 text-mint-300" />
               <span className="text-gray-700 text-sm">1000+ Community Members</span>
             </div>
             <div className="flex items-center">
@@ -434,7 +434,7 @@ const JourneyTimeline = () => {
           </div>
           <button
             onClick={() => setShowFinalPopup(false)}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+            className="w-full bg-gradient-to-r from-mint-200 to-mint-300 text-text-main px-4 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
           >
             Close
           </button>
@@ -444,14 +444,14 @@ const JourneyTimeline = () => {
   )
 
   return (
-    <section id="journey-timeline" ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 overflow-hidden py-20">
+    <section id="journey-timeline" ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-bg-main via-mint-50 to-mint-100 overflow-hidden py-20">
       {/* Section Title */}
       <div className="text-center mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4"
+          className="text-5xl md:text-6xl font-black mb-4" style={{color: '#0D3D2B'}}
         >
           Our Journey Timeline
         </motion.h2>
@@ -532,16 +532,16 @@ const JourneyTimeline = () => {
                     {/* Gradients */}
                     <defs>
                       <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#3b82f6" />
-                        <stop offset="25%" stopColor="#6366f1" />
-                        <stop offset="50%" stopColor="#8b5cf6" />
-                        <stop offset="75%" stopColor="#6366f1" />
-                        <stop offset="100%" stopColor="#3b82f6" />
+                        <stop offset="0%" stopColor="#BEC87A" />
+                        <stop offset="25%" stopColor="#8D9A3A" />
+                        <stop offset="50%" stopColor="#252B0D" />
+                        <stop offset="75%" stopColor="#8D9A3A" />
+                        <stop offset="100%" stopColor="#BEC87A" />
                       </linearGradient>
                       <linearGradient id="windowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#60a5fa" />
-                        <stop offset="50%" stopColor="#3b82f6" />
-                        <stop offset="100%" stopColor="#2563eb" />
+                        <stop offset="0%" stopColor="#E4E9C8" />
+                        <stop offset="50%" stopColor="#BEC87A" />
+                        <stop offset="100%" stopColor="#8D9A3A" />
                       </linearGradient>
                       <linearGradient id="headlightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="#fbbf24" />
@@ -553,7 +553,7 @@ const JourneyTimeline = () => {
                   
                   {/* Motion Effect */}
                   {isAnimating && (
-                    <div className="absolute -inset-4 bg-blue-400/30 rounded-full blur-xl animate-pulse" />
+                    <div className="absolute -inset-4 bg-mint-200/30 rounded-full blur-xl animate-pulse" />
                   )}
                   
                   {/* Exhaust/Smoke effect when moving */}
@@ -649,14 +649,12 @@ const JourneyTimeline = () => {
         className="text-center mt-16"
       >
         <p className="text-gray-600 text-lg mb-4">
-          🚗 Watch the car travel along our journey timeline to the very end
+         Watch the car travel along our journey timeline to the very end
         </p>
-        <p className="text-gray-500 text-sm mb-6">
-          The car will stop at each milestone for 3 seconds, then continue to the finish line
-        </p>
+      
         <button
           onClick={restartAnimation}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2"
+          className="bg-gradient-to-r from-mint-200 to-mint-300 text-text-main px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />

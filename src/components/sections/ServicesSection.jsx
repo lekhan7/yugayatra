@@ -3,32 +3,59 @@ import { useState, useEffect } from 'react'
 import React from 'react'
 import { 
   Code, 
-  Palette, 
-  TrendingUp, 
-  Users, 
-  Database, 
-  Cloud, 
-  Smartphone, 
+  Terminal,
+  Cpu,
+  Server,
+  GitBranch,
+  Database,
+  Cloud,
+  Smartphone,
   Globe,
+  Monitor,
+  Keyboard,
+  MousePointer,
+  Wifi,
+  HardDrive,
+  Package,
+  TestTube,
+  Bug,
+  Shield,
+  Zap,
+  Settings,
+  Layers,
+  Braces,
   CheckCircle,
   ArrowRight,
-  Zap,
   Eye
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { getServices } from '../../services/supabase'
 
-// Icon mapping function
-const getIcon = (iconName) => {
+// Tech icon mapping function
+const getTechIcon = (iconName) => {
   const iconMap = {
     Code,
-    Palette,
-    TrendingUp,
-    Users,
+    Terminal,
+    Cpu,
+    Server,
+    GitBranch,
     Database,
     Cloud,
     Smartphone,
-    Globe
+    Globe,
+    Monitor,
+    Keyboard,
+    MousePointer,
+    Wifi,
+    HardDrive,
+    Package,
+    TestTube,
+    Bug,
+    Shield,
+    Zap,
+    Settings,
+    Layers,
+    Braces
   }
   return iconMap[iconName] || Code
 }
@@ -57,7 +84,7 @@ const ServicesSection = () => {
   const displayedServices = showAll ? services : services.slice(0, 6)
 
   return (
-    <section id="services" className="py-20 bg-card-bg">
+    <section id="services" className="py-20 bg-card-bg dark:bg-dark-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,17 +92,17 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold dark:text-dark-text mb-6" style={{color: '#0D3D2B'}}>
             Our <span className="gradient-text">Services</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
             Comprehensive digital solutions to accelerate your business growth and transformation
           </p>
         </motion.div>
       </div>
 
       {/* Services Grid */}
-      <div className="py-20 bg-bg-main">
+      <div className="py-20 bg-bg-main dark:bg-dark-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="flex justify-center items-center py-20">
@@ -93,21 +120,21 @@ const ServicesSection = () => {
                   whileHover={{ y: -5 }}
                   className="group"
                 >
-                  <div className="bg-card-bg rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light group-hover:scale-105 flex flex-col">
+                  <div className="bg-card-bg dark:bg-dark-card rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10 group-hover:scale-105 flex flex-col">
                     <div className={`w-16 h-16 bg-gradient-to-r ${service.icon_bg_color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      {React.createElement(getIcon(service.icon_name), { className: "w-8 h-8 text-white" })}
+                      {React.createElement(getTechIcon(service.icon_name), { className: "w-8 h-8 text-white" })}
                     </div>
-                    <h3 className="text-2xl font-bold text-text-main mb-4">
+                    <h3 className="text-2xl font-bold text-text-main dark:text-dark-text mb-4">
                       {service.title}
                     </h3>
-                    <p className="text-text-light mb-6">
+                    <p className="text-text-light dark:text-white/70 mb-6">
                       {service.short_description}
                     </p>
                     
                     <div className="space-y-3 mb-6">
                       {service.features.slice(0, 3).map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-text-light">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                        <div key={idx} className="flex items-center text-sm text-text-light dark:text-white/70">
+                          <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
                           {feature}
                         </div>
                       ))}
@@ -117,7 +144,7 @@ const ServicesSection = () => {
                       {service.technologies.slice(0, 3).map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 bg-bg-main text-text-light rounded-full text-xs font-medium border border-border-light"
+                          className="px-3 py-1 bg-bg-main dark:bg-dark-card text-text-light dark:text-white/70 rounded-full text-xs font-medium border border-border-light dark:border-white/10"
                         >
                           {tech}
                         </span>
@@ -132,7 +159,7 @@ const ServicesSection = () => {
                             const encodedRole = encodeURIComponent(service.title)
                             navigate(`/internship/apply/${encodedRole}`)
                           }}
-                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-blue-600 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
+                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-olive-200 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
                         >
                           Apply
                         </button>
@@ -150,7 +177,7 @@ const ServicesSection = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowAll(!showAll)}
-                    className="bg-accent-main text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300 inline-flex items-center"
+                    className="bg-accent-main text-white px-8 py-3 rounded-full font-semibold hover:bg-olive-200 transition-colors duration-300 inline-flex items-center"
                   >
                     {showAll ? 'Show Less' : 'Show More'}
                     <Eye className="w-5 h-5 ml-2" />
@@ -163,7 +190,7 @@ const ServicesSection = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-r from-accent-main to-blue-600">
+      <div className="py-20 bg-gradient-to-r from-accent-main to-olive-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -171,13 +198,13 @@ const ServicesSection = () => {
             transition={{ duration: 0.6 }}
           >
             <Zap className="w-16 h-16 text-white mx-auto mb-6" />
-            <h3 className="text-4xl font-bold text-white mb-4">
+            <h3 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
               Ready to Get Started?
             </h3>
             <p className="text-xl text-white/90 mb-8">
               Let's discuss how our services can help transform your business
             </p>
-            <a href="#contact" className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 inline-flex items-center">
+            <a href="#contact" className="bg-card-bg dark:bg-dark-card text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-olive-50 dark:hover:bg-white/10 transition-colors duration-300 inline-flex items-center">
               Get a Free Consultation
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>

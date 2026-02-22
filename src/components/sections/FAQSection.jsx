@@ -100,7 +100,7 @@ const FAQSection = () => {
   const categories = [...new Set(faqs.map(faq => faq.category))]
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-br from-blue-600/10 to-accent-main/10">
+    <section id="faq" className="py-20 bg-gradient-to-br from-mint-100/10 to-accent-main/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -110,11 +110,11 @@ const FAQSection = () => {
           className="text-center mb-12"
         >
           <div className="flex justify-center mb-4">
-            <div className="p-3 bg-gradient-to-r from-blue-600 to-accent-main rounded-full">
+            <div className="p-3 bg-gradient-to-r from-mint-200 to-accent-main rounded-full">
               <HelpCircle className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h2 className="text-4xl font-bold text-text-main mb-4">
+          <h2 className="text-4xl font-bold mb-4" style={{color: '#0D3D2B'}}>
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-text-light max-w-2xl mx-auto">
@@ -189,7 +189,7 @@ const FAQSection = () => {
                   className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-accent-main/5 transition-colors duration-300"
                 >
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-gradient-to-r from-accent-main/20 to-blue-600/20 rounded-lg">
+                    <div className="p-2 bg-gradient-to-r from-accent-main/20 to-mint-200/20 rounded-lg">
                       {React.createElement(faq.icon, { className: "w-5 h-5 text-accent-main" })}
                     </div>
                     <div>
@@ -253,7 +253,7 @@ const FAQSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 text-center bg-gradient-to-r from-accent-main/10 to-blue-600/10 rounded-xl p-8"
+          className="mt-12 text-center bg-gradient-to-r from-accent-main/10 to-mint-200/10 rounded-xl p-8"
         >
           <h3 className="text-2xl font-bold text-text-main mb-4">
             Still have questions?

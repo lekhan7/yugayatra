@@ -29,7 +29,7 @@ const AboutSection = () => {
   ]
 
   return (
-    <section id="about" className="py-20 bg-card-bg">
+    <section id="about" className="py-20 bg-card-bg dark:bg-dark-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,7 +37,7 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-black text-text-main mb-6">
+          <h2 className="text-5xl md:text-6xl font-black mb-6" style={{color: '#0D3D2B'}}>
             About <span className="gradient-text">YugaYatra Retail (OPC) Pvt Ltd</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-4xl mx-auto">
@@ -55,7 +55,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold text-text-main mb-4">
+            <h3 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
               Mission, Vision & Values
             </h3>
             <p className="text-lg text-text-light">
@@ -72,8 +72,8 @@ const AboutSection = () => {
                 whileHover={{ scale: 1.05 }}
                 className="text-center p-8 rounded-2xl bg-card-bg shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="w-10 h-10 text-white" />
+                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-mint-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <value.icon className="w-10 h-10 text-text-main" />
                 </div>
                 <h3 className="text-2xl font-bold text-text-main mb-4">
                   {value.title}
@@ -98,7 +98,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold text-text-main mb-4">
+            <h3 className="text-4xl font-bold mb-4" style={{color: '#0D3D2B'}}>
               Our Impact
             </h3>
             <p className="text-lg text-text-light">

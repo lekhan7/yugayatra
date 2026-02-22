@@ -113,7 +113,7 @@ const LegalSection = () => {
   const getCategoryColor = (category) => {
     const colors = {
       'Intellectual Property': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-      'Business Registration': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      'Business Registration': 'bg-olive-100 text-olive-800 dark:bg-olive-900 dark:text-olive-200',
       'Tax Registration': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
       'Government Recognition': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
       'Company Registration': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
@@ -124,7 +124,7 @@ const LegalSection = () => {
   const getStatusColor = (status) => {
     const colors = {
       'Active': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'Registered': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      'Registered': 'bg-olive-100 text-olive-800 dark:bg-olive-900 dark:text-olive-200',
       'Recognized': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
     }
     return colors[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
@@ -172,7 +172,7 @@ const LegalSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{color: '#252B0D'}}>
             Legal Information & Certificates
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -207,7 +207,7 @@ const LegalSection = () => {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-olive-600 dark:group-hover:text-olive-400 transition-colors duration-300">
                   {doc.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
@@ -226,7 +226,7 @@ const LegalSection = () => {
                 </div>
 
                 {/* Action Button */}
-                <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
+                <div className="flex items-center text-olive-600 dark:text-olive-400 font-medium group-hover:text-olive-700 dark:group-hover:text-olive-300 transition-colors duration-300">
                   <span>View Document Details</span>
                   <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
@@ -300,7 +300,7 @@ const LegalSection = () => {
                               href={selectedDocument.image}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center space-x-2 px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                              className="flex items-center space-x-2 px-3 py-2 bg-olive-600 text-white text-sm rounded-lg hover:bg-olive-700 transition-colors duration-300"
                             >
                               <ExternalLink className="w-4 h-4" />
                               <span>Open in New Tab</span>
@@ -326,7 +326,7 @@ const LegalSection = () => {
                         Complete Document Information & Details
                       </h4>
                       
-                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+                      <div className="bg-olive-50 dark:bg-olive-900/20 rounded-lg p-4 border border-olive-200 dark:border-olive-800">
                         <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                           {selectedDocument.details.description}
                         </p>

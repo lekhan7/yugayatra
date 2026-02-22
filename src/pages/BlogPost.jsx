@@ -14,7 +14,6 @@ import {
   Mail
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 import { getBlogPostBySlug, getBlogPosts } from '../services/supabase'
 
@@ -74,7 +73,7 @@ const BlogPost = () => {
         <Navbar />
         <ScrollToTop />
         <div className="flex items-center justify-center py-20">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
         </div>
       </div>
     )
@@ -87,7 +86,7 @@ const BlogPost = () => {
         <ScrollToTop />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
               Blog Post Not Found
             </h1>
             <p className="text-gray-600 dark:text-gray-400 mb-8">
@@ -95,14 +94,13 @@ const BlogPost = () => {
             </p>
             <Link 
               to="/blog"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center px-6 py-3 bg-olive-600 text-white rounded-lg hover:bg-olive-700 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
             </Link>
           </div>
         </div>
-        <Footer />
       </div>
     )
   }
@@ -124,7 +122,7 @@ const BlogPost = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
           </div>
         ) : (
-          <div className="h-96 bg-gradient-to-br from-accent-main to-blue-600 flex items-center justify-center">
+          <div className="h-96 bg-gradient-to-br from-accent-main to-olive-200 flex items-center justify-center">
             <div className="text-white text-center">
               <div className="text-8xl mb-4">📝</div>
               <p className="text-xl opacity-90">Featured Image</p>
@@ -151,7 +149,7 @@ const BlogPost = () => {
                 )}
               </div>
               
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{color: '#252B0D'}}>
                 {post.title}
               </h1>
               
@@ -232,7 +230,7 @@ const BlogPost = () => {
                   <div className="flex flex-wrap gap-3">
                     <button
                       onClick={shareOnFacebook}
-                      className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="flex items-center px-4 py-2 bg-olive-600 text-white rounded-lg hover:bg-olive-700 transition-colors"
                     >
                       <Facebook className="w-4 h-4 mr-2" />
                       Facebook
@@ -246,7 +244,7 @@ const BlogPost = () => {
                     </button>
                     <button
                       onClick={shareOnLinkedIn}
-                      className="flex items-center px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+                      className="flex items-center px-4 py-2 bg-olive-700 text-white rounded-lg hover:bg-olive-800 transition-colors"
                     >
                       <Linkedin className="w-4 h-4 mr-2" />
                       LinkedIn
@@ -273,7 +271,7 @@ const BlogPost = () => {
                 </button>
                 <Link
                   to="/blog"
-                  className="flex items-center px-6 py-3 bg-accent-main text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="flex items-center px-6 py-3 bg-accent-main text-white rounded-lg hover:bg-olive-200 transition-colors"
                 >
                   View All Posts
                   <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
@@ -339,7 +337,6 @@ const BlogPost = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

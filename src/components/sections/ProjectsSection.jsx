@@ -85,7 +85,7 @@ const ProjectsSection = () => {
       <section id="projects" className="py-20 bg-bg-main dark:bg-text-main transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
           </div>
         </div>
       </section>
@@ -104,7 +104,7 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold dark:text-white mb-6" style={{color: '#252B0D'}}>
             Our <span className="text-accent-main">Projects</span>
           </h2>
           <p className="text-xl text-text-light dark:text-white/70 max-w-4xl mx-auto leading-relaxed">
@@ -173,7 +173,7 @@ const ProjectsSection = () => {
                       {project.technologies.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium dark:bg-blue-900/30 dark:text-blue-300"
+                          className="bg-olive-100 text-olive-800 px-2 py-1 rounded-full text-xs font-medium dark:bg-olive-900/30 dark:text-olive-300"
                         >
                           {tech}
                         </span>
@@ -191,7 +191,7 @@ const ProjectsSection = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-accent-main text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center space-x-2 group-hover:shadow-lg"
+                    className="w-full bg-accent-main text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-olive-200 transition-colors duration-300 flex items-center justify-center space-x-2 group-hover:shadow-lg"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span>Visit Website</span>
@@ -208,7 +208,7 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center bg-gradient-to-r from-accent-main to-blue-600 rounded-2xl p-12 text-white"
+          className="text-center bg-gradient-to-r from-accent-main to-olive-200 rounded-2xl p-12 text-white"
         >
           <h3 className="text-3xl font-bold mb-4">Explore Our Work</h3>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
@@ -216,7 +216,7 @@ const ProjectsSection = () => {
             Let's collaborate to bring your vision to life.
           </p>
           <motion.a
-            href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
+            href="mailto:hr@yugayatraretail.com"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}

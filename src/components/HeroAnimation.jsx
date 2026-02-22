@@ -268,7 +268,7 @@ const HeroAnimation = () => {
   }, [soundEnabled])
 
   return (
-    <div ref={containerRef} className="relative w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-purple-50 overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-bg-main via-mint-50 to-mint-100 overflow-hidden">
       
       {/* Sound Toggle */}
       <button
@@ -601,7 +601,7 @@ const HeroAnimation = () => {
       {/* Enhanced Glowing Trail for light theme */}
       <div
         ref={glowTrailRef}
-        className="absolute left-40 top-1/2 transform -translate-y-1/2 w-96 h-3 bg-gradient-to-r from-transparent via-blue-300/60 via-purple-300/60 to-transparent blur-xl will-change-transform"
+        className="absolute left-40 top-1/2 transform -translate-y-1/2 w-96 h-3 bg-gradient-to-r from-transparent via-mint-100/60 via-mint-200/60 to-transparent blur-xl will-change-transform"
         style={{ transformOrigin: 'left center' }}
       />
 
@@ -617,13 +617,13 @@ const HeroAnimation = () => {
         <h1 className="text-7xl md:text-9xl font-black text-gray-800 mb-4">
           <span 
             ref={yugaTextRef}
-            className="inline-block mr-3 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent will-change-transform"
+            className="inline-block mr-3 bg-gradient-to-r from-mint-200 via-mint-300 to-mint-900 bg-clip-text text-transparent will-change-transform"
           >
             Yuga
           </span>
           <span 
             ref={yatraTextRef}
-            className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 bg-clip-text text-transparent"
+            className="inline-block bg-gradient-to-r from-mint-300 via-mint-900 to-mint-900 bg-clip-text text-transparent"
           >
             Yatra
           </span>
@@ -641,7 +641,7 @@ const HeroAnimation = () => {
           <div
             key={i}
             ref={el => particlesRef.current[i] = el}
-            className="moving-dot absolute bg-blue-400/60 rounded-full will-change-transform"
+            className="moving-dot absolute bg-mint-200/60 rounded-full will-change-transform"
             style={{
               width: `${4 + Math.random() * 4}px`,
               height: `${4 + Math.random() * 4}px`,

@@ -10,7 +10,7 @@ const Careers = () => {
           transition={{ duration: 0.6 }}
           className="text-center py-20"
         >
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-5xl font-bold" style={{color: '#252B0D'}}>
             Careers
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300">

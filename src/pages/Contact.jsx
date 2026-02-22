@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, CheckCircle, Building, Clock } from 'lucide-react'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 
 const Contact = () => {
@@ -95,7 +94,7 @@ const Contact = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-olive-50 to-olive-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -103,7 +102,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold" style={{color: '#252B0D'}}>
               Get in <span className="text-accent-main">Touch</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
@@ -232,7 +231,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-accent-main to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-gradient-to-r from-accent-main to-olive-200 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <span>Sending...</span>
@@ -282,7 +281,7 @@ const Contact = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="flex items-start space-x-4 p-6 bg-card-bg dark:bg-card-bg/10 rounded-xl border border-border-light dark:border-white/10 hover:shadow-lg transition-shadow duration-300"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-olive-200 rounded-lg flex items-center justify-center flex-shrink-0">
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -292,7 +291,7 @@ const Contact = () => {
                       {info.href.startsWith('mailto') || info.href.startsWith('tel') ? (
                         <a
                           href={info.href}
-                          className="text-accent-main dark:text-blue-300 hover:text-blue-700 transition-colors duration-200"
+                          className="text-accent-main dark:text-olive-300 hover:text-olive-600 transition-colors duration-200"
                         >
                           {info.content}
                         </a>
@@ -311,7 +310,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-gradient-to-r from-accent-main to-blue-600 rounded-xl p-6 text-white"
+                className="bg-gradient-to-r from-accent-main to-olive-200 rounded-xl p-6 text-white"
               >
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <Clock className="w-5 h-5 mr-2" />
@@ -358,7 +357,6 @@ const Contact = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

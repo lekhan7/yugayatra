@@ -66,10 +66,10 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div onClick={() => handleNavClick({ href: '#hero', isRoute: false })} className="flex items-center space-x-2 cursor-pointer">
-            <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">Y</span>
+            <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-mint-200 rounded-lg flex items-center justify-center">
+              <span className="text-text-main font-bold text-sm">Y</span>
             </div>
-            <span className="text-xl font-bold text-text-main">
+            <span className="text-xl font-bold text-text-main dark:text-dark-text">
               YugaYatra Retail 
             </span>
           </div>
@@ -80,14 +80,14 @@ const Navbar = () => {
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link)}
-                className="group relative flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-text-light hover:text-white hover:bg-accent-main hover:scale-105 hover:shadow-lg"
+                className="group relative flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-text-light dark:text-white/70 hover:text-white hover:bg-accent-main hover:scale-105 hover:shadow-lg"
                 style={{
                   animationDelay: `${index * 100}ms`
                 }}
               >
                 <link.icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
                 <span className="transition-all duration-300 group-hover:font-semibold">{link.name}</span>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-main to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-main to-mint-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </button>
             ))}
           </div>
@@ -97,7 +97,7 @@ const Navbar = () => {
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-lg text-text-light hover:text-accent-main hover:bg-white/10 transition-all duration-300"
+              className="p-2 rounded-lg text-text-light dark:text-white/70 hover:text-accent-main hover:bg-white/10 dark:hover:bg-white/5 transition-all duration-300"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -105,7 +105,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-text-light hover:text-accent-main hover:bg-white/10 transition-all duration-300"
+              className="md:hidden p-2 rounded-lg text-text-light dark:text-white/70 hover:text-accent-main hover:bg-white/10 dark:hover:bg-white/5 transition-all duration-300"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -121,7 +121,7 @@ const Navbar = () => {
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link)}
-                className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-text-light hover:text-white hover:bg-accent-main hover:scale-[1.02] hover:shadow-md"
+                className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-text-light dark:text-white/70 hover:text-white hover:bg-accent-main hover:scale-[1.02] hover:shadow-md"
                 style={{
                   animationDelay: `${index * 50}ms`
                 }}

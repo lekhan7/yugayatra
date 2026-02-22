@@ -13,13 +13,19 @@ import Admin from './pages/Admin'
 import Legal from './pages/Legal'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
+import Services from './pages/Services'
+import Projects from './pages/Projects'
+import About from './pages/About'
+import Achievements from './pages/Achievements'
+import Alumni from './pages/Alumni'
+import Contact from './pages/Contact'
 
 function App() {
   const location = useLocation()
   const isAdminPage = location.pathname === '/admin'
 
   return (
-    <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
+    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
       {!isAdminPage && <Navbar />}
       {!isAdminPage && <ScrollProgressBar />}
       <Routes>
@@ -29,17 +35,13 @@ function App() {
           </NotificationProvider>
         } />
         <Route path="/" element={
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Home />
-            </motion.div>
-            <Footer />
-            <ScrollToTop />
-          </>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Home />
+          </motion.div>
         } />
         <Route path="/apply" element={
           <motion.div
@@ -75,8 +77,6 @@ function App() {
             transition={{ duration: 0.5 }}
           >
             <Blog />
-            <Footer />
-            <ScrollToTop />
           </motion.div>
         } />
         <Route path="/blog/:slug" element={
@@ -86,11 +86,65 @@ function App() {
             transition={{ duration: 0.5 }}
           >
             <BlogPost />
-            <Footer />
-            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/services" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Services />
+          </motion.div>
+        } />
+        <Route path="/projects" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Projects />
+          </motion.div>
+        } />
+        <Route path="/about" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <About />
+          </motion.div>
+        } />
+        <Route path="/achievements" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Achievements />
+          </motion.div>
+        } />
+        <Route path="/alumni" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Alumni />
+          </motion.div>
+        } />
+        <Route path="/contact" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Contact />
           </motion.div>
         } />
       </Routes>
+      {!isAdminPage && <Footer />}
+      {!isAdminPage && <ScrollToTop />}
     </div>
   )
 }

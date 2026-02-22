@@ -98,7 +98,7 @@ const NotificationItem = ({ notification, onClose }) => {
         return 'bg-yellow-500 text-black border-yellow-600'
       case 'info':
       default:
-        return 'bg-blue-500 text-white border-blue-600'
+        return 'bg-olive-300 text-white border-olive-900'
     }
   }
 

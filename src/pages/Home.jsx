@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 import ScrollProgressBar from '../components/ScrollProgressBar'
 import HeroSection from '../components/sections/HeroSection'
@@ -18,7 +17,7 @@ import FAQSection from '../components/sections/FAQSection'
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-bg-main transition-colors duration-300">
+    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
       <ScrollProgressBar />
       <ScrollToTop />
     
@@ -61,7 +60,6 @@ const Home = () => {
       {/* Contact Section */}
       <ContactSection />
 
-      <Footer />
     </div>
   )
 }

@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { Target, Eye, Heart, Award, Users, Calendar, MapPin, Building, FileText, Globe, CheckCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 
 const About = () => {
@@ -116,7 +115,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-text-main mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold" style={{color: '#0D3D2B'}}>
               About <span className="text-accent-main">YugaYatra Retail (OPC) Pvt Ltd</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-light max-w-4xl mx-auto">
@@ -140,7 +139,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center p-8 rounded-2xl bg-bg-main hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-olive-200 rounded-full flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-text-main mb-4">
@@ -164,7 +163,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{color: '#0D3D2B'}}>
               What We Do
             </h2>
             <p className="text-xl text-text-light">
@@ -181,7 +180,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center p-6 bg-card-bg rounded-xl shadow-lg"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-olive-200 rounded-full flex items-center justify-center mx-auto mb-4">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-text-main mb-2">
@@ -205,7 +204,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{color: '#0D3D2B'}}>
               Our Impact in Numbers
             </h2>
             <p className="text-xl text-text-light">
@@ -249,7 +248,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{color: '#0D3D2B'}}>
               Our Journey
             </h2>
             <p className="text-xl text-text-light">
@@ -258,7 +257,7 @@ const About = () => {
           </motion.div>
 
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-accent-main to-blue-600"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-accent-main to-mint-200"></div>
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
@@ -298,7 +297,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{color: '#0D3D2B'}}>
               Why Choose YugaYatra Retail (OPC) Pvt Ltd?
             </h2>
             <p className="text-xl text-text-light">
@@ -359,7 +358,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-accent-main to-blue-600">
+      <section className="py-20 bg-gradient-to-r from-accent-main to-mint-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -367,7 +366,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <Building className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold text-white mb-4" style={{color: '#0D3D2B'}}>
               Ready to Join Our Journey?
             </h2>
             <p className="text-xl text-white/90 mb-8">
@@ -375,7 +374,7 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
+                href="mailto:hr@yugayatraretail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300"
@@ -393,7 +392,6 @@ const About = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

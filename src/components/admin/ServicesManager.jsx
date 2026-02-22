@@ -1,21 +1,34 @@
 import { useState, useEffect } from 'react'
 import { 
+  Code, 
+  Terminal,
+  Cpu,
+  Server,
+  GitBranch,
+  Database,
+  Cloud,
+  Smartphone,
+  Globe,
+  Monitor,
+  Keyboard,
+  MousePointer,
+  Wifi,
+  HardDrive,
+  Package,
+  TestTube,
+  Bug,
+  Shield,
+  Zap,
+  Settings,
+  Layers,
+  Braces
+} from 'lucide-react'
+import { 
   Plus, 
   Edit2, 
   Trash2, 
   Save, 
-  X, 
-  Code, 
-  Palette, 
-  TrendingUp, 
-  Users, 
-  Database, 
-  Cloud, 
-  Smartphone, 
-  Globe,
-  Briefcase,
-  Settings,
-  Target,
+  X,
   Eye,
   EyeOff
 } from 'lucide-react'
@@ -49,29 +62,42 @@ const ServicesManager = () => {
   })
   const [saving, setSaving] = useState(false)
 
-  const iconOptions = [
-    { name: 'Code', icon: Code },
-    { name: 'Palette', icon: Palette },
-    { name: 'TrendingUp', icon: TrendingUp },
-    { name: 'Users', icon: Users },
-    { name: 'Database', icon: Database },
-    { name: 'Cloud', icon: Cloud },
-    { name: 'Smartphone', icon: Smartphone },
-    { name: 'Globe', icon: Globe },
-    { name: 'Briefcase', icon: Briefcase },
-    { name: 'Settings', icon: Settings },
-    { name: 'Target', icon: Target }
+  const techIconOptions = [
+    { name: 'Code', icon: Code, category: 'Development' },
+    { name: 'Terminal', icon: Terminal, category: 'Development' },
+    { name: 'Cpu', icon: Cpu, category: 'Hardware' },
+    { name: 'Server', icon: Server, category: 'Infrastructure' },
+    { name: 'GitBranch', icon: GitBranch, category: 'Development' },
+    { name: 'Database', icon: Database, category: 'Data' },
+    { name: 'Cloud', icon: Cloud, category: 'Infrastructure' },
+    { name: 'Smartphone', icon: Smartphone, category: 'Mobile' },
+    { name: 'Globe', icon: Globe, category: 'Web' },
+    { name: 'Monitor', icon: Monitor, category: 'Hardware' },
+    { name: 'Keyboard', icon: Keyboard, category: 'Hardware' },
+    { name: 'MousePointer', icon: MousePointer, category: 'UI/UX' },
+    { name: 'Wifi', icon: Wifi, category: 'Network' },
+    { name: 'HardDrive', icon: HardDrive, category: 'Storage' },
+    { name: 'Package', icon: Package, category: 'Development' },
+    { name: 'TestTube', icon: TestTube, category: 'Testing' },
+    { name: 'Bug', icon: Bug, category: 'Testing' },
+    { name: 'Shield', icon: Shield, category: 'Security' },
+    { name: 'Zap', icon: Zap, category: 'Performance' },
+    { name: 'Settings', icon: Settings, category: 'DevOps' },
+    { name: 'Layers', icon: Layers, category: 'Architecture' },
+    { name: 'Braces', icon: Braces, category: 'Development' }
   ]
 
-  const colorOptions = [
-    'from-blue-500 to-blue-600',
+  const techColorOptions = [
+    'from-accent-main to-olive-200',
     'from-purple-500 to-purple-600',
     'from-green-500 to-green-600',
     'from-red-500 to-red-600',
     'from-cyan-500 to-cyan-600',
     'from-indigo-500 to-indigo-600',
     'from-pink-500 to-pink-600',
-    'from-accent-main to-blue-600'
+    'from-yellow-500 to-yellow-600',
+    'from-gray-500 to-gray-600',
+    'from-emerald-500 to-emerald-600'
   ]
 
   useEffect(() => {
@@ -102,7 +128,7 @@ const ServicesManager = () => {
       slug: '',
       short_description: '',
       icon_name: 'Code',
-      icon_bg_color: 'from-blue-500 to-blue-600',
+      icon_bg_color: 'from-accent-main to-olive-200',
       features: [''],
       technologies: [''],
       apply_enabled: true,
@@ -261,14 +287,14 @@ const ServicesManager = () => {
   }
 
   const getIconComponent = (iconName) => {
-    const icon = iconOptions.find(opt => opt.name === iconName)
-    return icon ? icon.icon : Briefcase
+    const icon = techIconOptions.find(opt => opt.name === iconName)
+    return icon ? icon.icon : Code
   }
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-olive-600"></div>
       </div>
     )
   }
@@ -337,13 +363,50 @@ const ServicesManager = () => {
               <select
                 value={formData.icon_name}
                 onChange={(e) => setFormData(prev => ({ ...prev, icon_name: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
               >
-                {iconOptions.map(option => (
-                  <option key={option.name} value={option.name}>
-                    {option.name}
-                  </option>
-                ))}
+                <optgroup label="Development">
+                  {techIconOptions.filter(opt => opt.category === 'Development').map(option => (
+                    <option key={option.name} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Infrastructure">
+                  {techIconOptions.filter(opt => opt.category === 'Infrastructure').map(option => (
+                    <option key={option.name} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Hardware">
+                  {techIconOptions.filter(opt => opt.category === 'Hardware').map(option => (
+                    <option key={option.name} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Data & Storage">
+                  {techIconOptions.filter(opt => ['Data', 'Storage'].includes(opt.category)).map(option => (
+                    <option key={option.name} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Testing">
+                  {techIconOptions.filter(opt => opt.category === 'Testing').map(option => (
+                    <option key={option.name} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Other">
+                  {techIconOptions.filter(opt => !['Development', 'Infrastructure', 'Hardware', 'Data', 'Storage', 'Testing'].includes(opt.category)).map(option => (
+                    <option key={option.name} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </optgroup>
               </select>
             </div>
 
@@ -354,9 +417,9 @@ const ServicesManager = () => {
               <select
                 value={formData.icon_bg_color}
                 onChange={(e) => setFormData(prev => ({ ...prev, icon_bg_color: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-olive-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
               >
-                {colorOptions.map(color => (
+                {techColorOptions.map(color => (
                   <option key={color} value={color}>
                     {color}
                   </option>
@@ -529,7 +592,7 @@ const ServicesManager = () => {
 
         {services.length === 0 ? (
           <div className="text-center py-12">
-            <Briefcase className="mx-auto text-gray-400 mb-4" size={48} />
+            <Code className="mx-auto text-gray-400 mb-4" size={48} />
             <p className="text-gray-500 dark:text-gray-400">No services yet</p>
             <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
               Add your first service using the form above
@@ -542,13 +605,13 @@ const ServicesManager = () => {
               return (
                 <div key={service.id} className={`border ${service.is_active ? 'border-gray-200 dark:border-gray-700' : 'border-red-200 dark:border-red-700'} rounded-lg p-6 hover:shadow-lg transition-shadow`}>
                   <div className="flex justify-between items-start mb-4">
-                    <div className={`p-3 ${service.is_active ? 'bg-blue-100 dark:bg-blue-900/20' : 'bg-red-100 dark:bg-red-900/20'} rounded-lg`}>
-                      <IconComponent className={service.is_active ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'} size={24} />
+                    <div className={`p-3 ${service.is_active ? 'bg-olive-100 dark:bg-olive-900/20' : 'bg-red-100 dark:bg-red-900/20'} rounded-lg`}>
+                      <IconComponent className={service.is_active ? 'text-olive-600 dark:text-olive-400' : 'text-red-600 dark:text-red-400'} size={24} />
                     </div>
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handleEdit(service)}
-                        className="p-2 text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                        className="p-2 text-olive-600 hover:bg-olive-50 dark:text-olive-400 dark:hover:bg-olive-900/20 rounded-lg transition-colors"
                         title="Edit"
                       >
                         <Edit2 size={16} />
@@ -591,7 +654,7 @@ const ServicesManager = () => {
                     <div className="space-y-1 mb-4">
                       {service.features.slice(0, 3).map((feature, index) => (
                         <div key={index} className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                          <div className="w-1.5 h-1.5 bg-olive-600 rounded-full"></div>
                           <span className="text-xs text-gray-600 dark:text-gray-400">{feature}</span>
                         </div>
                       ))}

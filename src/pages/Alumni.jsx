@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Users, Star, Calendar, MapPin, ExternalLink, ChevronLeft, ChevronRight, Quote, Award, Building } from 'lucide-react'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 
 const Alumni = () => {
@@ -83,7 +82,7 @@ const Alumni = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-olive-50 to-olive-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -91,7 +90,7 @@ const Alumni = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold" style={{color: '#252B0D'}}>
               Our <span className="text-accent-main">Alumni</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
@@ -118,7 +117,7 @@ const Alumni = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-olive-200 rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h3>
@@ -138,7 +137,7 @@ const Alumni = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
               Featured Alumni
             </h2>
             <p className="text-xl text-text-light dark:text-white/70">
@@ -160,7 +159,7 @@ const Alumni = () => {
                         {/* Left Column - Image and Basic Info */}
                         <div className="text-center lg:text-left">
                           <div className="relative mb-6">
-                            <div className="w-48 h-48 mx-auto lg:mx-0 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
+                            <div className="w-48 h-48 mx-auto lg:mx-0 bg-gradient-to-br from-accent-main to-olive-200 rounded-full flex items-center justify-center">
                               <Users className="w-24 h-24 text-white/50" />
                             </div>
                             <div className="absolute bottom-0 right-0 lg:right-0 lg:bottom-0 bg-accent-main text-white px-3 py-1 rounded-full text-xs font-medium">
@@ -243,7 +242,7 @@ const Alumni = () => {
                               {person.skills.map((skill) => (
                                 <span
                                   key={skill}
-                                  className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium dark:bg-blue-900/30 dark:text-blue-300"
+                                  className="bg-olive-100 text-olive-800 px-3 py-1 rounded-full text-xs font-medium dark:bg-olive-900/30 dark:text-olive-300"
                                 >
                                   {skill}
                                 </span>
@@ -318,7 +317,7 @@ const Alumni = () => {
                 className="bg-card-bg rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-border-light"
               >
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-accent-main to-blue-600 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-accent-main to-olive-200 rounded-full flex items-center justify-center">
                     <Users className="w-8 h-8 text-white/50" />
                   </div>
                   <div>
@@ -346,7 +345,7 @@ const Alumni = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-accent-main to-blue-600">
+      <section className="py-20 bg-gradient-to-r from-accent-main to-olive-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -354,7 +353,7 @@ const Alumni = () => {
             transition={{ duration: 0.6 }}
           >
             <Award className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl font-bold text-white mb-4" style={{color: '#252B0D'}}>
               Join Our Success Stories
             </h2>
             <p className="text-xl text-white/90 mb-8">
@@ -371,7 +370,6 @@ const Alumni = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

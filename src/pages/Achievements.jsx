@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Award, FileText, Shield, CheckCircle, Calendar, Building, Star } from 'lucide-react'
 import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 
 const Achievements = () => {
@@ -98,15 +97,15 @@ const Achievements = () => {
   const getTypeColor = (type) => {
     switch (type) {
       case 'Legal':
-        return 'from-blue-500 to-blue-600'
+        return 'from-olive-500 to-olive-600'
       case 'Government':
         return 'from-green-500 to-green-600'
       case 'Tax':
         return 'from-purple-500 to-purple-600'
       case 'Food Safety':
-        return 'from-accent-main to-blue-600'
+        return 'from-olive-500 to-olive-600'
       default:
-        return 'from-accent-main to-blue-600'
+        return 'from-olive-500 to-olive-600'
     }
   }
 
@@ -115,7 +114,7 @@ const Achievements = () => {
       case 'Active':
         return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
       case 'Certified':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+        return 'bg-olive-100 text-olive-800 dark:bg-olive-900/30 dark:text-olive-300'
       case 'Valid':
         return 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'
       case 'Pending':
@@ -131,7 +130,7 @@ const Achievements = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-blue-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-olive-50 to-olive-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -139,7 +138,7 @@ const Achievements = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold" style={{color: '#252B0D'}}>
               Our <span className="text-accent-main">Achievements</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
@@ -158,7 +157,7 @@ const Achievements = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
               Certifications & Licenses
             </h2>
             <p className="text-xl text-text-light dark:text-white/70">
@@ -222,7 +221,7 @@ const Achievements = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
               Our Journey Timeline
             </h2>
             <p className="text-xl text-text-light dark:text-white/70">
@@ -236,7 +235,7 @@ const Achievements = () => {
               initial={{ height: 0 }}
               whileInView={{ height: "100%" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gradient-to-b from-accent-main to-blue-600"
+              className="absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gradient-to-b from-accent-main to-olive-200"
             />
             
             {/* Animated dotted line overlay */}
@@ -330,7 +329,7 @@ const Achievements = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-text-main dark:text-white mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
               Our Impact
             </h2>
             <p className="text-xl text-text-light dark:text-white/70">
@@ -352,7 +351,7 @@ const Achievements = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-olive-200 rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h3>
@@ -363,7 +362,6 @@ const Achievements = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

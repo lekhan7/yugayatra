@@ -248,7 +248,7 @@ const AchievementSection = () => {
   const getCategoryColor = (category) => {
     const colors = {
       'Intellectual Property': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-      'Business Registration': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      'Business Registration': 'bg-mint-100 text-mint-800 dark:bg-mint-900 dark:text-mint-200',
       'Tax Registration': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
       'Government Recognition': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
       'Company Registration': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
@@ -259,7 +259,7 @@ const AchievementSection = () => {
   const getStatusColor = (status) => {
     const colors = {
       'Active': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-      'Registered': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+      'Registered': 'bg-mint-100 text-mint-800 dark:bg-mint-900 dark:text-mint-200',
       'Recognized': 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
     }
     return colors[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
@@ -296,15 +296,15 @@ const AchievementSection = () => {
   const getTypeColor = (type) => {
     switch (type) {
       case 'Legal':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-mint-200'
       case 'Government':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-mint-200'
       case 'Tax':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-mint-200'
       case 'Food Safety':
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-mint-200'
       default:
-        return 'from-accent-main to-blue-600'
+        return 'from-accent-main to-mint-200'
     }
   }
 
@@ -313,7 +313,7 @@ const AchievementSection = () => {
       case 'Active':
         return 'bg-green-100 text-green-800'
       case 'Certified':
-        return 'bg-blue-100 text-blue-800'
+        return 'bg-mint-100 text-mint-800'
       case 'Valid':
         return 'bg-purple-100 text-purple-800'
       case 'Pending':
@@ -332,7 +332,7 @@ const AchievementSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{color: '#252B0D'}}>
             Our <span className="text-accent-main">Achievements</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
@@ -378,8 +378,8 @@ const AchievementSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-10 h-10 text-white" />
+                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-mint-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className="w-10 h-10 text-text-main" />
                 </div>
                 <h4 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h4>
                 <p className="text-text-light dark:text-white/70">{stat.label}</p>
@@ -398,7 +398,7 @@ const AchievementSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{color: '#252B0D'}}>
               Legal Information & Certificates
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -453,7 +453,7 @@ const AchievementSection = () => {
                   </div>
 
                   {/* Action Button */}
-                  <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium">
+                  <div className="flex items-center text-mint-600 dark:text-mint-400 font-medium">
                     <span>View Document Details</span>
                     <span className="ml-2">→</span>
                   </div>
@@ -523,11 +523,11 @@ const AchievementSection = () => {
                   {/* About This Document Section */}
                   <div className="mt-8">
                     <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
-                      <FileText className="w-6 h-6 mr-3 text-blue-600 dark:text-blue-400" />
+                      <FileText className="w-6 h-6 mr-3 text-mint-600 dark:text-mint-400" />
                       About This {selectedDocument.category.includes('Registration') ? 'Certificate' : 'Document'}
                     </h4>
                     
-                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800 mb-6">
+                    <div className="bg-mint-50 dark:bg-mint-900/20 rounded-lg p-6 border border-mint-200 dark:border-mint-800 mb-6">
                       <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
                         {selectedDocument.details.description}
                       </p>
@@ -547,7 +547,7 @@ const AchievementSection = () => {
                               <ul className="space-y-2">
                                 {value.map((item, index) => (
                                   <li key={index} className="text-sm text-gray-700 dark:text-gray-300 flex items-start">
-                                    <span className="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                                    <span className="text-mint-600 dark:text-mint-400 mr-2">•</span>
                                     {item}
                                   </li>
                                 ))}

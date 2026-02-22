@@ -8,18 +8,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-main': '#EEF5FD',
-        'text-main': '#0D2545',
-        'accent-main': '#1A6EC7',
-        'text-light': '#5B6B7C',
-        'border-light': '#DCE6F2',
+        // Mint Clarity Theme
+        'bg-main': '#F2FDF9',
+        'text-main': '#0D3D2B',
+        'accent-main': '#2ECC9A',
+        'text-light': '#7DE0C0',
+        'border-light': '#C8F5E8',
         'card-bg': '#FFFFFF',
+        // Mint Clarity Swatches
+        'mint-50': '#F2FDF9',
+        'mint-100': '#C8F5E8',
+        'mint-200': '#7DE0C0',
+        'mint-300': '#2ECC9A',
+        'mint-900': '#0D3D2B',
+        // Dark mode variants
+        'dark-bg': '#0A1F1A',
+        'dark-text': '#F2FDF9',
+        'dark-accent': '#7DE0C0',
+        'dark-card': '#0D3D2B',
         // Legacy colors for transition
-        primary: '#EEF5FD',
-        accent: '#1A6EC7',
-        secondary: '#5B6B7C',
-        dark: '#0D2545',
-        'soft-gray': '#F7F7F7',
+        primary: '#F2FDF9',
+        accent: '#2ECC9A',
+        secondary: '#7DE0C0',
+        dark: '#0D3D2B',
+        'soft-gray': '#F2FDF9',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

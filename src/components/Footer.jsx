@@ -45,7 +45,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-text-main text-white">
+    <footer className="bg-mint-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -56,8 +56,8 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">Y</span>
+              <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-mint-200 rounded-lg flex items-center justify-center">
+                <span className="text-text-main font-bold text-sm">Y</span>
               </div>
               <h3 className="text-xl font-bold">YugaYatra Retail (OPC) Pvt Ltd</h3>
             </div>
@@ -110,15 +110,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-white/70">
                 <Mail className="w-4 h-4" />
-                <span className="text-sm">info@yugyatra.com</span>
+                <span className="text-sm">hr@yugayatraretail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-white/70">
                 <Phone className="w-4 h-4" />
-                <span className="text-sm">+91 98765 43210</span>
+                <span className="text-sm">+91 8757728679</span>
               </div>
               <div className="flex items-center space-x-3 text-white/70">
                 <MapPin className="w-4 h-4" />
-                <span className="text-sm">Bangalore, India</span>
+                <span className="text-sm">Electronic City, Phase 1, Bengaluru</span>
               </div>
             </div>
           </motion.div>
@@ -141,7 +141,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium"
+                className="w-full bg-accent-main text-text-main px-4 py-2 rounded-lg hover:bg-mint-200 transition-colors duration-200 font-medium"
               >
                 Subscribe
               </button>
@@ -204,7 +204,7 @@ const Footer = () => {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-40"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-accent-main to-mint-200 rounded-full flex items-center justify-center text-text-main shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-40"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" />

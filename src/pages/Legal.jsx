@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 import ScrollProgressBar from '../components/ScrollProgressBar'
 import LegalSection from '../components/sections/LegalSection'
@@ -13,7 +12,6 @@ const Legal = () => {
       {/* Legal Information Section */}
       <LegalSection />
 
-      <Footer />
     </div>
   )
 }

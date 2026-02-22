@@ -12,8 +12,10 @@ import AlumniManager from './AlumniManager'
 import BlogManager from './BlogManager'
 import TeamManager from './TeamManager'
 import ToastProvider from './ToastProvider'
+import { DashboardSettingsProvider, useDashboardSettings } from '../../contexts/DashboardSettingsContext'
 
-const AdminDashboard = ({ user, onLogout }) => {
+const AdminDashboardContent = ({ user, onLogout }) => {
+  const { settings } = useDashboardSettings()
   const [activeSection, setActiveSection] = useState('dashboard')
 
   const handleLogout = async () => {
@@ -53,7 +55,12 @@ const AdminDashboard = ({ user, onLogout }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div 
+      className="min-h-screen"
+      style={{
+        backgroundColor: settings.theme.adminBackground
+      }}
+    >
       <ToastProvider />
       <div className="flex">
         {/* Sidebar */}
@@ -65,7 +72,12 @@ const AdminDashboard = ({ user, onLogout }) => {
         />
         
         {/* Main Content */}
-        <div className="flex-1 p-6">
+        <div 
+          className="flex-1 p-6"
+          style={{
+            backgroundColor: settings.theme.adminBackground
+          }}
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,6 +88,14 @@ const AdminDashboard = ({ user, onLogout }) => {
         </div>
       </div>
     </div>
+  )
+}
+
+const AdminDashboard = ({ user, onLogout }) => {
+  return (
+    <DashboardSettingsProvider>
+      <AdminDashboardContent user={user} onLogout={onLogout} />
+    </DashboardSettingsProvider>
   )
 }
 
