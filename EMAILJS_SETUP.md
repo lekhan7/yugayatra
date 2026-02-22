@@ -11,7 +11,8 @@ Add the following environment variables to your `.env` file:
 ```env
 VITE_EMAILJS_PUBLIC_KEY=ILkAUZ-VN8UndJpaz
 VITE_EMAILJS_SERVICE_ID=service_wf6euii
-VITE_EMAILJS_TEMPLATE_ID=template_dbhoswn
+VITE_EMAILJS_INTERNSHIP_TEMPLATE_ID=template_internship_acceptance
+VITE_EMAILJS_PROJECT_TEMPLATE_ID=template_project_acceptance
 ```
 
 ## How to Get EmailJS Credentials
@@ -50,6 +51,8 @@ VITE_EMAILJS_TEMPLATE_ID=template_dbhoswn
 
 ### Template 1: Internship Acceptance
 
+**Template ID:** `template_internship_acceptance`
+
 **Subject:**
 ```
 Congratulations! Your Internship Application Has Been Approved
@@ -71,6 +74,8 @@ Team YugaYatra
 - `{{email}}` - Applicant's email (if needed in template)
 
 ### Template 2: Project Request Acceptance
+
+**Template ID:** `template_project_acceptance`
 
 **Subject:**
 ```
@@ -114,6 +119,7 @@ Team YugaYatra
 - `role` → `{{role}}` in template  
 - `email` → `{{email}}` in template
 - `subject` → Email subject line
+- **Template ID:** `VITE_EMAILJS_INTERNSHIP_TEMPLATE_ID`
 
 ### Project Requests:
 - `name` → `{{name}}` in template
@@ -124,6 +130,7 @@ Team YugaYatra
 - `budget_range` → `{{budget_range}}` in template
 - `timeline` → `{{timeline}}` in template
 - `subject` → Email subject line
+- **Template ID:** `VITE_EMAILJS_PROJECT_TEMPLATE_ID`
 
 ## Error Handling
 - If email sending fails, application/request status is still updated

@@ -5,7 +5,6 @@ import AdminSidebar from './AdminSidebar'
 import Dashboard from './Dashboard'
 import AdminApplications from './AdminApplications'
 import ProjectRequestsManager from './ProjectRequestsManager'
-import ContentManager from './ContentManager'
 import TestimonialsManager from './TestimonialsManager'
 import ServicesManager from './ServicesManager'
 import ProjectsManager from './ProjectsManager'
@@ -35,8 +34,6 @@ const AdminDashboard = ({ user, onLogout }) => {
         return <AdminApplications />
       case 'project-requests':
         return <ProjectRequestsManager />
-      case 'content':
-        return <ContentManager />
       case 'testimonials':
         return <TestimonialsManager />
       case 'services':
