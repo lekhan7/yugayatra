@@ -1,62 +1,68 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Search, Calendar, User, Tag, Clock, ArrowRight, Filter } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
+import { getBlogPosts, getBlogPostsByCategory } from '../services/supabase'
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [blogPosts, setBlogPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [categories, setCategories] = useState(['All'])
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: 'Future of E-commerce: Trends and Predictions',
-      excerpt: 'Explore the latest trends shaping the future of online retail, from AI-powered personalization to sustainable shopping practices.',
-      content: 'The e-commerce landscape is rapidly evolving with new technologies and changing consumer behaviors. In this comprehensive guide, we explore the key trends that will define the future of online retail...',
-      author: 'YugaYatra Retail (OPC) Pvt Ltd Team',
-      date: '2024-01-15',
-      category: 'Digital Marketing',
-      readTime: '5 min read',
-      image: '/api/placeholder/400/250',
-      tags: ['E-commerce', 'Digital Trends', 'Retail', 'Technology']
-    },
-    {
-      id: 2,
-      title: 'Digital Marketing Strategies for 2024',
-      excerpt: 'Discover the most effective digital marketing strategies that will help your business thrive in the competitive online landscape.',
-      content: 'As we navigate through 2024, digital marketing continues to evolve with new platforms, technologies, and consumer expectations. This article covers the essential strategies every business should implement...',
-      author: 'Marketing Team',
-      date: '2024-01-10',
-      category: 'Digital Marketing',
-      readTime: '7 min read',
-      image: '/api/placeholder/400/250',
-      tags: ['Marketing', 'Strategy', 'SEO', 'Social Media']
-    },
-    {
-      id: 3,
-      title: 'Building Strong Brand Presence Online',
-      excerpt: 'Learn how to establish and maintain a powerful brand presence that resonates with your target audience and drives business growth.',
-      content: 'In today\'s digital world, building a strong brand presence is crucial for business success. This comprehensive guide covers everything from brand identity to online reputation management...',
-      author: 'Brand Strategy Team',
-      date: '2024-01-05',
-      category: 'Branding',
-      readTime: '6 min read',
-      image: '/api/placeholder/400/250',
-      tags: ['Branding', 'Strategy', 'Marketing', 'Identity']
+  useEffect(() => {
+    fetchBlogPosts()
+  }, [])
+
+  useEffect(() => {
+    if (selectedCategory === 'All') {
+      fetchBlogPosts()
+    } else {
+      fetchBlogPostsByCategory()
     }
-  ]
+  }, [selectedCategory])
 
-  const categories = ['All', 'Digital Marketing', 'Branding', 'Technology', 'Business', 'Design']
+  const fetchBlogPosts = async () => {
+    try {
+      setLoading(true)
+      const data = await getBlogPosts()
+      setBlogPosts(data)
+      
+      // Extract unique categories
+      const uniqueCategories = [...new Set(data.map(post => post.category))]
+      setCategories(['All', ...uniqueCategories])
+    } catch (error) {
+      console.error('Error fetching blog posts:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchBlogPostsByCategory = async () => {
+    try {
+      setLoading(true)
+      const data = await getBlogPostsByCategory(selectedCategory)
+      setBlogPosts(data)
+    } catch (error) {
+      console.error('Error fetching blog posts by category:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const shareOnLinkedIn = () => {
+  window.open('https://www.linkedin.com/company/yuga-yatra-retail-opc-pvt-ltd/posts/', '_blank')
+}
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-    const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory
-    return matchesSearch && matchesCategory
+                         (post.excerpt && post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                         (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())))
+    return matchesSearch
   })
 
   return (
@@ -125,90 +131,109 @@ const Blog = () => {
       {/* Blog Posts Grid */}
       <section className="py-16 bg-bg-main dark:bg-text-main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-card-bg dark:bg-card-bg/10 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10"
-              >
-                {/* Post Image */}
-                <div className="h-48 bg-gradient-to-br from-accent-main to-blue-600 relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <div className="text-6xl mb-2">📝</div>
-                      <p className="text-sm opacity-90">Featured Image</p>
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredPosts.map((post, index) => (
+                  <motion.article
+                    key={post.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -5 }}
+                    className="bg-card-bg dark:bg-card-bg/10 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10"
+                  >
+                    {/* Post Image */}
+                    <div className="h-48 bg-gradient-to-br from-accent-main to-blue-600 relative">
+                      {post.featured_image ? (
+                        <img 
+                          src={post.featured_image} 
+                          alt={post.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-white text-center">
+                            <div className="text-6xl mb-2">📝</div>
+                            <p className="text-sm opacity-90">Featured Image</p>
+                          </div>
+                        </div>
+                      )}
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-accent-main text-white px-3 py-1 rounded-full text-xs font-medium">
+                          {post.category}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-accent-main text-white px-3 py-1 rounded-full text-xs font-medium">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
 
-                {/* Post Content */}
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-text-light dark:text-white/70 mb-3">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    <span>{new Date(post.date).toLocaleDateString()}</span>
-                    <span className="mx-2">•</span>
-                    <Clock className="w-4 h-4 mr-1" />
-                    <span>{post.readTime}</span>
-                  </div>
+                    {/* Post Content */}
+                    <div className="p-6">
+                      <div className="flex items-center text-sm text-text-light dark:text-white/70 mb-3">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        <span>{new Date(post.published_at || post.created_at).toLocaleDateString()}</span>
+                        <span className="mx-2">•</span>
+                        <Clock className="w-4 h-4 mr-1" />
+                        <span>{post.read_time || 5} min read</span>
+                      </div>
 
-                  <h3 className="text-xl font-bold text-text-main dark:text-white mb-3 line-clamp-2">
-                    {post.title}
+                      <h3 className="text-xl font-bold text-text-main dark:text-white mb-3 line-clamp-2">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-text-light dark:text-white/70 mb-4 line-clamp-3">
+                        {post.excerpt || 'Read more about this topic...'}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {post.tags && post.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="bg-bg-main text-text-light px-2 py-1 rounded-full text-xs font-medium border border-border-light dark:bg-card-bg/10 dark:text-white/70 dark:border-white/10"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-sm text-text-light dark:text-white/70">
+                          <User className="w-4 h-4 mr-1" />
+                          <span>{post.author}</span>
+                        </div>
+
+                        <button 
+                          onClick={() => shareOnLinkedIn()}
+                          className="text-accent-main dark:text-blue-300 font-semibold flex items-center hover:text-blue-700 transition-colors duration-200"
+                        >
+                          Read More
+                          <ArrowRight className="w-4 h-4 ml-1" />
+                        </button>
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+
+              {filteredPosts.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-center py-12"
+                >
+                  <div className="text-text-light text-6xl mb-4">🔍</div>
+                  <h3 className="text-xl font-semibold text-text-main dark:text-white mb-2">
+                    No articles found
                   </h3>
-
-                  <p className="text-text-light dark:text-white/70 mb-4 line-clamp-3">
-                    {post.excerpt}
+                  <p className="text-text-light dark:text-white/70">
+                    Try adjusting your search or filter criteria
                   </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-bg-main text-text-light px-2 py-1 rounded-full text-xs font-medium border border-border-light dark:bg-card-bg/10 dark:text-white/70 dark:border-white/10"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-sm text-text-light dark:text-white/70">
-                      <User className="w-4 h-4 mr-1" />
-                      <span>{post.author}</span>
-                    </div>
-
-                    <button className="text-accent-main dark:text-blue-300 font-semibold flex items-center hover:text-blue-700 transition-colors duration-200">
-                      Read More
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </button>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-
-          {filteredPosts.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-12"
-            >
-              <div className="text-text-light text-6xl mb-4">🔍</div>
-              <h3 className="text-xl font-semibold text-text-main dark:text-white mb-2">
-                No articles found
-              </h3>
-              <p className="text-text-light dark:text-white/70">
-                Try adjusting your search or filter criteria
-              </p>
-            </motion.div>
+                </motion.div>
+              )}
+            </>
           )}
         </div>
       </section>

@@ -11,7 +11,6 @@ import ProjectsSection from '../components/sections/ProjectsSection'
 import AlumniSection from '../components/sections/AlumniSection'
 import TestimonialsSection from '../components/sections/TestimonialsSection'
 import BlogSection from '../components/sections/BlogSection'
-import CareersSection from '../components/sections/CareersSection'
 import ProfileSection from '../components/sections/ProfileSection'
 import ContactSection from '../components/sections/ContactSection'
 import QuizSection from '../components/sections/QuizSection'
@@ -49,9 +48,6 @@ const Home = () => {
 
       {/* Blog Section */}
       <BlogSection />
-
-      {/* Careers Section */}
-      <CareersSection />
 
       {/* Profile Section */}
       <ProfileSection />

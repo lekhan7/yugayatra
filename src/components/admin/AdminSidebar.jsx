@@ -10,7 +10,8 @@ import {
   Menu,
   X,
   LogOut,
-  User
+  User,
+  PenTool
 } from 'lucide-react'
 
 const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
@@ -24,6 +25,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
     { id: 'services', label: 'Services', icon: Briefcase },
     { id: 'projects', label: 'Projects', icon: Globe },
     { id: 'alumni', label: 'Alumni', icon: GraduationCap },
+    { id: 'blog', label: 'Blog & Insights', icon: PenTool },
   ]
 
   return (

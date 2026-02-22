@@ -9,6 +9,7 @@ import TestimonialsManager from './TestimonialsManager'
 import ServicesManager from './ServicesManager'
 import ProjectsManager from './ProjectsManager'
 import AlumniManager from './AlumniManager'
+import BlogManager from './BlogManager'
 
 const AdminDashboard = ({ user, onLogout }) => {
   const [activeSection, setActiveSection] = useState('dashboard')
@@ -40,6 +41,8 @@ const AdminDashboard = ({ user, onLogout }) => {
         return <ProjectsManager />
       case 'alumni':
         return <AlumniManager />
+      case 'blog':
+        return <BlogManager />
       default:
         return <Dashboard />
     }

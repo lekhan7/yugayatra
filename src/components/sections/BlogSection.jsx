@@ -1,65 +1,58 @@
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { Calendar, Clock, ArrowRight, User } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { getBlogPosts, getBlogPostsByCategory } from '../../services/supabase'
 
 const BlogSection = () => {
-  const blogPosts = [
-    {
-      title: 'The Future of Web Development',
-      excerpt: 'Exploring emerging trends and technologies that will shape the future of web development...',
-      author: 'John Doe',
-      date: '2024-01-15',
-      readTime: '5 min read',
-      category: 'Technology',
-      image: '/api/placeholder/400/250'
-    },
-    {
-      title: 'UI/UX Best Practices for 2024',
-      excerpt: 'Essential design principles and practices every designer should know this year...',
-      author: 'Jane Smith',
-      date: '2024-01-10',
-      readTime: '8 min read',
-      category: 'Design',
-      image: '/api/placeholder/400/250'
-    },
-    {
-      title: 'Digital Marketing Strategies That Work',
-      excerpt: 'Proven strategies to boost your online presence and drive business growth...',
-      author: 'Mike Johnson',
-      date: '2024-01-05',
-      readTime: '6 min read',
-      category: 'Marketing',
-      image: '/api/placeholder/400/250'
-    },
-    {
-      title: 'Building Scalable Applications',
-      excerpt: 'Key considerations and best practices for building applications that can grow...',
-      author: 'Sarah Williams',
-      date: '2023-12-28',
-      readTime: '10 min read',
-      category: 'Development',
-      image: '/api/placeholder/400/250'
-    },
-    {
-      title: 'The Power of Cloud Computing',
-      excerpt: 'How cloud technologies are transforming businesses and enabling innovation...',
-      author: 'John Doe',
-      date: '2023-12-20',
-      readTime: '7 min read',
-      category: 'Cloud',
-      image: '/api/placeholder/400/250'
-    },
-    {
-      title: 'Mobile-First Design Approach',
-      excerpt: 'Why designing for mobile first is crucial in today\'s digital landscape...',
-      author: 'Jane Smith',
-      date: '2023-12-15',
-      readTime: '5 min read',
-      category: 'Design',
-      image: '/api/placeholder/400/250'
-    }
-  ]
+  const [blogPosts, setBlogPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [categories, setCategories] = useState(['All'])
 
-  const categories = ['All', 'Technology', 'Design', 'Marketing', 'Development', 'Cloud']
+  useEffect(() => {
+    fetchBlogPosts()
+  }, [])
+
+  useEffect(() => {
+    if (selectedCategory === 'All') {
+      fetchBlogPosts()
+    } else {
+      fetchBlogPostsByCategory()
+    }
+  }, [selectedCategory])
+
+  const shareOnLinkedIn = () => {
+  window.open('https://www.linkedin.com/in/yuga-yatra-retail-opc-pvt-ltd/recent-activity/all/', '_blank')
+}
+
+  const fetchBlogPosts = async () => {
+    try {
+      setLoading(true)
+      const data = await getBlogPosts()
+      setBlogPosts(data.slice(0, 6)) // Show only 6 posts in section
+      
+      // Extract unique categories
+      const uniqueCategories = [...new Set(data.map(post => post.category))]
+      setCategories(['All', ...uniqueCategories])
+    } catch (error) {
+      console.error('Error fetching blog posts:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchBlogPostsByCategory = async () => {
+    try {
+      setLoading(true)
+      const data = await getBlogPostsByCategory(selectedCategory)
+      setBlogPosts(data.slice(0, 6))
+    } catch (error) {
+      console.error('Error fetching blog posts by category:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section id="blog" className="py-20 bg-card-bg">
@@ -87,7 +80,12 @@ const BlogSection = () => {
             {categories.map((category) => (
               <button
                 key={category}
-                className="px-6 py-2 rounded-full border-2 border-accent-main text-accent-main font-medium hover:bg-blue-700 hover:text-white transition-all duration-300"
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-2 rounded-full border-2 font-medium transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'bg-accent-main text-white border-accent-main'
+                    : 'border-accent-main text-accent-main hover:bg-accent-main hover:text-white'
+                }`}
               >
                 {category}
               </button>
@@ -95,73 +93,133 @@ const BlogSection = () => {
           </div>
 
           {/* Blog Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <motion.article
-                key={post.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group cursor-pointer"
-              >
-                <div className="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light">
-                  {/* Blog Image */}
-                  <div className="relative h-48 bg-gradient-to-br from-accent-main to-blue-600 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-                  </div>
-                  
-                  <div className="p-6">
-                    {/* Category and Date */}
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="px-3 py-1 bg-accent-main/20 text-accent-main text-xs font-medium rounded-full">
-                        {post.category}
-                      </span>
-                      <div className="flex items-center text-sm text-text-light">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {new Date(post.date).toLocaleDateString()}
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {blogPosts.map((post, index) => (
+                  <motion.article
+                    key={post.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -5 }}
+                    className="group cursor-pointer"
+                  >
+                    <div className="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light">
+                      {/* Blog Image */}
+                      <div className="relative h-48 bg-gradient-to-br from-accent-main to-blue-600 flex items-center justify-center">
+                        {post.featured_image ? (
+                          <img 
+                            src={post.featured_image} 
+                            alt={post.title}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-white text-center">
+                              <div className="text-6xl mb-2">📝</div>
+                              <p className="text-sm opacity-90">Featured Image</p>
+                            </div>
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                        
+                        {/* Category Badge */}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 bg-accent-main/20 text-accent-main text-xs font-medium rounded-full">
+                            {post.category}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="p-6">
+                        {/* Date and Read Time */}
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center text-sm text-text-light">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            {new Date(post.published_at || post.created_at).toLocaleDateString()}
+                          </div>
+                          <div className="flex items-center text-sm text-text-light">
+                            <Clock className="w-4 h-4 mr-1" />
+                            {post.read_time || 5} min read
+                          </div>
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-xl font-bold text-text-main mb-3 group-hover:text-accent-main transition-colors duration-200 line-clamp-2">
+                          {post.title}
+                        </h3>
+
+                        {/* Excerpt */}
+                        <p className="text-text-light text-sm mb-4 line-clamp-3">
+                          {post.excerpt || 'Read more about this topic...'}
+                        </p>
+
+                        {/* Author */}
+                        <div className="flex items-center justify-between text-sm text-text-light mb-4">
+                          <div className="flex items-center">
+                            <User className="w-4 h-4 mr-1" />
+                            {post.author}
+                          </div>
+                        </div>
+
+                        {/* Tags */}
+                        {post.tags && post.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mb-4">
+                            {post.tags.slice(0, 2).map((tag) => (
+                              <span key={tag} className="px-2 py-1 bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded text-xs">
+                                #{tag}
+                              </span>
+                            ))}
+                            {post.tags.length > 2 && (
+                              <span className="text-xs text-gray-500">
+                                +{post.tags.length - 2}
+                              </span>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Read More */}
+                        <button 
+                          onClick={() => shareOnLinkedIn()}
+                          className="text-accent-main font-semibold flex items-center group-hover:text-blue-700 transition-colors duration-200"
+                        >
+                          Read More
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                        </button>
                       </div>
                     </div>
+                  </motion.article>
+                ))}
+              </div>
 
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-text-main mb-3 group-hover:text-accent-main transition-colors duration-200">
-                      {post.title}
-                    </h3>
-
-                    {/* Excerpt */}
-                    <p className="text-text-light text-sm mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-
-                    {/* Meta Info */}
-                    <div className="flex items-center justify-between text-sm text-text-light">
-                      <div className="flex items-center">
-                        <User className="w-4 h-4 mr-1" />
-                        {post.author}
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {post.readTime}
-                      </div>
-                    </div>
-
-                    {/* Read More */}
-                    <button className="mt-4 text-primary font-semibold flex items-center group-hover:text-secondary transition-colors duration-200">
-                      Read More
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                    </button>
-                  </div>
+              {blogPosts.length === 0 && (
+                <div className="text-center py-12">
+                  <div className="text-text-light text-6xl mb-4">📝</div>
+                  <h3 className="text-xl font-semibold text-text-main mb-2">
+                    No articles found
+                  </h3>
+                  <p className="text-text-light">
+                    Check back later for new blog posts and insights
+                  </p>
                 </div>
-              </motion.article>
-            ))}
-          </div>
+              )}
+            </>
+          )}
 
-          {/* Load More */}
+          {/* Load More / View All */}
           <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center">
-              Load More Posts
+            <Link 
+              to="/blog"
+              className="bg-gradient-to-r from-accent-main to-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center"
+            >
+              View All Posts
               <ArrowRight className="ml-2 w-5 h-5" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
