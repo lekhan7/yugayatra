@@ -119,7 +119,7 @@ const TestimonialsSection = () => {
   }
 
   return (
-    <section ref={containerRef} id="testimonials" className="py-20 bg-card-bg relative overflow-hidden">
+    <section ref={containerRef} id="testimonials" className="py-20 relative overflow-hidden" style={{backgroundColor: '#0D3D2B'}}>
       {/* Animated Background Elements */}
       <motion.div
         style={{ y: y1 }}
@@ -142,13 +142,13 @@ const TestimonialsSection = () => {
           className="text-center"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6" style={{color: '#252B0D'}}
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
             style={{ scale: springScale }}
           >
             Client <span className="gradient-text">Testimonials</span>
           </motion.h2>
           <motion.p 
-            className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-white max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -195,7 +195,7 @@ const TestimonialsSection = () => {
               {testimonials.length === 0 ? (
                 <div className="col-span-full text-center py-20">
                   <Quote className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-xl text-gray-500 dark:text-gray-400">
+                  <p className="text-xl text-white">
                     No testimonials yet. Be the first to share your experience!
                   </p>
                 </div>
@@ -308,8 +308,8 @@ const TestimonialsSection = () => {
 
       {/* Stats Section */}
       <motion.div 
-        className="py-20 bg-card-bg relative z-10"
-        style={{ y: y1 }}
+        className="py-20 relative z-10"
+        style={{backgroundColor: '#0D3D2B', y: y1}}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -318,11 +318,11 @@ const TestimonialsSection = () => {
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
+            <h3 className="text-4xl font-bold mb-4 text-white">
               Our Impact
             </h3>
             <motion.p 
-              className="text-xl text-text-light"
+              className="text-xl text-white"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -366,12 +366,12 @@ const TestimonialsSection = () => {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <stat.icon className="w-8 h-8 text-accent-main" />
+                    <stat.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   
                   {/* Number with Counter Animation */}
                   <motion.div 
-                    className="text-3xl md:text-4xl font-bold text-accent-main mb-2"
+                    className="text-3xl md:text-4xl font-bold text-white mb-2"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ 
@@ -386,7 +386,7 @@ const TestimonialsSection = () => {
                   
                   {/* Label */}
                   <motion.p 
-                    className="text-text-light"
+                    className="text-white"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.15 + 0.3 }}
@@ -402,8 +402,8 @@ const TestimonialsSection = () => {
 
       {/* CTA Section */}
       <motion.div 
-        className="py-20 bg-gradient-to-r from-accent-main to-olive-200 relative overflow-hidden"
-        style={{ scale: springScale }}
+        className="py-20 relative overflow-hidden"
+        style={{backgroundColor: '#0D3D2B', scale: springScale}}
       >
         {/* Animated Background Elements */}
         <motion.div
@@ -434,7 +434,7 @@ const TestimonialsSection = () => {
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <motion.h3 
-              className="text-4xl font-bold text-white mb-4" style={{color: '#252B0D'}}
+              className="text-4xl font-bold text-white mb-4"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -442,7 +442,7 @@ const TestimonialsSection = () => {
               Ready to Join Our Happy Clients?
             </motion.h3>
             <motion.p 
-              className="text-xl text-white/90 mb-8"
+              className="text-xl text-white mb-8"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -451,7 +451,7 @@ const TestimonialsSection = () => {
             </motion.p>
             <motion.button 
               onClick={() => setIsProjectModalOpen(true)}
-              className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 inline-flex items-center group"
+              className="bg-white text-[#0D3D2B] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 inline-flex items-center group"
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.6, type: "spring" }}

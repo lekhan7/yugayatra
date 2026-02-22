@@ -187,7 +187,7 @@ const Projects = () => {
       case 'Coming Soon':
         return 'bg-mint-100 text-mint-800 dark:bg-mint-900/30 dark:text-mint-300'
       default:
-        return 'bg-bg-main text-text-main dark:bg-card-bg/10 text-text-main'
+        return 'bg-bg-main text-olive-900 dark:bg-card-bg/10 text-olive-900'
     }
   }
 
@@ -205,7 +205,7 @@ const Projects = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-mint-50 to-mint-100">
+      <section className="pt-24 pb-16 bg-[#BEF0DA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -213,10 +213,10 @@ const Projects = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold" style={{color: '#0D3D2B'}}>
-              Our <span className="text-accent-main">Projects</span>
+            <h1 className="text-5xl md:text-6xl font-bold" style={{color: '#0A1F1A'}}>
+              Our <span className="text-darker">Projects</span>
             </h1>
-            <p className="text-xl md:text-2xl text-text-main max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-darker max-w-3xl mx-auto">
               Explore our portfolio of innovative digital solutions across various industries
             </p>
           </motion.div>
@@ -224,7 +224,7 @@ const Projects = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 bg-bg-main dark:bg-text-main">
+      <section className="py-20 bg-[#BEF0DA] bg-bg-main dark:bg-text-main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
@@ -238,7 +238,7 @@ const Projects = () => {
                 onClick={() => openModal(project)}
               >
                 {/* Project Image */}
-                <div className="h-48 bg-gradient-to-br from-accent-main to-mint-200 relative">
+                <div className="h-48 bg-accent-main relative">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-white text-center">
                       <div className="text-4xl mb-2">🚀</div>
@@ -259,15 +259,15 @@ const Projects = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-text-main mb-2">
+                  <h3 className="text-xl font-bold text-olive-900 mb-2">
                     {project.name}
                   </h3>
                   
-                  <p className="text-text-main mb-4 text-sm line-clamp-2">
+                  <p className="text-olive-900 mb-4 text-sm line-clamp-2">
                     {project.description}
                   </p>
 
-                  <div className="flex items-center text-xs text-text-main mb-4">
+                  <div className="flex items-center text-xs text-olive-900 mb-4">
                     <Globe className="w-3 h-3 mr-1" />
                     <span>{project.category}</span>
                   </div>
@@ -276,13 +276,13 @@ const Projects = () => {
                     {project.techStack.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="bg-mint-100 text-mint-800 px-2 py-1 rounded-full text-xs font-medium dark:bg-mint-900/30 dark:text-mint-300"
+                        className="bg-olive-600 text-olive-900 px-2 py-1 rounded-full text-xs font-medium dark:bg-olive-700 dark:text-olive-200"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.techStack.length > 3 && (
-                      <span className="text-text-main text-xs">
+                      <span className="text-olive-900 text-xs">
                         +{project.techStack.length - 3} more
                       </span>
                     )}
@@ -294,7 +294,7 @@ const Projects = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-accent-main text-text-main rounded-lg hover:bg-mint-200 transition-colors duration-200"
+                        className="p-2 bg-olive-600 text-olive-900 rounded-lg hover:bg-olive-500 transition-colors duration-200"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -304,14 +304,14 @@ const Projects = () => {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 bg-card-bg text-text-main rounded-lg border border-border-light hover:bg-bg-main transition-colors duration-200"
+                          className="p-2 bg-olive-700 text-olive-900 rounded-lg border border-olive-600 hover:bg-olive-600 transition-colors duration-200"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Github className="w-4 h-4" />
                         </a>
                       )}
                     </div>
-                    <button className="text-accent-main dark:text-mint-300 font-medium text-sm hover:text-mint-600 transition-colors duration-200">
+                    <button className="text-olive-800 dark:text-olive-300 font-medium text-sm hover:text-olive-600 transition-colors duration-200">
                       View Details
                     </button>
                   </div>
@@ -335,35 +335,35 @@ const Projects = () => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-card-bg dark:bg-text-main rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-border-light dark:border-white/10"
+            className="bg-olive-700 dark:bg-olive-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-olive-600 dark:border-olive-600"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-8">
               {/* Modal Header */}
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-text-main mb-2">
+                  <h2 className="text-2xl font-bold text-olive-900 mb-2">
                     {selectedProject.name}
                   </h2>
                   <div className="flex items-center space-x-3">
                     <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(selectedProject.status)}`}>
                       {selectedProject.status}
                     </span>
-                    <span className="bg-accent-main text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-olive-600 text-olive-200 px-3 py-1 rounded-full text-sm font-medium">
                       {selectedProject.year}
                     </span>
                   </div>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="p-2 bg-bg-main dark:bg-card-bg/10 rounded-lg border border-border-light dark:border-white/10 hover:bg-card-bg transition-colors duration-200"
+                  className="p-2 bg-olive-700 dark:bg-olive-800 rounded-lg border border-olive-600 dark:border-olive-600 hover:bg-olive-600 transition-colors duration-200"
                 >
-                  <span className="text-text-main text-text-main text-xl">×</span>
+                  <span className="text-olive-900 text-olive-900 text-xl">×</span>
                 </button>
               </div>
 
               {/* Project Image */}
-              <div className="h-64 bg-gradient-to-br from-accent-main to-mint-200 rounded-xl mb-6 flex items-center justify-center">
+              <div className="h-64 bg-olive-700 rounded-xl mb-6 flex items-center justify-center">
                 <div className="text-white text-center">
                   <div className="text-6xl mb-2">🚀</div>
                   <p className="text-lg opacity-90">{selectedProject.name}</p>
@@ -373,22 +373,22 @@ const Projects = () => {
               {/* Project Details */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-text-main mb-4">
+                  <h3 className="text-lg font-semibold text-olive-900 mb-4">
                     Project Overview
                   </h3>
-                  <p className="text-text-main text-text-main mb-6">
+                  <p className="text-olive-900 text-olive-900 mb-6">
                     {selectedProject.description}
                   </p>
 
                   <div className="mb-6">
-                    <h4 className="font-semibold text-text-main mb-3">
+                    <h4 className="font-semibold text-olive-900 mb-3">
                       Key Features
                     </h4>
                     <ul className="space-y-2">
                       {selectedProject.features.map((feature, index) => (
                         <li key={index} className="flex items-start">
                           <span className="w-2 h-2 bg-accent-main rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                          <span className="text-text-main text-text-main text-sm">
+                          <span className="text-olive-900 text-olive-900 text-sm">
                             {feature}
                           </span>
                         </li>
@@ -397,10 +397,10 @@ const Projects = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-text-main mb-3">
+                    <h4 className="font-semibold text-olive-900 mb-3">
                       Category
                     </h4>
-                    <div className="flex items-center text-text-main text-text-main">
+                    <div className="flex items-center text-olive-900 text-olive-900">
                       {(() => {
                         const Icon = getCategoryIcon(selectedProject.category)
                         return <Icon className="w-5 h-5 mr-2" />
@@ -411,14 +411,14 @@ const Projects = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-text-main mb-4">
+                  <h3 className="text-lg font-semibold text-olive-900 mb-4">
                     Technology Stack
                   </h3>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedProject.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="bg-mint-100 text-mint-800 px-3 py-2 rounded-lg text-sm font-medium dark:bg-mint-900/30 dark:text-mint-300"
+                        className="bg-olive-600 text-olive-900 px-3 py-2 rounded-lg text-sm font-medium dark:bg-olive-700 dark:text-olive-200"
                       >
                         {tech}
                       </span>
@@ -426,7 +426,7 @@ const Projects = () => {
                   </div>
 
                   <div className="space-y-4">
-                    <h4 className="font-semibold text-text-main mb-3">
+                    <h4 className="font-semibold text-olive-900 mb-3">
                       Quick Links
                     </h4>
                     <div className="flex space-x-3">
@@ -434,7 +434,7 @@ const Projects = () => {
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-2 bg-accent-main text-text-main px-4 py-2 rounded-lg hover:bg-mint-200 transition-colors duration-200"
+                        className="flex items-center space-x-2 bg-olive-600 text-olive-900 px-4 py-2 rounded-lg hover:bg-olive-500 transition-colors duration-200"
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Visit Website</span>
@@ -444,7 +444,7 @@ const Projects = () => {
                           href={selectedProject.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-2 bg-card-bg text-text-main px-4 py-2 rounded-lg border border-border-light hover:bg-bg-main transition-colors duration-200"
+                          className="flex items-center space-x-2 bg-olive-700 text-olive-900 px-4 py-2 rounded-lg border border-olive-600 hover:bg-olive-600 transition-colors duration-200"
                         >
                           <Github className="w-4 h-4" />
                           <span>View Code</span>

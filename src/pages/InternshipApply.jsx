@@ -160,7 +160,7 @@ const InternshipApply = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-bg-main via-olive-50 to-olive-100 dark:from-text-main dark:via-text-main dark:to-text-main pt-24 pb-16 overflow-x-hidden">
+    <div className="min-h-screen bg-[#BEF0DA] pt-24 pb-16 overflow-x-hidden">
       <div className="max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

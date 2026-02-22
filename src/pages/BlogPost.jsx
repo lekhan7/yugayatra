@@ -122,7 +122,7 @@ const BlogPost = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
           </div>
         ) : (
-          <div className="h-96 bg-gradient-to-br from-accent-main to-olive-200 flex items-center justify-center">
+          <div className="h-96 bg-[#BEF0DA] flex items-center justify-center">
             <div className="text-white text-center">
               <div className="text-8xl mb-4">📝</div>
               <p className="text-xl opacity-90">Featured Image</p>

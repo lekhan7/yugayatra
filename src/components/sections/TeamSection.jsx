@@ -26,7 +26,7 @@ const TeamSection = () => {
   // Handle loading state
   if (loading) {
     return (
-      <section id="team" className="py-20 bg-card-bg">
+      <section id="team" className="py-20" style={{backgroundColor: '#0D3D2B'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
@@ -39,7 +39,7 @@ const TeamSection = () => {
   // Handle empty state
   if (teamMembers.length === 0) {
     return (
-      <section id="team" className="py-20 bg-card-bg">
+      <section id="team" className="py-20" style={{backgroundColor: '#0D3D2B'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -47,17 +47,17 @@ const TeamSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{color: '#252B0D'}}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Meet Our <span className="gradient-text">Team</span>
             </h2>
-            <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto">
               The talented individuals behind YugaYatra's success
             </p>
           </motion.div>
           <div className="text-center py-12">
             <Users className="mx-auto text-gray-400 mb-4" size={48} />
-            <p className="text-gray-500 dark:text-gray-400">Team members will be featured here soon</p>
-            <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
+            <p className="text-white dark:text-gray-300">Team members will be featured here soon</p>
+            <p className="text-sm text-white/80 dark:text-gray-400 mt-2">
               Check back soon to meet the amazing people behind our mission
             </p>
           </div>
@@ -67,7 +67,7 @@ const TeamSection = () => {
   }
 
   return (
-    <section id="team" className="py-20 bg-card-bg">
+    <section id="team" className="py-20" style={{backgroundColor: '#0D3D2B'}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,10 +75,10 @@ const TeamSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{color: '#252B0D'}}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Meet Our <span className="gradient-text">Team</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto">
             The talented individuals behind YugaYatra's success, dedicated to shaping the future of retail innovation
           </p>
         </motion.div>
@@ -192,7 +192,7 @@ const TeamSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-accent-main to-olive-200 rounded-2xl p-8 text-center">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/20">
             <h3 className="text-2xl font-bold text-white mb-8">
               Our Team by the Numbers
             </h3>
@@ -223,17 +223,17 @@ const TeamSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <h3 className="text-2xl font-bold text-text-main mb-4">
+          <h3 className="text-2xl font-bold text-white mb-4">
             Want to Join Our Team?
           </h3>
-          <p className="text-text-light mb-8 max-w-2xl mx-auto">
+          <p className="text-white mb-8 max-w-2xl mx-auto">
             We're always looking for talented individuals who share our passion for innovation and excellence
           </p>
           <a
             href="https://mail.google.com/mail/?view=cm&to=hr@yugayatraretail.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-accent-main to-olive-200 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center"
+            className="bg-white text-[#0D3D2B] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 inline-flex items-center"
           >
             Get in Touch
             <ExternalLink className="w-5 h-5 ml-2" />

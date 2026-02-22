@@ -99,7 +99,7 @@ const AlumniSection = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="py-16 bg-bg-main">
+      <div className="py-16" style={{backgroundColor: '#0D3D2B'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
@@ -115,11 +115,11 @@ const AlumniSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-olive-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h3>
-                <p className="text-text-light">{stat.label}</p>
+                <h3 className="text-3xl font-bold text-white mb-2">{stat.value}</h3>
+                <p className="text-white">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -358,7 +358,7 @@ const AlumniSection = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-r from-accent-main to-olive-200">
+      <div className="py-20" style={{backgroundColor: '#0D3D2B'}}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -366,15 +366,15 @@ const AlumniSection = () => {
             transition={{ duration: 0.6 }}
           >
             <Award className="w-16 h-16 text-white mx-auto mb-6" />
-            <h3 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
+            <h3 className="text-4xl font-bold mb-4 text-white">
               Join Our Success Stories
             </h3>
-            <p className="text-xl text-white/90 mb-8">
+            <p className="text-xl text-white mb-8">
               Start your journey with YugaYatra Retail (OPC) Pvt Ltd and become part of our growing alumni network
             </p>
             <a
               href="#contact"
-              className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-bg-main transition-colors duration-300 inline-flex items-center"
+              className="bg-white text-[#0D3D2B] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 inline-flex items-center"
             >
               Apply Now
               <ExternalLink className="w-5 h-5 ml-2" />

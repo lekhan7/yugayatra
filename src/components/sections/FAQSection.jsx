@@ -100,7 +100,7 @@ const FAQSection = () => {
   const categories = [...new Set(faqs.map(faq => faq.category))]
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-br from-mint-100/10 to-accent-main/10">
+    <section id="faq" className="py-20" style={{backgroundColor: '#0D3D2B'}}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -110,14 +110,14 @@ const FAQSection = () => {
           className="text-center mb-12"
         >
           <div className="flex justify-center mb-4">
-            <div className="p-3 bg-gradient-to-r from-mint-200 to-accent-main rounded-full">
+            <div className="p-3 bg-white rounded-full">
               <HelpCircle className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h2 className="text-4xl font-bold mb-4" style={{color: '#0D3D2B'}}>
+          <h2 className="text-4xl font-bold mb-4 text-white">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-text-light max-w-2xl mx-auto">
+          <p className="text-lg text-white max-w-2xl mx-auto">
             Find answers to common questions about YugaYatra and our internship programs
           </p>
         </motion.div>

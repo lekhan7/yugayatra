@@ -107,7 +107,7 @@ const About = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-card-bg to-bg-main">
+      <section className="pt-24 pb-16 bg-[#BEF0DA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -358,14 +358,14 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-accent-main to-mint-200">
+      <section className="py-20 bg-[#BEF0DA]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Building className="w-16 h-16 text-white mx-auto mb-6" />
+            <Building className="w-16 h-16 text-darker mx-auto mb-6" />
             <h2 className="text-4xl font-bold text-white mb-4" style={{color: '#0D3D2B'}}>
               Ready to Join Our Journey?
             </h2>

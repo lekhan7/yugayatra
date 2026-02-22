@@ -11,6 +11,8 @@ export default {
         // Mint Clarity Theme
         'bg-main': '#F2FDF9',
         'text-main': '#0D3D2B',
+        'text-darker': '#0A1F1A',
+        'text-darkest': '#051510',
         'accent-main': '#2ECC9A',
         'text-light': '#7DE0C0',
         'border-light': '#C8F5E8',

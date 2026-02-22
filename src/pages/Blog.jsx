@@ -70,7 +70,7 @@ const Blog = () => {
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-mint-50 to-mint-100">
+      <section className="pt-24 pb-16 bg-[#BEF0DA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

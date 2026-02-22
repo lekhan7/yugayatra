@@ -444,14 +444,14 @@ const JourneyTimeline = () => {
   )
 
   return (
-    <section id="journey-timeline" ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-bg-main via-mint-50 to-mint-100 overflow-hidden py-20">
+    <section id="journey-timeline" ref={containerRef} className="relative min-h-screen overflow-hidden py-20" style={{backgroundColor: '#0D3D2B'}}>
       {/* Section Title */}
       <div className="text-center mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-black mb-4" style={{color: '#0D3D2B'}}
+          className="text-5xl md:text-6xl font-black mb-4 text-white"
         >
           Our Journey Timeline
         </motion.h2>
@@ -459,7 +459,7 @@ const JourneyTimeline = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl text-gray-600 max-w-3xl mx-auto"
+          className="text-xl text-white max-w-3xl mx-auto"
         >
           Follow our path of growth and innovation as we shaped the future of workforce development
         </motion.p>

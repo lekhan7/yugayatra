@@ -88,7 +88,7 @@ const ContactSection = () => {
   ]
 
   return (
-    <section id="contact" className="py-20 bg-card-bg dark:bg-dark-card">
+    <section id="contact" className="py-20 bg-[#BEF0DA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -96,17 +96,17 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold dark:text-dark-text mb-6" style={{color: '#0D3D2B'}}>
-            Get in <span className="gradient-text">Touch</span>
+          <h2 className="text-4xl md:text-5xl font-bold dark:text-dark-text mb-6" style={{color: '#1A1F14'}}>
+            Get in <span className="text-olive-800">Touch</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-main max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-olive-900 max-w-3xl mx-auto">
             We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </motion.div>
       </div>
 
       {/* Contact Content */}
-      <div className="py-20 bg-bg-main dark:bg-dark-bg">
+      <div className="py-20 bg-[#BEF0DA] bg-olive-800 dark:bg-olive-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Row: Send Message and Contact Information */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-stretch">
@@ -116,7 +116,7 @@ const ContactSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-3xl font-bold text-text-main dark:text-dark-text mb-6">
+              <h3 className="text-3xl font-bold text-olive-900 dark:text-olive-200 mb-6">
                 Send us a Message
               </h3>
               
@@ -124,13 +124,13 @@ const ContactSection = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-mint-50 dark:bg-mint-900/20 border border-mint-200 dark:border-mint-800 rounded-2xl p-8 text-center"
+                  className="bg-[#0D3D2B] dark:bg-olive-700 border border-olive-500 dark:border-olive-600 rounded-2xl p-8 text-center"
                 >
-                  <CheckCircle className="w-16 h-16 text-mint-600 mx-auto mb-4" />
-                  <h4 className="text-2xl font-bold text-mint-800 dark:text-mint-300 mb-2">
+                  <CheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
+                  <h4 className="text-2xl font-bold text-white dark:text-olive-200 mb-2">
                     Thank You!
                   </h4>
-                  <p className="text-mint-700 dark:text-mint-400">
+                  <p className="text-white/80 dark:text-olive-300">
                     Your message has been sent successfully. We'll get back to you soon.
                   </p>
                 </motion.div>
@@ -138,7 +138,7 @@ const ContactSection = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-text-main mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-olive-900 mb-2">
                         Name *
                       </label>
                       <input
@@ -148,12 +148,12 @@ const ContactSection = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white transition-colors"
+                        className="w-full px-4 py-3 border border-olive-600 dark:border-olive-500 rounded-lg focus:ring-2 focus:ring-olive-600 focus:border-transparent bg-olive-700 dark:bg-olive-800 text-olive-900 dark:text-olive-200 transition-colors"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-text-main mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-olive-900 mb-2">
                         Email *
                       </label>
                       <input
@@ -163,7 +163,7 @@ const ContactSection = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white transition-colors"
+                        className="w-full px-4 py-3 border border-olive-600 dark:border-olive-500 rounded-lg focus:ring-2 focus:ring-olive-600 focus:border-transparent bg-olive-700 dark:bg-olive-800 text-olive-900 dark:text-olive-200 transition-colors"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -171,7 +171,7 @@ const ContactSection = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-text-main mb-2">
+                      <label htmlFor="phone" className="block text-sm font-medium text-olive-900 mb-2">
                         Phone
                       </label>
                       <input
@@ -180,12 +180,12 @@ const ContactSection = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white transition-colors"
+                        className="w-full px-4 py-3 border border-olive-600 dark:border-olive-500 rounded-lg focus:ring-2 focus:ring-olive-600 focus:border-transparent bg-olive-700 dark:bg-olive-800 text-olive-900 dark:text-olive-200 transition-colors"
                         placeholder="+91 98765 43210"
                       />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-text-main mb-2">
+                      <label htmlFor="company" className="block text-sm font-medium text-olive-900 mb-2">
                         Company
                       </label>
                       <input
@@ -194,14 +194,14 @@ const ContactSection = () => {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white transition-colors"
+                        className="w-full px-4 py-3 border border-olive-600 dark:border-olive-500 rounded-lg focus:ring-2 focus:ring-olive-600 focus:border-transparent bg-olive-700 dark:bg-olive-800 text-olive-900 dark:text-olive-200 transition-colors"
                         placeholder="Acme Corp"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-text-main mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-olive-900 mb-2">
                       Message *
                     </label>
                     <textarea
@@ -211,7 +211,7 @@ const ContactSection = () => {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-olive-900 dark:text-white transition-colors resize-none"
                       placeholder="Tell us about your project..."
                     />
                   </div>
@@ -225,7 +225,7 @@ const ContactSection = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-accent-main to-mint-200 text-text-main px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-olive-600 text-olive-900 px-8 py-4 rounded-lg font-semibold hover:bg-olive-500 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <span>Sending...</span>
@@ -258,10 +258,10 @@ const ContactSection = () => {
               className="space-y-8"
             >
               <div>
-                <h3 className="text-3xl font-bold text-text-main dark:text-white mb-6">
+                <h3 className="text-3xl font-bold text-olive-900 dark:text-white mb-6">
                   Contact Information
                 </h3>
-                <p className="text-text-main mb-8">
+                <p className="text-olive-900 mb-8">
                   Reach out to us through any of the following channels. We're here to help and answer any questions you might have.
                 </p>
               </div>
@@ -273,24 +273,24 @@ const ContactSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex items-start space-x-4 p-6 bg-card-bg dark:bg-card-bg/10 rounded-xl border border-border-light dark:border-white/10 hover:shadow-lg transition-shadow duration-300"
+                    className="flex items-start space-x-4 p-6 bg-olive-700 dark:bg-olive-800 rounded-xl border border-olive-600 dark:border-olive-600 hover:shadow-lg transition-shadow duration-300"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-mint-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 bg-olive-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <info.icon className="w-6 h-6 text-olive-900" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-text-main dark:text-white mb-1">
+                      <h4 className="text-lg font-semibold text-olive-900 dark:text-white mb-1">
                         {info.title}
                       </h4>
                       {info.href.startsWith('mailto') || info.href.startsWith('tel') ? (
                         <a
                           href={info.href}
-                          className="text-accent-main hover:text-mint-700 transition-colors duration-200"
+                          className="text-olive-800 hover:text-olive-600 transition-colors duration-200"
                         >
                           {info.content}
                         </a>
                       ) : (
-                        <p className="text-text-main">
+                        <p className="text-olive-900">
                           {info.content}
                         </p>
                       )}
@@ -306,12 +306,12 @@ const ContactSection = () => {
             {/* Headings Row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-6">
               <div>
-                <h4 className="text-xl font-semibold text-text-main dark:text-white mb-4 text-center">
+                <h4 className="text-xl font-semibold text-olive-900 dark:text-white mb-4 text-center">
                   OUR LOCATION
                 </h4>
               </div>
               <div>
-                <h4 className="text-xl font-bold text-text-main dark:text-white mb-4 flex items-center justify-center">
+                <h4 className="text-xl font-bold text-olive-900 dark:text-white mb-4 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6 mr-2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
@@ -328,10 +328,10 @@ const ContactSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="bg-bg-main dark:bg-card-bg/10 rounded-xl h-80 flex items-center justify-center border border-border-light dark:border-white/10">
+                <div className="bg-olive-700 dark:bg-olive-800 rounded-xl h-80 flex items-center justify-center border border-olive-600 dark:border-olive-600">
                   <div className="text-center">
-                    <MapPin className="w-12 h-12 text-text-main mx-auto mb-2" />
-                    <p className="text-text-main">
+                    <MapPin className="w-12 h-12 text-olive-900 mx-auto mb-2" />
+                    <p className="text-olive-900">
                       Interactive map coming soon
                     </p>
                   </div>
@@ -343,7 +343,7 @@ const ContactSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-r from-accent-main to-mint-200 rounded-xl p-6 text-text-main h-80 overflow-y-auto"
+                className="bg-olive-600 rounded-xl p-6 text-olive-900 h-80 overflow-y-auto"
               >
                 <div className="space-y-4 w-full">
                   <div className="border-l-4 border-green-400 pl-4">

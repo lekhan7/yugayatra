@@ -104,10 +104,10 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold dark:text-white mb-6" style={{color: '#252B0D'}}>
-            Our <span className="text-accent-main">Projects</span>
+          <h2 className="text-4xl md:text-5xl font-bold dark:text-dark-text mb-6" style={{color: '#0A1F1A'}}>
+            Our <span className="text-darker">Projects</span>
           </h2>
-          <p className="text-xl text-text-light dark:text-white/70 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-darker dark:text-text-main/70 max-w-4xl mx-auto leading-relaxed">
             Showcasing our diverse portfolio of innovative solutions, from visitor management systems to educational platforms, 
             each project reflects our commitment to excellence and digital innovation.
           </p>
@@ -128,10 +128,10 @@ const ProjectsSection = () => {
               <div className="bg-card-bg dark:bg-card-bg/10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-border-light dark:border-white/10 h-full flex flex-col">
                 
                 {/* Project Header */}
-                <div className={`h-32 bg-gradient-to-br ${project.color_gradient} relative overflow-hidden`}>
+                <div className={`h-32 bg-accent-main relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-black/20"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white text-center">
+                    <div className="text-darker text-center">
                       <project.icon className="w-12 h-12 mx-auto mb-2" />
                       <p className="text-sm font-medium opacity-90">{project.category}</p>
                     </div>
@@ -140,26 +140,26 @@ const ProjectsSection = () => {
 
                 {/* Project Content */}
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-text-main dark:text-white mb-3 group-hover:text-accent-main transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-darker dark:text-text-main mb-3 group-hover:text-accent-main transition-colors duration-300">
                     {project.name}
                   </h3>
                   
-                  <p className="text-text-light dark:text-white/70 text-sm mb-4 line-clamp-3 flex-1">
+                  <p className="text-darker dark:text-text-main/70 text-sm mb-4 line-clamp-3 flex-1">
                     {project.description}
                   </p>
 
                   {/* Key Features */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-text-main dark:text-white mb-2">Key Features:</h4>
+                    <h4 className="text-sm font-semibold text-darker dark:text-darker mb-2">Key Features:</h4>
                     <ul className="space-y-1">
                       {project.features.slice(0, 2).map((feature, idx) => (
-                        <li key={idx} className="text-xs text-text-light dark:text-white/60 flex items-start">
+                        <li key={idx} className="text-xs text-darker dark:text-darker/60 flex items-start">
                           <span className="w-1 h-1 bg-accent-main rounded-full mr-2 mt-1.5 flex-shrink-0"></span>
                           {feature}
                         </li>
                       ))}
                       {project.features.length > 2 && (
-                        <li className="text-xs text-text-light dark:text-white/60">
+                        <li className="text-xs text-darker dark:text-darker/60">
                           +{project.features.length - 2} more features
                         </li>
                       )}
@@ -168,18 +168,18 @@ const ProjectsSection = () => {
 
                   {/* Technologies */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-text-main dark:text-white mb-2">Technologies:</h4>
+                    <h4 className="text-sm font-semibold text-darker dark:text-darker mb-2">Technologies:</h4>
                     <div className="flex flex-wrap gap-1">
                       {project.technologies.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="bg-olive-100 text-olive-800 px-2 py-1 rounded-full text-xs font-medium dark:bg-olive-900/30 dark:text-olive-300"
+                          className="bg-olive-100 text-darker px-2 py-1 rounded-full text-xs font-medium dark:bg-olive-900/30 dark:text-olive-300"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
-                        <span className="text-text-light dark:text-white/60 text-xs">
+                        <span className="text-darker dark:text-darker/60 text-xs">
                           +{project.technologies.length - 3}
                         </span>
                       )}
@@ -191,7 +191,7 @@ const ProjectsSection = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-accent-main text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-olive-200 transition-colors duration-300 flex items-center justify-center space-x-2 group-hover:shadow-lg"
+                    className="w-full bg-accent-main text-darkest py-2 px-4 rounded-lg text-center font-medium hover:bg-mint-200 transition-colors duration-300 flex items-center justify-center space-x-2 group-hover:shadow-lg"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span>Visit Website</span>
@@ -208,7 +208,7 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center bg-gradient-to-r from-accent-main to-olive-200 rounded-2xl p-12 text-white"
+          className="text-center bg-accent-main rounded-2xl p-12 text-darkest"
         >
           <h3 className="text-3xl font-bold mb-4">Explore Our Work</h3>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
@@ -221,7 +221,7 @@ const ProjectsSection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-accent-main px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
+            className="bg-card-bg text-accent-main px-8 py-3 rounded-lg font-semibold hover:bg-bg-main transition-colors duration-300 inline-block"
           >
             Get In Touch
           </motion.a>

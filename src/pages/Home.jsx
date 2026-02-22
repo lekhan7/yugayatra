@@ -25,13 +25,17 @@ const Home = () => {
       <HeroSection />
 
       {/* About Section */}
-      <AboutSection />
+      <section className="bg-[#BEF0DA]">
+        <AboutSection />
+      </section>
 
       {/* Journey Timeline Section */}
       <JourneyTimeline />
 
       {/* Services Section */}
-      <ServicesSection />
+      <section className="bg-[#BEF0DA]">
+        <ServicesSection />
+      </section>
 
       {/* Achievement Section */}
       <AchievementSection />
@@ -40,7 +44,9 @@ const Home = () => {
       <ProjectsSection />
 
       {/* Alumni Section */}
-      <AlumniSection />
+      <section className="bg-[#BEF0DA]">
+        <AlumniSection />
+      </section>
 
       {/* Team Section */}
       <TeamSection />
@@ -49,13 +55,17 @@ const Home = () => {
       <TestimonialsSection />
 
       {/* Blog Section */}
-      <BlogSection />
+      <section className="bg-[#BEF0DA]">
+        <BlogSection />
+      </section>
 
       {/* Quiz Section */}
       <QuizSection />
 
       {/* FAQ Section */}
-      <FAQSection />
+      <section className="bg-[#BEF0DA]">
+        <FAQSection />
+      </section>
 
       {/* Contact Section */}
       <ContactSection />

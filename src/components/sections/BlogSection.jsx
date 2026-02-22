@@ -55,7 +55,7 @@ const BlogSection = () => {
   }
 
   return (
-    <section id="blog" className="py-20 bg-card-bg">
+    <section id="blog" className="py-20" style={{backgroundColor: '#0D3D2B'}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -63,17 +63,17 @@ const BlogSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{color: '#252B0D'}}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Blog & <span className="gradient-text">Insights</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto">
             Latest news, trends, and insights from our team
           </p>
         </motion.div>
       </div>
 
       {/* Blog Posts */}
-      <div className="py-20 bg-bg-main">
+      <div className="py-20" style={{backgroundColor: '#0D3D2B'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -83,8 +83,8 @@ const BlogSection = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full border-2 font-medium transition-all duration-300 ${
                   selectedCategory === category
-                    ? 'bg-accent-main text-white border-accent-main'
-                    : 'border-accent-main text-accent-main hover:bg-accent-main hover:text-white'
+                    ? 'bg-accent-main text-text-main border-accent-main'
+                    : 'border-accent-main text-accent-main hover:bg-accent-main hover:text-text-main'
                 }`}
               >
                 {category}
@@ -120,7 +120,7 @@ const BlogSection = () => {
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-white text-center">
+                            <div className="text-text-main text-center">
                               <div className="text-6xl mb-2">📝</div>
                               <p className="text-sm opacity-90">Featured Image</p>
                             </div>
@@ -200,10 +200,10 @@ const BlogSection = () => {
               {blogPosts.length === 0 && (
                 <div className="text-center py-12">
                   <div className="text-text-light text-6xl mb-4">📝</div>
-                  <h3 className="text-xl font-semibold text-text-main mb-2">
+                  <h3 className="text-xl font-semibold text-white mb-2">
                     No articles found
                   </h3>
-                  <p className="text-text-light">
+                  <p className="text-white">
                     Check back later for new blog posts and insights
                   </p>
                 </div>
@@ -215,7 +215,7 @@ const BlogSection = () => {
           <div className="text-center mt-12">
             <Link 
               to="/blog"
-              className="bg-gradient-to-r from-accent-main to-olive-200 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center"
+              className="bg-white text-[#0D3D2B] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 inline-flex items-center"
             >
               View All Posts
               <ArrowRight className="ml-2 w-5 h-5" />

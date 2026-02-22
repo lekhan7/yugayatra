@@ -345,7 +345,7 @@ const AchievementSection = () => {
     
 
       {/* Stats Section */}
-      <div className="py-20 bg-bg-main dark:bg-text-main">
+      <div className="py-20" style={{backgroundColor: '#0D3D2B'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -353,13 +353,13 @@ const AchievementSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl font-bold text-text-main dark:text-white mb-4">
+            <h3 className="text-3xl font-bold text-white mb-4">
               Our Impact
             </h3>
             <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCertificateStatusColor('Active')}`}>
                     Active
                   </span>
-            <p className="text-lg text-text-light dark:text-white/70">
+            <p className="text-lg text-white">
               Numbers that speak for our success
             </p>
           </motion.div>
@@ -378,11 +378,11 @@ const AchievementSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-mint-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-10 h-10 text-text-main" />
+                <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className="w-10 h-10 text-white" />
                 </div>
-                <h4 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h4>
-                <p className="text-text-light dark:text-white/70">{stat.label}</p>
+                <h4 className="text-3xl font-bold text-white mb-2">{stat.value}</h4>
+                <p className="text-white">{stat.label}</p>
               </motion.div>
             ))}
           </div>

@@ -29,7 +29,7 @@ const AboutSection = () => {
   ]
 
   return (
-    <section id="about" className="py-20 bg-card-bg dark:bg-dark-card">
+    <section id="about" className="py-20 bg-olive-800 dark:bg-olive-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,17 +37,17 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-6" style={{color: '#0D3D2B'}}>
-            About <span className="gradient-text">YugaYatra Retail (OPC) Pvt Ltd</span>
+          <h2 className="text-5xl md:text-6xl font-black mb-6" style={{color: '#1A1F14'}}>
+            About <span className="text-olive-800">YugaYatra Retail (OPC) Pvt Ltd</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-olive-900 max-w-4xl mx-auto">
             We are a leading educational technology company dedicated to shaping tomorrow's workforce through innovative internship programs and skill development initiatives.
           </p>
         </motion.div>
       </div>
 
       {/* Mission, Vision, Values */}
-      <div className="py-20 bg-bg-main">
+      <div className="py-20 bg-olive-800 dark:bg-olive-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -55,10 +55,10 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
+            <h3 className="text-4xl font-bold mb-4" style={{color: '#1A1F14'}}>
               Mission, Vision & Values
             </h3>
-            <p className="text-lg text-text-light">
+            <p className="text-lg text-olive-900">
               The core principles that guide everything we do
             </p>
           </motion.div>
@@ -70,15 +70,16 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-8 rounded-2xl bg-card-bg shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light"
+                className="text-center p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-olive-600"
+                style={{backgroundColor: '#0D3D2B'}}
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-mint-200 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="w-10 h-10 text-text-main" />
+                <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <value.icon className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-text-main mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {value.title}
                 </h3>
-                <p className="text-text-light leading-relaxed">
+                <p className="text-white leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -90,7 +91,7 @@ const AboutSection = () => {
       
 
       {/* Stats Section */}
-      <div className="py-20 bg-bg-main">
+      <div className="py-20" style={{backgroundColor: '#0D3D2B'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -98,10 +99,10 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold mb-4" style={{color: '#0D3D2B'}}>
+            <h3 className="text-4xl font-bold mb-4 text-white">
               Our Impact
             </h3>
-            <p className="text-lg text-text-light">
+            <p className="text-lg text-white">
               Numbers that speak for themselves
             </p>
           </motion.div>
@@ -120,10 +121,10 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center p-6"
               >
-                <div className="text-4xl md:text-5xl font-black gradient-text mb-2 counter">
+                <div className="text-4xl md:text-5xl font-black text-white mb-2 counter">
                   {stat.number}
                 </div>
-                <p className="text-text-main">
+                <p className="text-white">
                   {stat.label}
                 </p>
               </motion.div>

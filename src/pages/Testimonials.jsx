@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 const Testimonials = () => {
   return (
-    <div className="pt-24 min-h-screen">
+    <div className="pt-24 min-h-screen bg-[#BEF0DA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
