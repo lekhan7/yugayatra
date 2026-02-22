@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Award, FileText, Shield, CheckCircle, Calendar, Building, Star, X, Download, ExternalLink } from 'lucide-react'
+import { Award, FileText, Shield, CheckCircle, Calendar, Building, Star, X } from 'lucide-react'
 import { useState } from 'react'
 
 const AchievementSection = () => {
@@ -273,15 +273,6 @@ const AchievementSection = () => {
     setSelectedDocument(null)
   }
 
-  const handleDownloadDocument = (imagePath, title) => {
-    const link = document.createElement('a')
-    link.href = imagePath
-    link.download = title
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
   const formatFieldName = (fieldName) => {
     return fieldName.replace(/([A-Z])/g, ' $1')
       .replace(/_/g, ' ')
@@ -464,7 +455,7 @@ const AchievementSection = () => {
                   {/* Action Button */}
                   <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium">
                     <span>View Document Details</span>
-                    <ExternalLink className="w-4 h-4 ml-2" />
+                    <span className="ml-2">→</span>
                   </div>
                 </div>
               </motion.div>
@@ -517,72 +508,65 @@ const AchievementSection = () => {
                   </div>
                 </div>
 
-                {/* Document Viewer */}
+                {/* Large Document Image Display */}
                 <div className="p-6">
                   <div className="bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-300 dark:border-gray-600">
-                    <div className="h-96 md:h-[600px]">
-                      <iframe
-                        src={`${selectedDocument.image}#view=FitH&toolbar=1&navpanes=1&scrollbar=1`}
-                        className="w-full h-full"
-                        title={`${selectedDocument.title} Document`}
-                        frameBorder="0"
+                    <div className="flex justify-center items-center p-8 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600">
+                      <img
+                        src={selectedDocument.thumbnail}
+                        alt={selectedDocument.title}
+                        className="max-w-full max-h-96 rounded-lg shadow-xl object-contain"
                       />
-                    </div>
-                    <div className="p-4 bg-gray-100 dark:bg-gray-800 border-t border-gray-300 dark:border-gray-600">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
-                          {selectedDocument.title} - Full Document View
-                        </span>
-                        <div className="flex space-x-2">
-                          <a
-                            href={selectedDocument.image}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-2 px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors duration-300"
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                            <span>Open in New Tab</span>
-                          </a>
-                          <button
-                            onClick={() => handleDownloadDocument(selectedDocument.image, selectedDocument.title)}
-                            className="flex items-center space-x-2 px-3 py-2 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 transition-colors duration-300"
-                          >
-                            <Download className="w-4 h-4" />
-                            <span>Download</span>
-                          </button>
-                        </div>
-                      </div>
                     </div>
                   </div>
 
-                  {/* Document Details */}
-                  <div className="px-6 pb-6">
-                    <div className="space-y-4">
-                      <h4 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center">
-                        <FileText className="w-5 h-5 mr-2" />
-                        Complete Document Information & Details
-                      </h4>
-                      
-                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                          {selectedDocument.details.description}
-                        </p>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {Object.entries(selectedDocument.details).map(([key, value]) => {
-                          if (key === 'description') return null
-                          
+                  {/* About This Document Section */}
+                  <div className="mt-8">
+                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                      <FileText className="w-6 h-6 mr-3 text-blue-600 dark:text-blue-400" />
+                      About This {selectedDocument.category.includes('Registration') ? 'Certificate' : 'Document'}
+                    </h4>
+                    
+                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800 mb-6">
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                        {selectedDocument.details.description}
+                      </p>
+                    </div>
+
+                    {/* Key Information Grid */}
+                    <h5 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Key Information & Details</h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {Object.entries(selectedDocument.details).map(([key, value]) => {
+                        if (key === 'description') return null
+                        if (Array.isArray(value)) {
                           return (
                             <div key={key} className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
-                              <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                              <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">
                                 {formatFieldName(key)}
                               </p>
-                              {formatValue(value)}
+                              <ul className="space-y-2">
+                                {value.map((item, index) => (
+                                  <li key={index} className="text-sm text-gray-700 dark:text-gray-300 flex items-start">
+                                    <span className="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                                    {item}
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
                           )
-                        })}
-                      </div>
+                        }
+                        
+                        return (
+                          <div key={key} className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                            <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
+                              {formatFieldName(key)}
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-gray-300">
+                              {formatValue(value)}
+                            </p>
+                          </div>
+                        )
+                      })}
                     </div>
                   </div>
                 </div>
