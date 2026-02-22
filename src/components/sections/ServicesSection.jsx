@@ -124,12 +124,7 @@ const ServicesSection = () => {
                       ))}
                     </div>
 
-<<<<<<< HEAD
-                    <div className="flex items-center justify-between gap-4">
-                     
-=======
-                    <div className="mt-auto flex justify-center">
->>>>>>> a77f62b6a1ca117ea3663ea04ff887e8eb67b7e0
+<div className="mt-auto flex justify-center">
                       {service.apply_enabled && (
                         <button
                           type="button"
