@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 import ScrollProgressBar from '../components/ScrollProgressBar'
 import HeroSection from '../components/sections/HeroSection'
@@ -18,7 +17,7 @@ import FAQSection from '../components/sections/FAQSection'
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-bg-main transition-colors duration-300">
+    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
       <ScrollProgressBar />
       <ScrollToTop />
     
@@ -26,13 +25,17 @@ const Home = () => {
       <HeroSection />
 
       {/* About Section */}
-      <AboutSection />
+      <section className="bg-[#BEF0DA]">
+        <AboutSection />
+      </section>
 
       {/* Journey Timeline Section */}
       <JourneyTimeline />
 
       {/* Services Section */}
-      <ServicesSection />
+      <section className="bg-[#BEF0DA]">
+        <ServicesSection />
+      </section>
 
       {/* Achievement Section */}
       <AchievementSection />
@@ -41,7 +44,9 @@ const Home = () => {
       <ProjectsSection />
 
       {/* Alumni Section */}
-      <AlumniSection />
+      <section className="bg-[#BEF0DA]">
+        <AlumniSection />
+      </section>
 
       {/* Team Section */}
       <TeamSection />
@@ -50,18 +55,21 @@ const Home = () => {
       <TestimonialsSection />
 
       {/* Blog Section */}
-      <BlogSection />
+      <section className="bg-[#BEF0DA]">
+        <BlogSection />
+      </section>
 
       {/* Quiz Section */}
       <QuizSection />
 
       {/* FAQ Section */}
-      <FAQSection />
+      <section className="bg-[#BEF0DA]">
+        <FAQSection />
+      </section>
 
       {/* Contact Section */}
       <ContactSection />
 
-      <Footer />
     </div>
   )
 }

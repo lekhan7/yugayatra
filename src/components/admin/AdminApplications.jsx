@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../../services/supabase'
 import StatusTabs from './StatusTabs'
 import ApplicationsTable from './ApplicationsTable'
-import emailjs from '@emailjs/browser'
-
-// Initialize EmailJS
-emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
+import { sendInternshipAcceptanceEmail, validateEmailConfig } from '../../services/emailService'
 
 const AdminApplications = () => {
   const [applications, setApplications] = useState([])
@@ -21,11 +18,12 @@ const AdminApplications = () => {
     supabaseKey: import.meta.env.VITE_SUPABASE_ANON_KEY ? '✅ Set' : '❌ Missing',
     emailjsKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ? '✅ Set' : '❌ Missing',
     emailjsService: import.meta.env.VITE_EMAILJS_SERVICE_ID ? '✅ Set' : '❌ Missing',
-    emailjsTemplate: import.meta.env.VITE_EMAILJS_TEMPLATE_ID ? '✅ Set' : '❌ Missing'
+    internshipTemplate: import.meta.env.VITE_EMAILJS_INTERNSHIP_TEMPLATE_ID ? '✅ Set' : '❌ Missing'
   })
 
   useEffect(() => {
     checkAuthAndFetch()
+    validateEmailConfig()
   }, [])
 
   const checkAuthAndFetch = async () => {
@@ -239,44 +237,16 @@ Team
 
   const sendAcceptanceEmail = async (application) => {
     try {
-      console.log('📧 Sending acceptance email to:', application.email)
-      console.log('👤 Applicant data:', {
-        fullName: application.full_name,
-        role: application.role,
-        email: application.email
-      })
+      console.log('📧 Sending internship acceptance email to:', application.email)
       
-      // Test parameters before sending
-      if (!testEmailParameters(application)) {
-        throw new Error('Email parameters validation failed')
-      }
+      const result = await sendInternshipAcceptanceEmail(application)
       
-      // Simple template parameters for EmailJS - let EmailJS handle the template
-      const templateParams = {
-        fullName: application.full_name,
-        name: application.full_name,
-        role: application.role,
-        email: application.email,
-        subject: "Congratulations! Your Internship Application Has Been Approved"
-      }
-
-      console.log('📨 Template params being sent to EmailJS:', templateParams)
-
-      const response = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-
-      console.log('📬 EmailJS response:', response)
-
-      if (response.status === 200) {
-        console.log('✅ Email sent successfully')
-        return { success: true, result: response }
+      if (result.success) {
+        console.log('✅ Internship acceptance email sent successfully')
+        return { success: true, result: result.response }
       } else {
-        console.error('❌ Email sending failed:', response.text)
-        throw new Error(response.text || 'Email send failed')
+        console.error('❌ Email sending failed:', result.error)
+        return { success: false, error: result.error }
       }
 
     } catch (error) {

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 const Testimonials = () => {
   return (
-    <div className="pt-24 min-h-screen">
+    <div className="pt-24 min-h-screen bg-[#BEF0DA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -10,7 +10,7 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center py-20"
         >
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-5xl font-bold" style={{color: '#252B0D'}}>
             Testimonials
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300">

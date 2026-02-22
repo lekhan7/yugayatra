@@ -65,7 +65,7 @@ const InternshipsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{color: '#252B0D'}}>
             Internship <span className="text-accent-main">Programs</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
@@ -207,7 +207,7 @@ const InternshipsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-4xl font-bold text-dark dark:text-white mb-4">
+            <h3 className="text-4xl font-bold mb-4" style={{color: '#252B0D'}}>
               Ready to Launch Your Career?
             </h3>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
