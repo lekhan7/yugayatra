@@ -56,7 +56,7 @@ const Services = () => {
     fetchServices()
   }, [])
 
-  const displayedServices = showAll ? services : services.slice(0, 3)
+  const displayedServices = showAll ? services : services.slice(0, 6)
 
   return (
     <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
@@ -142,7 +142,7 @@ const Services = () => {
               </div>
 
               {/* Show More Button */}
-              {services.length > 3 && (
+              {services.length > 6 && (
                 <div className="text-center mt-12">
                   <motion.button
                     whileHover={{ scale: 1.05 }}

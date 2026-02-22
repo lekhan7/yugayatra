@@ -13,14 +13,14 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.5 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-6 justify-center px-4"
         >
           <motion.a
             href="#internships"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-primary inline-flex items-center justify-center group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="inline-flex items-center justify-center group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Code className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
             Explore Opportunities
@@ -31,7 +31,7 @@ const HeroSection = () => {
             href="#about"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-secondary inline-flex items-center justify-center group bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300"
+            className="inline-flex items-center justify-center group bg-white/10 backdrop-blur-sm text-gray-800 border border-gray-300/20 px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300"
           >
             <Palette className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
             Learn More
