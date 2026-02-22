@@ -87,7 +87,8 @@ const ContactSection = () => {
       {/* Contact Content */}
       <div className="py-20 bg-bg-main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Top Row: Send Message and Contact Information */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-start">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -266,17 +267,36 @@ const ContactSection = () => {
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
+          </div>
 
+          {/* Middle Section: Maps and Business Hours */}
+          <div className="mb-12">
+            {/* Headings Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-6">
+              <div>
+                <h4 className="text-xl font-semibold text-text-main dark:text-white mb-4 text-center">
+                  Our Location
+                </h4>
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-text-main dark:text-white mb-4 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  BUSINESS HOURS
+                </h4>
+              </div>
+            </div>
+            
+            {/* Content Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Map Placeholder */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-12"
               >
-                <h4 className="text-xl font-semibold text-text-main dark:text-white mb-4">
-                  Our Location
-                </h4>
                 <div className="bg-bg-main dark:bg-card-bg/10 rounded-xl h-64 flex items-center justify-center border border-border-light dark:border-white/10">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-text-light mx-auto mb-2" />
@@ -292,25 +312,24 @@ const ContactSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-r from-accent-main to-blue-600 rounded-xl p-6 text-white"
+                className="bg-gradient-to-r from-accent-main to-blue-600 rounded-xl p-6 text-white h-64"
               >
-                <h4 className="text-xl font-semibold mb-4">Business Hours</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span>9:00 AM - 6:00 PM</span>
+                <div className="space-y-4 w-full">
+                  <div className="border-l-4 border-green-400 pl-4">
+                    <p className="text-sm uppercase text-gray-200">Monday - Friday</p>
+                    <p className="text-lg font-bold">9:00 AM - 6:00 PM</p>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span>10:00 AM - 4:00 PM</span>
+                  <div className="border-l-4 border-green-400 pl-4 mt-4">
+                    <p className="text-sm uppercase text-gray-200">Saturday</p>
+                    <p className="text-lg font-bold">10:00 AM - 4:00 PM</p>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span>Closed</span>
+                  <div className="border-l-4 border-green-400 pl-4 mt-4">
+                    <p className="text-sm uppercase text-gray-200">Sunday</p>
+                    <p className="text-lg font-bold">Closed</p>
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
