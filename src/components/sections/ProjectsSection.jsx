@@ -216,7 +216,7 @@ const ProjectsSection = () => {
             Let's collaborate to bring your vision to life.
           </p>
           <motion.a
-            href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
+            href="mailto:hr@yugayatraretail.com"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}

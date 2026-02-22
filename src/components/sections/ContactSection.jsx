@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight, Clock, TrendingUp } from 'lucide-react'
 import { submitContactForm } from '../../services/supabase'
 
 const ContactSection = () => {
@@ -49,19 +49,19 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: 'Email',
-      content: 'info@yugyatra.com',
-      href: 'mailto:info@yugyatra.com'
+      content: 'hr@yugayatraretail.com',
+      href: 'mailto:hr@yugayatraretail.com'
     },
     {
-      icon: Phone,
-      title: 'Phone',
-      content: '+91 98765 43210',
-      href: 'tel:+919876543210'
+      icon: Clock,
+      title: 'Response Time',
+      content: '24h',
+      href: '#'
     },
     {
-      icon: MapPin,
-      title: 'Address',
-      content: 'Bangalore, Karnataka 560001, India',
+      icon: TrendingUp,
+      title: 'Satisfaction Rate',
+      content: '100%',
       href: '#'
     }
   ]
@@ -88,12 +88,13 @@ const ContactSection = () => {
       <div className="py-20 bg-bg-main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Row: Send Message and Contact Information */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-stretch">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="flex flex-col h-full"
             >
               <h3 className="text-3xl font-bold text-text-main mb-6">
                 Send us a Message
@@ -114,7 +115,7 @@ const ContactSection = () => {
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6 flex-grow flex flex-col">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-text-main dark:text-white/70 mb-2">
@@ -204,7 +205,7 @@ const ContactSection = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-accent-main to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-gradient-to-r from-accent-main to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center mt-auto"
                   >
                     {isSubmitting ? (
                       <span>Sending...</span>
@@ -224,7 +225,7 @@ const ContactSection = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="flex flex-col h-full space-y-8"
             >
               <div>
                 <h3 className="text-3xl font-bold text-text-main dark:text-white mb-6">
@@ -235,7 +236,7 @@ const ContactSection = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-6 flex-grow flex flex-col justify-end">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.title}
@@ -276,7 +277,7 @@ const ContactSection = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-6">
               <div>
                 <h4 className="text-xl font-semibold text-text-main dark:text-white mb-4 text-center">
-                  Our Location
+                  OUR LOCATION
                 </h4>
               </div>
               <div>
@@ -297,7 +298,7 @@ const ContactSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="bg-bg-main dark:bg-card-bg/10 rounded-xl h-64 flex items-center justify-center border border-border-light dark:border-white/10">
+                <div className="bg-bg-main dark:bg-card-bg/10 rounded-xl h-80 flex items-center justify-center border border-border-light dark:border-white/10">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-text-light mx-auto mb-2" />
                     <p className="text-text-light dark:text-white/70">
@@ -312,11 +313,11 @@ const ContactSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-r from-accent-main to-blue-600 rounded-xl p-6 text-white h-64"
+                className="bg-gradient-to-r from-accent-main to-blue-600 rounded-xl p-6 text-white h-80 overflow-y-auto"
               >
                 <div className="space-y-4 w-full">
                   <div className="border-l-4 border-green-400 pl-4">
-                    <p className="text-sm uppercase text-gray-200">Monday - Friday</p>
+                    <p className="text-sm uppercase text-gray-200">Mon - Fri</p>
                     <p className="text-lg font-bold">9:00 AM - 6:00 PM</p>
                   </div>
                   <div className="border-l-4 border-green-400 pl-4 mt-4">
@@ -326,6 +327,19 @@ const ContactSection = () => {
                   <div className="border-l-4 border-green-400 pl-4 mt-4">
                     <p className="text-sm uppercase text-gray-200">Sunday</p>
                     <p className="text-lg font-bold">Closed</p>
+                  </div>
+                  <div className="border-t border-white/30 my-4"></div>
+                  <div className="mt-4">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-center" style={{marginLeft: '-8px'}}>
+                        <MapPin className="w-4 h-4 text-green-400 mr-2" />
+                        <p className="text-lg font-bold">Electronic City, Phase 1, Bengaluru</p>
+                      </div>
+                      <div className="flex items-center" style={{marginLeft: '-8px'}}>
+                        <Phone className="w-4 h-4 text-green-400 mr-2" />
+                        <p className="text-lg font-bold">+91 8757728679</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
