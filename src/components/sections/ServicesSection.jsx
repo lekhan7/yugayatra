@@ -125,11 +125,7 @@ const ServicesSection = () => {
                     </div>
 
                     <div className="flex items-center justify-between gap-4">
-                      <button className="text-accent-main font-semibold flex items-center hover:text-blue-700 transition-colors duration-200">
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                      </button>
-
+                     
                       {service.apply_enabled && (
                         <button
                           type="button"

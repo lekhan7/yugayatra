@@ -17,7 +17,7 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row gap-6 justify-center px-4"
         >
           <motion.a
-            href="#internships"
+            href="#services"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center justify-center group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
@@ -28,7 +28,9 @@ const HeroSection = () => {
           </motion.a>
           
           <motion.a
-            href="#about"
+            href="https://www.linkedin.com/in/yuga-yatra-retail-opc-pvt-ltd/"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center justify-center group bg-white/10 backdrop-blur-sm text-gray-800 border border-gray-300/20 px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300"

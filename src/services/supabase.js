@@ -532,3 +532,86 @@ export const deleteBlogImage = async (filePath) => {
   if (error) throw error
   return data
 }
+
+// Team members functions
+export const getTeamMembers = async () => {
+  const { data, error } = await supabase
+    .from('team_members')
+    .select('*')
+    .eq('is_active', true)
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+// Admin team CRUD functions
+export const getAllTeamMembers = async () => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .select('*')
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+export const createTeamMember = async (memberData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .insert([memberData])
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const updateTeamMember = async (id, memberData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .update(memberData)
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const deleteTeamMember = async (id) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .delete()
+    .eq('id', id)
+  
+  if (error) throw error
+  return data
+}
+
+export const toggleTeamMemberActive = async (id, isActive) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('team_members')
+    .update({ is_active: isActive })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}

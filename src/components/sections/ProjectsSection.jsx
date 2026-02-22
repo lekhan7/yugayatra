@@ -215,13 +215,14 @@ const ProjectsSection = () => {
             Dive into our projects and see how we're transforming ideas into impactful digital solutions. 
             Let's collaborate to bring your vision to life.
           </p>
-          <motion.button
+          <motion.a
+            href="mailto:yugayatra@gmail.com"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-accent-main px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
+            className="bg-white text-accent-main px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
           >
             Get In Touch
-          </motion.button>
+          </motion.a>
         </motion.div>
 
       </div>

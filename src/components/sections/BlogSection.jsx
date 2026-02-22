@@ -224,34 +224,6 @@ const BlogSection = () => {
         </div>
       </div>
 
-      {/* Newsletter Section */}
-      <div className="py-20 bg-bg-main dark:bg-text-main">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h3 className="text-3xl font-bold text-text-main dark:text-white mb-4">
-              Stay Updated
-            </h3>
-            <p className="text-lg text-text-light dark:text-white/70 mb-8">
-              Subscribe to our newsletter for the latest insights and updates
-            </p>
-            <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white"
-              />
-              <button className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                Subscribe
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
     </section>
   )
 }
