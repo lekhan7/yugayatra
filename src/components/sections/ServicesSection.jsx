@@ -12,7 +12,8 @@ import {
   Globe,
   CheckCircle,
   ArrowRight,
-  Zap
+  Zap,
+  Eye
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { getServices } from '../../services/supabase'
@@ -36,6 +37,7 @@ const ServicesSection = () => {
   const navigate = useNavigate()
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(true)
+  const [showAll, setShowAll] = useState(false)
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -51,6 +53,8 @@ const ServicesSection = () => {
 
     fetchServices()
   }, [])
+
+  const displayedServices = showAll ? services : services.slice(0, 6)
 
   return (
     <section id="services" className="py-20 bg-card-bg">
@@ -78,8 +82,9 @@ const ServicesSection = () => {
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {displayedServices.map((service, index) => (
                 <motion.div
                   key={service.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -141,7 +146,23 @@ const ServicesSection = () => {
                   </div>
                 </motion.div>
               ))}
-            </div>
+              </div>
+
+              {/* Show More/Less Button */}
+              {services.length > 6 && (
+                <div className="text-center mt-12">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setShowAll(!showAll)}
+                    className="bg-accent-main text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300 inline-flex items-center"
+                  >
+                    {showAll ? 'Show Less' : 'Show More'}
+                    <Eye className="w-5 h-5 ml-2" />
+                  </motion.button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
