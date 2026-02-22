@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Moon, Sun, Home, MapPin, Briefcase, Globe, User, MessageSquare, FileText } from 'lucide-react'
+import { Menu, X, Moon, Sun, Home, MapPin, Briefcase, Award,Globe, User, MessageSquare, FileText, Brain } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,22 +29,26 @@ const Navbar = () => {
     { name: 'Home', href: '#hero', icon: Home, isRoute: false }, 
     { name: 'Journey', href: '#journey-timeline', icon: MapPin, isRoute: false },
     { name: 'Services', href: '#services', icon: Briefcase, isRoute: false },
+    {name:'Achievements', href:'#achievements', icon: Award, isRoute: false},
     { name: 'Projects', href: '#projects', icon: Globe, isRoute: false },
     { name: 'Alumni', href: '#alumni', icon: User, isRoute: false },
-    { name: 'Find Contacts', href: '#contact', icon: MessageSquare, isRoute: false },
-    { name: 'Legal Information', href: '/legal', icon: FileText, isRoute: true }
+    { name: 'Quiz', href: '#find-perfect-internship', icon: Brain, isRoute: false },
+    { name: ' Contac us ', href: '#contact', icon: MessageSquare, isRoute: false },
+   
   ]
 
   const handleNavClick = (link) => {
     if (link.isRoute) {
-      // Navigate to route
+      // Navigate to route using React Router
       window.location.href = link.href
     } else {
       // Scroll to section
       const sectionId = link.href.substring(1)
       const element = document.getElementById(sectionId)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else {
+        console.warn(`Section with id "${sectionId}" not found`)
       }
     }
     setIsOpen(false)
@@ -61,7 +65,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div onClick={() => scrollToSection('hero')} className="flex items-center space-x-2 cursor-pointer">
+          <div onClick={() => handleNavClick({ href: '#hero', isRoute: false })} className="flex items-center space-x-2 cursor-pointer">
             <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">Y</span>
             </div>
@@ -75,7 +79,7 @@ const Navbar = () => {
             {navLinks.map((link, index) => (
               <button
                 key={link.name}
-                onClick={() => scrollToSection(link.href.substring(1))}
+                onClick={() => handleNavClick(link)}
                 className="group relative flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-text-light hover:text-white hover:bg-accent-main hover:scale-105 hover:shadow-lg"
                 style={{
                   animationDelay: `${index * 100}ms`
@@ -116,7 +120,7 @@ const Navbar = () => {
             {navLinks.map((link, index) => (
               <button
                 key={link.name}
-                onClick={() => scrollToSection(link.href.substring(1))}
+                onClick={() => handleNavClick(link)}
                 className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-text-light hover:text-white hover:bg-accent-main hover:scale-[1.02] hover:shadow-md"
                 style={{
                   animationDelay: `${index * 50}ms`

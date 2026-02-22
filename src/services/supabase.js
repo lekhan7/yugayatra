@@ -280,3 +280,86 @@ export const toggleServiceActive = async (id, isActive) => {
   if (error) throw error
   return data
 }
+
+// Alumni functions
+export const getAlumni = async () => {
+  const { data, error } = await supabase
+    .from('alumni')
+    .select('*')
+    .eq('is_active', true)
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+// Admin alumni CRUD functions
+export const getAllAlumni = async () => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .select('*')
+    .order('display_order', { ascending: true })
+  
+  if (error) throw error
+  return data
+}
+
+export const createAlumni = async (alumniData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .insert([alumniData])
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const updateAlumni = async (id, alumniData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .update(alumniData)
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const deleteAlumni = async (id) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .delete()
+    .eq('id', id)
+  
+  if (error) throw error
+  return data
+}
+
+export const toggleAlumniActive = async (id, isActive) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('alumni')
+    .update({ is_active: isActive })
+    .eq('id', id)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}

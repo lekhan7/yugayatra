@@ -1,5 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { initialContentData, contentHelpers } from '../data/contentData'
+import { 
+  getAllAlumni, 
+  createAlumni, 
+  updateAlumni, 
+  deleteAlumni 
+} from '../services/supabase'
 
 const ContentContext = createContext()
 
@@ -21,12 +27,25 @@ export const ContentProvider = ({ children }) => {
     if (savedContent) {
       try {
         const parsedContent = JSON.parse(savedContent)
-        setContent(parsedContent)
+        setContent(prev => ({ ...prev, ...parsedContent }))
       } catch (error) {
         console.error('Error loading saved content:', error)
       }
     }
+    
+    // Load alumni from database
+    loadAlumniFromDatabase()
   }, [])
+
+  const loadAlumniFromDatabase = async () => {
+    try {
+      const alumniData = await getAllAlumni()
+      setContent(prev => ({ ...prev, alumni: alumniData }))
+    } catch (error) {
+      console.error('Error loading alumni from database:', error)
+      // Keep existing alumni data if database fetch fails
+    }
+  }
 
   // Save content to localStorage whenever it changes (optional persistence)
   useEffect(() => {
@@ -164,37 +183,61 @@ export const ContentProvider = ({ children }) => {
   }
 
   // Alumni management functions
-  const addAlumni = (newAlumni) => {
+  const addAlumni = async (newAlumni) => {
     setLoading(true)
     try {
-      const updatedAlumni = contentHelpers.addAlumni(content.alumni, newAlumni)
+      const createdAlumni = await createAlumni(newAlumni)
+      // Refresh alumni list
+      const updatedAlumni = await getAllAlumni()
       setContent(prev => ({ ...prev, alumni: updatedAlumni }))
+      return createdAlumni
     } catch (error) {
       console.error('Error adding alumni:', error)
+      throw error
     } finally {
       setLoading(false)
     }
   }
 
-  const updateAlumni = (alumniId, updatedAlumni) => {
+  const updateAlumni = async (alumniId, updatedAlumni) => {
     setLoading(true)
     try {
-      const updatedAlumni = contentHelpers.updateAlumni(content.alumni, alumniId, updatedAlumni)
+      const updated = await updateAlumni(alumniId, updatedAlumni)
+      // Refresh alumni list
+      const updatedAlumni = await getAllAlumni()
       setContent(prev => ({ ...prev, alumni: updatedAlumni }))
+      return updated
     } catch (error) {
       console.error('Error updating alumni:', error)
+      throw error
     } finally {
       setLoading(false)
     }
   }
 
-  const deleteAlumni = (alumniId) => {
+  const deleteAlumni = async (alumniId) => {
     setLoading(true)
     try {
-      const updatedAlumni = contentHelpers.deleteAlumni(content.alumni, alumniId)
+      await deleteAlumni(alumniId)
+      // Refresh alumni list
+      const updatedAlumni = await getAllAlumni()
       setContent(prev => ({ ...prev, alumni: updatedAlumni }))
     } catch (error) {
       console.error('Error deleting alumni:', error)
+      throw error
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const refreshAlumni = async () => {
+    setLoading(true)
+    try {
+      const updatedAlumni = await getAllAlumni()
+      setContent(prev => ({ ...prev, alumni: updatedAlumni }))
+    } catch (error) {
+      console.error('Error refreshing alumni:', error)
+      throw error
     } finally {
       setLoading(false)
     }
@@ -305,6 +348,7 @@ export const ContentProvider = ({ children }) => {
     addAlumni,
     updateAlumni,
     deleteAlumni,
+    refreshAlumni,
     // Careers
     addCareer,
     updateCareer,

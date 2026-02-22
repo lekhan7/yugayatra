@@ -8,6 +8,7 @@ import ContentManager from './ContentManager'
 import TestimonialsManager from './TestimonialsManager'
 import ServicesManager from './ServicesManager'
 import ProjectsManager from './ProjectsManager'
+import AlumniManager from './AlumniManager'
 
 const AdminDashboard = ({ user, onLogout }) => {
   const [activeSection, setActiveSection] = useState('dashboard')
@@ -37,6 +38,8 @@ const AdminDashboard = ({ user, onLogout }) => {
         return <ServicesManager />
       case 'projects':
         return <ProjectsManager />
+      case 'alumni':
+        return <AlumniManager />
       default:
         return <Dashboard />
     }

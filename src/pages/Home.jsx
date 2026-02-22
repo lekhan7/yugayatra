@@ -14,6 +14,8 @@ import BlogSection from '../components/sections/BlogSection'
 import CareersSection from '../components/sections/CareersSection'
 import ProfileSection from '../components/sections/ProfileSection'
 import ContactSection from '../components/sections/ContactSection'
+import QuizSection from '../components/sections/QuizSection'
+import FAQSection from '../components/sections/FAQSection'
 
 const Home = () => {
   return (
@@ -53,6 +55,12 @@ const Home = () => {
 
       {/* Profile Section */}
       <ProfileSection />
+
+      {/* Quiz Section */}
+      <QuizSection />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Contact Section */}
       <ContactSection />

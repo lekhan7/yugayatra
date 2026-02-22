@@ -87,53 +87,7 @@ const AboutSection = () => {
         </div>
       </div>
 
-      {/* Legal Information */}
-      <div className="py-20 bg-card-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h3 className="text-4xl font-bold text-text-main mb-4">
-              Legal Information
-            </h3>
-            <p className="text-lg text-text-light">
-              Our company is fully registered and compliant with all regulations
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-            {[
-              { icon: FileText, label: 'PAN', value: legalInfo.pan },
-              { icon: AwardIcon, label: 'UDYAM', value: legalInfo.udyam },
-              { icon: Shield, label: 'CIN', value: legalInfo.cin },
-              { icon: FileText, label: 'FSSAI', value: legalInfo.fssai },
-              { icon: Award, label: 'TM', value: legalInfo.tm }
-            ].map((item, index) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-card-bg rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-white" />
-                </div>
-                <h4 className="text-sm font-semibold text-text-main mb-2">
-                  {item.label}
-                </h4>
-                <p className="text-xs text-accent-main font-mono">
-                  {item.value}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+      
 
       {/* Stats Section */}
       <div className="py-20 bg-bg-main">

@@ -4,7 +4,7 @@ import HeroAnimation from '../HeroAnimation'
 
 const HeroSection = () => {
   return (
-    <section id="home" className="min-h-screen bg-bg-main relative overflow-hidden">
+    <section id="hero" className="min-h-screen bg-bg-main relative overflow-hidden">
       {/* Hero Animation */}
       <HeroAnimation />
 

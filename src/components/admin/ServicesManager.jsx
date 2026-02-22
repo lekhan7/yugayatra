@@ -26,11 +26,13 @@ import {
   deleteService, 
   toggleServiceActive 
 } from '../../services/supabase'
+import { useNotification } from '../../context/NotificationContext'
 
 const ServicesManager = () => {
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState(null)
+  const { success, error: showError } = useNotification()
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
@@ -174,7 +176,7 @@ const ServicesManager = () => {
 
   const handleSave = async () => {
     if (!formData.title || !formData.short_description) {
-      alert('Please fill in title and description')
+      showError('Please fill in title and description')
       return
     }
 
@@ -182,7 +184,7 @@ const ServicesManager = () => {
     const technologies = formData.technologies.filter(tech => tech.trim() !== '')
 
     if (features.length === 0) {
-      alert('Please add at least one feature')
+      showError('Please add at least one feature')
       return
     }
 
@@ -211,18 +213,18 @@ const ServicesManager = () => {
             s.id === editingId ? updatedService : s
           )
         )
-        alert('Service updated successfully!')
+        success('Service updated successfully!')
       } else {
         // Create new service
         const newService = await createService(serviceData)
         setServices(prev => [...prev, newService])
-        alert('Service added successfully!')
+        success('Service added successfully!')
       }
 
       resetForm()
     } catch (error) {
       console.error('Error saving service:', error)
-      alert('Error saving service. Please try again.')
+      showError('Error saving service. Please try again.')
     } finally {
       setSaving(false)
     }
@@ -236,10 +238,10 @@ const ServicesManager = () => {
     try {
       await deleteService(id)
       setServices(prev => prev.filter(s => s.id !== id))
-      alert('Service deleted successfully!')
+      success('Service deleted successfully!')
     } catch (error) {
       console.error('Error deleting service:', error)
-      alert('Error deleting service. Please try again.')
+      showError('Error deleting service. Please try again.')
     }
   }
 
@@ -251,9 +253,10 @@ const ServicesManager = () => {
           s.id === id ? updatedService : s
         )
       )
+      success(`Service ${isActive ? 'activated' : 'deactivated'} successfully!`)
     } catch (error) {
       console.error('Error toggling service status:', error)
-      alert('Error updating service status. Please try again.')
+      showError('Error updating service status. Please try again.')
     }
   }
 

@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollProgressBar from './components/ScrollProgressBar'
 import { Route, Routes, useLocation } from 'react-router-dom'
+import NotificationProvider from './context/NotificationContext'
 
 // Import pages
 import Home from './pages/Home'
@@ -20,7 +21,11 @@ function App() {
       {!isAdminPage && <Navbar />}
       {!isAdminPage && <ScrollProgressBar />}
       <Routes>
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={
+          <NotificationProvider>
+            <Admin />
+          </NotificationProvider>
+        } />
         <Route path="/" element={
           <>
             <motion.div
