@@ -5,6 +5,7 @@ import ScrollToTop from './components/ScrollToTop'
 import ScrollProgressBar from './components/ScrollProgressBar'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import NotificationProvider from './context/NotificationContext'
+import ToastProvider from './components/admin/ToastProvider'
 
 // Import pages
 import Home from './pages/Home'
@@ -26,10 +27,11 @@ function App() {
   const isAdminPage = location.pathname === '/admin'
 
   return (
-    <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
-      {!isAdminPage && <Navbar />}
-      {!isAdminPage && <ScrollProgressBar />}
-      <Routes>
+    <ToastProvider>
+      <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
+        {!isAdminPage && <Navbar />}
+        {!isAdminPage && <ScrollProgressBar />}
+        <Routes>
         <Route path="/admin" element={
           <NotificationProvider>
             <Admin />
@@ -176,6 +178,7 @@ function App() {
         } />
       </Routes>
     </div>
+    </ToastProvider>
   )
 }
 

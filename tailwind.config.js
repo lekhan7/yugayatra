@@ -14,6 +14,7 @@ export default {
         'accent-dark': '#047857', // Very Dark Mint
         'accent-gold': '#6EE7B7', // Light Mint for other elements
         'accent-light': '#A7F3D0', // Very Light Mint
+        'mint-clarity': '#6EE7B7', // Mint Clarity
         'text-light': '#374151',
         'border-light': '#E5E7EB',
         'card-bg': '#FFFFFF',
