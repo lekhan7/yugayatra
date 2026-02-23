@@ -74,7 +74,7 @@ const FAQSection = () => {
     {
       id: 10,
       question: "How do I contact YugaYatra support?",
-      answer: "You can reach our support team via email at support@yugayatra.com, call us at +91-XXXXXXXXXX, or use the contact form on our website. We typically respond within 24 hours.",
+      answer: "You can reach our support team via email at hr@yugayatraretail.com, call us at +91 8757728679, or use the contact form on our website. We typically respond within 24 hours.",
       icon: MessageCircle,
       category: "Contact"
     }
@@ -263,6 +263,7 @@ const FAQSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
+<<<<<<< HEAD
               href="mailto:support@yugayatra.com"
               className="flex items-center space-x-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
@@ -275,6 +276,20 @@ const FAQSection = () => {
             >
               <Phone className="w-5 h-5 text-accent-main dark:text-dark-blue-primary" />
               <span className="text-text-main dark:text-dark-blue-primary font-medium">+91-XXXXXXXXXX</span>
+=======
+              href="mailto:hr@yugayatraretail.com"
+              className="flex items-center space-x-2 px-6 py-3 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <Mail className="w-5 h-5 text-accent-main" />
+              <span className="text-text-main font-medium">hr@yugayatraretail.com</span>
+            </a>
+            <a
+              href="tel:+918757728679"
+              className="flex items-center space-x-2 px-6 py-3 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <Phone className="w-5 h-5 text-accent-main" />
+              <span className="text-text-main font-medium">+91 8757728679</span>
+>>>>>>> 0ea6cdcfed850f59140fb81f36f2eb1e860794fe
             </a>
           </div>
         </motion.div>
