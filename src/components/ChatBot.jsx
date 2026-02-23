@@ -9,11 +9,103 @@ const ChatBot = () => {
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef(null)
 
-  // Predefined Q&A database
+  // Predefined Q&A database - matching exact website FAQ content
   const qaDatabase = [
     {
+      question: "What is YugaYatra?",
+      answer: "YugaYatra is a comprehensive platform that connects students with meaningful internship opportunities. We provide personalized internship matching, skill development programs, and career guidance to help young professionals kickstart their careers."
+    },
+    {
       question: "what is yugayatra",
-      answer: "Yugayatra is a retail company specializing in innovative solutions and services."
+      answer: "YugaYatra is a comprehensive platform that connects students with meaningful internship opportunities. We provide personalized internship matching, skill development programs, and career guidance to help young professionals kickstart their careers."
+    },
+    {
+      question: "what is yuga yatra",
+      answer: "YugaYatra is a comprehensive platform that connects students with meaningful internship opportunities. We provide personalized internship matching, skill development programs, and career guidance to help young professionals kickstart their careers."
+    },
+    {
+      question: "How do I apply for internships through YugaYatra?",
+      answer: "Simply create an account, complete your profile, and browse through available internships. You can also take our quiz to get personalized recommendations. Once you find an internship you like, click 'Apply Now' and submit your application through our streamlined process."
+    },
+    {
+      question: "how do I apply for internships through yoga yatra",
+      answer: "Simply create an account, complete your profile, and browse through available internships. You can also take our quiz to get personalized recommendations. Once you find an internship you like, click 'Apply Now' and submit your application through our streamlined process."
+    },
+    {
+      question: "how do I apply for internships",
+      answer: "Simply create an account, complete your profile, and browse through available internships. You can also take our quiz to get personalized recommendations. Once you find an internship you like, click 'Apply Now' and submit your application through our streamlined process."
+    },
+    {
+      question: "how can i apply for internships",
+      answer: "Simply create an account, complete your profile, and browse through available internships. You can also take our quiz to get personalized recommendations. Once you find an internship you like, click 'Apply Now' and submit your application through our streamlined process."
+    },
+    {
+      question: "What types of internships are available?",
+      answer: "We offer internships in various fields including Web Development, Digital Marketing, UI/UX Design, Data Analytics, Business Development, and more. Our partnerships with top companies ensure quality opportunities across different industries."
+    },
+    {
+      question: "what are the internships available",
+      answer: "We offer internships in various fields including Web Development, Digital Marketing, UI/UX Design, Data Analytics, Business Development, and more. Our partnerships with top companies ensure quality opportunities across different industries."
+    },
+    {
+      question: "what types of internships are available",
+      answer: "We offer internships in various fields including Web Development, Digital Marketing, UI/UX Design, Data Analytics, Business Development, and more. Our partnerships with top companies ensure quality opportunities across different industries."
+    },
+    {
+      question: "Is YugaYatra free for students?",
+      answer: "Yes! YugaYatra is completely free for students. We believe in making quality internship opportunities accessible to everyone. You can create an account, take assessments, and apply for internships without any charges."
+    },
+    {
+      question: "is yugayatra free for students",
+      answer: "Yes! YugaYatra is completely free for students. We believe in making quality internship opportunities accessible to everyone. You can create an account, take assessments, and apply for internships without any charges."
+    },
+    {
+      question: "How does the quiz matching work?",
+      answer: "Our intelligent quiz analyzes your skills, interests, and preferences to match you with the most suitable internships. The algorithm considers multiple factors including your technical skills, work style preferences, and career goals."
+    },
+    {
+      question: "how does the quiz matching work",
+      answer: "Our intelligent quiz analyzes your skills, interests, and preferences to match you with the most suitable internships. The algorithm considers multiple factors including your technical skills, work style preferences, and career goals."
+    },
+    {
+      question: "What is the duration of internships?",
+      answer: "Internship durations vary from 2 to 6 months depending on the role and company. Part-time and full-time options are available to accommodate different schedules and academic commitments."
+    },
+    {
+      question: "what is the duration of internships",
+      answer: "Internship durations vary from 2 to 6 months depending on the role and company. Part-time and full-time options are available to accommodate different schedules and academic commitments."
+    },
+    {
+      question: "Do I get paid during the internship?",
+      answer: "Many of our internships are paid, with competitive stipends based on the role, company, and your skill level. Some internships may be unpaid but offer valuable experience, academic credit, or other benefits."
+    },
+    {
+      question: "do i get paid during the internship",
+      answer: "Many of our internships are paid, with competitive stipends based on the role, company, and your skill level. Some internships may be unpaid but offer valuable experience, academic credit, or other benefits."
+    },
+    {
+      question: "How can companies partner with YugaYatra?",
+      answer: "Companies can partner with us by posting internship opportunities, accessing our talent pool, and participating in recruitment events. We offer various partnership packages tailored to different hiring needs."
+    },
+    {
+      question: "how can companies partner with yugayatra",
+      answer: "Companies can partner with us by posting internship opportunities, accessing our talent pool, and participating in recruitment events. We offer various partnership packages tailored to different hiring needs."
+    },
+    {
+      question: "What support does YugaYatra provide?",
+      answer: "We provide comprehensive support including resume building, interview preparation, skill assessment, career counseling, and ongoing mentorship throughout your internship journey."
+    },
+    {
+      question: "what support does yugayatra provide",
+      answer: "We provide comprehensive support including resume building, interview preparation, skill assessment, career counseling, and ongoing mentorship throughout your internship journey."
+    },
+    {
+      question: "How do I contact YugaYatra support?",
+      answer: "You can reach our support team via email at support@yugayatra.com, call us at +91-XXXXXXXXXX, or use the contact form on our website. We typically respond within 24 hours."
+    },
+    {
+      question: "how do i contact yugayatra support",
+      answer: "You can reach our support team via email at support@yugayatra.com, call us at +91-XXXXXXXXXX, or use the contact form on our website. We typically respond within 24 hours."
     },
     {
       question: "where are you located",
@@ -36,40 +128,32 @@ const ChatBot = () => {
       answer: "Yes, we provide 24/7 support to our clients."
     },
     {
-      question: "what industries do you serve",
-      answer: "We serve various industries including retail, technology, and business consulting."
-    },
-    {
-      question: "how long have you been in business",
-      answer: "Yugayatra has been serving clients with excellence for several years."
-    },
-    {
-      question: "do you offer consultations",
-      answer: "Yes, we offer free initial consultations for our services."
-    },
-    {
-      question: "what makes you different",
-      answer: "We differentiate ourselves through innovation, customer-centric approach, and reliable solutions."
-    },
-    {
-      question: "do you have internship programs",
-      answer: "Yes, we offer internship programs for students and fresh graduates. Check our careers page for current openings."
-    },
-    {
-      question: "how can i apply for internship",
-      answer: "You can apply for internships through our website's internship application page or email your resume to hr@yugayatraretail.com"
-    },
-    {
       question: "what is your response time",
       answer: "Our average response time is 24 hours for all inquiries."
     },
     {
-      question: "do you offer remote services",
-      answer: "Yes, we offer remote consulting and support services to our clients."
-    },
-    {
       question: "what is your satisfaction rate",
       answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "do you offer internships",
+      answer: "Yes! YugaYatra is completely free for students. We believe in making quality internship opportunities accessible to everyone. You can create an account, take assessments, and apply for internships without any charges."
+    },
+    {
+      question: "what types of internships are available",
+      answer: "We offer internships in various fields including Web Development, Digital Marketing, UI/UX Design, Data Analytics, Business Development, and more. Our partnerships with top companies ensure quality opportunities across different industries."
+    },
+    {
+      question: "is yugayatra free",
+      answer: "Yes! YugaYatra is completely free for students. We believe in making quality internship opportunities accessible to everyone. You can create an account, take assessments, and apply for internships without any charges."
+    },
+    {
+      question: "how does quiz matching work",
+      answer: "Our intelligent quiz analyzes your skills, interests, and preferences to match you with the most suitable internships. The algorithm considers multiple factors including your technical skills, work style preferences, and career goals."
+    },
+    {
+      question: "what is duration of internships",
+      answer: "Internship durations vary from 2 to 6 months depending on role and company. Part-time and full-time options are available to accommodate different schedules and academic commitments."
     },
     {
       question: "do you have physical stores",
@@ -466,6 +550,46 @@ const ChatBot = () => {
     {
       question: "do you have mobile apps",
       answer: "Our mobile apps are currently in development and will be available soon."
+    },
+    {
+      question: "bye",
+      answer: "Goodbye! Feel free to reach out if you have any doubts. Have a great day!"
+    },
+    {
+      question: "thank you",
+      answer: "You're welcome! Feel free to reach out anytime if you need assistance."
+    },
+    {
+      question: "thanks",
+      answer: "You're welcome! I'm here to help whenever you need assistance."
+    },
+    {
+      question: "hello",
+      answer: "Hello! How can I assist you today?"
+    },
+    {
+      question: "hi",
+      answer: "Hi there! How can I help you today?"
+    },
+    {
+      question: "good morning",
+      answer: "Good morning! How can I assist you today?"
+    },
+    {
+      question: "good afternoon",
+      answer: "Good afternoon! How can I help you today?"
+    },
+    {
+      question: "good evening",
+      answer: "Good evening! How can I assist you today?"
+    },
+    {
+      question: "ok",
+      answer: "Alright! Is there anything else I can help you with?"
+    },
+    {
+      question: "okay",
+      answer: "Okay! Let me know if you need any further assistance."
     }
   ]
 
@@ -480,10 +604,33 @@ const ChatBot = () => {
   const findAnswer = (userQuestion) => {
     const normalizedQuestion = userQuestion.toLowerCase().trim()
     
-    const found = qaDatabase.find(qa => 
-      qa.question.toLowerCase().includes(normalizedQuestion) ||
-      normalizedQuestion.includes(qa.question.toLowerCase())
+    // Priority 1: Exact match
+    let found = qaDatabase.find(qa => 
+      qa.question.toLowerCase() === normalizedQuestion
     )
+    
+    // Priority 2: Contains match (if no exact match) - but must be substantial match
+    if (!found) {
+      found = qaDatabase.find(qa => {
+        const qaLower = qa.question.toLowerCase()
+        // Only match if user question contains most of the FAQ question OR vice versa
+        return (qaLower.includes(normalizedQuestion) && normalizedQuestion.length > 5) || 
+               (normalizedQuestion.includes(qaLower) && qaLower.length > 5)
+      })
+    }
+    
+    // Priority 3: Word-level match (if no contains match) - but must have multiple matching words
+    if (!found) {
+      found = qaDatabase.find(qa => {
+        const qaLower = qa.question.toLowerCase()
+        const userWords = normalizedQuestion.split(' ').filter(word => word.length > 2)
+        const qaWords = qaLower.split(' ').filter(word => word.length > 2)
+        
+        // Must have at least 2 matching words of 3+ characters
+        const matchingWords = userWords.filter(word => qaWords.includes(word))
+        return matchingWords.length >= 2
+      })
+    }
     
     return found?.answer
   }
@@ -495,32 +642,35 @@ const ChatBot = () => {
       id: Date.now(),
       text: inputValue,
       sender: 'user',
-      timestamp: new Date().toLocaleTimeString()
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
 
     setMessages(prev => [...prev, userMessage])
     setInputValue('')
     setIsTyping(true)
 
-    // Simulate bot thinking
+    // Simulate typing delay
     await new Promise(resolve => setTimeout(resolve, 1000))
 
-    const answer = findAnswer(inputValue)
+    // Strict FAQ matching - only use exact FAQ answers
+    const faqAnswer = findAnswer(inputValue)
     
     let botResponse
-    if (answer) {
+    if (faqAnswer) {
+      // Return EXACT FAQ answer - no modifications, no AI generation
       botResponse = {
         id: Date.now() + 1,
-        text: answer,
+        text: faqAnswer,
         sender: 'bot',
-        timestamp: new Date().toLocaleTimeString()
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }
     } else {
+      // No FAQ match - show exact WhatsApp redirect message
       botResponse = {
         id: Date.now() + 1,
-        text: "I don't have an answer for that question. Let me connect you with our team on WhatsApp for better assistance.",
+        text: "I don't have an answer for your question. Sorry for it. You can contact our team.",
         sender: 'bot',
-        timestamp: new Date().toLocaleTimeString(),
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         showWhatsAppButton: true
       }
     }
@@ -548,7 +698,7 @@ const ChatBot = () => {
       setTimeout(() => {
         setMessages([{
           id: Date.now(),
-          text: "Hello! I'm Yugayatra's assistant. I can help you with questions about our services, location, business hours, and more. How can I assist you today?",
+          text: "Hello! I'm Yugayatra's assistant. How can I assist you today?",
           sender: 'bot',
           timestamp: new Date().toLocaleTimeString()
         }])
@@ -628,7 +778,7 @@ const ChatBot = () => {
                             className="mt-2 bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg text-xs font-medium flex items-center space-x-1 transition-colors"
                           >
                             <ExternalLink className="w-3 h-3" />
-                            <span>Chat on WhatsApp</span>
+                            <span>Chat with our team</span>
                           </button>
                         )}
                       </div>
