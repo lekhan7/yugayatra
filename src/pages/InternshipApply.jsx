@@ -12,7 +12,7 @@ const InternshipApply = () => {
   const role = useMemo(() => (roleParam ? decodeURIComponent(roleParam) : ''), [roleParam])
 
   const [formData, setFormData] = useState({
-    full_name: '',
+    fullName: '',
     email: '',
     phone: '',
     role: '',

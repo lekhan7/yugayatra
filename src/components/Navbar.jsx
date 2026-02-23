@@ -42,13 +42,19 @@ const Navbar = () => {
       // Navigate to route using React Router
       window.location.href = link.href
     } else {
-      // Scroll to section
-      const sectionId = link.href.substring(1)
-      const element = document.getElementById(sectionId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // Check if we're on the home page
+      if (window.location.pathname === '/') {
+        // Scroll to section on home page
+        const sectionId = link.href.substring(1)
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        } else {
+          console.warn(`Section with id "${sectionId}" not found`)
+        }
       } else {
-        console.warn(`Section with id "${sectionId}" not found`)
+        // Navigate to home page with hash
+        window.location.href = '/' + link.href
       }
     }
     setIsOpen(false)
