@@ -4,7 +4,7 @@ import StatusTabs from './StatusTabs'
 import ApplicationsTable from './ApplicationsTable'
 import { sendInternshipAcceptanceEmail, validateEmailConfig } from '../../services/emailService'
 
-const AdminApplications = () => {
+const AdminApplications = ({ onSettingsOpen }) => {
   const [applications, setApplications] = useState([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('pending')

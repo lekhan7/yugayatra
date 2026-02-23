@@ -66,9 +66,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div onClick={() => handleNavClick({ href: '#hero', isRoute: false })} className="flex items-center space-x-2 cursor-pointer">
-            <div className="w-8 h-8 bg-gradient-to-r from-accent-main to-accent-main rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">Y</span>
-            </div>
+            <img 
+              src="/yylogo.png" 
+              alt="YugaYatra Logo" 
+              className="w-8 h-8 rounded-lg object-cover"
+            />
             <span className="text-xl font-bold text-text-main">
               YugaYatra Retail 
             </span>

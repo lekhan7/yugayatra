@@ -25,7 +25,7 @@ import {
 import { sendProjectAcceptanceEmail, validateEmailConfig } from '../../services/emailService'
 import { useNotification } from '../../context/NotificationContext'
 
-const ProjectRequestsManager = () => {
+const ProjectRequestsManager = ({ onSettingsOpen }) => {
   const [requests, setRequests] = useState([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')

@@ -13,10 +13,11 @@ import {
   User,
   PenTool,
   UserPlus,
-  Send
+  Send,
+  Settings
 } from 'lucide-react'
 
-const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
+const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSettingsOpen }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const menuItems = [
@@ -100,6 +101,13 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
           >
             <LogOut size={16} />
             <span>Logout</span>
+          </button>
+          <button
+            onClick={onSettingsOpen}
+            className="w-full flex items-center space-x-2 px-3 py-2 text-sm text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors mt-2"
+          >
+            <Settings size={16} />
+            <span>Settings</span>
           </button>
         </div>
       )}

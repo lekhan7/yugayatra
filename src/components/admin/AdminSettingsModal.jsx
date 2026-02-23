@@ -37,7 +37,12 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
       accent: '#10b981',
       background: '#ffffff',
       surface: '#f9fafb',
-      text: '#111827'
+      text: '#111827',
+      border: '#e5e7eb',
+      hover: '#f3f4f6',
+      success: '#10b981',
+      warning: '#f59e0b',
+      error: '#ef4444'
     },
     typography: {
       fontFamily: 'Inter',
@@ -107,7 +112,12 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
         accent: '#10b981',
         background: '#ffffff',
         surface: '#f9fafb',
-        text: '#111827'
+        text: '#111827',
+        border: '#e5e7eb',
+        hover: '#f3f4f6',
+        success: '#10b981',
+        warning: '#f59e0b',
+        error: '#ef4444'
       },
       typography: {
         fontFamily: 'Inter',
@@ -315,9 +325,79 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
 
   const renderColorSettings = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Color Scheme</h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Color Scheme</h3>
+        <div className="flex space-x-2">
+          <button
+            onClick={() => {
+              const oliveTheme = {
+                primary: '#8D9A3A',
+                secondary: '#BEC87A',
+                accent: '#252B0D',
+                background: '#F6F7F0',
+                surface: '#E4E9C8',
+                text: '#252B0D',
+                border: '#BEC87A',
+                hover: '#E4E9C8',
+                success: '#8D9A3A',
+                warning: '#F6F7F0',
+                error: '#ef4444'
+              }
+              setSettings(prev => ({ ...prev, colors: oliveTheme }))
+              setHasChanges(true)
+            }}
+            className="px-3 py-1 text-xs bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 rounded-lg hover:bg-green-200"
+          >
+            Olive Theme
+          </button>
+          <button
+            onClick={() => {
+              const blueTheme = {
+                primary: '#3b82f6',
+                secondary: '#8b5cf6',
+                accent: '#10b981',
+                background: '#ffffff',
+                surface: '#f9fafb',
+                text: '#111827',
+                border: '#e5e7eb',
+                hover: '#f3f4f6',
+                success: '#10b981',
+                warning: '#f59e0b',
+                error: '#ef4444'
+              }
+              setSettings(prev => ({ ...prev, colors: blueTheme }))
+              setHasChanges(true)
+            }}
+            className="px-3 py-1 text-xs bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400 rounded-lg hover:bg-blue-200"
+          >
+            Blue Theme
+          </button>
+          <button
+            onClick={() => {
+              const darkTheme = {
+                primary: '#60a5fa',
+                secondary: '#a78bfa',
+                accent: '#34d399',
+                background: '#1f2937',
+                surface: '#374151',
+                text: '#f9fafb',
+                border: '#4b5563',
+                hover: '#4b5563',
+                success: '#34d399',
+                warning: '#fbbf24',
+                error: '#f87171'
+              }
+              setSettings(prev => ({ ...prev, colors: darkTheme }))
+              setHasChanges(true)
+            }}
+            className="px-3 py-1 text-xs bg-gray-800 text-gray-100 rounded-lg hover:bg-gray-700"
+          >
+            Dark Theme
+          </button>
+        </div>
+      </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {Object.entries(settings.colors).map(([key, value]) => (
           <div key={key}>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 capitalize">
@@ -328,13 +408,14 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
                 type="color"
                 value={value}
                 onChange={(e) => updateSetting('colors', key, e.target.value)}
-                className="h-10 w-20 rounded border border-gray-300 dark:border-gray-600"
+                className="h-10 w-16 rounded border border-gray-300 dark:border-gray-600 cursor-pointer"
               />
               <input
                 type="text"
                 value={value}
                 onChange={(e) => updateSetting('colors', key, e.target.value)}
-                className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="flex-1 px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                placeholder="#000000"
               />
             </div>
           </div>
@@ -342,24 +423,37 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
       </div>
 
       <div>
-        <h4 className="text-md font-medium text-gray-900 dark:text-white mb-3">Preview</h4>
-        <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+        <h4 className="text-md font-medium text-gray-900 dark:text-white mb-3">Live Preview</h4>
+        <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg">
           <div 
-            className="p-4 rounded-lg text-center"
+            className="p-4 rounded-lg text-center space-y-4"
             style={{
               backgroundColor: settings.colors.background,
               color: settings.colors.text,
-              border: `2px solid ${settings.colors.primary}`
+              border: `2px solid ${settings.colors.border}`
             }}
           >
-            <h4 style={{ color: settings.colors.primary }}>Sample Text</h4>
-            <p style={{ color: settings.colors.secondary }}>Secondary text example</p>
-            <button 
-              className="mt-2 px-4 py-2 rounded text-white"
-              style={{ backgroundColor: settings.colors.accent }}
-            >
-              Sample Button
-            </button>
+            <h4 style={{ color: settings.colors.primary }}>Sample Header</h4>
+            <p style={{ color: settings.colors.secondary }}>Secondary text example with more content</p>
+            <div className="flex justify-center space-x-2">
+              <button 
+                className="px-4 py-2 rounded text-white text-sm"
+                style={{ backgroundColor: settings.colors.accent }}
+              >
+                Primary Action
+              </button>
+              <button 
+                className="px-4 py-2 rounded text-white text-sm"
+                style={{ backgroundColor: settings.colors.primary }}
+              >
+                Secondary Action
+              </button>
+            </div>
+            <div className="flex justify-center space-x-4 text-sm">
+              <span style={{ color: settings.colors.success }}>✓ Success</span>
+              <span style={{ color: settings.colors.warning }}>⚠ Warning</span>
+              <span style={{ color: settings.colors.error }}>✗ Error</span>
+            </div>
           </div>
         </div>
       </div>

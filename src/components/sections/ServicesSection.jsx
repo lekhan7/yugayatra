@@ -62,6 +62,7 @@ const ServicesSection = () => {
     const fetchServices = async () => {
       try {
         const servicesData = await getServices()
+        console.log('Services data:', servicesData) // Debug log
         setServices(servicesData)
       } catch (error) {
         console.error('Error fetching services:', error)
@@ -81,6 +82,9 @@ const ServicesSection = () => {
   const finalDisplayedServices = consultingService && !displayedServices.find(s => s.slug === 'consulting') 
     ? [consultingService, ...displayedServices.slice(0, 5)] 
     : displayedServices
+
+  // Debug log
+  console.log('Final displayed services:', finalDisplayedServices)
 
   return (
     <section id="services" className="py-20 bg-card-bg dark:bg-dark-card">
@@ -107,65 +111,65 @@ const ServicesSection = () => {
             <div className="flex justify-center items-center py-20">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
             </div>
-          ) : (
+          ) : finalDisplayedServices.length > 0 ? (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {finalDisplayedServices.map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="group"
-                >
-                  <div className="bg-card-bg dark:bg-dark-card rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10 group-hover:scale-105 flex flex-col">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${service.icon_bg_color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      {React.createElement(getIcon(service.icon_name), { className: "w-8 h-8 text-white" })}
-                    </div>
-                    <h3 className="text-2xl font-bold text-text-main dark:text-dark-text mb-4">
-                      {service.title}
-                    </h3>
-                    <p className="text-text-light dark:text-white/70 mb-6">
-                      {service.short_description}
-                    </p>
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -5 }}
+                    className="group"
+                  >
+                    <div className="bg-card-bg dark:bg-dark-card rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10 group-hover:scale-105 flex flex-col">
+                      <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-gold rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        {React.createElement(getIcon(service.icon_name || 'Code'), { className: "w-8 h-8 text-white drop-shadow-lg" })}
+                      </div>
+                      <h3 className="text-2xl font-bold text-text-main dark:text-dark-text mb-4">
+                        {service.title}
+                      </h3>
+                      <p className="text-text-light dark:text-white/70 mb-6">
+                        {service.short_description}
+                      </p>
                     
-                    <div className="space-y-3 mb-6">
-                      {service.features.slice(0, 3).map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-text-light dark:text-white/70">
-                          <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
+                      <div className="space-y-3 mb-6">
+                        {service.features.slice(0, 3).map((feature, idx) => (
+                          <div key={idx} className="flex items-center text-sm text-text-light dark:text-white/70">
+                            <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400 mr-2 flex-shrink-0" />
+                            {feature}
+                          </div>
+                        ))}
+                      </div>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {service.technologies.slice(0, 3).map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="px-3 py-1 bg-bg-main dark:bg-dark-card text-text-light dark:text-white/70 rounded-full text-xs font-medium border border-border-light dark:border-white/10"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {service.technologies.slice(0, 3).map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-bg-main dark:bg-dark-card text-text-light dark:text-white/70 rounded-full text-xs font-medium border border-border-light dark:border-white/10"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
 
-<div className="mt-auto flex justify-center">
-                      {service.apply_enabled && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            const encodedRole = encodeURIComponent(service.title)
-                            navigate(`/internship/apply/${encodedRole}`)
-                          }}
-                          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-olive-200 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
-                        >
-                          Apply
-                        </button>
-                      )}
+                      <div className="mt-auto flex justify-center">
+                        {service.apply_enabled && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const encodedRole = encodeURIComponent(service.title)
+                              navigate(`/internship/apply/${encodedRole}`)
+                            }}
+                            className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent-main to-olive-200 text-white text-sm font-semibold hover:shadow-lg transition-all duration-200"
+                          >
+                            Apply
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
               ))}
               </div>
 
@@ -184,6 +188,10 @@ const ServicesSection = () => {
                 </div>
               )}
             </>
+          ) : (
+            <div className="text-center py-20">
+              <p className="text-text-light dark:text-white/70 text-lg">No services available at the moment.</p>
+            </div>
           )}
         </div>
       </div>

@@ -58,7 +58,7 @@ const colorOptions = [
   { name: 'Slate to Gray', value: 'from-slate-500 to-gray-600' }
 ]
 
-const ProjectsManager = () => {
+const ProjectsManager = ({ onSettingsOpen }) => {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
   const [showAddForm, setShowAddForm] = useState(false)
