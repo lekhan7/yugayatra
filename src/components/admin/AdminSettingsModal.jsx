@@ -69,6 +69,25 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
     loadSettings()
   }, [])
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.ctrlKey && event.key === 's') {
+        event.preventDefault()
+        if (hasChanges) {
+          saveSettings()
+        }
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown)
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isOpen, hasChanges, settings])
+
   const loadSettings = () => {
     try {
       const savedSettings = localStorage.getItem('adminSettings')
@@ -81,19 +100,46 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
   }
 
   const saveSettings = () => {
-    try {
-      localStorage.setItem('adminSettings', JSON.stringify(settings))
-      onSettingsChange?.(settings)
-      setHasChanges(false)
-      toast.success('Settings saved successfully! Changes applied immediately.', {
-        duration: 4000,
+    if (!hasChanges) {
+      toast('No changes to save', {
+        icon: 'ℹ️',
+        duration: 2000,
         position: 'top-center'
       })
+      return
+    }
+
+    try {
+      // Validate settings before saving
+      const validatedSettings = JSON.parse(JSON.stringify(settings))
+      
+      // Save to localStorage
+      localStorage.setItem('adminSettings', JSON.stringify(validatedSettings))
+      
+      // Apply changes immediately
+      onSettingsChange?.(validatedSettings)
+      setHasChanges(false)
+      
+      // Show success message
+      toast.success('Settings saved successfully! Changes applied immediately.', {
+        duration: 4000,
+        position: 'top-center',
+        icon: '✅'
+      })
+      
+      // Optional: Close modal after successful save
+      setTimeout(() => {
+        if (window.confirm('Settings saved successfully! Would you like to close the settings panel?')) {
+          onClose()
+        }
+      }, 1000)
+      
     } catch (error) {
       console.error('Error saving settings:', error)
       toast.error('Failed to save settings. Please try again.', {
         duration: 4000,
-        position: 'top-center'
+        position: 'top-center',
+        icon: '❌'
       })
     }
   }
@@ -884,10 +930,18 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
                 <button
                   onClick={saveSettings}
                   disabled={!hasChanges}
-                  className="flex items-center space-x-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 font-semibold shadow-lg"
+                  title={hasChanges ? "Save changes (Ctrl+S)" : "No changes to save"}
+                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold shadow-lg transition-all transform hover:scale-105 ${
+                    hasChanges 
+                      ? 'bg-green-600 text-white hover:bg-green-700 animate-pulse' 
+                      : 'bg-gray-400 text-gray-200 cursor-not-allowed opacity-50'
+                  }`}
                 >
                   <Save size={18} />
-                  <span>Save Changes</span>
+                  <span>{hasChanges ? 'Save Changes' : 'No Changes'}</span>
+                  {hasChanges && (
+                    <span className="text-xs opacity-75 ml-1">(Ctrl+S)</span>
+                  )}
                 </button>
               </div>
             </div>
