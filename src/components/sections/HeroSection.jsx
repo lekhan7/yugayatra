@@ -4,7 +4,7 @@ import HeroAnimation from '../HeroAnimation'
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="min-h-screen bg-bg-main relative overflow-hidden">
+    <section id="hero" className="min-h-screen bg-bg-main dark:bg-dark-bg relative overflow-hidden">
       {/* Hero Animation */}
       <HeroAnimation />
 
@@ -20,7 +20,7 @@ const HeroSection = () => {
             href="#services"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center group bg-gradient-to-r from-accent-main to-accent-dark text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="inline-flex items-center justify-center group bg-gradient-to-r from-accent-main to-accent-dark dark:from-dark-blue-accent dark:to-dark-blue-primary text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Code className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
             Explore Opportunities
@@ -33,7 +33,7 @@ const HeroSection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center group bg-white/10 backdrop-blur-sm text-gray-800 border border-gray-300/20 px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300"
+            className="inline-flex items-center justify-center group bg-white/10 backdrop-blur-sm text-gray-800 border border-gray-300/20 dark:bg-dark-card/50 dark:text-dark-text-secondary dark:border-dark-border px-8 py-4 rounded-full font-semibold hover:bg-white/20 dark:hover:bg-dark-card/70 transition-all duration-300"
           >
             <Palette className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
             Learn More

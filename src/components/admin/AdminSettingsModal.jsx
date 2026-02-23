@@ -64,6 +64,7 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
   })
   const [hasChanges, setHasChanges] = useState(false)
   const [previewMode, setPreviewMode] = useState(false)
+  const [originalSettings, setOriginalSettings] = useState(null)
 
   useEffect(() => {
     loadSettings()
@@ -92,46 +93,45 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
     try {
       const savedSettings = localStorage.getItem('adminSettings')
       if (savedSettings) {
-        setSettings(JSON.parse(savedSettings))
+        const parsed = JSON.parse(savedSettings)
+        setSettings(parsed)
+        setOriginalSettings(parsed)
+      } else {
+        setOriginalSettings(JSON.parse(JSON.stringify(settings)))
       }
     } catch (error) {
       console.error('Error loading settings:', error)
+      setOriginalSettings(JSON.parse(JSON.stringify(settings)))
     }
   }
 
   const saveSettings = () => {
-    if (!hasChanges) {
-      toast('No changes to save', {
-        icon: 'ℹ️',
-        duration: 2000,
-        position: 'top-center'
-      })
-      return
-    }
-
     try {
       // Validate settings before saving
       const validatedSettings = JSON.parse(JSON.stringify(settings))
       
-      // Save to localStorage
+      // Save to localStorage immediately
       localStorage.setItem('adminSettings', JSON.stringify(validatedSettings))
       
-      // Apply changes immediately
-      onSettingsChange?.(validatedSettings)
+      // Update original settings to mark as clean
+      setOriginalSettings(validatedSettings)
       setHasChanges(false)
+      
+      // Apply changes immediately via callback
+      if (onSettingsChange && typeof onSettingsChange === 'function') {
+        onSettingsChange(validatedSettings)
+      }
       
       // Show success message
       toast.success('Settings saved successfully! Changes applied immediately.', {
-        duration: 4000,
+        duration: 3000,
         position: 'top-center',
         icon: '✅'
       })
       
-      // Optional: Close modal after successful save
+      // Close modal after successful save
       setTimeout(() => {
-        if (window.confirm('Settings saved successfully! Would you like to close the settings panel?')) {
-          onClose()
-        }
+        onClose()
       }, 1000)
       
     } catch (error) {
@@ -184,6 +184,7 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
       }
     }
     setSettings(defaultSettings)
+    setOriginalSettings(JSON.parse(JSON.stringify(defaultSettings)))
     setHasChanges(true)
     toast.success('Settings reset to defaults')
   }
@@ -214,7 +215,9 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
         try {
           const importedSettings = JSON.parse(e.target.result)
           setSettings(importedSettings)
-          setHasChanges(true)
+          if (originalSettings) {
+            setHasChanges(JSON.stringify(importedSettings) !== JSON.stringify(originalSettings))
+          }
           toast.success('Settings imported successfully!')
         } catch (error) {
           console.error('Error importing settings:', error)
@@ -226,28 +229,50 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
   }
 
   const updateSetting = (category, key, value) => {
-    setSettings(prev => ({
-      ...prev,
-      [category]: {
-        ...prev[category],
-        [key]: value
-      }
-    }))
-    setHasChanges(true)
-  }
-
-  const updateNestedSetting = (category, nestedKey, key, value) => {
-    setSettings(prev => ({
-      ...prev,
-      [category]: {
-        ...prev[category],
-        [nestedKey]: {
-          ...prev[category][nestedKey],
+    setSettings(prev => {
+      const newSettings = {
+        ...prev,
+        [category]: {
+          ...prev[category],
           [key]: value
         }
       }
-    }))
-    setHasChanges(true)
+      // Check if settings have changed
+      if (originalSettings) {
+        setHasChanges(JSON.stringify(newSettings) !== JSON.stringify(originalSettings))
+      }
+      return newSettings
+    })
+  }
+
+  const updateNestedSetting = (category, nestedKey, key, value) => {
+    setSettings(prev => {
+      const newSettings = {
+        ...prev,
+        [category]: {
+          ...prev[category],
+          [nestedKey]: {
+            ...prev[category][nestedKey],
+            [key]: value
+          }
+        }
+      }
+      // Check if settings have changed
+      if (originalSettings) {
+        setHasChanges(JSON.stringify(newSettings) !== JSON.stringify(originalSettings))
+      }
+      return newSettings
+    })
+  }
+
+  const handleCloseAttempt = () => {
+    if (hasChanges) {
+      if (window.confirm('You have unsaved changes. Are you sure you want to discard them?')) {
+        onClose()
+      }
+    } else {
+      onClose()
+    }
   }
 
   const tabs = [
@@ -389,8 +414,13 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
                 warning: '#F6F7F0',
                 error: '#ef4444'
               }
-              setSettings(prev => ({ ...prev, colors: oliveTheme }))
-              setHasChanges(true)
+              setSettings(prev => {
+                const newSettings = { ...prev, colors: oliveTheme }
+                if (originalSettings) {
+                  setHasChanges(JSON.stringify(newSettings) !== JSON.stringify(originalSettings))
+                }
+                return newSettings
+              })
             }}
             className="px-3 py-1 text-xs bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 rounded-lg hover:bg-green-200"
           >
@@ -411,8 +441,13 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
                 warning: '#f59e0b',
                 error: '#ef4444'
               }
-              setSettings(prev => ({ ...prev, colors: blueTheme }))
-              setHasChanges(true)
+              setSettings(prev => {
+                const newSettings = { ...prev, colors: blueTheme }
+                if (originalSettings) {
+                  setHasChanges(JSON.stringify(newSettings) !== JSON.stringify(originalSettings))
+                }
+                return newSettings
+              })
             }}
             className="px-3 py-1 text-xs bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400 rounded-lg hover:bg-blue-200"
           >
@@ -433,8 +468,13 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
                 warning: '#fbbf24',
                 error: '#f87171'
               }
-              setSettings(prev => ({ ...prev, colors: darkTheme }))
-              setHasChanges(true)
+              setSettings(prev => {
+                const newSettings = { ...prev, colors: darkTheme }
+                if (originalSettings) {
+                  setHasChanges(JSON.stringify(newSettings) !== JSON.stringify(originalSettings))
+                }
+                return newSettings
+              })
             }}
             className="px-3 py-1 text-xs bg-gray-800 text-gray-100 rounded-lg hover:bg-gray-700"
           >
@@ -812,7 +852,7 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black bg-opacity-50"
-            onClick={onClose}
+            onClick={handleCloseAttempt}
           />
 
           {/* Modal */}
@@ -869,7 +909,7 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
                 </label>
                 
                 <button
-                  onClick={onClose}
+                  onClick={handleCloseAttempt}
                   className="p-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600"
                 >
                   <X size={18} />
@@ -911,37 +951,34 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
             <div className="flex items-center justify-between p-6 border-t border-gray-200 dark:border-gray-700">
               <div className="text-sm">
                 {hasChanges ? (
-                  <div className="flex items-center space-x-2 text-orange-600 dark:text-orange-400 font-medium">
-                    <div className="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></div>
+                  <div className="flex items-center space-x-2 text-orange-600 dark:text-orange-400 font-semibold animate-pulse">
+                    <div className="w-3 h-3 bg-orange-600 rounded-full animate-pulse"></div>
                     <span>You have unsaved changes</span>
+                    <span className="text-xs bg-orange-100 dark:bg-orange-900/20 px-2 py-1 rounded">Click Save to apply</span>
                   </div>
                 ) : (
-                  <span className="text-gray-500 dark:text-gray-400">All changes saved</span>
+                  <div className="flex items-center space-x-2 text-green-600 dark:text-green-400">
+                    <div className="w-3 h-3 bg-green-600 rounded-full"></div>
+                    <span>All changes saved</span>
+                  </div>
                 )}
               </div>
               
               <div className="flex space-x-3">
                 <button
-                  onClick={onClose}
+                  onClick={handleCloseAttempt}
                   className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={saveSettings}
-                  disabled={!hasChanges}
-                  title={hasChanges ? "Save changes (Ctrl+S)" : "No changes to save"}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold shadow-lg transition-all transform hover:scale-105 ${
-                    hasChanges 
-                      ? 'bg-green-600 text-white hover:bg-green-700 animate-pulse' 
-                      : 'bg-gray-400 text-gray-200 cursor-not-allowed opacity-50'
-                  }`}
+                  title="Save changes (Ctrl+S)"
+                  className="flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold shadow-lg transition-all transform bg-green-600 hover:bg-green-700 text-white hover:scale-105 cursor-pointer"
                 >
                   <Save size={18} />
-                  <span>{hasChanges ? 'Save Changes' : 'No Changes'}</span>
-                  {hasChanges && (
-                    <span className="text-xs opacity-75 ml-1">(Ctrl+S)</span>
-                  )}
+                  <span>Save Settings</span>
+                  <span className="text-xs opacity-75 ml-1">(Ctrl+S)</span>
                 </button>
               </div>
             </div>

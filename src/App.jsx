@@ -27,7 +27,7 @@ function App() {
   const isAdminPage = location.pathname === '/admin'
 
   return (
-    <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
+    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
       {!isAdminPage && <Navbar />}
       {!isAdminPage && <ScrollProgressBar />}
       <Routes>
@@ -176,7 +176,7 @@ function App() {
           </motion.div>
         } />
       </Routes>
-      <ChatBot />
+      {!isAdminPage && <ChatBot />}
     </div>
   )
 }

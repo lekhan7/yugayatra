@@ -268,12 +268,12 @@ const HeroAnimation = () => {
   }, [soundEnabled])
 
   return (
-    <div ref={containerRef} className="relative w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-blue-50 overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[600px] flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-blue-50 dark:from-black dark:via-gray-900 dark:to-black overflow-hidden">
       
       {/* Sound Toggle */}
       <button
         onClick={() => setSoundEnabled(!soundEnabled)}
-        className="absolute top-4 right-4 z-30 p-2 rounded-full bg-gray-800/10 backdrop-blur-sm text-gray-800 hover:bg-gray-800/20 transition-all duration-300"
+        className="absolute top-4 right-4 z-30 p-2 rounded-full bg-gray-800/10 dark:bg-white/10 backdrop-blur-sm text-gray-800 dark:text-white hover:bg-gray-800/20 dark:hover:bg-white/20 transition-all duration-300"
         title={soundEnabled ? "Disable Sound" : "Enable Sound"}
       >
         {soundEnabled ? "🔊" : "🔇"}
@@ -634,6 +634,11 @@ const HeroAnimation = () => {
           <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">
             Shaping Tomorrow's Workforce Today
           </span>
+        </div>
+        
+        {/* Additional Description */}
+        <div className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto mt-4 opacity-0 animate-fade-in-up [animation-delay:3s] px-4">
+          Join YugaYatra's innovative internship programs and embark on a journey of professional excellence. We're not just training individuals; we're crafting future leaders.
         </div>
       </div>
 

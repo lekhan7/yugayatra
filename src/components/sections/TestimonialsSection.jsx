@@ -119,18 +119,18 @@ const TestimonialsSection = () => {
   }
 
   return (
-    <section ref={containerRef} id="testimonials" className="py-20 bg-card-bg relative overflow-hidden">
+    <section id="testimonials" className="py-20 bg-card-bg dark:bg-black relative overflow-hidden">
       {/* Animated Background Elements */}
       <motion.div
         style={{ y: y1 }}
         className="absolute inset-0 opacity-10"
       >
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent-main rounded-full filter blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-accent-main dark:bg-dark-blue-accent rounded-full filter blur-3xl" />
         <motion.div
           variants={floatingVariants}
           initial="initial"
           animate="animate"
-          className="absolute bottom-20 right-10 w-96 h-96 bg-accent-main rounded-full filter blur-3xl"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent-main dark:bg-dark-blue-accent rounded-full filter blur-3xl"
         />
       </motion.div>
 
@@ -141,14 +141,11 @@ const TestimonialsSection = () => {
           transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center"
         >
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-accent-main mb-6"
-            style={{ scale: springScale }}
-          >
-            Client Testimonials
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-dark-blue-primary mb-6">
+            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">Client Testimonials</span>
+          </h2>
           <motion.p 
-            className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -161,7 +158,7 @@ const TestimonialsSection = () => {
       {/* Testimonials Grid */}
       <motion.div 
         style={{ y: y2 }}
-        className="py-20 bg-bg-main relative z-10"
+        className="py-20 bg-bg-main dark:bg-black relative z-10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Add Review Button */}
@@ -172,7 +169,7 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-accent-main text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Plus className="w-5 h-5" />
               <span>Add Your Review</span>
@@ -194,8 +191,8 @@ const TestimonialsSection = () => {
             >
               {testimonials.length === 0 ? (
                 <div className="col-span-full text-center py-20">
-                  <Quote className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-xl text-gray-500 dark:text-gray-400">
+                  <Quote className="w-16 h-16 text-gray-300 dark:text-dark-text-muted mx-auto mb-4" />
+                  <p className="text-xl text-gray-500 dark:text-dark-text-secondary">
                     No testimonials yet. Be the first to share your experience!
                   </p>
                 </div>
@@ -207,11 +204,11 @@ const TestimonialsSection = () => {
                     whileHover="hover"
                     onHoverStart={() => setHoveredCard(index)}
                     onHoverEnd={() => setHoveredCard(null)}
-                    className="bg-card-bg rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-border-light relative overflow-hidden group"
+                    className="bg-card-bg dark:bg-dark-card rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-border-light dark:border-dark-border relative overflow-hidden group"
               >
                 {/* Animated Background Gradient */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-accent-main/10 to-accent-main/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-accent-main/10 to-accent-main/10 dark:from-dark-blue-accent/10 dark:to-dark-blue-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   initial={{ scale: 0, rotate: 0 }}
                   whileHover={{ scale: 2, rotate: 180 }}
                   transition={{ duration: 0.5 }}
@@ -232,7 +229,7 @@ const TestimonialsSection = () => {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <Quote className="w-8 h-8 text-accent-main/20" />
+                      <Quote className="w-8 h-8 text-accent-main/20 dark:text-dark-blue-primary/20" />
                     </motion.div>
                   </motion.div>
 
@@ -250,14 +247,14 @@ const TestimonialsSection = () => {
                         }}
                         whileHover={{ scale: 1.3, rotate: 360 }}
                       >
-                        <Star className="w-5 h-5 text-accent-main fill-current mx-0.5" />
+                        <Star className="w-5 h-5 text-accent-main dark:text-dark-blue-primary fill-current mx-0.5" />
                       </motion.div>
                     ))}
                   </motion.div>
 
                   {/* Testimonial Content */}
                   <motion.p 
-                    className="text-text-light text-center mb-6 italic leading-relaxed"
+                    className="text-text-light dark:text-dark-text-secondary text-center mb-6 italic leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
@@ -273,7 +270,7 @@ const TestimonialsSection = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
                   >
                     <motion.div 
-                      className="w-16 h-16 bg-gradient-to-br from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-3"
+                      className="w-16 h-16 bg-gradient-to-br from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-3"
                       whileHover={{ scale: 1.1, rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
@@ -282,14 +279,14 @@ const TestimonialsSection = () => {
                       </span>
                     </motion.div>
                     <motion.h4 
-                      className="text-lg font-semibold text-text-main mb-1"
+                      className="text-lg font-semibold text-text-main dark:text-dark-blue-primary mb-1"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
                       {testimonial.full_name}
                     </motion.h4>
                     <motion.p 
-                      className="text-accent-main text-sm"
+                      className="text-accent-main dark:text-dark-blue-primary text-sm"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.1 + 0.7 }}
@@ -308,7 +305,7 @@ const TestimonialsSection = () => {
 
       {/* Stats Section */}
       <motion.div 
-        className="py-20 bg-card-bg relative z-10"
+        className="py-20 bg-card-bg dark:bg-dark-card relative z-10"
         style={{ y: y1 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -318,11 +315,11 @@ const TestimonialsSection = () => {
             transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold text-accent-main mb-4">
+            <h3 className="text-4xl font-bold text-accent-main dark:text-dark-blue-primary mb-4">
               Our Impact
             </h3>
             <motion.p 
-              className="text-xl text-text-light"
+              className="text-xl text-text-light dark:text-dark-text-secondary"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -348,11 +345,11 @@ const TestimonialsSection = () => {
                 custom={index}
                 variants={statVariants}
                 whileHover="hover"
-                className="text-center p-6 bg-card-bg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-border-light relative overflow-hidden group"
+                className="text-center p-6 bg-card-bg dark:bg-dark-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-border-light dark:border-dark-border relative overflow-hidden group"
               >
                 {/* Animated Background */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-accent-main/5 to-accent-main/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-accent-main/5 to-accent-main/5 dark:from-dark-blue-accent/5 dark:to-dark-blue-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   initial={{ scale: 0 }}
                   whileHover={{ scale: 1.5 }}
                   transition={{ duration: 0.5 }}
@@ -366,12 +363,12 @@ const TestimonialsSection = () => {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <stat.icon className="w-8 h-8 text-accent-main" />
+                    <stat.icon className="w-8 h-8 text-accent-main dark:text-dark-blue-primary" />
                   </motion.div>
                   
                   {/* Number with Counter Animation */}
                   <motion.div 
-                    className="text-3xl md:text-4xl font-bold text-accent-main mb-2"
+                    className="text-3xl md:text-4xl font-bold text-accent-main dark:text-dark-blue-primary mb-2"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ 
@@ -386,7 +383,7 @@ const TestimonialsSection = () => {
                   
                   {/* Label */}
                   <motion.p 
-                    className="text-text-light"
+                    className="text-text-light dark:text-dark-text-secondary"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.15 + 0.3 }}
@@ -402,7 +399,7 @@ const TestimonialsSection = () => {
 
       {/* CTA Section */}
       <motion.div 
-        className="py-20 bg-gradient-to-r from-accent-main to-accent-main relative overflow-hidden"
+        className="py-20 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary relative overflow-hidden"
         style={{ scale: springScale }}
       >
         {/* Animated Background Elements */}
@@ -451,7 +448,7 @@ const TestimonialsSection = () => {
             </motion.p>
             <motion.button 
               onClick={() => setIsProjectModalOpen(true)}
-              className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 inline-flex items-center group"
+              className="bg-card-bg dark:bg-dark-card text-accent-main dark:text-dark-blue-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-200 transition-all duration-300 inline-flex items-center group"
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.6, type: "spring" }}

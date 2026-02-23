@@ -57,7 +57,7 @@ const InternshipsSection = () => {
   ]
 
   return (
-    <section id="internships" className="py-20 bg-card-bg">
+    <section id="internships" className="py-20 bg-card-bg dark:bg-dark-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,8 +65,8 @@ const InternshipsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{color: '#252B0D'}}>
-            Internship <span className="text-accent-main">Programs</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white" style={{color: '#252B0D'}}>
+            Internship <span className="text-dark-blue-accent dark:text-dark-blue-primary">Programs</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
             Launch your career with our cutting-edge internship programs. Gain hands-on experience with industry experts.
@@ -85,7 +85,7 @@ const InternshipsSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, rotateY: 5 }}
-                className={`bg-card-bg rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light ${internship.color}`}
+                className={`bg-card-bg dark:bg-dark-card rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light dark:border-dark-border ${internship.color}`}
               >
                 <div className="flex items-start justify-between mb-6">
                   <div>
@@ -97,7 +97,7 @@ const InternshipsSection = () => {
                         {internship.title}
                       </h3>
                       <div className="flex items-center space-x-4 mb-3">
-                        <span className="px-3 py-1 bg-accent-main/20 text-accent-main text-xs font-medium rounded-full">
+                        <span className="px-3 py-1 bg-dark-blue-accent/20 dark:bg-dark-blue-primary/20 text-dark-blue-accent dark:text-dark-blue-primary text-xs font-medium rounded-full">
                           {internship.type}
                         </span>
                         <span className="text-text-light">

@@ -8,6 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Light mode colors (unchanged)
         'bg-main': '#FFFFFF',
         'text-main': '#1F2937',
         'accent-main': '#059669', // Dark Mint for headings
@@ -24,6 +25,21 @@ export default {
         dark: '#1F2937',
         mint: '#059669',
         'soft-gray': '#F9FAFB',
+        
+        // Dark mode colors - Pure Black with Blue accents
+        'dark-bg': '#000000',
+        'dark-surface': '#0A0A0A',
+        'dark-card': '#1A1A1A',
+        'dark-text-primary': '#FFFFFF',
+        'dark-text-secondary': '#E5E5E5',
+        'dark-text-muted': '#A0A0A0',
+        'dark-blue-primary': '#3B82F6',
+        'dark-blue-secondary': '#60A5FA',
+        'dark-blue-accent': '#1D4ED8',
+        'dark-blue-light': '#DBEAFE',
+        'dark-blue-muted': '#93C5FD',
+        'dark-border': '#374151',
+        'dark-hover': '#1D4ED8',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

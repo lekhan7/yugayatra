@@ -24,7 +24,7 @@ const JourneyTimeline = () => {
       date: "2020",
       description: "YugaYatra started with a vision to bridge the gap between education and industry.",
       icon: <MapPin className="w-6 h-6" />,
-      color: "from-accent-dark via-accent-main to-accent-gold",
+      color: "from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary",
       details: [
         "Founded by industry professionals",
         "Initial team of 5 members",
@@ -52,7 +52,7 @@ const JourneyTimeline = () => {
       date: "2022",
       description: "Expanded our services to multiple cities and introduced new training programs.",
       icon: <TrendingUp className="w-6 h-6" />,
-      color: "from-accent-gold via-accent-light to-accent-dark",
+      color: "from-accent-gold via-accent-light to-accent-dark dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary",
       details: [
         "Expanded to 5 cities",
         "Launched 10 new courses",
@@ -336,6 +336,51 @@ const JourneyTimeline = () => {
     }, 500)
   }
 
+  const FinalPopup = () => (
+    <AnimatePresence>
+      {showFinalPopup && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          className="fixed z-[99999] w-80 bg-white rounded-xl shadow-2xl p-6 border-2 border-gray-200 text-center"
+          style={{
+            top: '10%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'linear-gradient(135deg, white 0%, #f0fdf4 100%)'
+          }}
+        >
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-accent-main to-accent-dark text-white mb-4">
+            <Target className="w-6 h-6" />
+          </div>
+          <h3 className="text-xl font-bold text-gray-800 mb-3">Journey Complete!</h3>
+          <p className="text-gray-700 mb-4 text-sm leading-relaxed">Thank you for joining us on our incredible journey!</p>
+          <div className="space-y-2 mb-4 text-left inline-block">
+            <div className="flex items-center">
+              <Award className="w-4 h-4 mr-2 text-accent-gold dark:text-dark-blue-accent" />
+              <span className="text-gray-700 text-sm">5 Major Milestones Achieved</span>
+            </div>
+            <div className="flex items-center">
+              <Users className="w-4 h-4 mr-2 text-accent-light/100 dark:text-dark-blue-primary" />
+              <span className="text-gray-700 text-sm">1000+ Community Members</span>
+            </div>
+            <div className="flex items-center">
+              <TrendingUp className="w-4 h-4 mr-2 text-accent-main dark:text-dark-blue-accent" />
+              <span className="text-gray-700 text-sm">Continuing to Grow</span>
+            </div>
+          </div>
+          <button
+            onClick={() => setShowFinalPopup(false)}
+            className="w-full bg-gradient-to-r from-accent-main to-accent-dark text-white px-4 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+          >
+            Close
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+
   const PopupCard = ({ stop }) => {
   // Calculate position to keep pop-up within screen bounds
   const getPosition = () => {
@@ -396,62 +441,17 @@ const JourneyTimeline = () => {
       )}
     </AnimatePresence>
   )
-}
-
-  const FinalPopup = () => (
-    <AnimatePresence>
-      {showFinalPopup && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          className="fixed z-[99999] w-80 bg-white rounded-xl shadow-2xl p-6 border-2 border-gray-200 text-center"
-          style={{
-            top: '10%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            background: 'linear-gradient(135deg, white 0%, #f0fdf4 100%)'
-          }}
-        >
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-accent-main to-accent-dark text-white mb-4">
-            <Target className="w-6 h-6" />
-          </div>
-          <h3 className="text-xl font-bold text-gray-800 mb-3">Journey Complete!</h3>
-          <p className="text-gray-700 mb-4 text-sm leading-relaxed">Thank you for joining us on our incredible journey!</p>
-          <div className="space-y-2 mb-4 text-left inline-block">
-            <div className="flex items-center">
-              <Award className="w-4 h-4 mr-2 text-accent-gold" />
-              <span className="text-gray-700 text-sm">5 Major Milestones Achieved</span>
-            </div>
-            <div className="flex items-center">
-              <Users className="w-4 h-4 mr-2 text-accent-light/100" />
-              <span className="text-gray-700 text-sm">1000+ Community Members</span>
-            </div>
-            <div className="flex items-center">
-              <TrendingUp className="w-4 h-4 mr-2 text-accent-main" />
-              <span className="text-gray-700 text-sm">Continuing to Grow</span>
-            </div>
-          </div>
-          <button
-            onClick={() => setShowFinalPopup(false)}
-            className="w-full bg-gradient-to-r from-accent-main to-accent-dark text-white px-4 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
-          >
-            Close
-          </button>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  )
+  }
 
   return (
-    <section id="journey-timeline" ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-white via-accent-light/20 to-accent-gold/20 overflow-hidden py-20">
+    <section id="journey-timeline" ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-white via-accent-light/20 to-accent-gold/20 dark:from-black dark:via-gray-900 dark:to-black overflow-hidden py-20">
       {/* Section Title */}
       <div className="text-center mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-black bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent mb-4"
+          className="text-5xl md:text-6xl font-black text-gray-800 dark:text-white bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent mb-4"
         >
           Our Journey Timeline
         </motion.h2>
@@ -459,7 +459,7 @@ const JourneyTimeline = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl text-gray-600 max-w-3xl mx-auto"
+          className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
         >
           Follow our path of growth and innovation as we shaped the future of workforce development
         </motion.p>
@@ -470,13 +470,13 @@ const JourneyTimeline = () => {
         {/* Road */}
         <div 
           ref={roadRef}
-          className="relative h-32 bg-gradient-to-b from-gray-700 to-gray-800 rounded-full shadow-2xl overflow-hidden"
+          className="relative h-32 bg-gradient-to-b from-gray-700 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-full shadow-2xl overflow-hidden"
         >
           {/* Timeline Track (in middle of road) */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full h-16">
-              {/* Yellow Timeline Line */}
-              <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-2 bg-accent-gold rounded-full shadow-lg z-10"></div>
+              {/* Timeline Line */}
+              <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-2 bg-accent-gold opacity-80 dark:bg-blue-500/80"></div>
               
               {/* Car */}
               <div
@@ -484,149 +484,46 @@ const JourneyTimeline = () => {
                 className="absolute top-1/2 transform -translate-y-1/2 left-0 z-20"
                 style={{ transform: 'translateY(-50%)' }}
               >
-                <motion.div
-                  animate={{ 
-                    rotate: isAnimating ? [-5, 5, -5, 0] : 0,
-                    scale: isAnimating ? [1, 1.1, 1] : 1
-                  }}
-                  transition={{ duration: 0.5, repeat: isAnimating ? Infinity : 0, repeatDelay: 1 }}
-                  className="relative"
-                >
-                  {/* Car Shadow */}
-                  <div className="absolute -bottom-2 left-2 right-2 h-2 bg-black/20 rounded-full blur-md" />
-                  
-                  {/* Car Body */}
-                  <svg width="80" height="40" viewBox="0 0 100 50" className="drop-shadow-2xl filter brightness-110">
-                    {/* Car Main Body */}
-                    <rect x="15" y="20" width="60" height="20" rx="5" fill="url(#carGradient)" stroke="#1a1a1a" strokeWidth="1" />
-                    
-                    {/* Car Roof */}
-                    <path d="M 25 20 L 30 10 L 55 10 L 60 20 Z" fill="url(#carGradient)" stroke="#1a1a1a" strokeWidth="1" />
-                    
-                    {/* Windows */}
-                    <path d="M 27 18 L 31 12 L 48 12 L 52 18 Z" fill="url(#windowGradient)" opacity="0.9" stroke="#1a1a1a" strokeWidth="0.5" />
-                    
-                    {/* Wheels */}
-                    <g>
-                      <circle cx="28" cy="42" r="6" fill="#1a1a1a" stroke="#333" strokeWidth="1" />
-                      <circle cx="28" cy="42" r="4" fill="#333" />
-                      <circle cx="28" cy="42" r="2" fill="#666" />
-                      
-                      <circle cx="62" cy="42" r="6" fill="#1a1a1a" stroke="#333" strokeWidth="1" />
-                      <circle cx="62" cy="42" r="4" fill="#333" />
-                      <circle cx="62" cy="42" r="2" fill="#666" />
-                    </g>
-                    
-                    {/* Headlights */}
-                    <ellipse cx="75" cy="25" rx="4" ry="3" fill="url(#headlightGradient)" stroke="#1a1a1a" strokeWidth="0.5" />
-                    
-                    {/* Tail Lights */}
-                    <rect x="12" y="28" width="4" height="5" rx="1" fill="#ff4444" stroke="#cc0000" strokeWidth="0.5" />
-                    
-                    {/* Door Handle */}
-                    <rect x="40" y="26" width="8" height="3" rx="1" fill="#1a1a1a" opacity="0.5" />
-                    
-                    {/* Side Mirror */}
-                    <rect x="58" y="16" width="4" height="3" rx="0.5" fill="#1a1a1a" stroke="#333" strokeWidth="0.5" />
-                    
-                    {/* Gradients */}
-                    <defs>
-                      <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#3b82f6" />
-                        <stop offset="25%" stopColor="#6366f1" />
-                        <stop offset="50%" stopColor="#8b5cf6" />
-                        <stop offset="75%" stopColor="#6366f1" />
-                        <stop offset="100%" stopColor="#3b82f6" />
-                      </linearGradient>
-                      <linearGradient id="windowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#60a5fa" />
-                        <stop offset="50%" stopColor="#3b82f6" />
-                        <stop offset="100%" stopColor="#2563eb" />
-                      </linearGradient>
-                      <linearGradient id="headlightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#fbbf24" />
-                        <stop offset="50%" stopColor="#f59e0b" />
-                        <stop offset="100%" stopColor="#d97706" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  
-                  {/* Motion Effect */}
-                  {isAnimating && (
-                    <div className="absolute -inset-4 bg-accent-light/60/30 rounded-full blur-xl animate-pulse" />
-                  )}
-                  
-                  {/* Exhaust/Smoke effect when moving */}
-                  {!isAnimating && currentStopIndex > 0 && (
-                    <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4">
-                      <div className="w-4 h-4 bg-gray-300/50 rounded-full animate-ping" />
-                    </div>
-                  )}
-                </motion.div>
-              </div>
-              
-              {/* Journey Stops on Timeline */}
-              {journeyStops.map((stop) => (
-                <div
-                  key={stop.id}
-                  className="absolute"
-                  style={{ 
-                    left: `${stop.position}%`,
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)'
-                  }}
-                >
-                  {/* Stop Marker */}
-                  <div className="relative">
-                    <motion.div
-                      whileHover={{ scale: 1.2 }}
-                      className={`w-8 h-8 rounded-full bg-gradient-to-r ${stop.color} shadow-lg cursor-pointer border-3 border-white`}
-                      onClick={() => setActiveStop(stop)}
-                    />
-                    <div className={`absolute -top-10 left-1/2 transform -translate-x-1/2 text-xs font-bold text-gray-700 whitespace-nowrap`}>
-                      {stop.date}
-                    </div>
+                <div className="w-12 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg shadow-lg border-2 border-red-700">
+                  <div className="flex justify-between p-1">
+                    <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                    <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
                   </div>
-                </div>
-              ))}
-
-              {/* Finish Flag on Timeline */}
-              <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
-                <div className="w-6 h-20 bg-gradient-to-b from-accent-gold to-accent-dark rounded-full shadow-lg"></div>
-                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-accent-gold/100 text-white text-xs px-2 py-1 rounded-full font-bold">
-                  FINISH
                 </div>
               </div>
             </div>
           </div>
           
-          {/* Road Lines */}
-          <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-1 bg-accent-gold opacity-80"></div>
-          <div className="absolute top-1/2 transform -translate-y-1/2 w-full">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="inline-block w-8 h-1 bg-white mx-4"
-                style={{ marginLeft: i === 0 ? '0' : '' }}
-              ></div>
-            ))}
+          {/* Finish Flag on Timeline */}
+          <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
+            <div className="w-6 h-20 bg-gradient-to-b from-accent-gold to-accent-dark dark:from-blue-500 dark:to-blue-700 rounded-full shadow-lg"></div>
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-accent-gold/100 text-white text-xs px-2 py-1 rounded-full font-bold">
+              FINISH
+            </div>
           </div>
-          
-          {/* Road Side Lines */}
-          <div className="absolute top-2 w-full h-0.5 bg-white opacity-60"></div>
-          <div className="absolute bottom-2 w-full h-0.5 bg-white opacity-60"></div>
         </div>
-
-        {/* Road Signs */}
-        <div className="absolute -top-16 left-0 right-0 flex justify-between px-8">
+        
+        {/* Road Lines */}
+        <div className="absolute top-1/2 transform -translate-y-1/2 w-full">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="inline-block w-8 h-1 bg-white mx-4 opacity-60"
+              style={{ marginLeft: i === 0 ? '0' : '' }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Journey Stops */}
+        <div className="absolute top-1/2 transform -translate-y-1/2 w-full">
           {journeyStops.map((stop) => (
             <motion.div
               key={stop.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: stop.id * 0.1 }}
-              className="text-center"
-              style={{ marginLeft: `${stop.position}%`, transform: 'translateX(-50%)' }}
+              className="text-center absolute"
+              style={{ left: `${stop.position}%`, transform: 'translateX(-50%)' }}
             >
               <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent-main text-white mb-2 shadow-lg">
                 {stop.icon}

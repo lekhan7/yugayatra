@@ -125,7 +125,7 @@ const QuizSection = () => {
   }
 
   return (
-    <section id="find-perfect-internship" className="py-20 bg-gradient-to-br from-accent-main/10 to-accent-main/10">
+    <section id="find-perfect-internship" className="py-20 bg-gradient-to-br from-accent-main/10 to-accent-main/10 dark:from-black dark:to-black border-4 border-t border-white dark:border-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -135,14 +135,14 @@ const QuizSection = () => {
           className="text-center mb-12"
         >
           <div className="flex justify-center mb-4">
-            <div className="p-3 bg-gradient-to-r from-accent-main to-accent-main rounded-full">
+            <div className="p-3 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full">
               <Brain className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h2 className="text-4xl font-bold text-accent-main mb-4">
+          <h2 className="text-4xl font-bold text-accent-main dark:text-dark-blue-primary mb-4">
             Find Your Perfect Internship
           </h2>
-          <p className="text-lg text-text-light max-w-2xl mx-auto">
+          <p className="text-lg text-text-light dark:text-dark-text-secondary max-w-2xl mx-auto">
             Take our quick quiz and discover the ideal internship opportunity tailored to your skills and interests
           </p>
         </motion.div>
@@ -150,9 +150,9 @@ const QuizSection = () => {
         {/* Quiz Container */}
         <div className="relative">
           {loading ? (
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main mx-auto mb-4"></div>
-              <p className="text-text-light">Loading internship opportunities...</p>
+            <div className="bg-white/80 dark:bg-black backdrop-blur-sm rounded-2xl shadow-xl p-8 text-center border border-white dark:border-white">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main dark:border-dark-blue-accent mx-auto mb-4"></div>
+              <p className="text-text-light dark:text-white">Loading internship opportunities...</p>
             </div>
           ) : (
             <AnimatePresence mode="wait">
@@ -168,16 +168,16 @@ const QuizSection = () => {
                 {/* Progress Bar */}
                 <div className="mb-8">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm text-text-light">
+                    <span className="text-sm text-text-light dark:text-dark-text-secondary">
                       Question {currentQuestion + 1} of {quizQuestions.length}
                     </span>
-                    <span className="text-sm text-text-light">
+                    <span className="text-sm text-text-light dark:text-dark-text-secondary">
                       {Math.round(((currentQuestion + 1) / quizQuestions.length) * 100)}%
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 border border-white dark:border-white">
                     <motion.div
-                      className="bg-gradient-to-r from-accent-main to-accent-main h-2 rounded-full"
+                      className="bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary h-2 rounded-full border border-white dark:border-white"
                       initial={{ width: 0 }}
                       animate={{ width: `${((currentQuestion + 1) / quizQuestions.length) * 100}%` }}
                       transition={{ duration: 0.3 }}
@@ -192,7 +192,7 @@ const QuizSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="text-2xl font-semibold text-text-main mb-6">
+                  <h3 className="text-2xl font-semibold text-text-main dark:text-dark-blue-primary mb-6">
                     {quizQuestions[currentQuestion].question}
                   </h3>
 
@@ -202,15 +202,15 @@ const QuizSection = () => {
                       <motion.button
                         key={index}
                         onClick={() => handleAnswer(option.value)}
-                        className="w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-accent-main hover:bg-accent-main/10 transition-all duration-300 group"
+                        className="w-full text-left p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 border-white dark:border-white hover:border-accent-main dark:hover:border-dark-blue-accent hover:bg-accent-main/10 dark:hover:bg-dark-blue-accent/10 transition-all duration-300 group"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-text-main group-hover:text-accent-main font-medium">
+                          <span className="text-text-main dark:text-dark-blue-primary group-hover:text-accent-main dark:group-hover:text-dark-blue-primary font-medium">
                             {option.text}
                           </span>
-                          <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-accent-main transition-colors" />
+                          <ArrowRight className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-accent-main dark:group-hover:text-dark-blue-primary transition-colors" />
                         </div>
                       </motion.button>
                     ))}
@@ -242,11 +242,11 @@ const QuizSection = () => {
                         transition={{ duration: 2.5, ease: "easeOut" }}
                         className="relative"
                       >
-                        <div className="absolute inset-0 bg-accent-gold rounded-full blur-xl opacity-60 scale-150"></div>
-                        <div className="relative bg-gradient-to-r from-blue-400 to-blue-500 rounded-full p-12 shadow-2xl">
+                        <div className="absolute inset-0 bg-accent-gold dark:bg-dark-blue-secondary rounded-full blur-xl opacity-60 scale-150 border border-white dark:border-white"></div>
+                        <div className="relative bg-gradient-to-r from-blue-400 to-blue-500 dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full p-12 shadow-2xl border border-white dark:border-white">
                           <div className="flex flex-col items-center">
                             <Star className="w-24 h-24 text-white mb-4" />
-                            <div className="text-white text-3xl font-bold">Perfect Match!</div>
+                            <div className="text-white dark:text-white text-3xl font-bold">Perfect Match!</div>
                           </div>
                         </div>
                         {/* Explosion particles */}
@@ -264,7 +264,7 @@ const QuizSection = () => {
                             className="absolute top-1/2 left-1/2 w-8 h-8"
                             style={{ transform: 'translate(-50%, -50%)' }}
                           >
-                            <div className="w-full h-full bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"></div>
+                            <div className="w-full h-full bg-gradient-to-r from-blue-400 to-blue-500 dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full border border-white dark:border-white"></div>
                           </motion.div>
                         ))}
                       </motion.div>
@@ -280,13 +280,13 @@ const QuizSection = () => {
                     transition={{ delay: 3.5 }}
                     className="mb-6"
                   >
-                    <div className="inline-flex p-4 bg-gradient-to-r from-accent-main to-accent-main rounded-full mb-4">
+                    <div className="inline-flex p-4 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full mb-4 border border-white dark:border-white">
                       <Brain className="w-12 h-12 text-white" />
                     </div>
-                    <h3 className="text-3xl font-bold text-text-main mb-2">
+                    <h3 className="text-3xl font-bold text-text-main dark:text-dark-blue-primary mb-2">
                       Perfect Match Found!
                     </h3>
-                    <p className="text-text-light">
+                    <p className="text-text-light dark:text-dark-text-secondary">
                       Based on your answers, we've found the ideal internship for you
                     </p>
                   </motion.div>
@@ -300,15 +300,15 @@ const QuizSection = () => {
                     <h4 className="text-2xl font-semibold text-text-main mb-3">
                       {selectedInternship?.title}
                     </h4>
-                    <p className="text-text-light mb-4">
+                    <p className="text-text-light dark:text-dark-text-secondary mb-4">
                       {selectedInternship?.short_description}
                     </p>
                     
                     {/* Features */}
                     <div className="space-y-3 mb-4">
                       {selectedInternship?.features.slice(0, 3).map((feature, index) => (
-                        <div key={index} className="flex items-center text-sm text-text-light">
-                          <CheckCircle className="w-4 h-4 text-accent-main mr-2 flex-shrink-0" />
+                        <div key={index} className="flex items-center text-sm text-text-light dark:text-dark-text-secondary">
+                          <CheckCircle className="w-4 h-4 text-accent-main dark:text-dark-blue-primary mr-2 flex-shrink-0" />
                           {feature}
                         </div>
                       ))}
@@ -316,12 +316,12 @@ const QuizSection = () => {
 
                     {/* Technologies */}
                     <div className="mb-6">
-                      <span className="text-sm text-text-light">Technologies you'll work with</span>
+                      <span className="text-sm text-text-light dark:text-dark-text-secondary">Technologies you'll work with</span>
                       <div className="flex flex-wrap gap-2 mt-2">
                         {selectedInternship?.technologies.slice(0, 4).map((tech, index) => (
                           <span
                             key={index}
-                            className="px-3 py-1 bg-accent-main/20 text-accent-main rounded-full text-sm"
+                            className="px-3 py-1 bg-accent-main/20 dark:bg-dark-blue-accent/20 text-accent-main dark:text-dark-blue-primary rounded-full text-sm border border-white dark:border-white"
                           >
                             {tech}
                           </span>
@@ -336,7 +336,7 @@ const QuizSection = () => {
                         const encodedRole = encodeURIComponent(selectedInternship?.title || '')
                         navigate(`/internship/apply/${encodedRole}`)
                       }}
-                      className="bg-gradient-to-r from-accent-main to-accent-main text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
+                      className="bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 border border-white dark:border-white"
                     >
                       Apply Now
                     </motion.button>
@@ -347,7 +347,7 @@ const QuizSection = () => {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 3.9 }}
                     onClick={resetQuiz}
-                    className="text-text-light hover:text-accent-main transition-colors"
+                    className="text-text-light dark:text-dark-text-secondary hover:text-accent-main dark:hover:text-dark-blue-primary transition-colors"
                   >
                     Take Quiz Again
                   </motion.button>

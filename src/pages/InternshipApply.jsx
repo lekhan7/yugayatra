@@ -160,19 +160,19 @@ const InternshipApply = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-bg-main via-white to-accent-light/20 pt-24 pb-16 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-bg-main via-white to-accent-light/20 dark:from-dark-bg dark:via-dark-surface dark:to-dark-blue-accent/10 pt-24 pb-16 overflow-x-hidden">
       <div className="max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="bg-card-bg/60 dark:bg-card-bg/10 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-xl rounded-2xl overflow-hidden"
+          className="bg-dark-card/60 dark:bg-dark-card backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-xl rounded-2xl overflow-hidden"
         >
           <div className="p-6 sm:p-8 border-b border-border-light/70 dark:border-white/10">
             <button
               type="button"
               onClick={() => navigate(-1)}
-              className="inline-flex items-center text-sm font-medium text-text-light hover:text-accent-main transition-colors"
+              className="inline-flex items-center text-sm font-medium text-dark-blue-primary hover:text-dark-blue-accent transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
@@ -190,10 +190,10 @@ const InternshipApply = () => {
 
           <div className="p-6 sm:p-8">
             {isSubmitted ? (
-              <div className="bg-accent-main/10 dark:bg-accent-dark/20 border border-accent-main/30 dark:border-accent-dark rounded-2xl p-8 text-center">
-                <CheckCircle className="w-14 h-14 text-accent-dark mx-auto mb-3" />
-                <h2 className="text-2xl font-bold text-accent-dark dark:text-accent-light">Submitted</h2>
-                <p className="mt-2 text-accent-dark dark:text-accent-light">
+              <div className="bg-dark-card/10 dark:bg-black backdrop-blur-xl border border-white/30 dark:border-blue-900 shadow-xl rounded-2xl p-8 text-center">
+                <CheckCircle className="w-14 h-14 text-dark-blue-accent mx-auto mb-3" />
+                <h2 className="text-2xl font-bold text-dark-blue-primary dark:text-blue-400">Submitted</h2>
+                <p className="mt-2 text-dark-blue-primary dark:text-blue-400">
                   We received your application. We’ll reach out soon.
                 </p>
               </div>

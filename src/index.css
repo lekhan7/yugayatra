@@ -304,6 +304,20 @@
   background: linear-gradient(135deg, #059669, #059669);
 }
 
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #1E40AF, #3B82F6);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
+}
+
 /* Selection */
 ::selection {
   background: #059669;
@@ -313,4 +327,54 @@
 ::-moz-selection {
   background: #059669;
   color: white;
+}
+
+/* Dark mode selection */
+.dark ::selection {
+  background: #1E40AF;
+  color: #FFFFFF;
+}
+
+.dark ::-moz-selection {
+  background: #1E40AF;
+  color: #FFFFFF;
+}
+
+/* Dark mode global styles */
+.dark body {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.dark .glass {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(30, 58, 138, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .btn-primary {
+  background: linear-gradient(135deg, #1E40AF, #3B82F6);
+  color: #FFFFFF;
+}
+
+.dark .btn-primary:hover {
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
+}
+
+.dark .btn-secondary {
+  border-color: #3B82F6;
+  color: #3B82F6;
+}
+
+.dark .btn-secondary:hover {
+  background: #3B82F6;
+  color: #FFFFFF;
 }

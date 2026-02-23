@@ -6,7 +6,7 @@ import ScrollToTop from '../components/ScrollToTop'
 
 const Quiz = () => {
   return (
-    <div className="min-h-screen bg-bg-main dark:bg-text-main">
+    <div className="min-h-screen bg-bg-main dark:bg-dark-bg">
       <Navbar />
       <ScrollToTop />
       
@@ -18,9 +18,9 @@ const Quiz = () => {
           className="text-center"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6">
-            Quiz <span className="text-accent-main">Challenge</span>
+            Quiz <span className="bg-dark-blue-accent/20 text-dark-blue-primary dark:bg-dark-blue-primary/30 dark:text-dark-blue-primary">Challenge</span>
           </h1>
-          <p className="text-lg text-text-light dark:text-white/80 mb-8 max-w-3xl mx-auto">
+          <p className="bg-dark-blue-accent/20 text-dark-blue-primary dark:bg-dark-blue-primary/30 dark:text-dark-blue-primary mb-8 max-w-3xl mx-auto">
             Test your knowledge and compete with others in our exciting quiz challenges.
           </p>
           
@@ -31,7 +31,7 @@ const Quiz = () => {
               transition={{ duration: 0.5 }}
               className="bg-card-bg dark:bg-card-bg/10 rounded-xl shadow-lg p-6 border border-border-light dark:border-white/10"
             >
-              <div className="text-accent-main text-2xl font-bold mb-4">🧠</div>
+              <div className="text-dark-blue-accent text-2xl font-bold mb-4">🧠</div>
               <h3 className="text-xl font-semibold text-text-main dark:text-white mb-2">Technical Quiz</h3>
               <p className="text-text-light dark:text-white/70 mb-4">
                 Challenge yourself with our technical questions covering various domains.
@@ -47,7 +47,7 @@ const Quiz = () => {
               transition={{ duration: 0.5 }}
               className="bg-card-bg dark:bg-card-bg/10 rounded-xl shadow-lg p-6 border border-border-light dark:border-white/10"
             >
-              <div className="text-accent-gold text-2xl font-bold mb-4">🎯</div>
+              <div className="text-dark-blue-primary text-2xl font-bold mb-4">🎯</div>
               <h3 className="text-xl font-semibold text-text-main dark:text-white mb-2">Aptitude Test</h3>
               <p className="text-text-light dark:text-white/70 mb-4">
                 Discover your strengths and aptitude through our comprehensive assessment.
@@ -63,12 +63,12 @@ const Quiz = () => {
               transition={{ duration: 0.5 }}
               className="bg-card-bg dark:bg-card-bg/10 rounded-xl shadow-lg p-6 border border-border-light dark:border-white/10"
             >
-              <div className="text-accent-dark text-2xl font-bold mb-4">🏆</div>
+              <div className="text-dark-blue-accent text-2xl font-bold mb-4">🏆</div>
               <h3 className="text-xl font-semibold text-text-main dark:text-white mb-2">Brain Teasers</h3>
               <p className="text-text-light dark:text-white/70 mb-4">
                 Quick puzzles and brain teasers to sharpen your problem-solving skills.
               </p>
-              <button className="w-full bg-accent-dark text-white py-3 rounded-lg font-semibold hover:bg-accent-main transition-colors duration-300">
+              <button className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-dark-blue-accent focus:border-transparent dark:bg-dark-card dark:text-white transition-colors duration-300">
                 Try Brain Teasers
               </button>
             </motion.div>

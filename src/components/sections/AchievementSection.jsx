@@ -324,7 +324,7 @@ const AchievementSection = () => {
   }
 
   return (
-    <section id="achievements" className="py-20 bg-bg-main">
+    <section id="achievements" className="py-20 bg-bg-main dark:bg-dark-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -332,10 +332,10 @@ const AchievementSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
-            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">Our Achievements</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-dark-text-primary mb-6">
+            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">Our Achievements</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto">
             Certifications, milestones, and recognition that validate our commitment to excellence
           </p>
         </motion.div>
@@ -345,7 +345,7 @@ const AchievementSection = () => {
     
 
       {/* Stats Section */}
-      <div className="py-20 bg-bg-main dark:bg-text-main">
+      <div className="py-20 bg-bg-main dark:bg-dark-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -353,13 +353,13 @@ const AchievementSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl font-bold text-accent-main mb-4">
+            <h3 className="text-3xl font-bold text-accent-main dark:text-dark-blue-accent mb-4">
               Our Impact
             </h3>
             <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCertificateStatusColor('Active')}`}>
                     Active
                   </span>
-            <p className="text-lg text-text-light dark:text-white/70">
+            <p className="text-lg text-text-light dark:text-dark-text-secondary">
               Numbers that speak for our success
             </p>
           </motion.div>
@@ -378,11 +378,11 @@ const AchievementSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-10 h-10 text-white" />
                 </div>
-                <h4 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h4>
-                <p className="text-text-light dark:text-white/70">{stat.label}</p>
+                <h4 className="text-3xl font-bold text-accent-main dark:text-dark-blue-accent mb-2">{stat.value}</h4>
+                <p className="text-text-light dark:text-dark-text-secondary">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -398,7 +398,7 @@ const AchievementSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-accent-main dark:text-dark-blue-accent mb-4">
               Legal Information & Certificates
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">

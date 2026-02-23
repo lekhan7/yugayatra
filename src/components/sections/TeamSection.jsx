@@ -26,10 +26,10 @@ const TeamSection = () => {
   // Handle loading state
   if (loading) {
     return (
-      <section id="team" className="py-20 bg-card-bg">
+      <section id="team" className="py-20 bg-card-bg dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-dark-blue-accent"></div>
           </div>
         </div>
       </section>
@@ -39,7 +39,7 @@ const TeamSection = () => {
   // Handle empty state
   if (teamMembers.length === 0) {
     return (
-      <section id="team" className="py-20 bg-card-bg">
+      <section id="team" className="py-20 bg-card-bg dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -47,17 +47,17 @@ const TeamSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-dark-blue-accent dark:text-dark-blue-primary mb-6">
               Meet Our Team
             </h2>
-            <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto">
               The talented individuals behind YugaYatra's success
             </p>
           </motion.div>
           <div className="text-center py-12">
-            <Users className="mx-auto text-gray-400 mb-4" size={48} />
-            <p className="text-gray-500 dark:text-gray-400">Team members will be featured here soon</p>
-            <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
+            <Users className="mx-auto text-gray-400 dark:text-dark-text-muted mb-4" size={48} />
+            <p className="text-gray-500 dark:text-dark-text-secondary">Team members will be featured here soon</p>
+            <p className="text-sm text-gray-400 dark:text-dark-text-muted mt-2">
               Check back soon to meet the amazing people behind our mission
             </p>
           </div>
@@ -67,7 +67,7 @@ const TeamSection = () => {
   }
 
   return (
-    <section id="team" className="py-20 bg-card-bg">
+    <section id="team" className="py-20 bg-card-bg dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,10 +75,10 @@ const TeamSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main mb-6">
-            Meet <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">Our Team</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-dark-blue-primary mb-6">
+            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">Our Team</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto">
             The talented individuals behind YugaYatra's success, dedicated to shaping the future of retail innovation
           </p>
         </motion.div>
@@ -94,9 +94,9 @@ const TeamSection = () => {
               whileHover={{ y: -5 }}
               className="group"
             >
-              <div className="bg-card-bg dark:bg-card-bg/10 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10">
+              <div className="bg-card-bg dark:bg-dark-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-dark-border">
                 {/* Image Section */}
-                <div className="relative h-64 bg-gradient-to-br from-accent-main/20 to-accent-main/20 overflow-hidden">
+                <div className="relative h-64 bg-gradient-to-br from-accent-main/20 to-accent-main/20 dark:from-dark-blue-accent/20 dark:to-dark-blue-primary/20 overflow-hidden">
                   {member.image_url ? (
                     <img
                       src={member.image_url}
@@ -146,24 +146,24 @@ const TeamSection = () => {
 
                 {/* Content Section */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-text-main mb-2">
+                  <h3 className="text-xl font-bold text-text-main dark:text-dark-blue-primary mb-2">
                     {member.name}
                   </h3>
                   
-                  <div className="flex items-center text-accent-main font-medium mb-3">
+                  <div className="flex items-center text-accent-main dark:text-dark-blue-primary font-medium mb-3">
                     <Briefcase className="w-4 h-4 mr-2" />
                     {member.position}
                   </div>
 
                   {member.bio && (
-                    <p className="text-text-light text-sm mb-4 line-clamp-3">
+                    <p className="text-text-light dark:text-dark-text-secondary text-sm mb-4 line-clamp-3">
                       {member.bio}
                     </p>
                   )}
 
                   {/* Additional Info */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center text-xs text-text-light">
+                    <div className="flex items-center text-xs text-text-light dark:text-dark-text-secondary">
                       <MapPin className="w-3 h-3 mr-1" />
                       <span>YugaYatra Team</span>
                     </div>
@@ -173,7 +173,7 @@ const TeamSection = () => {
                         href={member.linkedin_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent-main hover:text-accent-main transition-colors duration-200"
+                        className="text-accent-main dark:text-dark-blue-primary hover:text-accent-main transition-colors duration-200"
                       >
                         <ExternalLink className="w-4 h-4" />
                       </a>
@@ -192,7 +192,7 @@ const TeamSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-accent-main to-accent-main rounded-2xl p-8 text-center">
+          <div className="bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-2xl p-8 text-center">
             <h3 className="text-2xl font-bold text-white mb-8">
               Our Team by the Numbers
             </h3>
@@ -223,17 +223,17 @@ const TeamSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <h3 className="text-2xl font-bold text-text-main mb-4">
+          <h3 className="text-2xl font-bold text-text-main dark:text-dark-blue-primary mb-4">
             Want to Join Our Team?
           </h3>
-          <p className="text-text-light mb-8 max-w-2xl mx-auto">
+          <p className="text-text-light dark:text-dark-text-secondary mb-8 max-w-2xl mx-auto">
             We're always looking for talented individuals who share our passion for innovation and excellence
           </p>
           <a
             href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-accent-main to-accent-main text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center"
+            className="bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center"
           >
             Get in Touch
             <ExternalLink className="w-5 h-5 ml-2" />

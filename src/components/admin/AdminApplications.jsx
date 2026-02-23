@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../../services/supabase'
 import StatusTabs from './StatusTabs'
 import ApplicationsTable from './ApplicationsTable'
-import { sendInternshipAcceptanceEmail, validateEmailConfig } from '../../services/emailService'
+import { sendInternshipAcceptanceEmail } from '../../services/emailService'
 
-const AdminApplications = ({ onSettingsOpen }) => {
+const AdminApplications = () => {
   const [applications, setApplications] = useState([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('pending')
@@ -12,295 +12,53 @@ const AdminApplications = ({ onSettingsOpen }) => {
   const [statusFilter, setStatusFilter] = useState('all')
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' })
 
-  // Debug environment variables
-  console.log('🔧 Environment check:', {
-    supabaseUrl: import.meta.env.VITE_SUPABASE_URL ? '✅ Set' : '❌ Missing',
-    supabaseKey: import.meta.env.VITE_SUPABASE_ANON_KEY ? '✅ Set' : '❌ Missing',
-    emailjsKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ? '✅ Set' : '❌ Missing',
-    emailjsService: import.meta.env.VITE_EMAILJS_SERVICE_ID ? '✅ Set' : '❌ Missing',
-    internshipTemplate: import.meta.env.VITE_EMAILJS_INTERNSHIP_TEMPLATE_ID ? '✅ Set' : '❌ Missing'
-  })
-
   useEffect(() => {
-    checkAuthAndFetch()
-    validateEmailConfig()
+    fetchApplications()
   }, [])
-
-  const checkAuthAndFetch = async () => {
-    try {
-      console.log('🔐 Checking authentication...')
-      const { data: { user }, error } = await supabase.auth.getUser()
-      
-      if (error) {
-        console.error('❌ Auth error:', error)
-        throw error
-      }
-      
-      if (!user) {
-        console.error('❌ No authenticated user found')
-        setToast({
-          show: true,
-          message: 'Please login to access applications',
-          type: 'error'
-        })
-        return
-      }
-      
-      console.log('✅ User authenticated:', user.email)
-      
-      // Test database access with a simple count query
-      console.log('🔍 Testing database access...')
-      const { count, error: countError } = await supabase
-        .from('internship_applications')
-        .select('*', { count: 'exact', head: true })
-      
-      if (countError) {
-        console.error('❌ Database access error:', countError)
-        
-        // Check for RLS-specific errors
-        if (countError.code === '42501' || countError.message?.includes('permission denied')) {
-          console.error('🔒 RLS Policy Error detected during count test!')
-          throw new Error('Row Level Security policy is blocking database access. Run the RLS fix script.')
-        }
-        
-        throw new Error(`Database access failed: ${countError.message}`)
-      }
-      
-      console.log('✅ Database access successful. Total records:', count)
-      
-      fetchApplications()
-    } catch (error) {
-      console.error('💥 Authentication check failed:', error)
-      setToast({
-        show: true,
-        message: `Access failed: ${error.message}`,
-        type: 'error'
-      })
-    }
-  }
 
   const fetchApplications = async () => {
     try {
       setLoading(true)
-      console.log('🔄 Starting to fetch applications from Supabase...')
       
-      // Check if Supabase client is properly initialized
-      if (!supabase) {
-        throw new Error('Supabase client not initialized')
-      }
-      
-      console.log('📡 Making request to internship_applications table...')
       const { data, error } = await supabase
         .from('internship_applications')
         .select('*')
         .order('created_at', { ascending: false })
 
-      console.log('📊 Supabase response:', { data, error })
-
-      if (error) {
-        console.error('❌ Supabase error:', error)
-        
-        // Check for specific RLS-related errors
-        if (error.code === '42501' || error.message?.includes('permission denied')) {
-          console.error('🔒 RLS Policy Error detected!')
-          throw new Error('Row Level Security policy is blocking access. Please check RLS policies in Supabase.')
-        }
-        
-        throw error
-      }
-      
-      console.log('✅ Successfully fetched applications:', data?.length || 0, 'records')
-      console.log('📋 Sample data:', data?.[0])
-      
-      // If no data, create a test record to verify the system works
-      if (!data || data.length === 0) {
-        console.log('📝 No applications found. Creating test data...')
-        await createTestApplication()
-      }
+      if (error) throw error
       
       setApplications(data || [])
     } catch (error) {
-      console.error('💥 Error fetching applications:', error)
-      console.error('🔍 Error details:', {
-        message: error.message,
-        code: error.code,
-        details: error.details,
-        hint: error.hint
-      })
+      console.error('Error fetching applications:', error)
       setApplications([])
-      
-      // Show error toast
       setToast({
         show: true,
-        message: `Failed to load applications: ${error.message}`,
+        message: 'Failed to load applications',
         type: 'error'
       })
-      
-      // Hide error toast after 5 seconds
-      setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 5000)
     } finally {
       setLoading(false)
-      console.log('🏁 Fetch applications completed')
-    }
-  }
-
-  const createTestApplication = async () => {
-    try {
-      const testData = {
-        full_name: 'Test User',
-        email: 'test@example.com',
-        phone: '+1234567890',
-        role: 'Software Developer',
-        education: 'Bachelor of Computer Science',
-        experience: '2 years of experience',
-        skills: 'JavaScript, React, Node.js',
-        status: 'pending'
-      }
-
-      const { data, error } = await supabase
-        .from('internship_applications')
-        .insert([testData])
-        .select()
-
-      if (error) {
-        console.error('❌ Failed to create test data:', error)
-        return
-      }
-
-      console.log('✅ Test application created:', data)
-      
-      // Show success toast
-      setToast({
-        show: true,
-        message: 'Test application created for demonstration',
-        type: 'success'
-      })
-      
-      // Refetch applications after creating test data
-      setTimeout(() => fetchApplications(), 1000)
-    } catch (error) {
-      console.error('💥 Error creating test application:', error)
-    }
-  }
-
-  // Test function to verify template interpolation
-  const testEmailTemplate = () => {
-    const testApplication = {
-      full_name: 'John Doe',
-      email: 'john.doe@example.com',
-      role: 'Software Developer'
-    }
-    
-    console.log('🧪 Testing email template with:', testApplication)
-    
-    const testMessage = `
-Hi ${testApplication.full_name},
-
-We're excited to inform you that your application for the ${testApplication.role} Internship has been successfully reviewed and approved.
-
-Best regards,
-Team
-`
-    
-    console.log('✅ Test message generated:', testMessage)
-    return testMessage
-  }
-
-  // Test function to verify template parameters
-  const testEmailParameters = (application) => {
-    console.log('🧪 Testing email parameters with application:', application)
-    
-    const testParams = {
-      fullName: application.full_name,
-      name: application.full_name,
-      role: application.role,
-      email: application.email,
-      subject: "Congratulations! Your Internship Application Has Been Approved"
-    }
-    
-    console.log('✅ EmailJS parameters that will be sent:', testParams)
-    
-    // Verify all required fields exist
-    const missing = []
-    if (!testParams.fullName) missing.push('fullName')
-    if (!testParams.role) missing.push('role')
-    if (!testParams.email) missing.push('email')
-    
-    if (missing.length > 0) {
-      console.error('❌ Missing required parameters:', missing)
-      return false
-    }
-    
-    console.log('✅ All required parameters present')
-    return true
-  }
-
-  const sendAcceptanceEmail = async (application) => {
-    try {
-      console.log('📧 Sending internship acceptance email to:', application.email)
-      
-      const result = await sendInternshipAcceptanceEmail(application)
-      
-      if (result.success) {
-        console.log('✅ Internship acceptance email sent successfully')
-        return { success: true, result: result.response }
-      } else {
-        console.error('❌ Email sending failed:', result.error)
-        return { success: false, error: result.error }
-      }
-
-    } catch (error) {
-      console.error('❌ Error sending email:', error)
-      return { success: false, error: error.message }
     }
   }
 
   const updateApplicationStatus = async (id, status) => {
     try {
-      console.log(`🔄 Updating application ${id} to status: ${status}`)
-      
-      // First, get the application details before updating
+      // First get the application details
       const { data: application, error: fetchError } = await supabase
         .from('internship_applications')
         .select('*')
         .eq('id', id)
         .single()
 
-      if (fetchError) {
-        console.error('❌ Error fetching application details:', fetchError)
-        throw fetchError
-      }
+      if (fetchError) throw fetchError
 
-      console.log('📋 Retrieved application for status update:', {
-        id: application.id,
-        fullName: application.full_name,
-        role: application.role,
-        email: application.email,
-        currentStatus: application.status,
-        newStatus: status
-      })
-
-      // Verify required fields for email sending
-      if (status === 'accepted' && (!application.full_name || !application.role)) {
-        console.error('❌ Cannot accept application - missing required fields:', {
-          fullName: application.full_name,
-          role: application.role
-        })
-        throw new Error('Application is missing required name or role information')
-      }
-
-      // Update the status in Supabase
+      // Update the status
       const { error } = await supabase
         .from('internship_applications')
         .update({ status })
         .eq('id', id)
 
-      if (error) {
-        console.error('❌ Error updating status:', error)
-        throw error
-      }
-
-      console.log('✅ Successfully updated application status')
+      if (error) throw error
 
       // Update local state
       setApplications(prev => 
@@ -309,19 +67,17 @@ Team
         )
       )
 
-      // Send email only if status is 'accepted'
+      // Send email if accepted
       if (status === 'accepted') {
-        console.log('📧 Application accepted, sending email...')
-        
-        const emailResult = await sendAcceptanceEmail(application)
-        
-        if (emailResult.success) {
+        try {
+          await sendInternshipAcceptanceEmail(application)
           setToast({
             show: true,
             message: 'Application Accepted & Email Sent',
             type: 'success'
           })
-        } else {
+        } catch (emailError) {
+          console.error('Email sending failed:', emailError)
           setToast({
             show: true,
             message: 'Application Accepted but Email Failed',
@@ -329,7 +85,6 @@ Team
           })
         }
       } else {
-        // For rejected status, don't send email
         setToast({
           show: true,
           message: `Application ${status === 'rejected' ? 'Rejected' : 'Updated'}`,
@@ -337,18 +92,15 @@ Team
         })
       }
 
-      // Hide toast after 3 seconds
       setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 3000)
     } catch (error) {
-      console.error('💥 Error updating status:', error)
+      console.error('Error updating status:', error)
       setToast({
         show: true,
-        message: `Error updating application: ${error.message}`,
+        message: 'Error updating application',
         type: 'error'
       })
-      
-      // Hide error toast after 5 seconds
-      setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 5000)
+      setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 3000)
     }
   }
 
@@ -362,13 +114,6 @@ Team
 
   const getFilteredApplications = () => {
     let filtered = applications
-    
-    console.log('🔍 Filtering applications:', {
-      total: applications.length,
-      activeTab,
-      statusFilter,
-      searchTerm
-    })
 
     // Filter by active tab
     if (activeTab !== 'all') {
@@ -376,7 +121,6 @@ Team
         const status = app.status || 'pending'
         return status === activeTab
       })
-      console.log(`📋 After tab filter (${activeTab}):`, filtered.length)
     }
 
     // Apply additional status filter
@@ -385,7 +129,6 @@ Team
         const status = app.status || 'pending'
         return status === statusFilter
       })
-      console.log(`📋 After status filter (${statusFilter}):`, filtered.length)
     }
 
     // Apply search filter
@@ -394,10 +137,8 @@ Team
         app.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         app.email?.toLowerCase().includes(searchTerm.toLowerCase())
       )
-      console.log(`📋 After search filter ("${searchTerm}"):`, filtered.length)
     }
 
-    console.log('✅ Final filtered count:', filtered.length)
     return filtered
   }
 
@@ -407,8 +148,6 @@ Team
     accepted: applications.filter(app => app.status === 'accepted').length,
     rejected: applications.filter(app => app.status === 'rejected').length
   }
-
-  console.log('📊 Application stats:', stats)
 
   return (
     <div className="space-y-6">
@@ -421,7 +160,7 @@ Team
         <button
           onClick={fetchApplications}
           disabled={loading}
-          className="px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
         >
           {loading ? (
             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
@@ -439,7 +178,7 @@ Team
       />
 
       {/* Search and Filter */}
-      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+      <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow border border-gray-200 dark:border-gray-700">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1">
             <input
@@ -465,9 +204,6 @@ Team
         </div>
       </div>
 
-      {/* Debug Panel - Remove in production */}
-    
-
       {/* Applications Table */}
       <ApplicationsTable
         applications={getFilteredApplications()}
@@ -480,10 +216,10 @@ Team
       {toast.show && (
         <div className={`fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 z-50 ${
           toast.type === 'success' 
-            ? 'bg-accent-main/100 text-white' 
+            ? 'bg-green-600 text-white' 
             : toast.type === 'warning'
-            ? 'bg-accent-gold text-white'
-            : 'bg-accent-gold/100 text-white'
+            ? 'bg-yellow-600 text-white'
+            : 'bg-red-600 text-white'
         }`}>
           <span className="font-medium">{toast.message}</span>
         </div>

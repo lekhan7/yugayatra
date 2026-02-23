@@ -3,9 +3,9 @@ import { Check, X, Eye } from 'lucide-react'
 const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
   const getStatusBadge = (status) => {
     const statusColor = {
-      pending: 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold border-accent-gold/30 dark:border-accent-gold',
-      accepted: 'bg-accent-main/20 text-accent-dark dark:bg-accent-dark dark:text-accent-light border-accent-main/30 dark:border-accent-dark',
-      rejected: 'bg-accent-gold/20 text-accent-gold dark:bg-accent-gold dark:text-accent-gold border-accent-gold/30 dark:border-accent-gold'
+      pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 border-yellow-200 dark:border-yellow-700',
+      accepted: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 border-green-200 dark:border-green-700',
+      rejected: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 border-red-200 dark:border-red-700'
     }
 
     return (
@@ -18,7 +18,7 @@ const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
   const currentStatus = application.status || 'pending'
 
   return (
-    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-b border-gray-200 dark:border-gray-700">
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm font-medium text-gray-900 dark:text-white">
           {application.full_name}
@@ -48,7 +48,7 @@ const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
           disabled={!application.resume_url}
           className={`inline-flex items-center px-3 py-2 text-xs font-medium rounded transition-colors ${
             application.resume_url
-              ? 'bg-accent-light/20 text-accent-dark/80 hover:bg-accent-light/30 dark:bg-accent-dark/60 dark:text-accent-light/30 dark:hover:bg-accent-dark/80'
+              ? 'bg-blue-600 text-white hover:bg-blue-700'
               : 'bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-700 dark:text-gray-500'
           }`}
         >
@@ -62,14 +62,14 @@ const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
             <>
               <button
                 onClick={() => onUpdateStatus(application.id, 'accepted')}
-                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-accent-main/20 text-accent-dark hover:bg-accent-main/30 dark:bg-accent-dark dark:text-accent-light dark:hover:bg-accent-dark transition-colors"
+                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-green-600 text-white hover:bg-green-700 transition-colors"
               >
                 <Check size={14} className="mr-1" />
                 Accept
               </button>
               <button
                 onClick={() => onUpdateStatus(application.id, 'rejected')}
-                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-accent-gold/20 text-accent-gold hover:bg-accent-gold dark:bg-accent-gold dark:text-accent-gold dark:hover:bg-accent-gold transition-colors"
+                className="inline-flex items-center px-3 py-2 text-xs font-medium rounded bg-red-600 text-white hover:bg-red-700 transition-colors"
               >
                 <X size={14} className="mr-1" />
                 Reject

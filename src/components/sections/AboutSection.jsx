@@ -29,7 +29,7 @@ const AboutSection = () => {
   ]
 
   return (
-    <section id="about" className="py-20 bg-card-bg">
+    <section id="about" className="py-20 bg-card-bg dark:bg-dark-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,17 +37,17 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-black text-text-main mb-6">
-            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">About YugaYatra Retail (OPC) Pvt Ltd</span>
+          <h2 className="text-5xl md:text-6xl font-black text-text-main dark:text-dark-text-primary mb-6">
+            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">About YugaYatra Retail (OPC) Pvt Ltd</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-4xl mx-auto">
             We are a leading educational technology company dedicated to shaping tomorrow's workforce through innovative internship programs and skill development initiatives.
           </p>
         </motion.div>
       </div>
 
       {/* Mission, Vision, Values */}
-      <div className="py-20 bg-bg-main">
+      <div className="py-20 bg-bg-main dark:bg-dark-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -55,10 +55,10 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold text-text-main mb-4">
+            <h3 className="text-4xl font-bold text-text-main dark:text-dark-text-primary mb-4">
               Mission, Vision & Values
             </h3>
-            <p className="text-lg text-text-light">
+            <p className="text-lg text-text-light dark:text-dark-text-secondary">
               The core principles that guide everything we do
             </p>
           </motion.div>
@@ -70,15 +70,15 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-8 rounded-2xl bg-card-bg shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light"
+                className="text-center p-8 rounded-2xl bg-card-bg dark:bg-dark-card shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light dark:border-dark-border"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-text-main mb-4">
+                <h3 className="text-2xl font-bold text-text-main dark:text-dark-text-primary mb-4">
                   {value.title}
                 </h3>
-                <p className="text-text-light leading-relaxed">
+                <p className="text-text-light dark:text-dark-text-secondary leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -90,7 +90,7 @@ const AboutSection = () => {
       
 
       {/* Stats Section */}
-      <div className="py-20 bg-bg-main">
+      <div className="py-20 bg-bg-main dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -98,10 +98,10 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold text-text-main mb-4">
+            <h3 className="text-4xl font-bold text-text-main dark:text-dark-blue-primary mb-4">
               Our Impact
             </h3>
-            <p className="text-lg text-text-light">
+            <p className="text-lg text-text-light dark:text-dark-text-secondary">
               Numbers that speak for themselves
             </p>
           </motion.div>
@@ -120,10 +120,10 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center p-6"
               >
-                <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent mb-2 counter">
+                <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent mb-2 counter">
                   {stat.number}
                 </div>
-                <p className="text-text-main">
+                <p className="text-text-main dark:text-dark-blue-primary">
                   {stat.label}
                 </p>
               </motion.div>
