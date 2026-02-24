@@ -1,7 +1,7 @@
 // OpenRouter API Service - DeepSeek Model Integration
 // This service handles all AI-powered features using OpenRouter's DeepSeek model
 
-const OPENROUTER_API_KEY = import.meta.example.env.VITE_OPENROUTER_API_KEY
+const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY
 const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1'
 
 // Debug: Check if API key is loaded
