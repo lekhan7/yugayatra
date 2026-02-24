@@ -6,7 +6,6 @@ import ScrollProgressBar from './components/ScrollProgressBar'
 import ChatBot from './components/ChatBot'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import NotificationProvider from './context/NotificationContext'
-import ToastProvider from './components/admin/ToastProvider'
 import { usePageTracking } from './hooks/useAnalytics'
 
 // Import pages
@@ -33,18 +32,10 @@ function App() {
   usePageTracking()
 
   return (
-<<<<<<< HEAD
-    <ToastProvider>
-      <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
-        {!isAdminPage && <Navbar />}
-        {!isAdminPage && <ScrollProgressBar />}
-        <Routes>
-=======
     <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
       {!isAdminPage && <Navbar />}
       {!isAdminPage && <ScrollProgressBar />}
       <Routes>
->>>>>>> 6159069e3029bfcacf74b28f515692ee67119f48
         <Route path="/admin" element={
           <NotificationProvider>
             <Admin />
@@ -203,7 +194,6 @@ function App() {
       </Routes>
       {!isAdminPage && <ChatBot />}
     </div>
-    </ToastProvider>
   )
 }
 

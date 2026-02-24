@@ -97,11 +97,7 @@ const ContactSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-<<<<<<< HEAD
-              <h3 className="text-3xl font-bold text-text-main dark:text-white mb-6">
-=======
               <h3 className="text-3xl font-bold text-text-main dark:text-dark-text-primary mb-6">
->>>>>>> 6159069e3029bfcacf74b28f515692ee67119f48
                 Send us a Message
               </h3>
               
