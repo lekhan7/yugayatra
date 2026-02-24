@@ -6,11 +6,8 @@ import ScrollProgressBar from './components/ScrollProgressBar'
 import ChatBot from './components/ChatBot'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import NotificationProvider from './context/NotificationContext'
-<<<<<<< HEAD
 import ToastProvider from './components/admin/ToastProvider'
-=======
 import { usePageTracking } from './hooks/useAnalytics'
->>>>>>> 6159069e3029bfcacf74b28f515692ee67119f48
 
 // Import pages
 import Home from './pages/Home'
