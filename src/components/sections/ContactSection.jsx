@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight, Clock, TrendingUp } from 'lucide-react'
-import { submitContactForm } from '../../services/supabase'
+import { submitContactForm } from '../../services/web3forms'
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
