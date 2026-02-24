@@ -1,14 +1,52 @@
 // OpenRouter API Service - DeepSeek Model Integration
 // This service handles all AI-powered features using OpenRouter's DeepSeek model
 
-const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY
+const OPENROUTER_API_KEY = import.meta.example.env.VITE_OPENROUTER_API_KEY
 const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1'
+
+// Debug: Check if API key is loaded
+console.log('OpenRouter API Key loaded:', OPENROUTER_API_KEY ? 'Yes' : 'No')
+console.log('API Key starts with:', OPENROUTER_API_KEY?.substring(0, 10) + '...')
+
+if (!OPENROUTER_API_KEY) {
+  console.error('OpenRouter API key is missing. Check your .env file.')
+  // For development, you might want to add a fallback or throw an error
+  throw new Error('OpenRouter API key is missing. Please add VITE_OPENROUTER_API_KEY to your .env file.')
+}
 
 class OpenRouterService {
   constructor() {
     this.model = 'deepseek/deepseek-chat'
     this.maxTokens = 4000
     this.temperature = 0.7
+  }
+
+  // Test API key validity
+  async testApiKey() {
+    try {
+      const response = await fetch(`${OPENROUTER_BASE_URL}/models`, {
+        headers: {
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('API Key Test Failed:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorBody: errorText
+        })
+        return false
+      }
+      
+      console.log('API Key is valid')
+      return true
+    } catch (error) {
+      console.error('API Key Test Error:', error)
+      return false
+    }
   }
 
   // Generate structured quiz questions
@@ -61,7 +99,14 @@ Requirements:
       })
 
       if (!response.ok) {
-        throw new Error('Failed to generate quiz')
+        const errorText = await response.text()
+        console.error('OpenRouter API Error:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorBody: errorText,
+          apiKey: OPENROUTER_API_KEY ? 'Present' : 'Missing'
+        })
+        throw new Error(`OpenRouter API Error: ${response.status} - ${response.statusText}`)
       }
 
       const data = await response.json()
@@ -85,14 +130,82 @@ Requirements:
   async generateExamOverview(examType) {
     const prompt = `Generate comprehensive overview for ${examType} exam including:
 
-1. Exam pattern and structure
-2. Stages (Prelims/Mains/Interview if applicable)
-3. Important subjects and topics
-4. Preparation strategy
-5. Important dates and timeline
-6. Eligibility criteria
+1. ExamOverview with Name, Purpose, ConductingBody
+2. ExamPatternAndStructure with Mode, Duration, TypeOfQuestions, TotalQuestions, Sections array, MarkingScheme object, TotalMarks
+3. Stages information
+4. ImportantSubjectsAndTopics with Physics, Chemistry, Biology arrays
+5. PreparationStrategy with key strategies
+6. ImportantDatesAndTimeline with key dates
+7. EligibilityCriteria with Nationality, AgeLimit, EducationalQualification, Attempts
 
-Return as structured JSON with these sections. Be specific and practical.`
+Return ONLY valid JSON with this exact structure:
+{
+  "ExamOverview": {
+    "Name": "exam name",
+    "Purpose": "purpose description",
+    "ConductingBody": "conducting authority"
+  },
+  "ExamPatternAndStructure": {
+    "Mode": "exam mode",
+    "Duration": "duration",
+    "TypeOfQuestions": "question type",
+    "TotalQuestions": "number",
+    "Sections": [
+      {
+        "Subject": "subject name",
+        "Questions": "number",
+        "Marks": "number"
+      }
+    ],
+    "MarkingScheme": {
+      "CorrectAnswer": "+4",
+      "IncorrectAnswer": "-1",
+      "Unanswered": "0"
+    },
+    "TotalMarks": "total marks"
+  },
+  "Stages": {
+    "SingleStage": "description"
+  },
+  "ImportantSubjectsAndTopics": {
+    "Physics": ["topic1", "topic2"],
+    "Chemistry": ["topic1", "topic2"],
+    "Biology": ["topic1", "topic2"]
+  },
+  "PreparationStrategy": {
+    "UnderstandSyllabus": "strategy description",
+    "StudyPlan": "strategy description",
+    "Practice": "strategy description",
+    "Revision": "strategy description",
+    "Health": "strategy description"
+  },
+  "ImportantDatesAndTimeline": {
+    "NotificationRelease": "date range",
+    "ApplicationStart": "date range",
+    "ApplicationEnd": "date range",
+    "AdmitCardRelease": "date range",
+    "ExamDate": "date",
+    "ResultDeclaration": "date"
+  },
+  "EligibilityCriteria": {
+    "Nationality": "eligibility info",
+    "AgeLimit": {
+      "MinimumAge": "age requirement",
+      "MaximumAge": "age requirement"
+    },
+    "EducationalQualification": {
+      "Class12": "requirement",
+      "MinimumMarks": {
+        "GeneralCategory": "percentage",
+        "SC/ST/OBC": "percentage",
+        "PWD": "percentage"
+      }
+    },
+    "Attempts": "attempt limit"
+  }
+}
+
+Respond with JSON ONLY. No additional text or explanations.`
 
     try {
       const response = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
@@ -108,7 +221,7 @@ Return as structured JSON with these sections. Be specific and practical.`
           messages: [
             {
               role: 'system',
-              content: 'You are an expert education counselor providing comprehensive exam information. Respond with structured, practical guidance.'
+              content: 'You are an expert education counselor providing comprehensive exam information. Always respond with valid JSON only. No explanations or additional text outside the JSON structure.'
             },
             {
               role: 'user',
@@ -121,11 +234,35 @@ Return as structured JSON with these sections. Be specific and practical.`
       })
 
       if (!response.ok) {
-        throw new Error('Failed to generate exam overview')
+        const errorText = await response.text()
+        console.error('OpenRouter API Error (Overview):', {
+          status: response.status,
+          statusText: response.statusText,
+          errorBody: errorText,
+          apiKey: OPENROUTER_API_KEY ? 'Present' : 'Missing'
+        })
+        throw new Error(`OpenRouter API Error: ${response.status} - ${response.statusText}`)
       }
 
       const data = await response.json()
-      return data.choices[0]?.message?.content || ''
+      const content = data.choices[0]?.message?.content || '{}'
+      
+      // Parse JSON response
+      try {
+        return JSON.parse(content)
+      } catch (parseError) {
+        console.error('Failed to parse exam overview response:', parseError)
+        console.error('Raw content:', content)
+        // Return fallback structure
+        return {
+          ExamOverview: {
+            Name: examType,
+            Purpose: "Information unavailable",
+            ConductingBody: "Information unavailable"
+          },
+          error: "Failed to parse AI response"
+        }
+      }
     } catch (error) {
       console.error('Error generating exam overview:', error)
       throw error

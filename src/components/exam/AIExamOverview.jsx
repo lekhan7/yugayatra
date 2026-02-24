@@ -40,7 +40,12 @@ const AIExamOverview = ({ examConfig }) => {
   }
 
   const formatOverviewContent = (content) => {
-    // Try to parse as JSON, fallback to formatted text
+    // Handle if content is already an object (from our fixed API)
+    if (typeof content === 'object' && content !== null) {
+      return content
+    }
+    
+    // Try to parse as JSON if it's a string
     try {
       const parsed = JSON.parse(content)
       return parsed
@@ -154,7 +159,12 @@ const AIExamOverview = ({ examConfig }) => {
             </div>
 
             <div className="space-y-6">
-              {overviewData.raw ? (
+              {overviewData.error ? (
+                // Display error message
+                <div className="border-l-4 border-red-500 pl-6">
+                  <p className="text-red-400">Error loading exam data: {overviewData.error}</p>
+                </div>
+              ) : overviewData.raw ? (
                 // Display as formatted text if not JSON
                 overviewData.sections.map((section, index) => (
                   <div key={index} className="border-l-4 border-indigo-500 pl-6">
@@ -178,10 +188,21 @@ const AIExamOverview = ({ examConfig }) => {
                               <p className="leading-relaxed">• {item}</p>
                             ) : (
                               <div>
-                                <p className="font-medium text-indigo-400 mb-1">{item.title || item.topic}</p>
-                                <p className="text-gray-400 ml-4">{item.description || item.content}</p>
+                                <p className="font-medium text-indigo-400 mb-1">{item.title || item.topic || item.Subject}</p>
+                                <p className="text-gray-400 ml-4">{item.description || item.content || `${item.Questions} questions - ${item.Marks} marks`}</p>
                               </div>
                             )}
+                          </div>
+                        ))
+                      ) : typeof value === 'object' && value !== null ? (
+                        Object.entries(value).map(([subKey, subValue]) => (
+                          <div key={subKey} className="mb-2">
+                            <p className="font-medium text-indigo-400 mb-1 capitalize">
+                              {subKey.replace(/([A-Z])/g, ' $1').trim()}
+                            </p>
+                            <p className="text-gray-400 ml-4">
+                              {typeof subValue === 'object' ? JSON.stringify(subValue, null, 2) : subValue}
+                            </p>
                           </div>
                         ))
                       ) : (
