@@ -484,11 +484,49 @@ const JourneyTimeline = () => {
                 className="absolute top-1/2 transform -translate-y-1/2 left-0 z-20"
                 style={{ transform: 'translateY(-50%)' }}
               >
-                <div className="w-12 h-8 bg-gradient-to-r from-red-500 to-red-600 rounded-lg shadow-lg border-2 border-red-700">
-                  <div className="flex justify-between p-1">
-                    <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                    <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  </div>
+                <div className="relative">
+                  {/* Car Body SVG */}
+                  <svg width="60" height="30" viewBox="0 0 60 30" className="drop-shadow-lg">
+                    {/* Car Body */}
+                    <defs>
+                      <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#DC2626" />
+                        <stop offset="100%" stopColor="#991B1B" />
+                      </linearGradient>
+                      <linearGradient id="carTopGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#EF4444" />
+                        <stop offset="100%" stopColor="#DC2626" />
+                      </linearGradient>
+                    </defs>
+                    
+                    {/* Main Car Body */}
+                    <rect x="5" y="18" width="50" height="10" rx="2" fill="url(#carGradient)" stroke="#7F1D1D" strokeWidth="1"/>
+                    
+                    {/* Car Top/Cabin */}
+                    <path d="M 15 18 L 15 10 Q 15 8 17 8 L 43 8 Q 45 8 45 10 L 45 18" fill="url(#carTopGradient)" stroke="#7F1D1D" strokeWidth="1"/>
+                    
+                    {/* Windows */}
+                    <path d="M 17 10 L 17 16 L 28 16 L 28 10 Q 28 10 27 10 L 17 10" fill="#E0F2FE" stroke="#0369A1" strokeWidth="0.5" opacity="0.8"/>
+                    <path d="M 32 10 L 32 16 L 43 16 L 43 10 Q 43 10 42 10 L 32 10" fill="#E0F2FE" stroke="#0369A1" strokeWidth="0.5" opacity="0.8"/>
+                    
+                    {/* Wheels */}
+                    <circle cx="15" cy="26" r="3" fill="#1F2937" stroke="#111827" strokeWidth="1"/>
+                    <circle cx="45" cy="26" r="3" fill="#1F2937" stroke="#111827" strokeWidth="1"/>
+                    <circle cx="15" cy="26" r="1.5" fill="#6B7280"/>
+                    <circle cx="45" cy="26" r="1.5" fill="#6B7280"/>
+                    
+                    {/* Headlights */}
+                    <ellipse cx="55" cy="20" rx="2" ry="1.5" fill="#FEF3C7" stroke="#F59E0B" strokeWidth="0.5"/>
+                    <ellipse cx="55" cy="24" rx="2" ry="1.5" fill="#FEF3C7" stroke="#F59E0B" strokeWidth="0.5"/>
+                    
+                    {/* Tail Lights */}
+                    <rect x="3" y="19" width="2" height="2" rx="0.5" fill="#EF4444"/>
+                    <rect x="3" y="23" width="2" height="2" rx="0.5" fill="#EF4444"/>
+                  </svg>
+                  
+                  {/* Movement Effect */}
+                  <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-yellow-400 rounded-full animate-pulse opacity-60"></div>
+                  <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-1 h-1 bg-yellow-300 rounded-full animate-pulse opacity-40"></div>
                 </div>
               </div>
             </div>

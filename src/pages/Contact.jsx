@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle, Building, Clock } from 'lucide-
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
+import { submitContactForm } from '../services/web3forms'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -30,8 +31,7 @@ const Contact = () => {
     setError('')
 
     try {
-      // Simulate form submission - replace with actual Supabase integration
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      await submitContactForm(formData)
       setIsSubmitted(true)
       setFormData({
         name: '',
