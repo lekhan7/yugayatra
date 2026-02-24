@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import { Plus, Edit2, Trash2, Save, X, MessageSquare, Star, Check, XCircle, Clock, User, Mail, Link2, Calendar } from 'lucide-react'
 import { getAllTestimonials, updateTestimonialStatus, deleteTestimonial, subscribeToTestimonials } from '../../services/testimonials'
 
-const TestimonialsManager = () => {
+const TestimonialsManager = ({ onSettingsOpen }) => {
   const [testimonials, setTestimonials] = useState([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('pending')

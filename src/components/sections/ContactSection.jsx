@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight, Clock, TrendingUp } from 'lucide-react'
 import { submitContactForm } from '../../services/supabase'
 
 const ContactSection = () => {
@@ -49,19 +49,19 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: 'Email',
-      content: 'info@yugyatra.com',
-      href: 'mailto:info@yugyatra.com'
+      content: 'hr@yugayatraretail.com',
+      href: 'mailto:hr@yugayatraretail.com'
     },
     {
-      icon: Phone,
-      title: 'Phone',
-      content: '+91 98765 43210',
-      href: 'tel:+919876543210'
+      icon: Clock,
+      title: 'Response Time',
+      content: '24h',
+      href: '#'
     },
     {
-      icon: MapPin,
-      title: 'Address',
-      content: 'Bangalore, Karnataka 560001, India',
+      icon: TrendingUp,
+      title: 'Satisfaction Rate',
+      content: '100%',
       href: '#'
     }
   ]
@@ -88,7 +88,7 @@ const ContactSection = () => {
       <div className="py-20 bg-bg-main dark:bg-text-main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top Row: Send Message and Contact Information */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-stretch">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -297,7 +297,7 @@ const ContactSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="bg-bg-main dark:bg-card-bg/10 rounded-xl h-64 flex items-center justify-center border border-border-light dark:border-white/10">
+                <div className="bg-bg-main dark:bg-card-bg/10 rounded-xl h-80 flex items-center justify-center border border-border-light dark:border-white/10">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-text-light mx-auto mb-2" />
                     <p className="text-text-light dark:text-white/70">
@@ -312,20 +312,33 @@ const ContactSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-r from-accent-main to-accent-main rounded-xl p-6 text-white h-64"
+                className="bg-gradient-to-r from-accent-main to-accent-main rounded-xl p-6 text-white h-80 overflow-y-auto"
               >
                 <div className="space-y-4 w-full">
-                  <div className="border-l-4 border-accent-main pl-4">
-                    <p className="text-sm uppercase text-gray-200">Monday - Friday</p>
+                  <div className="border-l-4 border-green-400 pl-4">
+                    <p className="text-sm uppercase text-gray-200">Mon - Fri</p>
                     <p className="text-lg font-bold">9:00 AM - 6:00 PM</p>
                   </div>
-                  <div className="border-l-4 border-accent-main pl-4 mt-4">
+                  <div className="border-l-4 border-green-400 pl-4 mt-4">
                     <p className="text-sm uppercase text-gray-200">Saturday</p>
                     <p className="text-lg font-bold">10:00 AM - 4:00 PM</p>
                   </div>
-                  <div className="border-l-4 border-accent-main pl-4 mt-4">
+                  <div className="border-l-4 border-green-400 pl-4 mt-4">
                     <p className="text-sm uppercase text-gray-200">Sunday</p>
                     <p className="text-lg font-bold">Closed</p>
+                  </div>
+                  <div className="border-t border-white/30 my-4"></div>
+                  <div className="mt-4">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-center" style={{marginLeft: '-8px'}}>
+                        <MapPin className="w-4 h-4 text-green-400 mr-2" />
+                        <p className="text-lg font-bold">Electronic City, Phase 1, Bengaluru</p>
+                      </div>
+                      <div className="flex items-center" style={{marginLeft: '-8px'}}>
+                        <Phone className="w-4 h-4 text-green-400 mr-2" />
+                        <p className="text-lg font-bold">+91 8757728679</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

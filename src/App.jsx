@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollProgressBar from './components/ScrollProgressBar'
+import ChatBot from './components/ChatBot'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import NotificationProvider from './context/NotificationContext'
 import ToastProvider from './components/admin/ToastProvider'
@@ -177,6 +178,7 @@ function App() {
           </motion.div>
         } />
       </Routes>
+      <ChatBot />
     </div>
     </ToastProvider>
   )

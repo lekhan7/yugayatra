@@ -37,7 +37,7 @@ import {
 } from '../../services/supabase'
 import { useNotification } from '../../context/NotificationContext'
 
-const ServicesManager = () => {
+const ServicesManager = ({ onSettingsOpen }) => {
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState(null)

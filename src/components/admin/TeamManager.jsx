@@ -25,7 +25,7 @@ import {
 } from '../../services/supabase'
 import { useNotification } from '../../context/NotificationContext'
 
-const TeamManager = () => {
+const TeamManager = ({ onSettingsOpen }) => {
   const [teamMembers, setTeamMembers] = useState([])
   const [loading, setLoading] = useState(true)
   const [editingId, setEditingId] = useState(null)

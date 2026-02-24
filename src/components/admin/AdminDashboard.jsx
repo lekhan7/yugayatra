@@ -65,13 +65,33 @@ const AdminDashboard = ({ user, onLogout }) => {
       root.style.setProperty('--admin-background-color', settings.colors.background)
       root.style.setProperty('--admin-surface-color', settings.colors.surface)
       root.style.setProperty('--admin-text-color', settings.colors.text)
+      root.style.setProperty('--admin-border-color', settings.colors.border)
+      root.style.setProperty('--admin-hover-color', settings.colors.hover)
+      root.style.setProperty('--admin-success-color', settings.colors.success)
+      root.style.setProperty('--admin-warning-color', settings.colors.warning)
+      root.style.setProperty('--admin-error-color', settings.colors.error)
       
-      // Also apply background color directly to the admin panel
-      const adminPanel = document.querySelector('.admin-panel')
-      if (adminPanel) {
-        adminPanel.style.backgroundColor = settings.colors.background
-        adminPanel.style.color = settings.colors.text
-      }
+      // Apply background and text colors to all admin elements
+      const adminElements = document.querySelectorAll('.admin-panel, .admin-sidebar, .admin-content')
+      adminElements.forEach(element => {
+        element.style.backgroundColor = settings.colors.background
+        element.style.color = settings.colors.text
+      })
+
+      // Update specific component colors
+      const buttons = document.querySelectorAll('.admin-panel button')
+      buttons.forEach(button => {
+        if (!button.style.backgroundColor) {
+          button.style.backgroundColor = settings.colors.primary
+          button.style.color = '#ffffff'
+        }
+      })
+
+      // Update borders
+      const borderedElements = document.querySelectorAll('.admin-panel .border, .admin-panel .border-gray-200, .admin-panel .border-gray-700')
+      borderedElements.forEach(element => {
+        element.style.borderColor = settings.colors.border
+      })
     }
 
     // Apply typography settings
@@ -87,6 +107,12 @@ const AdminDashboard = ({ user, onLogout }) => {
       root.style.setProperty('--admin-line-height', settings.typography.lineHeight === 'tight' ? '1.25' :
                      settings.typography.lineHeight === 'normal' ? '1.5' :
                      settings.typography.lineHeight === 'relaxed' ? '1.75' : '2')
+      
+      // Apply font to admin elements
+      const adminElements = document.querySelectorAll('.admin-panel, .admin-sidebar, .admin-content')
+      adminElements.forEach(element => {
+        element.style.fontFamily = settings.typography.fontFamily
+      })
     }
 
     // Apply animation settings
@@ -143,25 +169,25 @@ const AdminDashboard = ({ user, onLogout }) => {
   const renderContent = () => {
     switch (activeSection) {
       case 'dashboard':
-        return <AnimatedDashboard />
+        return <AnimatedDashboard onSettingsOpen={handleSettingsOpen} />
       case 'applications':
-        return <AdminApplications />
+        return <AdminApplications onSettingsOpen={handleSettingsOpen} />
       case 'project-requests':
-        return <ProjectRequestsManager />
+        return <ProjectRequestsManager onSettingsOpen={handleSettingsOpen} />
       case 'testimonials':
-        return <TestimonialsManager />
+        return <TestimonialsManager onSettingsOpen={handleSettingsOpen} />
       case 'services':
-        return <ServicesManager />
+        return <ServicesManager onSettingsOpen={handleSettingsOpen} />
       case 'projects':
-        return <ProjectsManager />
+        return <ProjectsManager onSettingsOpen={handleSettingsOpen} />
       case 'alumni':
-        return <AlumniManager />
+        return <AlumniManager onSettingsOpen={handleSettingsOpen} />
       case 'team':
-        return <TeamManager />
+        return <TeamManager onSettingsOpen={handleSettingsOpen} />
       case 'blog':
-        return <BlogManager />
+        return <BlogManager onSettingsOpen={handleSettingsOpen} />
       default:
-        return <AnimatedDashboard />
+        return <AnimatedDashboard onSettingsOpen={handleSettingsOpen} />
     }
   }
 
@@ -181,6 +207,7 @@ const AdminDashboard = ({ user, onLogout }) => {
           setActiveSection={setActiveSection}
           user={user}
           onLogout={handleLogout}
+          onSettingsOpen={handleSettingsOpen}
           className="admin-sidebar"
         />
         
@@ -191,11 +218,7 @@ const AdminDashboard = ({ user, onLogout }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {activeSection === 'dashboard' ? (
-              <AnimatedDashboard onSettingsOpen={handleSettingsOpen} />
-            ) : (
-              renderContent()
-            )}
+            {renderContent()}
           </motion.div>
         </div>
       </div>

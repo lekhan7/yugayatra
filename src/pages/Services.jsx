@@ -56,7 +56,14 @@ const Services = () => {
     fetchServices()
   }, [])
 
+  // Ensure Consulting service is always visible
   const displayedServices = showAll ? services : services.slice(0, 6)
+  
+  // Always include Consulting service if it exists and is not already in displayed services
+  const consultingService = services.find(s => s.slug === 'consulting')
+  const finalDisplayedServices = consultingService && !displayedServices.find(s => s.slug === 'consulting') 
+    ? [consultingService, ...displayedServices.slice(0, 5)] 
+    : displayedServices
 
   return (
     <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
@@ -90,7 +97,7 @@ const Services = () => {
           ) : (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {displayedServices.map((service, index) => (
+                {finalDisplayedServices.map((service, index) => (
                   <motion.div
                     key={service.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -183,51 +190,60 @@ const Services = () => {
             </p>
           </motion.div>
 
-          {!loading && services.length > 0 && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {services.slice(0, 2).map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, x: index === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-card-bg dark:bg-card-bg/10 rounded-2xl p-8 shadow-lg border border-border-light dark:border-white/10"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-20 h-20 bg-accent-main rounded-xl flex items-center justify-center flex-shrink-0">
-                      {React.createElement(getIcon(service.icon_name), { className: "w-10 h-10 text-white" })}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-text-main dark:text-white mb-4">
-                        {service.title}
-                      </h3>
-                      <p className="text-text-light dark:text-white/70 mb-6">
-                        {service.short_description}
-                      </p>
-                      <div className="space-y-2 mb-6">
-                        {service.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center text-text-light dark:text-white/70">
-                            <CheckCircle className="w-5 h-5 text-accent-main mr-3 flex-shrink-0" />
-                            {feature}
-                          </div>
-                        ))}
+          {!loading && services.length > 0 && (() => {
+                const consultingService = services.find(s => s.slug === 'consulting')
+                const otherServices = services.filter(s => s.slug !== 'consulting')
+                const featuredServices = consultingService 
+                  ? [consultingService, ...otherServices.slice(0, 1)]
+                  : services.slice(0, 2)
+                
+                return (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    {featuredServices.map((service, index) => (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, x: index === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="bg-card-bg dark:bg-card-bg/10 rounded-2xl p-8 shadow-lg border border-border-light dark:border-white/10"
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div className="w-20 h-20 bg-accent-main rounded-xl flex items-center justify-center flex-shrink-0">
+                        {React.createElement(getIcon(service.icon_name), { className: "w-10 h-10 text-white" })}
                       </div>
-                      <div className="flex flex-wrap gap-2">
-                        {service.technologies.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-bg-main dark:bg-card-bg/10 text-text-main dark:text-white/70 rounded-full text-sm font-medium border border-border-light dark:border-white/10"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-text-main dark:text-white mb-4">
+                          {service.title}
+                        </h3>
+                        <p className="text-text-light dark:text-white/70 mb-6">
+                          {service.short_description}
+                        </p>
+                        <div className="space-y-2 mb-6">
+                          {service.features.map((feature, idx) => (
+                            <div key={idx} className="flex items-center text-text-light dark:text-white/70">
+                              <CheckCircle className="w-5 h-5 text-accent-main mr-3 flex-shrink-0" />
+                              {feature}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {service.technologies.map((tech, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 bg-bg-main dark:bg-card-bg/10 text-text-main dark:text-white/70 rounded-full text-sm font-medium border border-border-light dark:border-white/10"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
+                  </motion.div>
+                    ))}
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                )
+              })()
+            }
         </div>
       </section>
 
