@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 import { submitContactForm } from '../services/web3forms'
+import { trackContactForm } from '../hooks/useAnalytics'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -32,6 +33,7 @@ const Contact = () => {
 
     try {
       await submitContactForm(formData)
+      trackContactForm() // Track contact form submission
       setIsSubmitted(true)
       setFormData({
         name: '',

@@ -6,6 +6,7 @@ import ScrollProgressBar from './components/ScrollProgressBar'
 import ChatBot from './components/ChatBot'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import NotificationProvider from './context/NotificationContext'
+import { usePageTracking } from './hooks/useAnalytics'
 
 // Import pages
 import Home from './pages/Home'
@@ -25,6 +26,9 @@ import Achievements from './pages/Achievements'
 function App() {
   const location = useLocation()
   const isAdminPage = location.pathname === '/admin'
+  
+  // Track page views with Google Analytics
+  usePageTracking()
 
   return (
     <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">

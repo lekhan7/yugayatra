@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle, Loader2, Upload, X, FileText } from 'lucide-rea
 import { useNavigate, useParams } from 'react-router-dom'
 import { submitInternshipApplication, uploadResume } from '../services/supabase'
 import FormInput from '../components/FormInput'
+import { trackInternshipApplication } from '../hooks/useAnalytics'
 
 const InternshipApply = () => {
   const navigate = useNavigate()
@@ -137,6 +138,7 @@ const InternshipApply = () => {
       }
 
       await submitInternshipApplication(payload)
+      trackInternshipApplication() // Track internship application submission
 
       setIsSubmitted(true)
       showToast('Application submitted successfully!', 'success')
