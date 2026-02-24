@@ -6,8 +6,6 @@ export const submitTestimonial = async (testimonialData) => {
     const { data, error } = await supabase
       .from('testimonials')
       .insert([testimonialData])
-      .select()
-      .single()
 
     if (error) throw error
     return { success: true, data }

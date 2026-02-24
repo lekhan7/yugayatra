@@ -11,11 +11,11 @@ export default {
         // Light mode colors (unchanged)
         'bg-main': '#FFFFFF',
         'text-main': '#1F2937',
-        'accent-main': '#059669', // Dark Mint for headings
+        'accent-main': '#B0E0E6', // Light Sky Blue for headings
         'accent-dark': '#047857', // Very Dark Mint
         'accent-gold': '#6EE7B7', // Light Mint for other elements
         'accent-light': '#A7F3D0', // Very Light Mint
-        'mint-clarity': '#6EE7B7', // Mint Clarity
+        'mint-clarity': '#87CEEB', // Sky Blue
         'text-light': '#374151',
         'border-light': '#E5E7EB',
         'card-bg': '#FFFFFF',
