@@ -22,6 +22,7 @@ import Quiz from './pages/Quiz'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import Achievements from './pages/Achievements'
+import EstateExamHub from './pages/EstateExamHub'
 
 function App() {
   const location = useLocation()
@@ -175,6 +176,17 @@ function App() {
             transition={{ duration: 0.5 }}
           >
             <BlogPost />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/estate" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <EstateExamHub />
             <Footer />
             <ScrollToTop />
           </motion.div>
