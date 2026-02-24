@@ -72,6 +72,7 @@ const AdminDashboard = ({ user, onLogout }) => {
           </motion.div>
         </div>
       </div>
+      
     </div>
   )
 }
