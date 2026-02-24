@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { 
   BookOpen, 
   Clock, 
@@ -15,10 +16,14 @@ import {
   X,
   CheckCircle,
   AlertCircle,
-  Timer
+  Timer,
+  ArrowRight,
+  Brain,
+  Zap
 } from 'lucide-react'
 
 const EstateExamHub = () => {
+  const navigate = useNavigate()
   const [selectedLanguage, setSelectedLanguage] = useState('English')
   const [selectedFilters, setSelectedFilters] = useState({
     examType: 'All',
@@ -213,6 +218,10 @@ const EstateExamHub = () => {
     setTestSubmitted(false)
   }
 
+  const openExamDashboard = (examId) => {
+    navigate(`/estate/${examId.toLowerCase()}`)
+  }
+
   const handleAnswerSelect = (questionIndex, answerIndex) => {
     setTestAnswers({
       ...testAnswers,
@@ -348,7 +357,7 @@ const EstateExamHub = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold text-olive-900 dark:text-olive-100 mb-6"
           >
-            {selectedLanguage === 'Hindi' ? 'अभ्यास करें। ट्रैक करें। परीक्षाएं जीतें।' : 'Practice. Track. Conquer Your Exams.'}
+            {selectedLanguage === 'Hindi' ? 'AI-संचालित परीक्षा तैयारी' : 'AI-Powered Exam Intelligence Hub'}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -356,7 +365,7 @@ const EstateExamHub = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl md:text-2xl text-olive-700 dark:text-olive-300 mb-8"
           >
-            {selectedLanguage === 'Hindi' ? 'राष्ट्रीय | राज्य | भाषा प्रमाणन — एक ही स्थान पर' : 'National | State | Language Certifications — All in One Place'}
+            {selectedLanguage === 'Hindi' ? 'राष्ट्रीय | राज्य | भाषा प्रमाणन — AI के साथ अग्रणी तैयारी' : 'National | State | Language Certifications — Advanced AI-Driven Preparation'}
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -526,6 +535,13 @@ const EstateExamHub = () => {
                 </div>
                 <div className="space-y-2">
                   <button 
+                    onClick={() => openExamDashboard(exam.id)}
+                    className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg transition-all duration-200 flex items-center justify-center space-x-2"
+                  >
+                    <Brain className="w-4 h-4" />
+                    <span>AI Dashboard</span>
+                  </button>
+                  <button 
                     onClick={() => startTest(exam)}
                     className="w-full px-4 py-2 bg-olive-600 hover:bg-olive-700 text-white rounded-lg transition-colors duration-200"
                   >
@@ -558,19 +574,28 @@ const EstateExamHub = () => {
                 <div className="text-4xl mb-4">{exam.icon}</div>
                 <h3 className="text-xl font-bold text-olive-900 dark:text-olive-100 mb-2">{exam.name}</h3>
                 <p className="text-olive-600 dark:text-olive-300 mb-4">{exam.description}</p>
-                <div className="grid grid-cols-2 gap-2">
-                  <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
-                    {t.prelimsPractice}
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => openExamDashboard(exam.id)}
+                    className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg transition-all duration-200 flex items-center justify-center space-x-2"
+                  >
+                    <Brain className="w-4 h-4" />
+                    <span>AI Dashboard</span>
                   </button>
-                  <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
-                    {t.mainsPractice}
-                  </button>
-                  <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
-                    {t.previousYear}
-                  </button>
-                  <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
-                    {t.mockTestSeries}
-                  </button>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
+                      {t.prelimsPractice}
+                    </button>
+                    <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
+                      {t.mainsPractice}
+                    </button>
+                    <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
+                      {t.previousYear}
+                    </button>
+                    <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
+                      {t.mockTestSeries}
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))}
