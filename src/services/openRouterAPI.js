@@ -6,12 +6,10 @@ const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1'
 
 // Debug: Check if API key is loaded
 console.log('OpenRouter API Key loaded:', OPENROUTER_API_KEY ? 'Yes' : 'No')
-console.log('API Key starts with:', OPENROUTER_API_KEY?.substring(0, 10) + '...')
 
 if (!OPENROUTER_API_KEY) {
-  console.error('OpenRouter API key is missing. Check your .env file.')
-  // For development, you might want to add a fallback or throw an error
-  throw new Error('OpenRouter API key is missing. Please add VITE_OPENROUTER_API_KEY to your .env file.')
+  console.error('OpenRouter API key is missing. Please add OPENROUTER_API_KEY to your environment variables.')
+  // Don't throw error to prevent crashes, but log the issue
 }
 
 class OpenRouterService {
@@ -23,6 +21,11 @@ class OpenRouterService {
 
   // Test API key validity
   async testApiKey() {
+    if (!OPENROUTER_API_KEY) {
+      console.error('Cannot test API key: OPENROUTER_API_KEY is not configured')
+      return false
+    }
+
     try {
       const response = await fetch(`${OPENROUTER_BASE_URL}/models`, {
         headers: {
@@ -51,6 +54,11 @@ class OpenRouterService {
 
   // Generate structured quiz questions
   async generateQuiz(config) {
+    if (!OPENROUTER_API_KEY) {
+      console.error('Cannot generate quiz: OPENROUTER_API_KEY is not configured')
+      throw new Error('OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in your environment variables.')
+    }
+
     const prompt = `Generate ${config.questionCount} multiple choice questions for ${config.examType} exam on the topic "${config.subject}" at ${config.difficulty} difficulty level in ${config.language} language.
 
 Return ONLY a JSON array with this exact structure:
@@ -128,6 +136,11 @@ Requirements:
 
   // Generate exam overview
   async generateExamOverview(examType) {
+    if (!OPENROUTER_API_KEY) {
+      console.error('Cannot generate exam overview: OPENROUTER_API_KEY is not configured')
+      throw new Error('OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in your environment variables.')
+    }
+
     const prompt = `Generate comprehensive overview for ${examType} exam including:
 
 1. ExamOverview with Name, Purpose, ConductingBody
@@ -271,6 +284,11 @@ Respond with JSON ONLY. No additional text or explanations.`
 
   // Generate current affairs
   async generateCurrentAffairs(examType, date = null) {
+    if (!OPENROUTER_API_KEY) {
+      console.error('Cannot generate current affairs: OPENROUTER_API_KEY is not configured')
+      throw new Error('OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in your environment variables.')
+    }
+
     const dateFilter = date ? `for ${date}` : 'recent'
     const prompt = `Generate 5 important current affairs headlines ${dateFilter} that are relevant for ${examType} exam preparation.
 
@@ -343,6 +361,11 @@ Return as JSON array with structure:
 
   // Generate YouTube suggestions
   async generateYouTubeSuggestions(examType, subject = null) {
+    if (!OPENROUTER_API_KEY) {
+      console.error('Cannot generate YouTube suggestions: OPENROUTER_API_KEY is not configured')
+      throw new Error('OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in your environment variables.')
+    }
+
     const subjectFilter = subject ? `specifically for ${subject}` : ''
     const prompt = `Generate 3 YouTube video suggestions for ${examType} exam preparation ${subjectFilter}.
 
@@ -409,6 +432,12 @@ Return as JSON array:
 
   // Chat with streaming support
   async *chatStream(message, examType, conversationHistory = []) {
+    if (!OPENROUTER_API_KEY) {
+      console.error('Cannot start chat stream: OPENROUTER_API_KEY is not configured')
+      yield 'Error: OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in your environment variables.'
+      return
+    }
+
     const prompt = `You are an expert ${examType} exam preparation assistant. Help students with:
 - Exam strategy and guidance
 - Subject explanations and doubts
@@ -484,6 +513,11 @@ Be concise, practical, and encouraging. Current question: "${message}"`
 
   // Generate performance analytics insights
   async generatePerformanceInsights(quizResults, examType) {
+    if (!OPENROUTER_API_KEY) {
+      console.error('Cannot generate performance insights: OPENROUTER_API_KEY is not configured')
+      throw new Error('OpenRouter API key is missing. Please configure OPENROUTER_API_KEY in your environment variables.')
+    }
+
     const prompt = `Based on these quiz results for ${examType} exam, generate performance insights:
 
 Quiz Results: ${JSON.stringify(quizResults)}
