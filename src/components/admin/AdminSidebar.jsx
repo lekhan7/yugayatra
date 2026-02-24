@@ -17,7 +17,7 @@ import {
   Settings
 } from 'lucide-react'
 
-const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSettingsOpen }) => {
+const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSettingsClick }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const menuItems = [
@@ -32,12 +32,18 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSetti
     { id: 'blog', label: 'Blog & Insights', icon: PenTool },
   ]
 
+  const handleSettingsClick = () => {
+    if (onSettingsClick) {
+      onSettingsClick()
+    }
+  }
+
   return (
-    <div className={`${isCollapsed ? 'w-20' : 'w-64'} bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 min-h-screen relative`}>
+    <div className={`${isCollapsed ? 'w-20' : 'w-64'} bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 min-h-screen relative border-r border-gray-200 dark:border-gray-700`}>
       {/* Toggle Button */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute -right-3 top-6 bg-blue-600 text-white rounded-full p-1 hover:bg-blue-700 transition-colors"
+        className="absolute -right-3 top-6 bg-blue-600 text-white rounded-full p-1 hover:bg-blue-700 transition-colors z-10"
       >
         {isCollapsed ? <Menu size={16} /> : <X size={16} />}
       </button>
@@ -79,6 +85,17 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSetti
             )
           })}
         </ul>
+        
+        {/* Settings Button */}
+        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <button
+            onClick={handleSettingsClick}
+            className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+          >
+            <Settings size={20} />
+            {!isCollapsed && <span className="font-medium">Settings</span>}
+          </button>
+        </div>
       </nav>
 
       {/* User Info & Logout */}
@@ -101,13 +118,6 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSetti
           >
             <LogOut size={16} />
             <span>Logout</span>
-          </button>
-          <button
-            onClick={onSettingsOpen}
-            className="w-full flex items-center space-x-2 px-3 py-2 text-sm text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors mt-2"
-          >
-            <Settings size={16} />
-            <span>Settings</span>
           </button>
         </div>
       )}

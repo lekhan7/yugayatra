@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .settings-display {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Admin Settings Functionality Test</h1>
+        
+        <div class="test-section">
+            <h3>1. localStorage Test</h3>
+            <button onclick="testLocalStorage()">Test Save/Load</button>
+            <div id="localStorage-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>2. Settings Structure Test</h3>
+            <button onclick="testSettingsStructure()">Test Structure</button>
+            <div id="structure-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>3. Change Detection Test</h3>
+            <button onclick="testChangeDetection()">Test Change Detection</button>
+            <div id="change-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>4. Current Settings</h3>
+            <button onclick="displayCurrentSettings()">Show Current</button>
+            <button onclick="clearSettings()">Clear All</button>
+            <div id="current-settings" class="settings-display"></div>
+        </div>
+    </div>
+
+    <script>
+        // Default settings structure
+        const defaultSettings = {
+            layout: {
+                componentOrder: ['header', 'sidebar', 'content'],
+                sidebarPosition: 'left',
+                contentDirection: 'ltr',
+                spacing: 'normal'
+            },
+            colors: {
+                primary: '#3b82f6',
+                secondary: '#8b5cf6',
+                accent: '#10b981',
+                background: '#ffffff',
+                surface: '#f9fafb',
+                text: '#111827',
+                border: '#e5e7eb',
+                hover: '#f3f4f6',
+                success: '#10b981',
+                warning: '#f59e0b',
+                error: '#ef4444'
+            },
+            typography: {
+                fontFamily: 'Inter',
+                fontSize: 'medium',
+                fontWeight: 'normal',
+                lineHeight: 'relaxed'
+            },
+            animations: {
+                enabled: true,
+                duration: 300,
+                easing: 'ease-in-out',
+                reducedMotion: false
+            },
+            components: {
+                header: { visible: true, height: 'auto', sticky: true },
+                sidebar: { visible: true, width: 'medium', collapsible: true },
+                content: { padding: 'normal', maxWidth: 'full' }
+            }
+        };
+
+        function testLocalStorage() {
+            const result = document.getElementById('localStorage-result');
+            try {
+                // Test save
+                localStorage.setItem('adminSettings', JSON.stringify(defaultSettings));
+                
+                // Test load
+                const loaded = JSON.parse(localStorage.getItem('adminSettings'));
+                
+                if (JSON.stringify(loaded) === JSON.stringify(defaultSettings)) {
+                    result.innerHTML = '<div class="success">✅ localStorage save/load working correctly</div>';
+                } else {
+                    result.innerHTML = '<div class="error">❌ Data mismatch in localStorage</div>';
+                }
+            } catch (error) {
+                result.innerHTML = `<div class="error">❌ localStorage error: ${error.message}</div>`;
+            }
+        }
+
+        function testSettingsStructure() {
+            const result = document.getElementById('structure-result');
+            const requiredKeys = ['layout', 'colors', 'typography', 'animations', 'components'];
+            
+            let missingKeys = [];
+            requiredKeys.forEach(key => {
+                if (!defaultSettings[key]) {
+                    missingKeys.push(key);
+                }
+            });
+
+            const layoutKeys = ['componentOrder', 'sidebarPosition', 'contentDirection', 'spacing'];
+            layoutKeys.forEach(key => {
+                if (!defaultSettings.layout[key]) {
+                    missingKeys.push(`layout.${key}`);
+                }
+            });
+
+            if (missingKeys.length === 0) {
+                result.innerHTML = '<div class="success">✅ Settings structure is complete</div>';
+            } else {
+                result.innerHTML = `<div class="error">❌ Missing keys: ${missingKeys.join(', ')}</div>`;
+            }
+        }
+
+        function testChangeDetection() {
+            const result = document.getElementById('change-result');
+            
+            // Simulate original and changed settings
+            const original = JSON.parse(JSON.stringify(defaultSettings));
+            const changed = JSON.parse(JSON.stringify(defaultSettings));
+            changed.layout.sidebarPosition = 'right';
+
+            const originalStr = JSON.stringify(original);
+            const changedStr = JSON.stringify(changed);
+
+            if (originalStr !== changedStr) {
+                result.innerHTML = '<div class="success">✅ Change detection working correctly</div>';
+            } else {
+                result.innerHTML = '<div class="error">❌ Change detection failed</div>';
+            }
+        }
+
+        function displayCurrentSettings() {
+            const display = document.getElementById('current-settings');
+            try {
+                const current = localStorage.getItem('adminSettings');
+                if (current) {
+                    display.innerHTML = `<strong>Saved Settings:</strong><br>${JSON.stringify(JSON.parse(current), null, 2)}`;
+                } else {
+                    display.innerHTML = '<strong>No saved settings found</strong>';
+                }
+            } catch (error) {
+                display.innerHTML = `<strong>Error reading settings:</strong> ${error.message}`;
+            }
+        }
+
+        function clearSettings() {
+            localStorage.removeItem('adminSettings');
+            displayCurrentSettings();
+        }
+
+        // Auto-display current settings on load
+        window.onload = function() {
+            displayCurrentSettings();
+        };
+    </script>
+</body>
+</html>

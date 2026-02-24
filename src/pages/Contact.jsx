@@ -4,6 +4,8 @@ import { Mail, Phone, MapPin, Send, CheckCircle, Building, Clock } from 'lucide-
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
+import { submitContactForm } from '../services/web3forms'
+import { trackContactForm } from '../hooks/useAnalytics'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -30,8 +32,8 @@ const Contact = () => {
     setError('')
 
     try {
-      // Simulate form submission - replace with actual Supabase integration
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      await submitContactForm(formData)
+      trackContactForm() // Track contact form submission
       setIsSubmitted(true)
       setFormData({
         name: '',
@@ -70,12 +72,12 @@ const Contact = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
+    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
       <Navbar />
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-accent-light/10">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-dark-blue-accent/20 dark:from-dark-bg dark:via-dark-surface dark:to-dark-blue-accent/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -84,7 +86,7 @@ const Contact = () => {
             className="text-center"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
-              Get in <span className="text-accent-main">Touch</span>
+              Get in <span className="text-dark-blue-accent dark:text-dark-blue-primary">Touch</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
               We'd love to hear from you. Send us a message and we'll respond as soon as possible.
@@ -94,7 +96,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Content */}
-      <section className="py-20 bg-bg-main dark:bg-text-main">
+      <section className="py-20 bg-bg-main dark:bg-dark-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -111,13 +113,13 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-accent-main/10 dark:bg-accent-dark/20 border border-accent-main/30 dark:border-accent-dark rounded-2xl p-8 text-center"
+                  className="bg-dark-blue-accent/20 dark:bg-dark-blue-primary/30 border border-dark-blue-accent/30 dark:border-dark-blue-primary rounded-2xl p-8 text-center"
                 >
-                  <CheckCircle className="w-16 h-16 text-accent-main mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-accent-dark dark:text-accent-light mb-2">
+                  <CheckCircle className="w-16 h-16 text-dark-blue-accent mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-dark-blue-primary dark:text-dark-blue-secondary mb-2">
                     Thank You!
                   </h3>
-                  <p className="text-accent-dark dark:text-accent-light">
+                  <p className="text-dark-blue-primary dark:text-dark-blue-secondary">
                     Your message has been sent successfully. We'll get back to you soon.
                   </p>
                 </motion.div>
@@ -135,7 +137,7 @@ const Contact = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent dark:bg-card-bg/10 dark:text-white transition-colors"
+                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-dark-blue-accent focus:border-transparent dark:bg-dark-card dark:text-white transition-colors"
                         placeholder="John Doe"
                       />
                     </div>
@@ -150,7 +152,7 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent dark:bg-card-bg/10 dark:text-white transition-colors"
+                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-dark-blue-accent focus:border-transparent dark:bg-dark-card dark:text-white transition-colors"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -167,7 +169,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent dark:bg-card-bg/10 dark:text-white transition-colors"
+                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-dark-blue-accent focus:border-transparent dark:bg-dark-card dark:text-white transition-colors"
                         placeholder="+91 98765 43210"
                       />
                     </div>
@@ -181,7 +183,7 @@ const Contact = () => {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent dark:bg-card-bg/10 dark:text-white transition-colors"
+                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-dark-blue-accent focus:border-transparent dark:bg-dark-card dark:text-white transition-colors"
                         placeholder="Acme Corp"
                       />
                     </div>
@@ -198,21 +200,21 @@ const Contact = () => {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent dark:bg-card-bg/10 dark:text-white transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-dark-blue-accent focus:border-transparent dark:bg-dark-card dark:text-white transition-colors resize-none"
                       placeholder="Tell us about your project..."
                     />
                   </div>
 
                   {error && (
-                    <div className="bg-accent-gold/10 dark:bg-accent-gold/20 border border-accent-gold/30 dark:border-accent-gold rounded-lg p-4">
-                      <p className="text-accent-gold dark:text-accent-gold/80">{error}</p>
+                    <div className="bg-dark-blue-accent/20 dark:bg-dark-blue-primary/30 border border-dark-blue-accent/30 dark:border-dark-blue-primary rounded-lg p-4">
+                      <p className="text-dark-blue-accent dark:text-dark-blue-primary">{error}</p>
                     </div>
                   )}
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-accent-main to-accent-main text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-gradient-to-r from-dark-blue-accent to-dark-blue-primary text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <span>Sending...</span>
@@ -252,7 +254,7 @@ const Contact = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="flex items-start space-x-4 p-6 bg-card-bg dark:bg-card-bg/10 rounded-xl border border-border-light dark:border-white/10 hover:shadow-lg transition-shadow duration-300"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-accent-main rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-dark-blue-accent to-dark-blue-primary rounded-lg flex items-center justify-center flex-shrink-0">
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -262,7 +264,7 @@ const Contact = () => {
                       {info.href.startsWith('mailto') || info.href.startsWith('tel') ? (
                         <a
                           href={info.href}
-                          className="text-accent-main dark:text-accent-light/40 hover:text-accent-dark transition-colors duration-200"
+                          className="text-dark-blue-accent dark:text-dark-blue-primary hover:text-dark-blue-secondary transition-colors duration-200"
                         >
                           {info.content}
                         </a>
@@ -281,7 +283,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-gradient-to-r from-accent-main to-accent-main rounded-xl p-6 text-white"
+                className="bg-gradient-to-r from-dark-blue-accent to-dark-blue-primary rounded-xl p-6 text-white"
               >
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <Clock className="w-5 h-5 mr-2" />

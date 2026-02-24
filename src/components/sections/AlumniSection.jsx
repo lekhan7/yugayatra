@@ -40,10 +40,10 @@ const AlumniSection = () => {
   // Handle loading state
   if (loading) {
     return (
-      <section id="alumni" className="py-20 bg-card-bg">
+      <section id="alumni" className="py-20 bg-card-bg dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main dark:border-dark-blue-accent"></div>
           </div>
         </div>
       </section>
@@ -53,7 +53,7 @@ const AlumniSection = () => {
   // Handle empty state
   if (alumni.length === 0) {
     return (
-      <section id="alumni" className="py-20 bg-card-bg">
+      <section id="alumni" className="py-20 bg-card-bg dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -61,17 +61,17 @@ const AlumniSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-accent-main dark:text-dark-blue-primary mb-6">
               Our Alumni
             </h2>
-            <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto">
               Success stories from our talented graduates who are making waves in the industry
             </p>
           </motion.div>
           <div className="text-center py-12">
-            <Users className="mx-auto text-gray-400 mb-4" size={48} />
-            <p className="text-gray-500 dark:text-gray-400">No alumni featured yet</p>
-            <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
+            <Users className="mx-auto text-gray-400 dark:text-dark-text-muted mb-4" size={48} />
+            <p className="text-gray-500 dark:text-dark-text-secondary">No alumni featured yet</p>
+            <p className="text-sm text-gray-400 dark:text-dark-text-muted mt-2">
               Check back soon to see success stories from our graduates
             </p>
           </div>
@@ -81,7 +81,7 @@ const AlumniSection = () => {
   }
 
   return (
-    <section id="alumni" className="py-20 bg-card-bg">
+    <section id="alumni" className="py-20 bg-card-bg dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,17 +89,17 @@ const AlumniSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-accent-main mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-accent-main dark:text-dark-blue-primary mb-6">
             Our Alumni
           </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto">
             Success stories from our talented graduates who are making waves in the industry
           </p>
         </motion.div>
       </div>
 
       {/* Stats Section */}
-      <div className="py-16 bg-bg-main">
+      <div className="py-16 bg-bg-main dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
@@ -115,11 +115,11 @@ const AlumniSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-accent-main mb-2">{stat.value}</h3>
-                <p className="text-text-light">{stat.label}</p>
+                <h3 className="text-3xl font-bold text-accent-main dark:text-dark-blue-primary mb-2">{stat.value}</h3>
+                <p className="text-text-light dark:text-dark-text-secondary">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -127,7 +127,7 @@ const AlumniSection = () => {
       </div>
 
       {/* Alumni Carousel */}
-      <div className="py-20 bg-bg-main">
+      <div className="py-20 bg-bg-main dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -135,10 +135,10 @@ const AlumniSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl font-bold text-accent-main mb-4">
+            <h3 className="text-3xl font-bold text-accent-main dark:text-dark-blue-primary mb-4">
               Featured Alumni
             </h3>
-            <p className="text-lg text-text-light">
+            <p className="text-lg text-text-light dark:text-dark-text-secondary">
               Meet some of our successful graduates
             </p>
           </motion.div>
@@ -152,7 +152,7 @@ const AlumniSection = () => {
               >
                 {alumni.map((person) => (
                   <div key={person.id} className="w-full flex-shrink-0 px-4">
-                    <div className="bg-card-bg rounded-2xl shadow-xl p-8">
+                    <div className="bg-card-bg dark:bg-dark-card rounded-2xl shadow-xl p-8">
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* Left Column - Image and Basic Info */}
                         <div className="text-center lg:text-left">
@@ -164,28 +164,28 @@ const AlumniSection = () => {
                                 className="w-48 h-48 mx-auto lg:mx-0 rounded-full object-cover"
                               />
                             ) : (
-                              <div className="w-48 h-48 mx-auto lg:mx-0 bg-gradient-to-br from-accent-main to-accent-main rounded-full flex items-center justify-center">
+                              <div className="w-48 h-48 mx-auto lg:mx-0 bg-gradient-to-br from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center">
                                 <Users className="w-24 h-24 text-white/50" />
                               </div>
                             )}
-                            <div className="absolute bottom-0 right-0 lg:right-0 lg:bottom-0 bg-accent-main text-white px-3 py-1 rounded-full text-xs font-medium">
+                            <div className="absolute bottom-0 right-0 lg:right-0 lg:bottom-0 bg-accent-main dark:bg-dark-blue-primary text-white px-3 py-1 rounded-full text-xs font-medium">
                               Batch {person.batch}
                             </div>
                           </div>
                           
-                          <h3 className="text-2xl font-bold text-text-main mb-2">
+                          <h3 className="text-2xl font-bold text-text-main dark:text-dark-blue-primary">
                             {person.name}
                           </h3>
                           
-                          <p className="text-accent-main font-semibold mb-1">
+                          <p className="text-accent-main dark:text-dark-blue-primary font-semibold mb-1">
                             {person.role}
                           </p>
                           
-                          <p className="text-text-light mb-4">
+                          <p className="text-text-light dark:text-dark-text-secondary mb-4">
                             {person.company}
                           </p>
 
-                          <div className="flex items-center justify-center lg:justify-start text-sm text-text-light mb-4">
+                          <div className="flex items-center justify-center lg:justify-start text-sm text-text-light dark:text-dark-text-secondary mb-4">
                             <MapPin className="w-4 h-4 mr-1" />
                             <span>{person.location}</span>
                           </div>
@@ -216,22 +216,22 @@ const AlumniSection = () => {
 
                         {/* Right Column - Quote and Details */}
                         <div>
-                          <div className="bg-bg-main rounded-xl p-6 mb-6 border border-border-light">
-                            <Quote className="w-8 h-8 text-accent-main mb-3" />
-                            <p className="text-text-light italic leading-relaxed">
+                          <div className="bg-bg-main dark:bg-dark-card rounded-xl p-6 mb-6 border border-border-light dark:border-dark-border">
+                            <Quote className="w-8 h-8 text-accent-main dark:text-dark-blue-primary mb-3" />
+                            <p className="text-text-light dark:text-dark-text-secondary italic leading-relaxed">
                               "{person.quote}"
                             </p>
                           </div>
 
                           <div className="mb-6">
-                            <h4 className="font-semibold text-text-main mb-3">
+                            <h4 className="font-semibold text-text-main dark:text-dark-blue-primary mb-3">
                               Key Achievements
                             </h4>
                             <ul className="space-y-2">
                               {person.achievements.map((achievement, index) => (
                                 <li key={index} className="flex items-start">
-                                  <Star className="w-4 h-4 text-accent-main mr-2 mt-1 flex-shrink-0" />
-                                  <span className="text-text-light text-sm">
+                                  <Star className="w-4 h-4 text-accent-main dark:text-dark-blue-primary mr-2 mt-1 flex-shrink-0" />
+                                  <span className="text-text-light dark:text-dark-text-secondary text-sm">
                                     {achievement}
                                   </span>
                                 </li>
@@ -240,14 +240,14 @@ const AlumniSection = () => {
                           </div>
 
                           <div>
-                            <h4 className="font-semibold text-text-main mb-3">
+                            <h4 className="font-semibold text-text-main dark:text-dark-blue-primary mb-3">
                               Technical Skills
                             </h4>
                             <div className="flex flex-wrap gap-2">
                               {person.skills.map((skill) => (
                                 <span
                                   key={skill}
-                                  className="bg-bg-main text-text-light px-3 py-1 rounded-full text-xs font-medium border border-border-light"
+                                  className="bg-bg-main dark:bg-dark-card text-text-light dark:text-dark-text-secondary px-3 py-1 rounded-full text-xs font-medium border border-border-light dark:border-dark-border"
                                 >
                                   {skill}
                                 </span>
@@ -267,13 +267,13 @@ const AlumniSection = () => {
               onClick={prevSlide}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-card-bg p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
             >
-              <ChevronLeft className="w-6 h-6 text-text-light" />
+              <ChevronLeft className="w-6 h-6 text-text-light dark:text-dark-text-secondary" />
             </button>
             <button
               onClick={nextSlide}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-card-bg p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
             >
-              <ChevronRight className="w-6 h-6 text-text-light" />
+              <ChevronRight className="w-6 h-6 text-text-light dark:text-dark-text-secondary" />
             </button>
 
             {/* Dots Indicator */}
@@ -284,8 +284,8 @@ const AlumniSection = () => {
                   onClick={() => goToSlide(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-200 ${
                     index === currentIndex
-                      ? 'bg-accent-main w-8'
-                      : 'bg-border-light'
+                      ? 'bg-accent-main dark:bg-dark-blue-primary w-8'
+                      : 'bg-border-light dark:border-dark-border'
                   }`}
                 />
               ))}
@@ -295,7 +295,7 @@ const AlumniSection = () => {
       </div>
 
       {/* All Alumni Grid */}
-      <div className="py-20 bg-card-bg">
+      <div className="py-20 bg-card-bg dark:bg-dark-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -303,10 +303,10 @@ const AlumniSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl font-bold text-accent-main mb-4">
+            <h3 className="text-3xl font-bold text-accent-main dark:text-dark-blue-primary mb-4">
               All Alumni Success Stories
             </h3>
-            <p className="text-lg text-text-light">
+            <p className="text-lg text-text-light dark:text-dark-text-secondary">
               More inspiring journeys from our graduates
             </p>
           </motion.div>
@@ -319,7 +319,7 @@ const AlumniSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-card-bg dark:bg-card-bg/10 rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-border-light dark:border-white/10"
+                className="bg-card-bg dark:bg-dark-card rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-border-light dark:border-dark-border"
               >
                 <div className="flex items-center space-x-4 mb-4">
                   {person.image ? (
@@ -329,25 +329,25 @@ const AlumniSection = () => {
                       className="w-16 h-16 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="w-16 h-16 bg-gradient-to-br from-accent-main to-accent-main rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center">
                       <Users className="w-8 h-8 text-white/50" />
                     </div>
                   )}
                   <div>
-                    <h3 className="text-lg font-bold text-text-main dark:text-white">
+                    <h3 className="text-lg font-bold text-text-main dark:text-dark-blue-primary">
                       {person.name}
                     </h3>
-                    <p className="text-accent-main font-medium text-sm">
+                    <p className="text-accent-main dark:text-dark-blue-primary font-medium text-sm">
                       {person.role}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-text-light dark:text-white/70 text-sm mb-3">
+                <p className="text-text-light dark:text-dark-text-secondary text-sm mb-3">
                   {person.company} • {person.location}
                 </p>
 
-                <div className="flex items-center text-xs text-text-light dark:text-white/70">
+                <div className="flex items-center text-xs text-text-light dark:text-dark-text-secondary">
                   <Calendar className="w-3 h-3 mr-1" />
                   <span>Batch {person.batch}</span>
                 </div>
@@ -358,7 +358,7 @@ const AlumniSection = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-r from-accent-main to-accent-main">
+      <div className="py-20 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -366,7 +366,7 @@ const AlumniSection = () => {
             transition={{ duration: 0.6 }}
           >
             <Award className="w-16 h-16 text-white mx-auto mb-6" />
-            <h3 className="text-4xl font-bold text-white mb-4">
+            <h3 className="text-4xl font-bold text-white dark:text-white mb-4">
               Join Our Success Stories
             </h3>
             <p className="text-xl text-white/90 mb-8">
@@ -374,7 +374,7 @@ const AlumniSection = () => {
             </p>
             <a
               href="#contact"
-              className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-bg-main transition-colors duration-300 inline-flex items-center"
+              className="bg-card-bg dark:bg-dark-card text-accent-main dark:text-dark-blue-primary px-8 py-3 rounded-full font-semibold hover:bg-bg-main transition-colors duration-300 inline-flex items-center"
             >
               Apply Now
               <ExternalLink className="w-5 h-5 ml-2" />

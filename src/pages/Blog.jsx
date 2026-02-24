@@ -66,12 +66,12 @@ const Blog = () => {
   })
 
   return (
-    <div className="min-h-screen bg-bg-main dark:bg-text-main transition-colors duration-300">
+    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
       <Navbar />
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-accent-light/10">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-white to-accent-light/10 dark:from-dark-bg dark:via-dark-surface dark:to-dark-blue-accent/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ const Blog = () => {
             className="text-center"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-white mb-6">
-              <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">Blog & Insights</span>
+              <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">Blog & Insights</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-light dark:text-white/70 max-w-3xl mx-auto">
               Latest news, trends, and insights from our team of experts
@@ -90,7 +90,7 @@ const Blog = () => {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-12 bg-bg-main dark:bg-text-main border-b border-border-light dark:border-white/10">
+      <section className="py-12 bg-bg-main dark:bg-dark-bg border-b border-border-light dark:border-dark-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search Bar */}
@@ -101,7 +101,7 @@ const Blog = () => {
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white"
+                className="w-full pl-10 pr-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-dark-blue-accent focus:border-transparent bg-card-bg dark:bg-dark-card text-text-main dark:text-white"
               />
             </div>
 
@@ -115,8 +115,8 @@ const Blog = () => {
                     onClick={() => setSelectedCategory(category)}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                       selectedCategory === category
-                        ? 'bg-accent-main text-white'
-                        : 'bg-card-bg text-text-main hover:bg-bg-main border border-border-light'
+                        ? 'bg-dark-blue-accent text-white'
+                        : 'bg-card-bg dark:bg-dark-card text-text-main dark:text-white hover:bg-dark-surface border border-border-light dark:border-dark-border'
                     }`}
                   >
                     {category}
@@ -133,7 +133,7 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-dark-blue-accent"></div>
             </div>
           ) : (
             <>
@@ -145,10 +145,10 @@ const Blog = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     whileHover={{ y: -5 }}
-                    className="bg-card-bg dark:bg-card-bg/10 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-white/10"
+                    className="bg-card-bg dark:bg-dark-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-border-light dark:border-dark-border"
                   >
                     {/* Post Image */}
-                    <div className="h-48 bg-gradient-to-br from-accent-main to-accent-main relative">
+                    <div className="h-48 bg-gradient-to-br from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary relative">
                       {post.featured_image ? (
                         <img 
                           src={post.featured_image} 
@@ -164,7 +164,7 @@ const Blog = () => {
                         </div>
                       )}
                       <div className="absolute top-4 left-4">
-                        <span className="bg-accent-main text-white px-3 py-1 rounded-full text-xs font-medium">
+                        <span className="bg-dark-blue-accent text-white px-3 py-1 rounded-full text-xs font-medium">
                           {post.category}
                         </span>
                       </div>
@@ -207,7 +207,7 @@ const Blog = () => {
 
                         <button 
                           onClick={() => shareOnLinkedIn()}
-                          className="text-accent-main dark:text-accent-light/40 font-semibold flex items-center hover:text-accent-dark transition-colors duration-200"
+                          className="text-dark-blue-accent dark:text-dark-blue-primary font-semibold flex items-center hover:text-dark-blue-secondary transition-colors duration-200"
                         >
                           Read More
                           <ArrowRight className="w-4 h-4 ml-1" />
@@ -256,9 +256,9 @@ const Blog = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white"
+                className="flex-1 px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-dark-blue-accent focus:border-transparent bg-card-bg dark:bg-dark-card text-text-main dark:text-white"
               />
-              <button className="bg-accent-main text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-dark transition-colors duration-300">
+              <button className="bg-dark-blue-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-dark-blue-primary transition-colors duration-300">
                 Subscribe
               </button>
             </div>

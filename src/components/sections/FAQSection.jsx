@@ -74,7 +74,7 @@ const FAQSection = () => {
     {
       id: 10,
       question: "How do I contact YugaYatra support?",
-      answer: "You can reach our support team via email at support@yugayatra.com, call us at +91-XXXXXXXXXX, or use the contact form on our website. We typically respond within 24 hours.",
+      answer: "You can reach our support team via email at hr@yugayatraretail.com, call us at +91 8757728679, or use the contact form on our website. We typically respond within 24 hours.",
       icon: MessageCircle,
       category: "Contact"
     }
@@ -100,7 +100,7 @@ const FAQSection = () => {
   const categories = [...new Set(faqs.map(faq => faq.category))]
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-br from-accent-main/10 to-accent-main/10">
+    <section id="faq" className="py-20 bg-gradient-to-br from-accent-main/10 to-accent-main/10 dark:from-black dark:to-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -110,14 +110,14 @@ const FAQSection = () => {
           className="text-center mb-12"
         >
           <div className="flex justify-center mb-4">
-            <div className="p-3 bg-gradient-to-r from-accent-main to-accent-main rounded-full">
+            <div className="p-3 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full">
               <HelpCircle className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h2 className="text-4xl font-bold text-accent-main mb-4">
+          <h2 className="text-4xl font-bold text-accent-main dark:text-dark-blue-primary mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-text-light max-w-2xl mx-auto">
+          <p className="text-lg text-text-light dark:text-dark-text-secondary max-w-2xl mx-auto">
             Find answers to common questions about YugaYatra and our internship programs
           </p>
         </motion.div>
@@ -130,18 +130,18 @@ const FAQSection = () => {
           className="max-w-2xl mx-auto mb-8"
         >
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
             <input
               type="text"
               placeholder="Search for questions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 focus:border-accent-main focus:ring-2 focus:ring-accent-main/20 transition-all duration-300 bg-white/80 backdrop-blur-sm"
+              className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 dark:border-gray-700 focus:border-accent-main dark:focus:border-dark-blue-accent focus:ring-2 focus:ring-accent-main/20 dark:focus:ring-dark-blue-accent/20 transition-all duration-300 bg-white/80 backdrop-blur-sm"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-text-main transition-colors"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-text-main dark:hover:text-dark-blue-primary transition-colors"
               >
                 ×
               </button>
@@ -165,7 +165,7 @@ const FAQSection = () => {
             <button
               key={category}
               onClick={() => setSearchTerm(category)}
-              className="px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full text-sm font-medium text-text-main hover:bg-accent-main hover:text-white transition-all duration-300 border border-gray-200"
+              className="px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full text-sm font-medium text-text-main hover:bg-accent-main dark:hover:bg-dark-blue-accent hover:text-white transition-all duration-300 border border-gray-200"
             >
               {category}
             </button>
@@ -186,22 +186,22 @@ const FAQSection = () => {
               >
                 <button
                   onClick={() => toggleFAQ(faq.id)}
-                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-accent-main/5 transition-colors duration-300"
+                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-blue-500/5 dark:hover:bg-blue-500/5 transition-colors duration-300"
                 >
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-gradient-to-r from-accent-main/20 to-accent-main/20 rounded-lg">
-                      {React.createElement(faq.icon, { className: "w-5 h-5 text-accent-main" })}
+                    <div className="py-2 bg-gradient-to-br from-blue-500/10 to-blue-500/10 rounded-lg">
+                      {React.createElement(faq.icon, { className: "w-5 h-5 text-blue-500" })}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-text-main">{faq.question}</h3>
-                      <span className="text-xs text-text-light">{faq.category}</span>
+                      <h3 className="font-semibold text-blue-500">{faq.question}</h3>
+                      <span className="text-xs text-blue-300">{faq.category}</span>
                     </div>
                   </div>
                   <motion.div
                     animate={{ rotate: expandedFAQ === faq.id ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="w-5 h-5 text-text-light" />
+                    <ChevronDown className="w-5 h-5 text-text-light dark:text-dark-text-secondary" />
                   </motion.div>
                 </button>
                 
@@ -232,16 +232,16 @@ const FAQSection = () => {
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
-            <HelpCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-text-main mb-2">
+            <HelpCircle className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-text-main dark:text-dark-blue-primary mb-2">
               No questions found
             </h3>
-            <p className="text-text-light mb-4">
+            <p className="text-text-light dark:text-dark-text-secondary mb-4">
               Try adjusting your search terms or browse all questions
             </p>
             <button
               onClick={() => setSearchTerm('')}
-              className="px-6 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-main/90 transition-colors"
+              className="px-6 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-main/90 dark:bg-dark-blue-accent dark:hover:bg-dark-blue-accent/90 transition-colors"
             >
               Clear Search
             </button>
@@ -255,26 +255,26 @@ const FAQSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center bg-gradient-to-r from-accent-main/10 to-accent-main/10 rounded-xl p-8"
         >
-          <h3 className="text-2xl font-bold text-text-main mb-4">
+          <h3 className="text-2xl font-bold text-text-main dark:text-dark-blue-primary mb-4">
             Still have questions?
           </h3>
-          <p className="text-text-light mb-6">
+          <p className="text-text-light dark:text-dark-text-secondary mb-6">
             Our support team is here to help you with any questions you might have
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
               href="mailto:support@yugayatra.com"
-              className="flex items-center space-x-2 px-6 py-3 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex items-center space-x-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
-              <Mail className="w-5 h-5 text-accent-main" />
-              <span className="text-text-main font-medium">support@yugayatra.com</span>
+              <Mail className="w-5 h-5 text-accent-main dark:text-dark-blue-primary" />
+              <span className="text-text-main dark:text-dark-blue-primary font-medium">support@yugayatra.com</span>
             </a>
             <a
-              href="tel:+91XXXXXXXXXX"
-              className="flex items-center space-x-2 px-6 py-3 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+              href="tel:+918757728679"
+              className="flex items-center space-x-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
-              <Phone className="w-5 h-5 text-accent-main" />
-              <span className="text-text-main font-medium">+91-XXXXXXXXXX</span>
+              <Phone className="w-5 h-5 text-accent-main dark:text-dark-blue-primary" />
+              <span className="text-text-main dark:text-dark-blue-primary font-medium">+91 8757728679</span>
             </a>
           </div>
         </motion.div>

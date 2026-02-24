@@ -103,12 +103,12 @@ const About = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-bg-main transition-colors duration-300">
+    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
       <Navbar />
       <ScrollToTop />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-card-bg to-bg-main">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-bg-main via-card-bg to-bg-main dark:from-dark-bg dark:via-dark-card dark:to-dark-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -116,10 +116,10 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-text-main mb-6">
-              About <span className="text-accent-main">YugaYatra Retail (OPC) Pvt Ltd</span>
+            <h1 className="text-5xl md:text-6xl font-bold text-text-main dark:text-dark-text-primary mb-6">
+              About <span className="text-accent-main dark:text-dark-blue-accent">YugaYatra Retail (OPC) Pvt Ltd</span>
             </h1>
-            <p className="text-xl md:text-2xl text-text-light max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-4xl mx-auto">
               YugaYatra Retail (OPC) Pvt Ltd Retail (OPC) Pvt Ltd is a dynamic technology company specializing in 
               digital solutions, workforce development, and innovative services that bridge 
               the gap between education and industry.
@@ -129,7 +129,7 @@ const About = () => {
       </section>
 
       {/* Mission, Vision, Values */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white dark:bg-dark-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value, index) => (
@@ -138,15 +138,15 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-8 rounded-2xl bg-bg-main hover:shadow-lg transition-shadow duration-300"
+                className="text-center p-8 rounded-2xl bg-bg-main dark:bg-dark-card hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-text-main mb-4">
+                <h3 className="text-2xl font-bold text-text-main dark:text-dark-text-primary mb-4">
                   {value.title}
                 </h3>
-                <p className="text-text-light leading-relaxed">
+                <p className="text-text-light dark:text-dark-text-secondary leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -179,9 +179,9 @@ const About = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-6 bg-card-bg rounded-xl shadow-lg"
+                className="text-center p-6 bg-card-bg dark:bg-dark-card rounded-xl shadow-lg"
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-text-main mb-2">
@@ -197,7 +197,7 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-bg-main to-card-bg">
+      <section className="py-20 bg-gradient-to-br from-bg-main to-card-bg dark:from-dark-bg dark:to-dark-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -220,9 +220,9 @@ const About = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-8 bg-card-bg border-2 border-border-light rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:border-accent-main"
+                className="text-center p-8 bg-card-bg dark:bg-dark-card border-2 border-border-light dark:border-dark-border rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:border-accent-main dark:hover:border-dark-blue-accent"
               >
-                <div className="text-5xl font-bold text-accent-main mb-4">
+                <div className="text-5xl font-bold text-accent-main dark:text-dark-blue-accent mb-4">
                   {stat.number}
                 </div>
                 <h3 className="text-xl font-bold text-text-main mb-2">
@@ -258,7 +258,7 @@ const About = () => {
           </motion.div>
 
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-accent-main to-accent-main"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary"></div>
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
@@ -268,14 +268,14 @@ const About = () => {
                 className={`flex items-center mb-12 ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}
               >
                 <div className="w-1/2"></div>
-                <div className="w-8 h-8 bg-card-bg border-4 border-accent-main rounded-full z-10"></div>
+                <div className="w-8 h-8 bg-card-bg dark:bg-dark-card border-4 border-accent-main dark:border-dark-blue-accent rounded-full z-10"></div>
                 <div className="w-1/2 px-8">
-                  <div className="bg-card-bg p-6 rounded-xl shadow-lg border border-border-light">
+                  <div className="bg-card-bg dark:bg-dark-card p-6 rounded-xl shadow-lg border border-border-light dark:border-dark-border">
                     <div className="flex items-center mb-2">
-                      <Calendar className="w-5 h-5 text-accent-main mr-2" />
-                      <span className="text-sm font-semibold text-accent-main">{item.year}</span>
+                      <Calendar className="w-5 h-5 text-accent-main dark:text-dark-blue-accent mr-2" />
+                      <span className="text-sm font-semibold text-accent-main dark:text-dark-blue-accent">{item.year}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-text-main mb-2">
+                    <h3 className="text-xl font-bold text-text-main dark:text-dark-text-primary mb-2">
                       {item.title}
                     </h3>
                     <p className="text-text-light">
@@ -290,7 +290,7 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-card-bg">
+      <section className="py-20 bg-card-bg dark:bg-dark-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -324,8 +324,8 @@ const About = () => {
                   'Continuous support and guidance'
                 ].map((strength, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-accent-main mt-1 flex-shrink-0" />
-                    <p className="text-text-light">{strength}</p>
+                    <CheckCircle className="w-5 h-5 text-accent-main dark:text-dark-blue-accent mt-1 flex-shrink-0" />
+                    <p className="text-text-light dark:text-dark-text-secondary">{strength}</p>
                   </div>
                 ))}
               </div>
@@ -348,8 +348,8 @@ const About = () => {
                   'Global presence across multiple countries'
                 ].map((impact, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <Award className="w-5 h-5 text-accent-main mt-1 flex-shrink-0" />
-                    <p className="text-text-light">{impact}</p>
+                    <Award className="w-5 h-5 text-accent-main dark:text-dark-blue-accent mt-1 flex-shrink-0" />
+                    <p className="text-text-light dark:text-dark-text-secondary">{impact}</p>
                   </div>
                 ))}
               </div>
@@ -359,7 +359,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-accent-main to-accent-main">
+      <section className="py-20 bg-gradient-to-r from-accent-main to-accent-gold dark:from-dark-blue-accent dark:to-dark-blue-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -378,13 +378,13 @@ const About = () => {
                 href="https://mail.google.com/mail/?view=cm&to=info@yugyatra.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-card-bg text-accent-main px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300"
+                className="bg-card-bg dark:bg-dark-card text-accent-main dark:text-dark-blue-accent px-8 py-3 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-white/10 transition-colors duration-300"
               >
                 Get in Touch
               </a>
               <Link
                 to="/services"
-                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-accent-main transition-all duration-300"
+                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-accent-main dark:hover:text-dark-blue-accent transition-all duration-300"
               >
                 Explore Services
               </Link>

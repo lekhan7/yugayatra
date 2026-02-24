@@ -5,15 +5,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Database functions
-export const submitContactForm = async (formData) => {
-  const { data, error } = await supabase
-    .from('contacts')
-    .insert([formData])
-  
-  if (error) throw error
-  return data
-}
+// Database functions - Note: Contact forms now use Web3 Forms instead of Supabase
 
 export const submitCareerApplication = async (formData) => {
   const { data, error } = await supabase

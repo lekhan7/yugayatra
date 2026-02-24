@@ -101,11 +101,11 @@ const ChatBot = () => {
     },
     {
       question: "How do I contact YugaYatra support?",
-      answer: "You can reach our support team via email at support@yugayatra.com, call us at +91-XXXXXXXXXX, or use the contact form on our website. We typically respond within 24 hours."
+      answer: "You can reach our support team via email at hr@yugayatraretail.com, call us at +91 8757728679, or use the contact form on our website. We typically respond within 24 hours."
     },
     {
       question: "how do i contact yugayatra support",
-      answer: "You can reach our support team via email at support@yugayatra.com, call us at +91-XXXXXXXXXX, or use the contact form on our website. We typically respond within 24 hours."
+      answer: "You can reach our support team via email at hr@yugayatraretail.com, call us at +91 8757728679, or use the contact form on our website. We typically respond within 24 hours."
     },
     {
       question: "where are you located",
@@ -116,6 +116,206 @@ const ChatBot = () => {
       answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
     },
     {
+      question: "business hours",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "what are business hours",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "business hour",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "bussines hour",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "bussines hours",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "what are bussines hours",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "what is the bussines hour",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "what is the business hour",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "timing",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "what time do you open",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "what time do you close",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "when are you open",
+      answer: "Our business hours are:\nMonday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed"
+    },
+    {
+      question: "where are you located",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "address",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "what is your address",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "location",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "where is your office",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "what is the address of your company",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "company address",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "office address",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "what is your company location",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "company location",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "where is your company located",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "adress",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "what is your adress",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "company adress",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "office adress",
+      answer: "We are located in Electronic City, Phase 1, Bengaluru."
+    },
+    {
+      question: "do you provide support",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "support",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "how can you support",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "support availability",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "24/7 support",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "what is your support availability",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "what is the support hours",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "support hours",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "what are support hours",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "suport hours",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "what is suport hours",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "24 by 7 support",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "24 7 support",
+      answer: "Yes, we provide 24/7 support to our clients."
+    },
+    {
+      question: "what is your satisfaction rate",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "satisfaction rate",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "customer satisfaction",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "client satisfaction",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "how satisfied are your customers",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "what is your satifaction rate",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "satifaction rate",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "customer satifaction",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "client satifaction",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
+      question: "how satified are your customers",
+      answer: "We maintain a 100% satisfaction rate with our clients."
+    },
+    {
       question: "how can i contact you",
       answer: "You can reach us at:\nEmail: hr@yugayatraretail.com\nPhone: +91 8757728679"
     },
@@ -124,16 +324,8 @@ const ChatBot = () => {
       answer: "We offer retail solutions, consulting services, and innovative business solutions."
     },
     {
-      question: "do you provide support",
-      answer: "Yes, we provide 24/7 support to our clients."
-    },
-    {
       question: "what is your response time",
       answer: "Our average response time is 24 hours for all inquiries."
-    },
-    {
-      question: "what is your satisfaction rate",
-      answer: "We maintain a 100% satisfaction rate with our clients."
     },
     {
       question: "do you offer internships",
@@ -619,7 +811,7 @@ const ChatBot = () => {
       })
     }
     
-    // Priority 3: Word-level match (if no contains match) - but must have multiple matching words
+    // Priority 3: Fuzzy matching for common typos (if no contains match)
     if (!found) {
       found = qaDatabase.find(qa => {
         const qaLower = qa.question.toLowerCase()
@@ -628,7 +820,29 @@ const ChatBot = () => {
         
         // Must have at least 2 matching words of 3+ characters
         const matchingWords = userWords.filter(word => qaWords.includes(word))
-        return matchingWords.length >= 2
+        if (matchingWords.length >= 2) {
+          return true
+        }
+        
+        // Handle common typos with simple character replacement
+        const userQuestionFixed = normalizedQuestion
+          .replace(/bussines/g, 'business')
+          .replace(/buisness/g, 'business')
+          .replace(/busines/g, 'business')
+          .replace(/adress/g, 'address')
+          .replace(/suport/g, 'support')
+          .replace(/satifaction/g, 'satisfaction')
+          
+        const qaQuestionFixed = qaLower
+          .replace(/bussines/g, 'business')
+          .replace(/buisness/g, 'business')
+          .replace(/busines/g, 'business')
+          .replace(/adress/g, 'address')
+          .replace(/suport/g, 'support')
+          .replace(/satifaction/g, 'satisfaction')
+        
+        // Try matching with fixed typos
+        return qaQuestionFixed.includes(userQuestionFixed) || userQuestionFixed.includes(qaQuestionFixed)
       })
     }
     
