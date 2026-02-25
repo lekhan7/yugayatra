@@ -131,6 +131,7 @@ function App() {
             <ScrollToTop />
           </motion.div>
         } />
+        
         <Route path="/about" element={
           <motion.div
             initial={{ opacity: 0 }}
