@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenRouter API Test</title>
+</head>
+<body>
+    <h1>OpenRouter API Test</h1>
+    <button onclick="testAPI()">Test API Key</button>
+    <div id="result"></div>
+
+    <script>
+        const API_KEY = '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';
+        const BASE_URL = 'https://openrouter.ai/api/v1';
+
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+
+            try {
+                const response = await fetch(`${BASE_URL}/models`, {
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = {
+                    status: response.status,
+                    statusText: response.statusText,
+                    ok: response.ok
+                };
+
+                if (response.ok) {
+                    const data = await response.json();
+                    result.data = data;
+                    resultDiv.innerHTML = `<pre style="background: #f0f0f0; padding: 10px;">${JSON.stringify(result, null, 2)}</pre>`;
+                } else {
+                    const errorText = await response.text();
+                    result.error = errorText;
+                    resultDiv.innerHTML = `<pre style="background: #ffe6e6; padding: 10px; color: red;">${JSON.stringify(result, null, 2)}</pre>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<pre style="background: #ffe6e6; padding: 10px; color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>

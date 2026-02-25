@@ -25,7 +25,7 @@ const Home = () => {
       <HeroSection />
 
       {/* About Section */}
-      <section className="bg-[#BEF0DA] dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
         <AboutSection />
       </section>
 
@@ -33,7 +33,7 @@ const Home = () => {
       <JourneyTimeline />
 
       {/* Services Section */}
-      <section className="bg-[#BEF0DA] dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
         <ServicesSection />
       </section>
 
@@ -44,7 +44,7 @@ const Home = () => {
       <ProjectsSection />
 
       {/* Alumni Section */}
-      <section className="bg-[#BEF0DA] dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
         <AlumniSection />
       </section>
 
@@ -55,7 +55,7 @@ const Home = () => {
       <TestimonialsSection />
 
       {/* Blog Section */}
-      <section className="bg-[#BEF0DA] dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
         <BlogSection />
       </section>
 
@@ -63,7 +63,7 @@ const Home = () => {
       <QuizSection />
 
       {/* FAQ Section */}
-      <section className="bg-[#BEF0DA] dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
         <FAQSection />
       </section>
 

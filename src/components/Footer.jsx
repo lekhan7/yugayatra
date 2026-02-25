@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { 
-  Facebook, 
   Twitter, 
   Linkedin, 
   Instagram, 
@@ -34,10 +33,9 @@ const Footer = () => {
   }
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/yugayatra-retail-opc-private-ltd', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://x.com/yugayatra', label: 'Twitter' },
+    { icon: Instagram, href: 'https://www.instagram.com/yugayatra/', label: 'Instagram' },
   ]
 
   const scrollToTop = () => {

@@ -13,10 +13,11 @@ import {
   User,
   PenTool,
   UserPlus,
-  Send
+  Send,
+  Settings
 } from 'lucide-react'
 
-const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
+const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSettingsClick }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const menuItems = [
@@ -30,6 +31,12 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
     { id: 'team', label: 'Team', icon: UserPlus },
     { id: 'blog', label: 'Blog & Insights', icon: PenTool },
   ]
+
+  const handleSettingsClick = () => {
+    if (onSettingsClick) {
+      onSettingsClick()
+    }
+  }
 
   return (
     <div className={`${isCollapsed ? 'w-20' : 'w-64'} bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 min-h-screen relative border-r border-gray-200 dark:border-gray-700`}>
@@ -78,6 +85,17 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout }) => {
             )
           })}
         </ul>
+        
+        {/* Settings Button */}
+        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <button
+            onClick={handleSettingsClick}
+            className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+          >
+            <Settings size={20} />
+            {!isCollapsed && <span className="font-medium">Settings</span>}
+          </button>
+        </div>
       </nav>
 
       {/* User Info & Logout */}

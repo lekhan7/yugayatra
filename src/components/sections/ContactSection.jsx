@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight, Clock, TrendingUp } from 'lucide-react'
-import { submitContactForm } from '../../services/supabase'
+import { submitContactForm } from '../../services/web3forms'
+import { trackContactForm } from '../../hooks/useAnalytics'
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -29,6 +30,7 @@ const ContactSection = () => {
 
     try {
       await submitContactForm(formData)
+      trackContactForm() // Track contact form submission
       setIsSubmitted(true)
       setFormData({
         name: '',

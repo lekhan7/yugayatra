@@ -324,23 +324,23 @@ const AnimatedDashboard = ({ onSettingsOpen }) => {
         <motion.div variants={itemVariants} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">Application Trends</h2>
-            <Activity className="text-blue-500" size={20} />
+            <Activity className="text-accent-main" size={20} />
           </div>
           <ResponsiveContainer width="100%" height={250}>
             <AreaChart data={applicationTrends}>
               <defs>
                 <linearGradient id="colorApplications" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.1}/>
+                  <stop offset="5%" stopColor="#E8834A" stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor="#E8834A" stopOpacity={0.1}/>
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#F5DEB3" />
               <XAxis 
                 dataKey="date" 
-                stroke="#6b7280"
+                stroke="#5D4037"
                 fontSize={12}
               />
-              <YAxis stroke="#6b7280" fontSize={12} />
+              <YAxis stroke="#5D4037" fontSize={12} />
               <Tooltip 
                 contentStyle={{ 
                   backgroundColor: '#ffffff',
@@ -354,7 +354,7 @@ const AnimatedDashboard = ({ onSettingsOpen }) => {
               <Area 
                 type="monotone" 
                 dataKey="applications" 
-                stroke="#3b82f6" 
+                stroke="#E8834A" 
                 fillOpacity={1} 
                 fill="url(#colorApplications)"
                 strokeWidth={2}

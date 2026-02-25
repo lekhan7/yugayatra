@@ -6,6 +6,7 @@ import ScrollProgressBar from './components/ScrollProgressBar'
 import ChatBot from './components/ChatBot'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import NotificationProvider from './context/NotificationContext'
+import { usePageTracking } from './hooks/useAnalytics'
 
 // Import pages
 import Home from './pages/Home'
@@ -21,10 +22,15 @@ import Quiz from './pages/Quiz'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import Achievements from './pages/Achievements'
+import EstateExamHub from './pages/EstateExamHub'
+import ExamDashboard from './pages/ExamDashboard'
 
 function App() {
   const location = useLocation()
   const isAdminPage = location.pathname === '/admin'
+  
+  // Track page views with Google Analytics
+  usePageTracking()
 
   return (
     <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
@@ -172,6 +178,28 @@ function App() {
             transition={{ duration: 0.5 }}
           >
             <BlogPost />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/estate" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <EstateExamHub />
+            <Footer />
+            <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/estate/:examId" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ExamDashboard />
             <Footer />
             <ScrollToTop />
           </motion.div>

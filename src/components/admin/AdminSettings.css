@@ -1,12 +1,12 @@
 /* Admin Settings CSS Custom Properties */
 :root {
-  /* Default color scheme - will be overridden by settings */
-  --admin-primary-color: #3b82f6;
-  --admin-secondary-color: #8b5cf6;
-  --admin-accent-color: #10b981;
+  /* Default color scheme - Peach Glow Palette */
+  --admin-primary-color: #E8834A;
+  --admin-secondary-color: #FFAB80;
+  --admin-accent-color: #D84315;
   --admin-background-color: #ffffff;
-  --admin-surface-color: #f9fafb;
-  --admin-text-color: #111827;
+  --admin-surface-color: #FFF3E0;
+  --admin-text-color: #2D1810;
 
   /* Default typography - will be overridden by settings */
   --admin-font-family: 'Inter', system-ui, sans-serif;
