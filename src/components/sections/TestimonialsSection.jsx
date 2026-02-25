@@ -119,7 +119,7 @@ const TestimonialsSection = () => {
   }
 
   return (
-    <section id="testimonials" className="py-20 bg-card-bg dark:bg-black relative overflow-hidden">
+    <section ref={containerRef} id="testimonials" className="py-20 bg-card-bg dark:bg-black relative overflow-hidden">
       {/* Animated Background Elements */}
       <motion.div
         style={{ y: y1 }}

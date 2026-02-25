@@ -32,14 +32,14 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
       spacing: 'normal'
     },
     colors: {
-      primary: '#3b82f6',
-      secondary: '#8b5cf6',
-      accent: '#10b981',
+      primary: '#E8834A',
+      secondary: '#FFAB80',
+      accent: '#D84315',
       background: '#ffffff',
-      surface: '#f9fafb',
-      text: '#111827',
-      border: '#e5e7eb',
-      hover: '#f3f4f6',
+      surface: '#FFF3E0',
+      text: '#2D1810',
+      border: '#F5DEB3',
+      hover: '#FAF0E6',
       success: '#10b981',
       warning: '#f59e0b',
       error: '#ef4444'
@@ -153,14 +153,14 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
         spacing: 'normal'
       },
       colors: {
-        primary: '#3b82f6',
-        secondary: '#8b5cf6',
-        accent: '#10b981',
+        primary: '#E8834A',
+        secondary: '#FFAB80',
+        accent: '#D84315',
         background: '#ffffff',
-        surface: '#f9fafb',
-        text: '#111827',
-        border: '#e5e7eb',
-        hover: '#f3f4f6',
+        surface: '#FFF3E0',
+        text: '#2D1810',
+        border: '#F5DEB3',
+        hover: '#FAF0E6',
         success: '#10b981',
         warning: '#f59e0b',
         error: '#ef4444'
@@ -428,30 +428,30 @@ const AdminSettingsModal = ({ isOpen, onClose, onSettingsChange }) => {
           </button>
           <button
             onClick={() => {
-              const blueTheme = {
-                primary: '#3b82f6',
-                secondary: '#8b5cf6',
-                accent: '#10b981',
+              const peachTheme = {
+                primary: '#E8834A',
+                secondary: '#FFAB80',
+                accent: '#D84315',
                 background: '#ffffff',
-                surface: '#f9fafb',
-                text: '#111827',
-                border: '#e5e7eb',
-                hover: '#f3f4f6',
+                surface: '#FFF3E0',
+                text: '#2D1810',
+                border: '#F5DEB3',
+                hover: '#FAF0E6',
                 success: '#10b981',
                 warning: '#f59e0b',
                 error: '#ef4444'
               }
               setSettings(prev => {
-                const newSettings = { ...prev, colors: blueTheme }
+                const newSettings = { ...prev, colors: peachTheme }
                 if (originalSettings) {
                   setHasChanges(JSON.stringify(newSettings) !== JSON.stringify(originalSettings))
                 }
                 return newSettings
               })
             }}
-            className="px-3 py-1 text-xs bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400 rounded-lg hover:bg-blue-200"
+            className="px-3 py-1 text-xs bg-orange-100 text-orange-700 dark:bg-orange-900/20 dark:text-orange-400 rounded-lg hover:bg-orange-200"
           >
-            Blue Theme
+            Peach Theme
           </button>
           <button
             onClick={() => {
