@@ -79,7 +79,7 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-accent-main mb-6">Our Services</h1>
+            <h1 className="text-5xl md:text-6xl font-bold text-mint-clarity mb-6">Our Services</h1>
             <p className="text-xl md:text-2xl text-accent-main max-w-3xl mx-auto">
               Comprehensive digital solutions to accelerate your business growth and transformation
             </p>

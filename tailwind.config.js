@@ -8,6 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
+<<<<<<< HEAD
         // Light mode colors - Peach Glow Palette
         'bg-main': '#FDF0E6', // Light peach/cream main background
         'text-main': '#2D1810', // Dark brown for high contrast
@@ -22,6 +23,19 @@ export default {
         'card-bg': '#FFFFFF', // White for cards
         'surface-variant': '#FFF3E0', // Very light peach alternative
         'bg-alt': '#FAF0E6', // Slightly darker peach alt background
+=======
+        // Light mode colors (unchanged)
+        'bg-main': '#FFFFFF',
+        'text-main': '#1F2937',
+        'accent-main': '#B0E0E6', // Light Sky Blue for headings
+        'accent-dark': '#047857', // Very Dark Mint
+        'accent-gold': '#6EE7B7', // Light Mint for other elements
+        'accent-light': '#A7F3D0', // Very Light Mint
+        'mint-clarity': '#87CEEB', // Sky Blue
+        'text-light': '#374151',
+        'border-light': '#E5E7EB',
+        'card-bg': '#FFFFFF',
+>>>>>>> b9705d0ecfd05f30733e117f5385c34df395c8ec
         // Legacy colors for transition
         primary: '#FFFFFF',
         accent: '#E8834A',
