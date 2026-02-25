@@ -42,9 +42,9 @@
 /* Dark Mode Variables */
 .dark {
   --text-color: #FFFFFF;
-  --text-secondary: #FFAB80;
+  --text-secondary: #E5E5E5;
   --text-inverse: #2D1810;
-  --primary-light: #3E2723;
+  --primary-light: #1A1A1A;
 }
 
 /* Animation Classes */
@@ -87,9 +87,9 @@ body {
 }
 
 .dark .admin-panel {
-  --admin-bg: #3E2723;
+  --admin-bg: #1A1A1A;
   --admin-text: var(--text-color);
-  --admin-border: #5D4037;
+  --admin-border: #374151;
 }
 
 /* Custom theme mode - apply custom colors */

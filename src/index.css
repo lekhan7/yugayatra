@@ -306,16 +306,16 @@
 
 /* Dark mode scrollbar */
 .dark ::-webkit-scrollbar-track {
-  background: #1A0E08;
+  background: #0A0A0A;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #FFAB80, #E8834A);
+  background: linear-gradient(135deg, #3B82F6, #1D4ED8);
   border-radius: 4px;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #E8834A, #D84315);
+  background: linear-gradient(135deg, #1D4ED8, #60A5FA);
 }
 
 /* Selection */
@@ -342,39 +342,39 @@
 
 /* Dark mode global styles */
 .dark body {
-  background: #1A0E08;
+  background: #000000;
   color: #FFFFFF;
 }
 
 .dark .glass {
-  background: rgba(62, 39, 35, 0.8);
+  background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(232, 131, 74, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .dark .gradient-text {
-  background: linear-gradient(135deg, #FFAB80, #E8834A);
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .dark .btn-primary {
-  background: linear-gradient(135deg, #E8834A, #FFAB80);
+  background: linear-gradient(135deg, #1D4ED8, #3B82F6);
   color: #FFFFFF;
 }
 
 .dark .btn-primary:hover {
-  background: linear-gradient(135deg, #FFAB80, #FFB74D);
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
 }
 
 .dark .btn-secondary {
-  border-color: #E8834A;
-  color: #E8834A;
+  border-color: #3B82F6;
+  color: #3B82F6;
 }
 
 .dark .btn-secondary:hover {
-  background: #E8834A;
+  background: #3B82F6;
   color: #FFFFFF;
 }

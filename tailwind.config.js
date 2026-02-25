@@ -8,7 +8,6 @@ export default {
   theme: {
     extend: {
       colors: {
-<<<<<<< HEAD
         // Light mode colors - Peach Glow Palette
         'bg-main': '#FDF0E6', // Light peach/cream main background
         'text-main': '#2D1810', // Dark brown for high contrast
@@ -23,19 +22,6 @@ export default {
         'card-bg': '#FFFFFF', // White for cards
         'surface-variant': '#FFF3E0', // Very light peach alternative
         'bg-alt': '#FAF0E6', // Slightly darker peach alt background
-=======
-        // Light mode colors (unchanged)
-        'bg-main': '#FFFFFF',
-        'text-main': '#1F2937',
-        'accent-main': '#B0E0E6', // Light Sky Blue for headings
-        'accent-dark': '#047857', // Very Dark Mint
-        'accent-gold': '#6EE7B7', // Light Mint for other elements
-        'accent-light': '#A7F3D0', // Very Light Mint
-        'mint-clarity': '#87CEEB', // Sky Blue
-        'text-light': '#374151',
-        'border-light': '#E5E7EB',
-        'card-bg': '#FFFFFF',
->>>>>>> b9705d0ecfd05f30733e117f5385c34df395c8ec
         // Legacy colors for transition
         primary: '#FFFFFF',
         accent: '#E8834A',
@@ -44,20 +30,20 @@ export default {
         mint: '#E8834A',
         'soft-gray': '#FDF0E6',
         
-        // Dark mode colors - Peach Glow Dark Mode
-        'dark-bg': '#1A0E08', // Very dark brown
-        'dark-surface': '#2D1810', // Dark brown
-        'dark-card': '#3E2723', // Medium dark brown
+        // Dark mode colors - Black with Blue accents
+        'dark-bg': '#000000', // Pure black
+        'dark-surface': '#0A0A0A', // Very dark gray
+        'dark-card': '#1A1A1A', // Dark gray
         'dark-text-primary': '#FFFFFF', // White text
-        'dark-text-secondary': '#FFAB80', // Light peach for secondary text
-        'dark-text-muted': '#8D6E63', // Light brown for muted text
-        'dark-blue-primary': '#FFAB80', // Light peach accent (replacing blue)
-        'dark-blue-secondary': '#FFB74D', // Medium peach
-        'dark-blue-accent': '#E8834A', // Peach orange accent
-        'dark-blue-light': '#FFE0B2', // Very light peach
-        'dark-blue-muted': '#FFCC80', // Light peach muted
-        'dark-border': '#5D4037', // Medium brown border
-        'dark-hover': '#D84315', // Dark peach hover
+        'dark-text-secondary': '#E5E5E5', // Light gray text
+        'dark-text-muted': '#A0A0A0', // Muted gray text
+        'dark-blue-primary': '#3B82F6', // Blue primary
+        'dark-blue-secondary': '#60A5FA', // Blue secondary
+        'dark-blue-accent': '#1D4ED8', // Blue accent
+        'dark-blue-light': '#DBEAFE', // Light blue
+        'dark-blue-muted': '#93C5FD', // Muted blue
+        'dark-border': '#374151', // Border color
+        'dark-hover': '#1D4ED8', // Blue hover
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
