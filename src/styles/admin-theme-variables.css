@@ -1,13 +1,13 @@
 /* Admin Theme Variables */
 :root {
-  /* Theme Colors */
-  --primary-color: #3B82F6;
-  --primary-hover: #2563EB;
-  --primary-light: #EFF6FF;
+  /* Theme Colors - Peach Glow Palette */
+  --primary-color: #E8834A;
+  --primary-hover: #D84315;
+  --primary-light: #FFF3E0;
   
   /* Text Colors */
-  --text-color: #1F2937;
-  --text-secondary: #6B7280;
+  --text-color: #2D1810;
+  --text-secondary: #5D4037;
   --text-inverse: #FFFFFF;
   
   /* Typography */
@@ -41,10 +41,10 @@
 
 /* Dark Mode Variables */
 .dark {
-  --text-color: #F9FAFB;
-  --text-secondary: #D1D5DB;
-  --text-inverse: #1F2937;
-  --primary-light: #1E3A8A;
+  --text-color: #FFFFFF;
+  --text-secondary: #E5E5E5;
+  --text-inverse: #2D1810;
+  --primary-light: #1A1A1A;
 }
 
 /* Animation Classes */
@@ -83,11 +83,11 @@ body {
 .admin-panel {
   --admin-bg: var(--primary-light);
   --admin-text: var(--text-color);
-  --admin-border: #E5E7EB;
+  --admin-border: #F5DEB3;
 }
 
 .dark .admin-panel {
-  --admin-bg: #1F2937;
+  --admin-bg: #1A1A1A;
   --admin-text: var(--text-color);
   --admin-border: #374151;
 }

@@ -30,14 +30,14 @@ export const getDefaultAdminSettings = () => ({
     spacing: 'normal'
   },
   colors: {
-    primary: '#3b82f6',
-    secondary: '#8b5cf6',
-    accent: '#10b981',
+    primary: '#E8834A',
+    secondary: '#FFAB80',
+    accent: '#D84315',
     background: '#ffffff',
-    surface: '#f9fafb',
-    text: '#111827',
-    border: '#e5e7eb',
-    hover: '#f3f4f6',
+    surface: '#FFF3E0',
+    text: '#2D1810',
+    border: '#F5DEB3',
+    hover: '#FAF0E6',
     success: '#10b981',
     warning: '#f59e0b',
     error: '#ef4444'

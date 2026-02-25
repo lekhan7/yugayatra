@@ -12,8 +12,8 @@ export const useTheme = () => {
 
 const DEFAULT_SETTINGS = {
   themeMode: 'light',
-  customPrimaryColor: '#3B82F6',
-  customTextColor: '#1F2937',
+  customPrimaryColor: '#E8834A',
+  customTextColor: '#2D1810',
   fontFamily: 'Inter',
   fontSize: 'medium',
   animationsEnabled: true,
