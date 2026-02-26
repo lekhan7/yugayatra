@@ -52,6 +52,178 @@ const getIcon = (iconName) => {
   return iconMap[iconName] || Code
 }
 
+// Car Animation Component
+const CarAnimation = () => {
+  return (
+    <div className="relative w-full h-32 mx-auto mb-6 overflow-visible">
+      {/* Heavy Black Smoke Effect - starts when in view */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ 
+          opacity: [0, 1, 1, 0.8, 0.3, 0]
+        }}
+        transition={{ 
+          duration: 10,
+          ease: "easeOut",
+          times: [0, 0.1, 0.5, 0.7, 0.9, 1]
+        }}
+        viewport={{ once: true }}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10"
+      >
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ scale: 0, opacity: 0, x: 0, y: 0 }}
+            whileInView={{ 
+              scale: [0, 2, 4, 3],
+              opacity: [0, 0.9, 0.6, 0],
+              x: [0, -40 - i * 20, -120 - i * 25],
+              y: [0, -20 - i * 5, -60 - i * 10]
+            }}
+            transition={{ 
+              duration: 3,
+              delay: i * 0.1,
+              ease: "easeOut"
+            }}
+            viewport={{ once: true }}
+            className="absolute bg-black rounded-full"
+            style={{
+              width: `${25 + Math.random() * 35}px`,
+              height: `${25 + Math.random() * 35}px`,
+              left: `${-30 - Math.random() * 50}px`,
+              top: `${-25 + Math.random() * 50}px`
+            }}
+          />
+        ))}
+      </motion.div>
+
+      {/* Car - moves when in view */}
+      <motion.div
+        initial={{ x: -200, opacity: 0 }}
+        whileInView={{ 
+          opacity: [0, 1, 1, 1],
+          x: [-200, 0, 400, 800, 1400, window.innerWidth + 300 || 1600]
+        }}
+        transition={{ 
+          duration: 10,
+          ease: "linear",
+          times: [0, 0.5, 0.6, 0.7, 0.85, 1]
+        }}
+        viewport={{ once: true }}
+        className="absolute top-1/2 transform -translate-y-1/2 z-20"
+      >
+        <svg 
+          width="100" 
+          height="50" 
+          viewBox="0 0 100 50" 
+          className="drop-shadow-lg"
+        >
+          {/* Car Body - Only black outline, no fill */}
+          <motion.rect
+            x="15" 
+            y="20" 
+            width="60" 
+            height="20" 
+            rx="4" 
+            fill="none"
+            stroke="black"
+            strokeWidth="3"
+            initial={{ scale: 1 }}
+            whileInView={{ 
+              scale: [1, 1.1, 1, 1],
+              rotate: [0, -2, 0, 0]
+            }}
+            transition={{ 
+              duration: 1,
+              repeat: 5,
+              repeatDelay: 0,
+              ease: "easeInOut"
+            }}
+            viewport={{ once: true }}
+          />
+          {/* Car Roof - Only black outline, no fill */}
+          <motion.rect
+            x="25" 
+            y="10" 
+            width="30" 
+            height="12" 
+            rx="3" 
+            fill="none"
+            stroke="black"
+            strokeWidth="3"
+            initial={{ scale: 1 }}
+            whileInView={{ 
+              scale: [1, 1.1, 1, 1],
+              rotate: [0, -1, 0, 0]
+            }}
+            transition={{ 
+              duration: 1,
+              repeat: 5,
+              repeatDelay: 0,
+              ease: "easeInOut"
+            }}
+            viewport={{ once: true }}
+          />
+          {/* Wheels - Only black outline, no fill */}
+          <motion.circle
+            cx="35" 
+            cy="42" 
+            r="5" 
+            fill="none"
+            stroke="black"
+            strokeWidth="3"
+            whileInView={{ rotate: 360 }}
+            transition={{ 
+              duration: 3, 
+              repeat: Infinity, 
+              ease: "linear", 
+              delay: 5 
+            }}
+            viewport={{ once: true }}
+          />
+          <motion.circle
+            cx="55" 
+            cy="42" 
+            r="5" 
+            fill="none"
+            stroke="black"
+            strokeWidth="3"
+            whileInView={{ rotate: 360 }}
+            transition={{ 
+              duration: 3, 
+              repeat: Infinity, 
+              ease: "linear", 
+              delay: 5 
+            }}
+            viewport={{ once: true }}
+          />
+          {/* Windows - Only black outline, no fill */}
+          <rect x="28" y="12" width="10" height="8" rx="2" fill="none" stroke="black" strokeWidth="2" />
+          <rect x="40" y="12" width="10" height="8" rx="2" fill="none" stroke="black" strokeWidth="2" />
+          {/* Headlights - Only black outline, no fill */}
+          <motion.rect
+            x="75" 
+            y="25" 
+            width="5" 
+            height="8" 
+            rx="1" 
+            fill="none"
+            stroke="black"
+            strokeWidth="2"
+            whileInView={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ 
+              duration: 0.8,
+              repeat: Infinity,
+              delay: 5
+            }}
+            viewport={{ once: true }}
+          />
+        </svg>
+      </motion.div>
+    </div>
+  )
+}
+
 const ServicesSection = () => {
   const navigate = useNavigate()
   const [services, setServices] = useState([])
@@ -204,7 +376,7 @@ const ServicesSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Zap className="w-16 h-16 text-white mx-auto mb-6" />
+            <CarAnimation />
             <h3 className="text-4xl font-bold mb-4 text-white dark:text-white">
               Ready to Get Started?
             </h3>
