@@ -374,7 +374,7 @@ const AlumniSection = () => {
             </p>
             <a
               href="#contact"
-              className="bg-card-bg dark:bg-dark-card text-accent-main dark:text-dark-blue-primary px-8 py-3 rounded-full font-semibold hover:bg-bg-main transition-colors duration-300 inline-flex items-center"
+              className="bg-google-white text-google-dark px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 inline-flex items-center"
             >
               Apply Now
               <ExternalLink className="w-5 h-5 ml-2" />

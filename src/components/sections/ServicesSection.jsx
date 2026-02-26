@@ -354,7 +354,7 @@ const ServicesSection = () => {
                               navigate(`/internship/apply/${encodedRole}`)
                             }}
                             className={`w-full px-6 py-3 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-200 ${
-                              index % 4 === 3 ? 'bg-google-green text-google-dark hover:bg-google-green/90' : 'bg-google-white text-google-dark hover:bg-google-white/90'
+                              index % 4 === 3 ? 'bg-google-white text-google-dark hover:bg-google-white/90' : 'bg-google-white text-google-dark hover:bg-google-white/90'
                             }`}
                           >
                             Apply

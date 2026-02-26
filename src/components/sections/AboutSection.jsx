@@ -94,7 +94,7 @@ const AboutSection = () => {
       
 
       {/* Stats Section */}
-      <div className="py-20 bg-bg-main dark:bg-dark-bg">
+      <div className="py-20 bg-google-yellow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -102,7 +102,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold text-text-main dark:text-dark-blue-primary mb-4">
+            <h3 className="text-4xl font-bold text-google-dark mb-4">
               Our Impact
             </h3>
             <p className="text-lg text-text-light dark:text-dark-text-secondary">
@@ -112,10 +112,10 @@ const AboutSection = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: '500+', label: 'Students Trained' },
-              { number: '95%', label: 'Placement Rate' },
-              { number: '50+', label: 'Company Partners' },
-              { number: '10+', label: 'Years Experience' }
+              { number: '150+', label: 'Projects Completed' },
+              { number: '98%', label: 'Client Satisfaction' },
+              { number: '50+', label: 'Team Members' },
+              { number: '5+', label: 'Years Experience' }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -127,7 +127,7 @@ const AboutSection = () => {
                 <div className="text-4xl md:text-5xl font-black mb-2 counter" style={{ color: '#000000' }}>
                   {stat.number}
                 </div>
-                <p className="text-text-main dark:text-dark-blue-primary">
+                <p className="text-google-dark">
                   {stat.label}
                 </p>
               </motion.div>

@@ -200,7 +200,7 @@ const QuizSection = () => {
                       <motion.button
                         key={index}
                         onClick={() => handleAnswer(option.value)}
-                        className="w-full text-left p-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 border-white dark:border-white hover:border-accent-main dark:hover:border-dark-blue-accent hover:bg-accent-main/10 dark:hover:bg-dark-blue-accent/10 transition-all duration-300 group"
+                        className="w-full text-left p-4 rounded-xl border-2 border-google-blue bg-google-blue/10 hover:bg-google-blue/20 transition-all duration-300 group"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -208,7 +208,7 @@ const QuizSection = () => {
                           <span className="text-text-main dark:text-dark-blue-primary group-hover:text-accent-main dark:group-hover:text-dark-blue-primary font-medium">
                             {option.text}
                           </span>
-                          <ArrowRight className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-accent-main dark:group-hover:text-dark-blue-primary transition-colors" />
+                          <ArrowRight className="w-5 h-5 text-google-blue group-hover:text-google-blue transition-colors" style={{ color: '#FBBC05' }} />
                         </div>
                       </motion.button>
                     ))}
@@ -334,7 +334,7 @@ const QuizSection = () => {
                         const encodedRole = encodeURIComponent(selectedInternship?.title || '')
                         navigate(`/internship/apply/${encodedRole}`)
                       }}
-                      className="bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 border border-white dark:border-white"
+                      className="bg-google-white text-google-dark px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 border border-google-dark"
                     >
                       Apply Now
                     </motion.button>

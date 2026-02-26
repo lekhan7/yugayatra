@@ -372,7 +372,7 @@ const JourneyTimeline = () => {
           </div>
           <button
             onClick={() => setShowFinalPopup(false)}
-            className="w-full bg-gradient-to-r from-accent-main to-accent-dark text-white px-4 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+            className="w-full bg-google-blue text-google-white px-4 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm"
           >
             Close
           </button>
@@ -433,7 +433,7 @@ const JourneyTimeline = () => {
           </div>
           <button
             onClick={() => setActiveStop(null)}
-            className="w-full bg-gradient-to-r from-accent-main to-accent-dark text-white px-3 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-xs"
+            className="w-full bg-google-blue text-google-white px-3 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 text-xs"
           >
             Continue Journey
           </button>

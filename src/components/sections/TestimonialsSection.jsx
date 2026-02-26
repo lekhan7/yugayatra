@@ -167,9 +167,9 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="flex items-center space-x-2 px-6 py-3 bg-google-blue text-google-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Plus className="w-5 h-5" />
+              <Plus className="w-5 h-5" style={{ color: '#000000' }} />
               <span>Add Your Review</span>
             </motion.button>
           </div>
@@ -189,7 +189,7 @@ const TestimonialsSection = () => {
             >
               {testimonials.length === 0 ? (
                 <div className="col-span-full text-center py-20">
-                  <Quote className="w-16 h-16 text-gray-300 dark:text-dark-text-muted mx-auto mb-4" />
+                  <Quote className="w-16 h-16 mx-auto mb-4" style={{ color: '#000000' }} />
                   <p className="text-xl text-gray-500 dark:text-dark-text-secondary">
                     No testimonials yet. Be the first to share your experience!
                   </p>
@@ -227,7 +227,7 @@ const TestimonialsSection = () => {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <Quote className="w-8 h-8 text-accent-main/20 dark:text-dark-blue-primary/20" />
+                      <Quote className="w-8 h-8 mx-0.5" style={{ color: '#000000' }} />
                     </motion.div>
                   </motion.div>
 
@@ -245,7 +245,7 @@ const TestimonialsSection = () => {
                         }}
                         whileHover={{ scale: 1.3, rotate: 360 }}
                       >
-                        <Star className="w-5 h-5 text-accent-main dark:text-dark-blue-primary fill-current mx-0.5" />
+                        <Star className="w-5 h-5 fill-current mx-0.5" style={{ color: '#000000' }} />
                       </motion.div>
                     ))}
                   </motion.div>
@@ -268,7 +268,7 @@ const TestimonialsSection = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
                   >
                     <motion.div 
-                      className="w-16 h-16 bg-gradient-to-br from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-3"
+                      className="w-16 h-16 bg-google-yellow rounded-full flex items-center justify-center mx-auto mb-3"
                       whileHover={{ scale: 1.1, rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
@@ -303,7 +303,7 @@ const TestimonialsSection = () => {
 
       {/* Stats Section */}
       <motion.div 
-        className="py-20 bg-card-bg dark:bg-dark-card relative z-10"
+        className="py-20 bg-google-yellow relative z-10"
         style={{ y: y1 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -361,7 +361,7 @@ const TestimonialsSection = () => {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <stat.icon className="w-8 h-8 text-accent-main dark:text-dark-blue-primary" />
+                    <stat.icon className="w-8 h-8" style={{ color: '#000000' }} />
                   </motion.div>
                   
                   {/* Number with Counter Animation */}
@@ -434,7 +434,7 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Ready to Join Our Happy Clients?
+              <span style={{ color: '#1A73E8' }}>Ready to Join Our Happy Clients?</span>
             </motion.h3>
             <motion.p 
               className="text-xl text-white/90 mb-8"
@@ -442,11 +442,11 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Let us help you achieve your digital transformation goals
+              <span style={{ color: '#1A73E8' }}>Let us help you achieve your digital transformation goals</span>
             </motion.p>
             <motion.button 
               onClick={() => setIsProjectModalOpen(true)}
-              className="bg-card-bg dark:bg-dark-card text-accent-main dark:text-dark-blue-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-200 transition-all duration-300 inline-flex items-center group"
+              className="bg-google-blue text-google-white px-8 py-3 rounded-full font-semibold hover:bg-google-blue/90 transition-all duration-300 inline-flex items-center group"
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
@@ -460,7 +460,7 @@ const TestimonialsSection = () => {
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5" style={{ color: '#000000' }} />
               </motion.div>
             </motion.button>
           </motion.div>
