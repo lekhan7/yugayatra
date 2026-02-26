@@ -617,13 +617,15 @@ const HeroAnimation = () => {
         <h1 className="text-7xl md:text-9xl font-black text-gray-800 mb-4">
           <span 
             ref={yugaTextRef}
-            className="inline-block mr-3 bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent will-change-transform"
+            className="inline-block mr-3 will-change-transform"
+            style={{ color: '#1A73E8' }}
           >
             Yuga
           </span>
           <span 
             ref={yatraTextRef}
-            className="inline-block bg-gradient-to-r from-accent-main via-accent-gold to-accent-dark bg-clip-text text-transparent will-change-transform"
+            className="inline-block will-change-transform"
+            style={{ color: '#1A73E8' }}
           >
             Yatra
           </span>
@@ -631,7 +633,7 @@ const HeroAnimation = () => {
         
         {/* Subtitle */}
         <div className="text-2xl md:text-3xl font-light text-gray-600 max-w-4xl mx-auto opacity-0 animate-fade-in-up [animation-delay:2.5s]">
-          <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold bg-clip-text text-transparent">
+          <span style={{ color: '#1A73E8' }}>
             Shaping Tomorrow's Workforce Today
           </span>
         </div>

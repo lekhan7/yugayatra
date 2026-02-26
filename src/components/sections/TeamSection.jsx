@@ -75,10 +75,8 @@ const TeamSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-dark-blue-primary mb-6">
-            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">Our Team</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-google-white mb-6">Our Team</h2>
+          <p className="text-xl md:text-2xl text-google-white/80 max-w-3xl mx-auto">
             The talented individuals behind YugaYatra's success, dedicated to shaping the future of retail innovation
           </p>
         </motion.div>

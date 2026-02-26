@@ -141,11 +141,9 @@ const TestimonialsSection = () => {
           transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-dark-blue-primary mb-6">
-            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">Client Testimonials</span>
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-google-dark mb-6">Client Testimonials</h2>
           <motion.p 
-            className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-google-dark/80 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}

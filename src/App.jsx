@@ -33,7 +33,7 @@ function App() {
   usePageTracking()
 
   return (
-    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
+    <div className="min-h-screen bg-google-white transition-colors duration-300">
       {!isAdminPage && <Navbar />}
       {!isAdminPage && <ScrollProgressBar />}
       <Routes>

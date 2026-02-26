@@ -125,7 +125,7 @@ const QuizSection = () => {
   }
 
   return (
-    <section id="find-perfect-internship" className="py-20 bg-gradient-to-br from-accent-main/10 to-accent-main/10 dark:from-black dark:to-black border-4 border-t border-white dark:border-white">
+    <section id="find-perfect-internship" className="py-20 bg-google-red">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -139,10 +139,8 @@ const QuizSection = () => {
               <Brain className="w-8 h-8 text-white" />
             </div>
           </div>
-          <h2 className="text-4xl font-bold text-accent-main dark:text-dark-blue-primary mb-4">
-            Find Your Perfect Internship
-          </h2>
-          <p className="text-lg text-text-light dark:text-dark-text-secondary max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-google-white mb-6">Find Your Perfect Internship</h2>
+          <p className="text-xl text-google-white/80 max-w-2xl mx-auto">
             Take our quick quiz and discover the ideal internship opportunity tailored to your skills and interests
           </p>
         </motion.div>

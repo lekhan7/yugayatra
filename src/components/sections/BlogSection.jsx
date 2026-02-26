@@ -63,10 +63,8 @@ const BlogSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6">
-            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">Blog & Insights</span>
-          </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-google-white mb-6">Blog & Insights</h2>
+          <p className="text-xl md:text-2xl text-google-white/80 max-w-3xl mx-auto">
             Latest news, trends, and insights from our team
           </p>
         </motion.div>

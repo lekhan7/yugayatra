@@ -17,7 +17,7 @@ import FAQSection from '../components/sections/FAQSection'
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-bg-main dark:bg-dark-bg transition-colors duration-300">
+    <div className="min-h-screen bg-google-white transition-colors duration-300">
       <ScrollProgressBar />
       <ScrollToTop />
     
@@ -25,7 +25,7 @@ const Home = () => {
       <HeroSection />
 
       {/* About Section */}
-      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-google-green transition-colors duration-300">
         <AboutSection />
       </section>
 
@@ -33,7 +33,7 @@ const Home = () => {
       <JourneyTimeline />
 
       {/* Services Section */}
-      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-google-white transition-colors duration-300">
         <ServicesSection />
       </section>
 
@@ -44,31 +44,39 @@ const Home = () => {
       <ProjectsSection />
 
       {/* Alumni Section */}
-      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-google-yellow transition-colors duration-300">
         <AlumniSection />
       </section>
 
       {/* Team Section */}
-      <TeamSection />
+      <section className="bg-google-blue transition-colors duration-300">
+        <TeamSection />
+      </section>
 
       {/* Testimonials Section */}
-      <TestimonialsSection />
+      <section className="bg-google-white transition-colors duration-300">
+        <TestimonialsSection />
+      </section>
 
       {/* Blog Section */}
-      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-google-green transition-colors duration-300">
         <BlogSection />
       </section>
 
       {/* Quiz Section */}
-      <QuizSection />
+      <section className="bg-google-red transition-colors duration-300">
+        <QuizSection />
+      </section>
 
       {/* FAQ Section */}
-      <section className="bg-surface-variant dark:bg-dark-surface transition-colors duration-300">
+      <section className="bg-google-yellow transition-colors duration-300">
         <FAQSection />
       </section>
 
       {/* Contact Section */}
-      <ContactSection />
+      <section className="bg-google-blue transition-colors duration-300">
+        <ContactSection />
+      </section>
 
     </div>
   )

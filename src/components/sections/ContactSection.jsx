@@ -69,7 +69,7 @@ const ContactSection = () => {
   ]
 
   return (
-    <section id="contact" className="py-20 bg-card-bg dark:bg-dark-card">
+    <section id="contact" className="py-20 bg-google-blue">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,10 +77,8 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-accent-main dark:text-dark-blue-accent mb-6">
-            Get in Touch
-          </h2>
-          <p className="text-xl md:text-2xl text-text-light max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-google-white mb-6">Get In Touch</h2>
+          <p className="text-xl text-google-white/80 max-w-2xl mx-auto">
             We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </motion.div>

@@ -82,7 +82,7 @@ const ProjectsSection = () => {
 
   if (loading) {
     return (
-      <section id="projects" className="py-20 bg-bg-main dark:bg-black transition-colors duration-300">
+      <section id="projects" className="py-20 bg-google-red transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-main"></div>
@@ -104,10 +104,8 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-text-main dark:text-dark-blue-primary mb-6">
-            <span className="bg-gradient-to-r from-accent-dark via-accent-main to-accent-gold dark:from-dark-blue-accent dark:via-dark-blue-primary dark:to-dark-blue-secondary bg-clip-text text-transparent">Our Projects</span>
-          </h2>
-          <p className="text-xl text-text-light dark:text-dark-text-secondary max-w-4xl mx-auto leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1A73E8' }}>Our Projects</h2>
+          <p className="text-xl max-w-4xl mx-auto leading-relaxed" style={{ color: '#1A73E8' }}>
             Showcasing our diverse portfolio of innovative solutions, from visitor management systems to educational platforms, 
             each project reflects our commitment to excellence and digital innovation.
           </p>
@@ -208,10 +206,10 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-2xl p-12 text-white"
+          className="text-center bg-google-yellow rounded-2xl p-12"
         >
-          <h3 className="text-3xl font-bold mb-4">Explore Our Work</h3>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <h3 className="text-3xl font-bold mb-4" style={{ color: '#1A73E8' }}>Explore Our Work</h3>
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto" style={{ color: '#1A73E8' }}>
             Dive into our projects and see how we're transforming ideas into impactful digital solutions. 
             Let's collaborate to bring your vision to life.
           </p>
@@ -221,7 +219,7 @@ const ProjectsSection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-accent-main px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
+            className="bg-google-white text-google-dark px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
           >
             Get In Touch
           </motion.a>

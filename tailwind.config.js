@@ -8,27 +8,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Light mode colors - Peach Glow Palette
-        'bg-main': '#FDF0E6', // Light peach/cream main background
-        'text-main': '#2D1810', // Dark brown for high contrast
-        'accent-main': '#E8834A', // Peach orange for headings
-        'accent-dark': '#D84315', // Dark peach for active states
-        'accent-gold': '#FFAB80', // Light peach for highlights
-        'accent-light': '#FFE0B2', // Very light peach
-        'mint-clarity': '#FFAB80', // Peach clarity (replacing mint)
-        'text-light': '#5D4037', // Medium brown for secondary text
-        'text-muted': '#8D6E63', // Light brown for muted text
-        'border-light': '#F5DEB3', // Light peach border
-        'card-bg': '#FFFFFF', // White for cards
-        'surface-variant': '#FFF3E0', // Very light peach alternative
-        'bg-alt': '#FAF0E6', // Slightly darker peach alt background
-        // Legacy colors for transition
-        primary: '#FFFFFF',
-        accent: '#E8834A',
-        secondary: '#FFAB80',
-        dark: '#2D1810',
-        mint: '#E8834A',
-        'soft-gray': '#FDF0E6',
+        // Google-inspired color palette
+        'google-green': '#0F9D58',
+        'google-blue': '#1A73E8', 
+        'google-red': '#EA4335',
+        'google-yellow': '#FBBC05',
+        'google-white': '#FFFFFF',
+        'google-dark': '#202124',
         
         // Dark mode colors - Black with Blue accents
         'dark-bg': '#000000', // Pure black
