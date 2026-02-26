@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Target, Eye, Heart, Award, Users, Calendar, MapPin, Building, FileText, Globe, CheckCircle } from 'lucide-react'
+import { Eye, Rocket, HeartHandshake, Target, Users, Calendar, MapPin, Building, FileText, Globe, CheckCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -31,7 +31,7 @@ const About = () => {
 
   const values = [
     {
-      icon: Target,
+      icon: Rocket,
       title: 'Mission',
       description: 'To bridge the gap between education and industry by providing practical, hands-on training and real-world project experience to aspiring professionals while delivering innovative digital solutions to businesses.'
     },
@@ -41,7 +41,7 @@ const About = () => {
       description: 'To become the leading platform for workforce development and digital transformation, empowering individuals with skills needed for the digital economy while helping businesses thrive through innovative solutions.'
     },
     {
-      icon: Heart,
+      icon: HeartHandshake,
       title: 'Values',
       description: 'Excellence, Innovation, Integrity, and Customer Success are at the core of everything we do. We believe in continuous learning and adaptation to stay ahead in the digital landscape.'
     }
@@ -68,12 +68,12 @@ const About = () => {
       description: 'Internship programs and skill development courses'
     },
     {
-      icon: Globe,
+      icon: Target,
       title: 'Global Reach',
       description: 'Serving clients across 50+ countries worldwide'
     },
     {
-      icon: Award,
+      icon: Target,
       title: 'Certified Excellence',
       description: 'Fully certified and compliant with industry standards'
     }

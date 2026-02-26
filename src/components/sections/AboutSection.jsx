@@ -12,17 +12,17 @@ const AboutSection = () => {
 
   const values = [
     {
-      icon: Target,
+      icon: 'https://cdn-icons-png.flaticon.com/128/6745/6745066.png',
       title: 'Mission',
       description: 'To empower students with cutting-edge technology skills and practical experience through innovative internship programs.'
     },
     {
-      icon: Eye,
+      icon: 'https://cdn-icons-png.flaticon.com/512/15189/15189288.png',
       title: 'Vision',
       description: 'To become the leading platform for career development and skill enhancement in the technology sector.'
     },
     {
-      icon: Heart,
+      icon: '	https://cdn-icons-png.flaticon.com/128/17699/17699184.png',
       title: 'Values',
       description: 'Innovation, Excellence, Integrity, and Student Success are at the core of everything we do.'
     }
@@ -73,7 +73,11 @@ const AboutSection = () => {
                 className="text-center p-8 rounded-2xl bg-card-bg dark:bg-dark-card shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light dark:border-dark-border"
               >
                 <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="w-10 h-10 text-white" />
+                  {typeof value.icon === 'string' ? (
+                    <img src={value.icon} alt={value.title} className="w-10 h-10" />
+                  ) : (
+                    <value.icon className="w-10 h-10 text-white" />
+                  )}
                 </div>
                 <h3 className="text-2xl font-bold text-text-main dark:text-dark-text-primary mb-4">
                   {value.title}
