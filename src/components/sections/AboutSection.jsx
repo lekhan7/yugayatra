@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
-import { Target, Eye, Heart, Award, Users, Calendar, MapPin, Award as AwardIcon, FileText, Shield, TrendingUp, Clock } from 'lucide-react'
+import { Target, Eye, Heart, Award, Users, Calendar, MapPin, Award as AwardIcon, FileText, Shield } from 'lucide-react'
+import Navbar from '../Navbar'
+import Footer from '../Footer'
+import ScrollToTop from '../ScrollToTop'
 
 const AboutSection = () => {
   const legalInfo = {
@@ -70,9 +73,9 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-8 rounded-2xl bg-card-bg dark:bg-dark-card shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light dark:border-dark-border"
+                className="text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
                   {typeof value.icon === 'string' ? (
                     <img src={value.icon} alt={value.title} className="w-10 h-10" />
                   ) : (
@@ -93,51 +96,7 @@ const AboutSection = () => {
 
       
 
-      {/* Stats Section */}
-      <div className="py-20 bg-google-yellow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h3 className="text-4xl font-bold text-google-dark mb-4">
-              Our Impact
-            </h3>
-            <p className="text-lg text-text-light dark:text-dark-text-secondary">
-              Numbers that speak for themselves
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '150+', label: 'Projects Completed', icon: TrendingUp },
-              { number: '98%', label: 'Client Satisfaction', icon: Users },
-              { number: '50+', label: 'Team Members', icon: Award },
-              { number: '5+', label: 'Years Experience', icon: Clock }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-8 bg-white rounded-xl shadow-lg border border-gray-200"
-              >
-                <div className="flex justify-center mb-4">
-                  <stat.icon className="w-10 h-10" style={{ color: '#000000' }} />
-                </div>
-                <div className="text-4xl md:text-5xl font-black mb-2 counter" style={{ color: '#000000' }}>
-                  {stat.number}
-                </div>
-                <p className="text-black font-medium">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+      
     </section>
   )
 }

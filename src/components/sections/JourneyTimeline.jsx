@@ -466,17 +466,22 @@ const JourneyTimeline = () => {
       </div>
 
       {/* Road Container */}
-      <div className="relative max-w-6xl mx-auto px-8">
+      <div className="relative w-screen px-4">
         {/* Road */}
         <div 
           ref={roadRef}
-          className="relative h-32 bg-gradient-to-b from-gray-700 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-full shadow-2xl overflow-hidden"
+          className="relative h-40 w-full bg-gradient-to-b from-gray-700 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-full shadow-2xl overflow-hidden border-4 border-gray-600"
         >
           {/* Timeline Track (in middle of road) */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full h-16">
-              {/* Timeline Line */}
-              <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-2 bg-accent-gold opacity-80 dark:bg-blue-500/80"></div>
+              {/* Simple Dashed Lines -- - - - - */}
+              <div className="absolute top-1/2 transform -translate-y-1/2 w-full px-2">
+                <div className="w-full h-1" style={{ 
+                  backgroundImage: 'repeating-linear-gradient(90deg, white, white 10px, transparent 10px, transparent 20px)',
+                  backgroundSize: '20px 2px'
+                }}></div>
+              </div>
               
               {/* Car */}
               <div
@@ -532,24 +537,13 @@ const JourneyTimeline = () => {
             </div>
           </div>
           
-          {/* Finish Flag on Timeline */}
-          <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
-            <div className="w-6 h-20 bg-gradient-to-b from-accent-gold to-accent-dark dark:from-blue-500 dark:to-blue-700 rounded-full shadow-lg"></div>
-            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-accent-gold/100 text-white text-xs px-2 py-1 rounded-full font-bold">
+          {/* Finish Flag Inside Road */}
+          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20">
+            <div className="w-4 h-16 bg-gradient-to-b from-accent-gold to-accent-dark dark:from-blue-500 dark:to-blue-700 rounded-full shadow-lg"></div>
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-accent-gold text-white text-xs px-1.5 py-0.5 rounded-full font-bold whitespace-nowrap">
               FINISH
             </div>
           </div>
-        </div>
-        
-        {/* Road Lines */}
-        <div className="absolute top-1/2 transform -translate-y-1/2 w-full">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="inline-block w-8 h-1 bg-white mx-4 opacity-60"
-              style={{ marginLeft: i === 0 ? '0' : '' }}
-            ></div>
-          ))}
         </div>
         
         {/* Journey Stops */}

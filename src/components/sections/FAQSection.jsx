@@ -528,17 +528,20 @@ const FAQSection = () => {
 
             <a
 
-              href="mailto:hr@yugayatraretail.com"
 
-              className="flex items-center space-x-2 px-6 py-3 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+              href="mailto:support@yugayatra.com"
+
+              className="flex items-center space-x-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
 
             >
 
-              <Mail className="w-5 h-5 text-accent-main" />
+              <Mail className="w-5 h-5 text-accent-main dark:text-dark-blue-primary" />
 
-              <span className="text-text-main font-medium">hr@yugayatraretail.com</span>
+              <span className="text-text-main dark:text-dark-blue-primary font-medium">support@yugayatra.com</span>
 
             </a>
+
+           
 
             <a
 
@@ -551,6 +554,7 @@ const FAQSection = () => {
               <Phone className="w-5 h-5 text-accent-main" />
 
               <span className="text-text-main font-medium">+91 8757728679</span>
+
 
             </a>
 
@@ -569,4 +573,3 @@ const FAQSection = () => {
 
 
 export default FAQSection
-
