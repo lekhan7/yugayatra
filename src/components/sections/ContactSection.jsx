@@ -127,8 +127,8 @@ const ContactSection = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-accent-main dark:focus:ring-dark-blue-accent focus:border-transparent bg-card-bg dark:bg-dark-card text-text-main dark:text-dark-text-primary transition-colors"
-                        placeholder="John Doe"
+                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-accent-main dark:focus:ring-dark-blue-accent focus:border-transparent bg-card-bg text-text-main dark:text-dark-text-primary placeholder:text-gray-500 transition-colors"
+                        placeholder="Enter your name"
                       />
                     </div>
                     <div>
@@ -142,8 +142,8 @@ const ContactSection = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-accent-main dark:focus:ring-dark-blue-accent focus:border-transparent bg-card-bg dark:bg-dark-card text-text-main dark:text-dark-text-primary transition-colors"
-                        placeholder="john@example.com"
+                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-accent-main dark:focus:ring-dark-blue-accent focus:border-transparent bg-card-bg text-text-main dark:text-dark-text-primary placeholder:text-gray-500 transition-colors"
+                        placeholder="Enter your email"
                       />
                     </div>
                   </div>
@@ -159,8 +159,8 @@ const ContactSection = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-accent-main dark:focus:ring-dark-blue-accent focus:border-transparent bg-card-bg dark:bg-dark-card text-text-main dark:text-dark-text-primary transition-colors"
-                        placeholder="+91 98765 43210"
+                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-accent-main dark:focus:ring-dark-blue-accent focus:border-transparent bg-card-bg text-text-main dark:text-dark-text-primary placeholder:text-gray-500 transition-colors"
+                        placeholder="Enter your phone number"
                       />
                     </div>
                     <div>
@@ -173,8 +173,8 @@ const ContactSection = () => {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-accent-main dark:focus:ring-dark-blue-accent focus:border-transparent bg-card-bg dark:bg-dark-card text-text-main dark:text-dark-text-primary transition-colors"
-                        placeholder="Acme Corp"
+                        className="w-full px-4 py-3 border border-border-light dark:border-dark-border rounded-lg focus:ring-2 focus:ring-accent-main dark:focus:ring-dark-blue-accent focus:border-transparent bg-card-bg text-text-main dark:text-dark-text-primary placeholder:text-gray-500 transition-colors"
+                        placeholder="Enter your company name"
                       />
                     </div>
                   </div>
@@ -190,7 +190,7 @@ const ContactSection = () => {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-border-light dark:border-white/10 rounded-lg focus:ring-2 focus:ring-accent-main focus:border-transparent bg-card-bg dark:bg-card-bg/10 text-text-main dark:text-white placeholder:text-gray-500 transition-colors resize-none"
                       placeholder="Tell us about your project..."
                     />
                   </div>
@@ -312,22 +312,22 @@ const ContactSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-r from-accent-main to-accent-gold dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-xl p-6 text-white h-80 overflow-y-auto"
+                className="bg-white rounded-xl p-6 text-black h-80 overflow-y-auto border border-gray-200"
               >
                 <div className="space-y-4 w-full">
-                  <div className="border-l-4 border-blue-400 dark:border-dark-blue-light pl-4">
-                    <p className="text-sm uppercase text-gray-200">Mon - Fri</p>
+                  <div className="border-l-4 border-blue-500 pl-4">
+                    <p className="text-sm uppercase text-gray-600">Mon - Fri</p>
                     <p className="text-lg font-bold">9:00 AM - 6:00 PM</p>
                   </div>
-                  <div className="border-l-4 border-green-400 pl-4 mt-4">
-                    <p className="text-sm uppercase text-gray-200">Saturday</p>
+                  <div className="border-l-4 border-blue-500 pl-4 mt-4">
+                    <p className="text-sm uppercase text-gray-600">Saturday</p>
                     <p className="text-lg font-bold">10:00 AM - 4:00 PM</p>
                   </div>
-                  <div className="border-l-4 border-green-400 pl-4 mt-4">
-                    <p className="text-sm uppercase text-gray-200">Sunday</p>
+                  <div className="border-l-4 border-blue-500 pl-4 mt-4">
+                    <p className="text-sm uppercase text-gray-600">Sunday</p>
                     <p className="text-lg font-bold">Closed</p>
                   </div>
-                  <div className="border-t border-white/30 my-4"></div>
+                  <div className="border-t border-gray-300 my-4"></div>
                   <div className="mt-4">
                     <div className="flex justify-between items-start">
                       <div className="flex items-center" style={{marginLeft: '-8px'}}>

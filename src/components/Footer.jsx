@@ -70,7 +70,7 @@ const Footer = () => {
                   aria-label={social.label}
                   className="w-10 h-10 bg-white text-black border border-black rounded-full flex items-center justify-center hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
                 >
-                  <social.icon className="w-5 h-5 text-google-white/70 hover:text-google-yellow" />
+                  <social.icon className="w-5 h-5 text-google-yellow" />
                 </a>
               ))}
             </div>

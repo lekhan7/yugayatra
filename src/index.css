@@ -378,3 +378,61 @@
   background: #3B82F6;
   color: #FFFFFF;
 }
+
+/* Dark mode placeholder fix - All placeholders black in dark mode */
+body.dark input::placeholder,
+body.dark textarea::placeholder,
+body.dark input[type="text"]::placeholder,
+body.dark input[type="email"]::placeholder,
+body.dark input[type="tel"]::placeholder,
+.dark input[type="text"]::placeholder,
+.dark input[type="email"]::placeholder,
+.dark input[type="tel"]::placeholder,
+.dark textarea::placeholder,
+.dark input::placeholder,
+.dark textarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #000000 !important;
+  opacity: 0.7 !important;
+}
+
+/* Specific targeting for contact form inputs */
+.dark input[placeholder*="Enter your"],
+.dark input[placeholder*="Enter your email"],
+.dark input[placeholder*="Enter your phone"],
+.dark input[placeholder*="Enter your company"],
+.dark textarea[placeholder*="Tell us"] {
+  color: #000000 !important;
+  opacity: 0.7 !important;
+}
+
+/* Dark mode input field backgrounds and text color */
+body.dark input[type="text"],
+body.dark input[type="email"],
+body.dark input[type="tel"],
+body.dark textarea,
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="tel"],
+.dark textarea {
+  background-color: #FFFFFF !important; /* White background to match the Send Message button */
+  color: #000000 !important;
+  border-color: #E5E7EB !important;
+}
+
+/* Force white backgrounds with higher specificity */
+.dark .w-full.px-4.py-3.border,
+.dark input[class*="w-full"],
+.dark input[class*="px-4"],
+.dark input[class*="py-3"] {
+  background-color: #FFFFFF !important; /* White background to match the Send Message button */
+  background: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+/* Ensure black text for all inputs in dark mode */
+.dark input.text-text-main,
+.dark input.dark\\:text-dark-text-primary {
+  color: #000000 !important;
+}

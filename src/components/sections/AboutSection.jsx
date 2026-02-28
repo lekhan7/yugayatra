@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion'
 import { Target, Eye, Heart, Award, Users, Calendar, MapPin, Award as AwardIcon, FileText, Shield } from 'lucide-react'
-import Navbar from '../Navbar'
-import Footer from '../Footer'
-import ScrollToTop from '../ScrollToTop'
 
 const AboutSection = () => {
   const legalInfo = {
