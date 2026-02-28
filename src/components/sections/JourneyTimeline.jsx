@@ -466,17 +466,19 @@ const JourneyTimeline = () => {
       </div>
 
       {/* Road Container */}
-      <div className="relative max-w-6xl mx-auto px-8">
+      <div className="relative w-screen px-4">
         {/* Road */}
         <div 
           ref={roadRef}
-          className="relative h-32 bg-gradient-to-b from-gray-700 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-full shadow-2xl overflow-hidden"
+          className="relative h-40 w-full bg-gradient-to-b from-gray-700 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-full shadow-2xl overflow-hidden border-4 border-gray-600"
         >
           {/* Timeline Track (in middle of road) */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full h-16">
-              {/* Timeline Line */}
-              <div className="absolute top-1/2 transform -translate-y-1/2 w-full h-2 bg-accent-gold opacity-80 dark:bg-blue-500/80"></div>
+              {/* Dashed Road Line */}
+              <div className="absolute top-1/2 transform -translate-y-1/2 w-full px-4">
+                <div className="w-full h-0.5 bg-white opacity-80" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 8px, white 8px, transparent 8px)', backgroundSize: '16px 2px' }}></div>
+              </div>
               
               {/* Car */}
               <div
@@ -542,14 +544,8 @@ const JourneyTimeline = () => {
         </div>
         
         {/* Road Lines */}
-        <div className="absolute top-1/2 transform -translate-y-1/2 w-full">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="inline-block w-8 h-1 bg-white mx-4 opacity-60"
-              style={{ marginLeft: i === 0 ? '0' : '' }}
-            ></div>
-          ))}
+        <div className="absolute top-1/2 transform -translate-y-1/2 w-full px-8">
+          <div className="w-full h-0.5 bg-white opacity-80" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 8px, white 8px, transparent 8px)', backgroundSize: '16px 2px' }}></div>
         </div>
         
         {/* Journey Stops */}

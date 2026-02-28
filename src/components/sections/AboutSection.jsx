@@ -70,9 +70,9 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05 }}
-                className="text-center p-8 rounded-2xl bg-card-bg dark:bg-dark-card shadow-lg hover:shadow-xl transition-all duration-300 border border-border-light dark:border-dark-border"
+                className="text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
               >
-                <div className="w-20 h-20 bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
                   {typeof value.icon === 'string' ? (
                     <img src={value.icon} alt={value.title} className="w-10 h-10" />
                   ) : (
@@ -94,7 +94,7 @@ const AboutSection = () => {
       
 
       {/* Stats Section */}
-      <div className="py-20 bg-google-yellow">
+      <div className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -102,7 +102,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl font-bold text-google-dark mb-4">
+            <h3 className="text-4xl font-bold text-gray-800 mb-4">
               Our Impact
             </h3>
             <p className="text-lg text-text-light dark:text-dark-text-secondary">
@@ -124,10 +124,10 @@ const AboutSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center p-6"
               >
-                <div className="text-4xl md:text-5xl font-black mb-2 counter" style={{ color: '#000000' }}>
+                <div className="text-4xl md:text-5xl font-bold mb-2 counter" style={{ color: '#1A73E8' }}>
                   {stat.number}
                 </div>
-                <p className="text-google-dark">
+                <p className="text-gray-600">
                   {stat.label}
                 </p>
               </motion.div>
