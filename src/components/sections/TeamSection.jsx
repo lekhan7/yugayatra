@@ -47,7 +47,7 @@ const TeamSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-dark-blue-accent dark:text-dark-blue-primary mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
               Meet Our Team
             </h2>
             <p className="text-xl md:text-2xl text-text-light dark:text-dark-text-secondary max-w-3xl mx-auto">
@@ -55,9 +55,9 @@ const TeamSection = () => {
             </p>
           </motion.div>
           <div className="text-center py-12">
-            <Users className="mx-auto text-gray-400 dark:text-dark-text-muted mb-4" size={48} />
-            <p className="text-gray-500 dark:text-dark-text-secondary">Team members will be featured here soon</p>
-            <p className="text-sm text-gray-400 dark:text-dark-text-muted mt-2">
+            <Users className="mx-auto text-white mb-4" size={48} />
+            <p className="text-black">Team members will be featured here soon</p>
+            <p className="text-black mt-2">
               Check back soon to meet the amazing people behind our mission
             </p>
           </div>
@@ -67,7 +67,7 @@ const TeamSection = () => {
   }
 
   return (
-    <section id="team" className="py-20 bg-card-bg dark:bg-black">
+    <section id="team" className="py-20 bg-google-yellow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,8 +75,8 @@ const TeamSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-google-white mb-6">Our Team</h2>
-          <p className="text-xl md:text-2xl text-google-white/80 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Our Team</h2>
+          <p className="text-xl md:text-2xl text-black max-w-3xl mx-auto">
             The talented individuals behind YugaYatra's success, dedicated to shaping the future of retail innovation
           </p>
         </motion.div>

@@ -81,7 +81,7 @@ const AlumniSection = () => {
   }
 
   return (
-    <section id="alumni" className="py-20 bg-card-bg dark:bg-black">
+    <section id="alumni" className="py-20 bg-google-blue">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -127,7 +127,7 @@ const AlumniSection = () => {
       </div>
 
       {/* Alumni Carousel */}
-      <div className="py-20 bg-bg-main dark:bg-black">
+      <div className="py-20 bg-google-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -152,7 +152,7 @@ const AlumniSection = () => {
               >
                 {alumni.map((person) => (
                   <div key={person.id} className="w-full flex-shrink-0 px-4">
-                    <div className="bg-card-bg dark:bg-dark-card rounded-2xl shadow-xl p-8">
+                    <div className="bg-google-yellow rounded-2xl shadow-xl p-8">
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* Left Column - Image and Basic Info */}
                         <div className="text-center lg:text-left">
@@ -295,7 +295,7 @@ const AlumniSection = () => {
       </div>
 
       {/* All Alumni Grid */}
-      <div className="py-20 bg-card-bg dark:bg-dark-card">
+      <div className="py-20 bg-google-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -319,7 +319,7 @@ const AlumniSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="bg-card-bg dark:bg-dark-card rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-border-light dark:border-dark-border"
+                className="bg-google-yellow rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-border-light dark:border-dark-border"
               >
                 <div className="flex items-center space-x-4 mb-4">
                   {person.image ? (

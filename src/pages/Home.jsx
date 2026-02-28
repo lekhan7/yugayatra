@@ -49,7 +49,7 @@ const Home = () => {
       </section>
 
       {/* Team Section */}
-      <section className="bg-google-blue transition-colors duration-300">
+      <section className="bg-google-yellow transition-colors duration-300">
         <TeamSection />
       </section>
 
