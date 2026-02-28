@@ -213,7 +213,7 @@ const BlogSection = () => {
           <div className="text-center mt-12">
             <Link 
               to="/blog"
-              className="bg-gradient-to-r from-accent-main to-accent-main text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center"
+              className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 hover:shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center"
             >
               View All Posts
               <ArrowRight className="ml-2 w-5 h-5" />

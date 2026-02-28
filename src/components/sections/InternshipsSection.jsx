@@ -155,7 +155,7 @@ const InternshipsSection = () => {
                     type="button"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-google-white text-google-dark px-6 py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center group"
+                    className="w-full bg-white text-black border border-black px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 flex items-center justify-center group"
                   >
                     Apply Now
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -213,7 +213,7 @@ const InternshipsSection = () => {
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Join our internship programs and gain valuable industry experience with mentorship from leading experts.
             </p>
-            <Link to="/apply" className="bg-accent text-white px-8 py-3 rounded-full font-semibold hover:bg-secondary transition-colors duration-300 inline-flex items-center">
+            <Link to="/apply" className="bg-white text-black border border-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 inline-flex items-center">
               Apply for Internship
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>

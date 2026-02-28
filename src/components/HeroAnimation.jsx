@@ -273,7 +273,7 @@ const HeroAnimation = () => {
       {/* Sound Toggle */}
       <button
         onClick={() => setSoundEnabled(!soundEnabled)}
-        className="absolute top-4 right-4 z-30 p-2 rounded-full bg-gray-800/10 dark:bg-white/10 backdrop-blur-sm text-gray-800 dark:text-white hover:bg-gray-800/20 dark:hover:bg-white/20 transition-all duration-300"
+        className="absolute top-4 right-4 z-30 p-2 rounded-full bg-white text-black border border-black hover:bg-gray-100 transition-all duration-300"
         title={soundEnabled ? "Disable Sound" : "Enable Sound"}
       >
         {soundEnabled ? "🔊" : "🔇"}

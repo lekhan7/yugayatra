@@ -68,7 +68,7 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-google-white/20 rounded-full flex items-center justify-center hover:bg-google-yellow transition-all duration-300 transform hover:scale-110"
+                  className="w-10 h-10 bg-white text-black border border-black rounded-full flex items-center justify-center hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
                 >
                   <social.icon className="w-5 h-5 text-google-white/70 hover:text-google-yellow" />
                 </a>
@@ -139,7 +139,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-google-yellow text-google-dark px-4 py-2 rounded-lg hover:bg-google-yellow/90 transition-colors duration-200 font-medium"
+                className="w-full bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 font-medium"
               >
                 Subscribe
               </button>
@@ -202,7 +202,7 @@ const Footer = () => {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-google-yellow rounded-full flex items-center justify-center text-google-dark shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-40"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-white text-black border border-black rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:bg-gray-100 transform hover:scale-110 transition-all duration-300 z-40"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" />

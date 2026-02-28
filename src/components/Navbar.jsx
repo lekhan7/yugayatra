@@ -62,7 +62,11 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-google-white shadow-lg' : 'bg-google-white'}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white shadow-lg'
+          : 'bg-white'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -77,7 +81,7 @@ const Navbar = () => {
               muted
               playsInline
             />
-            <span className="text-xl font-bold" style={{ color: '#1A73E8' }}>
+            <span className="text-xl font-bold text-text-main dark:text-dark-text-primary">
               YugaYatra Retail 
             </span>
           </div>
@@ -88,14 +92,14 @@ const Navbar = () => {
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link)}
-                className="group relative flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-google-dark hover:text-google-green hover:bg-google-yellow/10 hover:scale-105"
+                className="group relative flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-black bg-white hover:bg-green-50 hover:scale-105 hover:shadow-lg"
                 style={{
                   animationDelay: `${index * 100}ms`
                 }}
               >
                 <link.icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
                 <span className="transition-all duration-300 group-hover:font-semibold">{link.name}</span>
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-google-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </button>
             ))}
           </div>
@@ -105,7 +109,7 @@ const Navbar = () => {
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-lg text-google-dark hover:text-google-blue hover:bg-google-yellow/20 transition-all duration-300"
+              className="p-3 rounded-lg text-black bg-white hover:bg-green-50 transition-all duration-300"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -113,7 +117,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-google-dark hover:text-google-blue hover:bg-google-yellow/20 transition-all duration-300"
+              className="md:hidden p-3 rounded-lg text-black bg-white hover:bg-green-50 transition-all duration-300"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -123,13 +127,13 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-google-white border-t border-google-yellow/20 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden bg-white animate-in slide-in-from-top duration-300">
           <div className="px-4 sm:px-6 lg:px-8 py-4 space-y-2">
             {navLinks.map((link, index) => (
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link)}
-                className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-google-dark hover:text-google-green hover:bg-google-yellow/10 hover:scale-[1.02]"
+                className="w-full flex items-center space-x-3 px-6 py-4 rounded-xl text-sm font-medium transition-all duration-300 text-black bg-white hover:bg-green-50 hover:scale-[1.02] hover:shadow-md"
                 style={{
                   animationDelay: `${index * 50}ms`
                 }}

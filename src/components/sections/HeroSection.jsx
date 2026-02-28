@@ -20,11 +20,9 @@ const HeroSection = () => {
             href="#services"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center group bg-google-blue text-google-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-google-blue/90"
+            className="inline-flex items-center justify-center group bg-white text-black px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl hover:bg-gray-100 transition-all duration-300"
           >
-            <Code className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" style={{ color: '#FBBC05' }} />
-            Explore Opportunities
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" style={{ color: '#FBBC05' }} />
+            Explore Opportunities →
           </motion.a>
           
           <motion.a
@@ -33,11 +31,9 @@ const HeroSection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center group bg-google-blue text-google-white border-2 border-google-blue px-8 py-4 rounded-full font-semibold hover:bg-google-blue/90 transition-all duration-300"
+            className="inline-flex items-center justify-center group bg-white text-black border-2 border-black px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300"
           >
-            <Palette className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" style={{ color: '#FBBC05' }} />
-            Learn More
-            <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" style={{ color: '#FBBC05' }} />
+            Learn More →
           </motion.a>
         </motion.div>
       </div>

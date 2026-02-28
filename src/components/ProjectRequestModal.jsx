@@ -199,7 +199,7 @@ const ProjectRequestModal = ({ isOpen, onClose }) => {
             <button
               onClick={handleClose}
               disabled={isSubmitting}
-              className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors disabled:opacity-50"
+              className="p-2 text-black bg-white border border-black hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50"
             >
               <X className="w-5 h-5" />
             </button>
@@ -291,14 +291,14 @@ const ProjectRequestModal = ({ isOpen, onClose }) => {
                     type="button"
                     onClick={handleClose}
                     disabled={isSubmitting}
-                    className="px-6 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors disabled:opacity-50"
+                    className="px-6 py-3 text-black bg-white border border-black rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50"
+                    className="px-6 py-3 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>

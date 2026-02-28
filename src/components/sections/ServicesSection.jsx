@@ -353,9 +353,7 @@ const ServicesSection = () => {
                               const encodedRole = encodeURIComponent(service.title)
                               navigate(`/internship/apply/${encodedRole}`)
                             }}
-                            className={`w-full px-6 py-3 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-200 ${
-                              index % 4 === 3 ? 'bg-google-white text-google-dark hover:bg-google-white/90' : 'bg-google-white text-google-dark hover:bg-google-white/90'
-                            }`}
+                            className={`w-full px-6 py-3 rounded-lg text-sm font-semibold hover:shadow-lg transition-all duration-200 bg-white text-black border border-black hover:bg-gray-100`}
                           >
                             Apply
                           </button>
@@ -373,7 +371,7 @@ const ServicesSection = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setShowAll(!showAll)}
-                    className="bg-google-yellow text-google-dark px-8 py-3 rounded-full font-semibold hover:bg-google-yellow/90 transition-colors duration-300 inline-flex items-center"
+                    className="bg-white text-black border border-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 inline-flex items-center"
                   >
                     {showAll ? 'Show Less' : 'Show More'}
                     <Eye className="w-5 h-5 ml-2" />
@@ -404,7 +402,7 @@ const ServicesSection = () => {
             <p className="text-xl text-white/90 mb-8">
               Let's discuss how our services can help transform your business
             </p>
-            <a href="#contact" className="bg-google-yellow text-google-dark px-8 py-3 rounded-full font-semibold hover:bg-google-yellow/90 transition-colors duration-300 inline-flex items-center">
+            <a href="#contact" className="bg-white text-black border border-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 inline-flex items-center">
               Get a Free Consultation
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>

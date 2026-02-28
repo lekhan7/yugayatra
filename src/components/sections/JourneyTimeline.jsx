@@ -591,7 +591,7 @@ const JourneyTimeline = () => {
         </p>
         <button
           onClick={restartAnimation}
-          className="bg-gradient-to-r from-accent-main to-accent-dark text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2"
+          className="bg-white text-black border border-black px-6 py-3 rounded-full font-semibold hover:bg-gray-100 hover:shadow-lg transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />

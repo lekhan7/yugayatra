@@ -273,7 +273,7 @@ const BlogPost = () => {
                 </button>
                 <Link
                   to="/blog"
-                  className="flex items-center px-6 py-3 bg-accent-main text-white rounded-lg hover:bg-accent-dark transition-colors"
+                  className="flex items-center px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   View All Posts
                   <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />

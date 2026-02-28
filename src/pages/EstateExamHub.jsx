@@ -373,10 +373,10 @@ const EstateExamHub = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <button className="px-8 py-4 bg-gradient-to-r from-olive-600 to-olive-700 hover:from-olive-700 hover:to-olive-800 text-white font-semibold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200">
+            <button className="px-8 py-4 bg-white text-black border border-black hover:bg-gray-100 font-semibold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200">
               {t.startPracticing}
             </button>
-            <button className="px-8 py-4 bg-white dark:bg-dark-card border-2 border-olive-600 dark:border-olive-400 text-olive-600 dark:text-olive-400 font-semibold rounded-xl shadow-lg hover:bg-olive-50 dark:hover:bg-dark-border transform hover:scale-105 transition-all duration-200">
+            <button className="px-8 py-4 bg-white text-black border border-black hover:bg-gray-100 font-semibold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200">
               {t.exploreExams}
             </button>
           </motion.div>
@@ -536,18 +536,18 @@ const EstateExamHub = () => {
                 <div className="space-y-2">
                   <button 
                     onClick={() => openExamDashboard(exam.id)}
-                    className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg transition-all duration-200 flex items-center justify-center space-x-2"
+                    className="w-full px-4 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-all duration-200 flex items-center justify-center space-x-2"
                   >
                     <Brain className="w-4 h-4" />
                     <span>AI Dashboard</span>
                   </button>
                   <button 
                     onClick={() => startTest(exam)}
-                    className="w-full px-4 py-2 bg-olive-600 hover:bg-olive-700 text-white rounded-lg transition-colors duration-200"
+                    className="w-full px-4 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200"
                   >
                     {t.practiceNow}
                   </button>
-                  <button className="w-full px-4 py-2 border border-olive-600 dark:border-olive-400 text-olive-600 dark:text-olive-400 rounded-lg hover:bg-olive-50 dark:hover:bg-dark-border transition-colors duration-200">
+                  <button className="w-full px-4 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200">
                     {t.fullMockTest}
                   </button>
                 </div>
@@ -577,22 +577,22 @@ const EstateExamHub = () => {
                 <div className="space-y-3">
                   <button 
                     onClick={() => openExamDashboard(exam.id)}
-                    className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-lg transition-all duration-200 flex items-center justify-center space-x-2"
+                    className="w-full px-4 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-all duration-200 flex items-center justify-center space-x-2"
                   >
                     <Brain className="w-4 h-4" />
                     <span>AI Dashboard</span>
                   </button>
                   <div className="grid grid-cols-2 gap-2">
-                    <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
+                    <button className="px-3 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200 text-sm">
                       {t.prelimsPractice}
                     </button>
-                    <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
+                    <button className="px-3 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200 text-sm">
                       {t.mainsPractice}
                     </button>
-                    <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
+                    <button className="px-3 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200 text-sm">
                       {t.previousYear}
                     </button>
-                    <button className="px-3 py-2 bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded-lg hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200 text-sm">
+                    <button className="px-3 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200 text-sm">
                       {t.mockTestSeries}
                     </button>
                   </div>
@@ -620,19 +620,19 @@ const EstateExamHub = () => {
                 <div className="text-3xl mb-3 text-center">{language.icon}</div>
                 <h3 className="text-lg font-bold text-olive-900 dark:text-olive-100 mb-2 text-center">{language.name}</h3>
                 <div className="space-y-1">
-                  <button className="w-full px-2 py-1 text-xs bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200">
+                  <button className="w-full px-2 py-1 bg-white text-black border border-black rounded hover:bg-gray-100 transition-colors duration-200 text-xs">
                     {t.grammarPractice}
                   </button>
-                  <button className="w-full px-2 py-1 text-xs bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200">
+                  <button className="w-full px-2 py-1 bg-white text-black border border-black rounded hover:bg-gray-100 transition-colors duration-200 text-xs">
                     {t.vocabularyBuilder}
                   </button>
-                  <button className="w-full px-2 py-1 text-xs bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200">
+                  <button className="w-full px-2 py-1 bg-white text-black border border-black rounded hover:bg-gray-100 transition-colors duration-200 text-xs">
                     {t.readingComprehension}
                   </button>
-                  <button className="w-full px-2 py-1 text-xs bg-olive-100 dark:bg-olive-900/30 text-olive-700 dark:text-olive-300 rounded hover:bg-olive-200 dark:hover:bg-olive-900/50 transition-colors duration-200">
+                  <button className="w-full px-2 py-1 bg-white text-black border border-black rounded hover:bg-gray-100 transition-colors duration-200 text-xs">
                     {t.timedTest}
                   </button>
-                  <button className="w-full px-2 py-1 text-xs bg-olive-600 text-white rounded hover:bg-olive-700 transition-colors duration-200">
+                  <button className="w-full px-2 py-1 bg-white text-black border border-black rounded hover:bg-gray-100 transition-colors duration-200 text-xs">
                     {t.certificationMock}
                   </button>
                 </div>
@@ -692,7 +692,7 @@ const EstateExamHub = () => {
 
                     <button
                       onClick={handleSubmitTest}
-                      className="w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors duration-200"
+                      className="w-full px-4 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200"
                     >
                       {t.submitTest}
                     </button>
@@ -737,7 +737,7 @@ const EstateExamHub = () => {
                       </div>
 
                       <div className="flex justify-between">
-                        <button className="px-6 py-2 border border-olive-600 dark:border-olive-400 text-olive-600 dark:text-olive-400 rounded-lg hover:bg-olive-50 dark:hover:bg-dark-border transition-colors duration-200">
+                        <button className="w-full px-4 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200">
                           {t.markForReview}
                         </button>
                         <button
@@ -746,7 +746,7 @@ const EstateExamHub = () => {
                               setCurrentQuestion(currentQuestion + 1)
                             }
                           }}
-                          className="px-6 py-2 bg-olive-600 hover:bg-olive-700 text-white rounded-lg transition-colors duration-200 flex items-center"
+                          className="px-6 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors duration-200 flex items-center"
                         >
                           {t.saveAndNext}
                           <ChevronRight className="w-4 h-4 ml-2" />

@@ -174,7 +174,7 @@ const InternshipApply = () => {
             <button
               type="button"
               onClick={() => navigate(-1)}
-              className="inline-flex items-center text-sm font-medium text-olive-700 hover:text-olive-600 transition-colors"
+              className="inline-flex items-center text-sm font-medium text-black bg-white border border-black px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
@@ -351,7 +351,7 @@ const InternshipApply = () => {
                         <button
                           type="button"
                           onClick={removeResume}
-                          className="text-olive-700 hover:text-olive-600"
+                          className="text-black bg-white border border-black hover:bg-gray-100"
                         >
                           <X className="w-5 h-5" />
                         </button>
@@ -373,7 +373,7 @@ const InternshipApply = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white px-8 py-4 rounded-xl font-semibold shadow-[0_16px_40px_rgba(34,197,94,0.25)] hover:shadow-[0_18px_50px_rgba(34,197,94,0.35)] transform hover:scale-[1.01] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full bg-white text-black border border-black px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-gray-100 transform hover:scale-[1.01] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <>

@@ -139,7 +139,7 @@ const FAQSection = () => {
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-text-main dark:hover:text-dark-blue-primary transition-colors"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-black bg-white border border-black rounded-full w-6 h-6 flex items-center justify-center hover:bg-gray-100 transition-colors"
               >
                 ×
               </button>
@@ -163,7 +163,7 @@ const FAQSection = () => {
             <button
               key={category}
               onClick={() => setSearchTerm(category)}
-              className="px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full text-sm font-medium text-text-main hover:bg-accent-main dark:hover:bg-dark-blue-accent hover:text-white transition-all duration-300 border border-gray-200"
+              className="px-4 py-2 bg-white text-black border border-black rounded-full text-sm font-medium hover:bg-gray-100 transition-all duration-300"
             >
               {category}
             </button>
@@ -239,7 +239,7 @@ const FAQSection = () => {
             </p>
             <button
               onClick={() => setSearchTerm('')}
-              className="px-6 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-main/90 dark:bg-dark-blue-accent dark:hover:bg-dark-blue-accent/90 transition-colors"
+              className="px-6 py-2 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-colors"
             >
               Clear Search
             </button>

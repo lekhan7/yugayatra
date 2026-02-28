@@ -138,7 +138,7 @@ const TestimonialSubmissionModal = ({ isOpen, onClose }) => {
             <button
               onClick={handleClose}
               disabled={isSubmitting}
-              className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors disabled:opacity-50"
+              className="p-2 text-black bg-white border border-black hover:bg-gray-100 rounded-lg transition-colors disabled:opacity-50"
             >
               <X className="w-5 h-5" />
             </button>
@@ -236,7 +236,7 @@ const TestimonialSubmissionModal = ({ isOpen, onClose }) => {
             <button
               type="submit"
               disabled={isSubmitting || submitStatus?.type === 'success'}
-              className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-main to-accent-main text-white font-semibold rounded-lg hover:from-accent-dark hover:to-accent-dark focus:outline-none focus:ring-2 focus:ring-accent-main focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+              className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-white text-black border border-black font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
             >
               {isSubmitting ? (
                 <>

@@ -189,7 +189,7 @@ const ProjectsSection = () => {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-accent-main text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-accent-dark transition-colors duration-300 flex items-center justify-center space-x-2 group-hover:shadow-lg"
+                    className="w-full bg-white text-black border border-black py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center space-x-2 group-hover:shadow-lg"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span>Visit Website</span>
@@ -219,7 +219,7 @@ const ProjectsSection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-google-white text-google-dark px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
+            className="bg-white text-black border border-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block"
           >
             Get In Touch
           </motion.a>

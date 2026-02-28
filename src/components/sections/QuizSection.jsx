@@ -200,7 +200,7 @@ const QuizSection = () => {
                       <motion.button
                         key={index}
                         onClick={() => handleAnswer(option.value)}
-                        className="w-full text-left p-4 rounded-xl border-2 border-google-blue bg-google-blue/10 hover:bg-google-blue/20 transition-all duration-300 group"
+                        className="w-full text-left p-4 rounded-xl border-2 border-black bg-white hover:bg-gray-100 transition-all duration-300 group"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -334,7 +334,7 @@ const QuizSection = () => {
                         const encodedRole = encodeURIComponent(selectedInternship?.title || '')
                         navigate(`/internship/apply/${encodedRole}`)
                       }}
-                      className="bg-google-white text-google-dark px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 border border-google-dark"
+                      className="bg-white text-black px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 border border-black hover:bg-gray-100"
                     >
                       Apply Now
                     </motion.button>
