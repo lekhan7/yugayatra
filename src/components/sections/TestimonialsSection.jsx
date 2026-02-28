@@ -343,11 +343,11 @@ const TestimonialsSection = () => {
                 custom={index}
                 variants={statVariants}
                 whileHover="hover"
-                className="text-center p-6 bg-card-bg dark:bg-dark-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-border-light dark:border-dark-border relative overflow-hidden group"
+                className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 relative overflow-hidden group"
               >
                 {/* Animated Background */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-accent-main/5 to-accent-main/5 dark:from-dark-blue-accent/5 dark:to-dark-blue-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   initial={{ scale: 0 }}
                   whileHover={{ scale: 1.5 }}
                   transition={{ duration: 0.5 }}
@@ -357,8 +357,6 @@ const TestimonialsSection = () => {
                   {/* Icon Animation */}
                   <motion.div
                     className="flex justify-center mb-4"
-                    initial={{ rotate: 0 }}
-                    whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
                     <stat.icon className="w-8 h-8" style={{ color: '#000000' }} />
@@ -366,7 +364,8 @@ const TestimonialsSection = () => {
                   
                   {/* Number with Counter Animation */}
                   <motion.div 
-                    className="text-3xl md:text-4xl font-bold text-accent-main dark:text-dark-blue-primary mb-2"
+                    className="text-3xl md:text-4xl font-black mb-2"
+                    style={{ color: '#000000' }}
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ 
@@ -381,7 +380,7 @@ const TestimonialsSection = () => {
                   
                   {/* Label */}
                   <motion.p 
-                    className="text-text-light dark:text-dark-text-secondary"
+                    className="text-black font-medium"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.15 + 0.3 }}

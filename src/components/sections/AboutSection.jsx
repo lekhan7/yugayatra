@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Target, Eye, Heart, Award, Users, Calendar, MapPin, Award as AwardIcon, FileText, Shield } from 'lucide-react'
+import { Target, Eye, Heart, Award, Users, Calendar, MapPin, Award as AwardIcon, FileText, Shield, TrendingUp, Clock } from 'lucide-react'
 
 const AboutSection = () => {
   const legalInfo = {
@@ -112,22 +112,25 @@ const AboutSection = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: '150+', label: 'Projects Completed' },
-              { number: '98%', label: 'Client Satisfaction' },
-              { number: '50+', label: 'Team Members' },
-              { number: '5+', label: 'Years Experience' }
+              { number: '150+', label: 'Projects Completed', icon: TrendingUp },
+              { number: '98%', label: 'Client Satisfaction', icon: Users },
+              { number: '50+', label: 'Team Members', icon: Award },
+              { number: '5+', label: 'Years Experience', icon: Clock }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-6"
+                className="text-center p-8 bg-white rounded-xl shadow-lg border border-gray-200"
               >
+                <div className="flex justify-center mb-4">
+                  <stat.icon className="w-10 h-10" style={{ color: '#000000' }} />
+                </div>
                 <div className="text-4xl md:text-5xl font-black mb-2 counter" style={{ color: '#000000' }}>
                   {stat.number}
                 </div>
-                <p className="text-google-dark">
+                <p className="text-black font-medium">
                   {stat.label}
                 </p>
               </motion.div>
