@@ -204,14 +204,14 @@ const ContactSection = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-google-blue text-google-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-white text-google-blue px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center border border-white/20"
                   >
                     {isSubmitting ? (
                       <span>Sending...</span>
                     ) : (
                       <>
                         Send Message
-                        <Send className="ml-2 w-5 h-5" style={{ color: '#FBBC05' }} />
+                        <Send className="ml-2 w-5 h-5 text-google-blue" />
                       </>
                     )}
                   </button>
@@ -242,24 +242,24 @@ const ContactSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex items-start space-x-4 p-6 bg-card-bg dark:bg-dark-card rounded-xl border border-border-light dark:border-dark-border hover:shadow-lg transition-shadow duration-300"
+                    className="flex items-start space-x-4 p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:shadow-lg hover:bg-white/20 transition-all duration-300"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-r from-accent-main to-accent-gold dark:from-dark-blue-accent dark:to-dark-blue-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                      <info.icon className="w-6 h-6 text-google-blue" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-text-main dark:text-dark-text-primary mb-1">
+                      <h4 className="text-lg font-semibold text-white mb-1">
                         {info.title}
                       </h4>
                       {info.href.startsWith('mailto') || info.href.startsWith('tel') ? (
                         <a
                           href={info.href}
-                          className="text-accent-main dark:text-dark-blue-accent hover:text-accent-dark dark:hover:text-dark-blue-primary transition-colors duration-200"
+                          className="text-white hover:text-google-blue transition-colors duration-200"
                         >
                           {info.content}
                         </a>
                       ) : (
-                        <p className="text-text-light dark:text-dark-text-secondary">
+                        <p className="text-white/80">
                           {info.content}
                         </p>
                       )}

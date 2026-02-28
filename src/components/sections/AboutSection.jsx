@@ -93,48 +93,7 @@ const AboutSection = () => {
 
       
 
-      {/* Stats Section */}
-      <div className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h3 className="text-4xl font-bold text-gray-800 mb-4">
-              Our Impact
-            </h3>
-            <p className="text-lg text-text-light dark:text-dark-text-secondary">
-              Numbers that speak for themselves
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '150+', label: 'Projects Completed' },
-              { number: '98%', label: 'Client Satisfaction' },
-              { number: '50+', label: 'Team Members' },
-              { number: '5+', label: 'Years Experience' }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-6"
-              >
-                <div className="text-4xl md:text-5xl font-bold mb-2 counter" style={{ color: '#1A73E8' }}>
-                  {stat.number}
-                </div>
-                <p className="text-gray-600">
-                  {stat.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+      
     </section>
   )
 }

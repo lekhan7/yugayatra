@@ -475,9 +475,12 @@ const JourneyTimeline = () => {
           {/* Timeline Track (in middle of road) */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full h-16">
-              {/* Dashed Road Line */}
-              <div className="absolute top-1/2 transform -translate-y-1/2 w-full px-4">
-                <div className="w-full h-0.5 bg-white opacity-80" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 8px, white 8px, transparent 8px)', backgroundSize: '16px 2px' }}></div>
+              {/* Simple Dashed Lines -- - - - - */}
+              <div className="absolute top-1/2 transform -translate-y-1/2 w-full px-2">
+                <div className="w-full h-1" style={{ 
+                  backgroundImage: 'repeating-linear-gradient(90deg, white, white 10px, transparent 10px, transparent 20px)',
+                  backgroundSize: '20px 2px'
+                }}></div>
               </div>
               
               {/* Car */}
@@ -534,18 +537,13 @@ const JourneyTimeline = () => {
             </div>
           </div>
           
-          {/* Finish Flag on Timeline */}
-          <div className="absolute right-8 top-1/2 transform -translate-y-1/2">
-            <div className="w-6 h-20 bg-gradient-to-b from-accent-gold to-accent-dark dark:from-blue-500 dark:to-blue-700 rounded-full shadow-lg"></div>
-            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-accent-gold/100 text-white text-xs px-2 py-1 rounded-full font-bold">
+          {/* Finish Flag Inside Road */}
+          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20">
+            <div className="w-4 h-16 bg-gradient-to-b from-accent-gold to-accent-dark dark:from-blue-500 dark:to-blue-700 rounded-full shadow-lg"></div>
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-accent-gold text-white text-xs px-1.5 py-0.5 rounded-full font-bold whitespace-nowrap">
               FINISH
             </div>
           </div>
-        </div>
-        
-        {/* Road Lines */}
-        <div className="absolute top-1/2 transform -translate-y-1/2 w-full px-8">
-          <div className="w-full h-0.5 bg-white opacity-80" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 8px, white 8px, transparent 8px)', backgroundSize: '16px 2px' }}></div>
         </div>
         
         {/* Journey Stops */}
