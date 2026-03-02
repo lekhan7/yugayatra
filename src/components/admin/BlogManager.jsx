@@ -451,7 +451,7 @@ const BlogManager = ({ onSettingsOpen }) => {
               />
               <label
                 htmlFor="blog-image-upload"
-                className="flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 cursor-pointer"
+                className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 cursor-pointer"
               >
                 <ImageIcon size={16} />
                 <span>{uploading ? 'Uploading...' : 'Upload Image'}</span>
@@ -482,7 +482,7 @@ const BlogManager = ({ onSettingsOpen }) => {
                 {formData.tags.length > 1 && (
                   <button
                     onClick={() => removeTag(index)}
-                    className="px-3 py-2 bg-accent-gold text-white rounded-lg hover:bg-accent-gold"
+                    className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
                   >
                     <X size={16} />
                   </button>
@@ -491,7 +491,7 @@ const BlogManager = ({ onSettingsOpen }) => {
             ))}
             <button
               onClick={addTag}
-              className="mt-2 px-4 py-2 bg-accent-dark text-white rounded-lg hover:bg-accent-dark"
+              className="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
             >
               Add Tag
             </button>
@@ -548,7 +548,7 @@ const BlogManager = ({ onSettingsOpen }) => {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
           >
             <Save size={16} />
             <span>{saving ? 'Saving...' : (editingId ? 'Update' : 'Add')} Blog Post</span>
@@ -557,7 +557,7 @@ const BlogManager = ({ onSettingsOpen }) => {
           {editingId && (
             <button
               onClick={resetForm}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
+              className="flex items-center space-x-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
             >
               <X size={16} />
               <span>Cancel</span>

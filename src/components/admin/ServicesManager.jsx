@@ -607,7 +607,7 @@ const toggleCategory = (category) => {
           {editingId && (
             <button
               onClick={resetForm}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
+              className="flex items-center space-x-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
             >
               <X size={16} />
               <span>Cancel</span>

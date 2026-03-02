@@ -373,7 +373,7 @@ const InternshipApply = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-white text-black border border-black px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-gray-100 transform hover:scale-[1.01] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full bg-blue-600 text-white border border-blue-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-blue-700 transform hover:scale-[1.01] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <>

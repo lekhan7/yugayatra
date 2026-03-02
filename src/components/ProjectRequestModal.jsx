@@ -291,14 +291,14 @@ const ProjectRequestModal = ({ isOpen, onClose }) => {
                     type="button"
                     onClick={handleClose}
                     disabled={isSubmitting}
-                    className="px-6 py-3 text-black bg-white border border-black rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
+                    className="px-6 py-3 bg-red-600 text-white border-0 rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-6 py-3 bg-white text-black border border-black rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50"
+                    className="px-6 py-3 bg-blue-600 text-white border-0 rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>

@@ -303,7 +303,7 @@ const ProjectsManager = ({ onSettingsOpen }) => {
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Projects Management</h2>
         <button
           onClick={() => setShowAddForm(true)}
-          className="flex items-center space-x-2 bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors"
+          className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
         >
           <Plus size={20} />
           <span>Add Project</span>
@@ -522,13 +522,13 @@ const ProjectsManager = ({ onSettingsOpen }) => {
                   <button
                     type="button"
                     onClick={resetForm}
-                    className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="flex items-center space-x-2 bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors"
+                    className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     <Save size={16} />
                     <span>{editingProject ? 'Update' : 'Save'}</span>
@@ -549,7 +549,7 @@ const ProjectsManager = ({ onSettingsOpen }) => {
           <p className="text-gray-500 dark:text-gray-400 mb-4">Get started by adding your first project</p>
           <button
             onClick={() => setShowAddForm(true)}
-            className="bg-accent-main text-white px-4 py-2 rounded-lg hover:bg-accent-dark transition-colors"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Add Project
           </button>

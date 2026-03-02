@@ -167,7 +167,7 @@ const TestimonialsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 px-6 py-3 bg-google-blue text-google-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:bg-blue-700 transition-all duration-300"
             >
               <Plus className="w-5 h-5" style={{ color: '#000000' }} />
               <span>Add Your Review</span>

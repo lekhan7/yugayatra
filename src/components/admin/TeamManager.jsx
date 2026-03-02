@@ -328,7 +328,7 @@ const TeamManager = ({ onSettingsOpen }) => {
               />
               <label
                 htmlFor="image-upload"
-                className="flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 cursor-pointer"
+                className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 cursor-pointer"
               >
                 <Upload size={16} />
                 <span>{uploading ? 'Uploading...' : 'Upload Image'}</span>
@@ -361,7 +361,7 @@ const TeamManager = ({ onSettingsOpen }) => {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center space-x-2 px-4 py-2 bg-accent-main text-white rounded-lg hover:bg-accent-dark disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
           >
             <Save size={16} />
             <span>{saving ? 'Saving...' : (editingId ? 'Update' : 'Add')} Team Member</span>
@@ -370,7 +370,7 @@ const TeamManager = ({ onSettingsOpen }) => {
           {editingId && (
             <button
               onClick={resetForm}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700"
+              className="flex items-center space-x-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
             >
               <X size={16} />
               <span>Cancel</span>
