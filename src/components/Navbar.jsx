@@ -107,12 +107,7 @@ const Navbar = () => {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
             {/* Dark Mode Toggle */}
-            <button
-              onClick={() => setIsDark(!isDark)}
-              className="p-3 rounded-lg text-black bg-white hover:bg-green-50 transition-all duration-300"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+           
 
             {/* Mobile Menu Button */}
             <button

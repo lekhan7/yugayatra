@@ -121,30 +121,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Newsletter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-            <p className="text-google-white/70 text-sm mb-4">
-              Subscribe to get updates on our latest projects and news.
-            </p>
-            <form className="flex flex-col space-y-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-2 bg-google-white/20 border border-google-white/30 rounded-lg text-google-white placeholder-google-white/50 focus:outline-none focus:ring-2 focus:ring-google-yellow focus:border-transparent"
-              />
-              <button
-                type="submit"
-                className="w-full bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 font-medium"
-              >
-                Subscribe
-              </button>
-            </form>
-          </motion.div>
+        
         </div>
 
         {/* Developer Info */}
@@ -155,13 +132,7 @@ const Footer = () => {
           className="border-t border-google-white/10 mt-12 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h4 className="text-lg font-semibold mb-2">Developer Contact</h4>
-              <div className="flex items-center space-x-2 text-google-white/70">
-                <Users className="w-4 h-4" />
-                <span className="text-sm">Ganesh Lagad</span>
-              </div>
-            </div>
+           
             <div className="flex space-x-6">
               {footerLinks.resources.map((link) => (
                 <Link
