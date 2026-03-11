@@ -14,7 +14,8 @@ import {
   PenTool,
   UserPlus,
   Send,
-  Settings
+  Settings,
+  Award
 } from 'lucide-react'
 
 const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSettingsClick }) => {
@@ -24,12 +25,13 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSetti
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'applications', label: 'Applications', icon: Users },
     { id: 'project-requests', label: 'Project Requests', icon: Send },
-        { id: 'testimonials', label: 'Testimonials', icon: MessageSquare },
+    { id: 'testimonials', label: 'Testimonials', icon: MessageSquare },
     { id: 'services', label: 'Services', icon: Briefcase },
     { id: 'projects', label: 'Projects', icon: Globe },
     { id: 'alumni', label: 'Alumni', icon: GraduationCap },
     { id: 'team', label: 'Team', icon: UserPlus },
     { id: 'blog', label: 'Blog & Insights', icon: PenTool },
+    { id: 'certificates', label: 'Certificates', icon: Award },
   ]
 
   const handleSettingsClick = () => {

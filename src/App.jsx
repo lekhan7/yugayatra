@@ -24,6 +24,7 @@ import About from './pages/About'
 import Achievements from './pages/Achievements'
 import EstateExamHub from './pages/EstateExamHub'
 import ExamDashboard from './pages/ExamDashboard'
+import CertificateVerificationPage from './pages/CertificateVerificationPage'
 
 function App() {
   const location = useLocation()
@@ -202,6 +203,15 @@ function App() {
             <ExamDashboard />
             <Footer />
             <ScrollToTop />
+          </motion.div>
+        } />
+        <Route path="/certificate/:intern_id" element={
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <CertificateVerificationPage />
           </motion.div>
         } />
       </Routes>

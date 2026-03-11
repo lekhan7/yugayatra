@@ -13,6 +13,7 @@ import AlumniManager from './AlumniManager'
 import BlogManager from './BlogManager'
 import TeamManager from './TeamManager'
 import SettingsModal from './SettingsModal'
+import CertificatesTab from './CertificatesTab'
 import '../../styles/admin-theme-variables.css'
 
 const AdminDashboard = ({ user, onLogout }) => {
@@ -57,6 +58,8 @@ const AdminDashboard = ({ user, onLogout }) => {
         return <TeamManager />
       case 'blog':
         return <BlogManager />
+      case 'certificates':
+        return <CertificatesTab />
       default:
         return <AnimatedDashboard />
     }
