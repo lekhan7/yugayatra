@@ -220,6 +220,12 @@ const CertificatesTab = () => {
                         >
                           Send
                         </button>
+                        <button
+                          onClick={() => handleDeleteCertificate(certificate.id)}
+                          className="inline-flex items-center px-3 py-1 border border-red-300 shadow-sm text-xs font-medium rounded text-red-700 bg-white hover:bg-red-50"
+                        >
+                          Delete
+                        </button>
                       </div>
                     </div>
                   </li>
