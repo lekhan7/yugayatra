@@ -665,3 +665,83 @@ export const deleteProjectRequest = async (id) => {
   if (error) throw error
   return data
 }
+
+// Certificates functions
+export const getCertificates = async () => {
+  const { data, error } = await supabase
+    .from('certificates')
+    .select('*')
+    .order('created_at', { ascending: false })
+  
+  if (error) throw error
+  return data
+}
+
+export const getCertificateByInternId = async (internId) => {
+  const { data, error } = await supabase
+    .from('certificates')
+    .select('*')
+    .eq('intern_id', internId)
+    .single()
+  
+  if (error && error.code !== 'PGRST116') throw error
+  return data
+}
+
+export const createCertificate = async (certificateData) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('certificates')
+    .insert([certificateData])
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+export const deleteCertificate = async (id) => {
+  // Verify admin access first
+  await verifyAdminAccess()
+  
+  const { data, error } = await supabase
+    .from('certificates')
+    .delete()
+    .eq('id', id)
+  
+  if (error) throw error
+  return data
+}
+
+export const uploadCertificateImage = async (file, internId) => {
+  const fileName = `${internId}/certificate.png`
+  
+  const { data, error } = await supabase.storage
+    .from('certificates')
+    .upload(fileName, file, {
+      contentType: 'image/png',
+      upsert: true
+    })
+  
+  if (error) throw error
+  
+  // Get public URL
+  const { data: { publicUrl } } = supabase.storage
+    .from('certificates')
+    .getPublicUrl(fileName)
+  
+  return publicUrl
+}
+
+export const deleteCertificateImage = async (internId) => {
+  const fileName = `${internId}/certificate.png`
+  
+  const { data, error } = await supabase.storage
+    .from('certificates')
+    .remove([fileName])
+  
+  if (error) throw error
+  return data
+}

@@ -17,32 +17,35 @@ const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
 
   const currentStatus = application.status || 'pending'
 
+  // Debug: Log the status to console
+  console.log('Application Status:', application.id, currentStatus)
+
   return (
     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors border-b border-gray-200 dark:border-gray-700">
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-4 py-3 whitespace-nowrap">
         <div className="text-sm font-medium text-gray-900 dark:text-white">
           {application.full_name}
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-4 py-3 whitespace-nowrap">
         <div className="text-sm text-gray-900 dark:text-white">
           {application.email}
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-4 py-3 whitespace-nowrap">
         <div className="text-sm text-gray-900 dark:text-white">
           {application.phone}
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-4 py-3 whitespace-nowrap">
         <div className="text-sm text-gray-900 dark:text-white">
           {application.role}
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-4 py-3 whitespace-nowrap">
         {getStatusBadge(currentStatus)}
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-4 py-3 whitespace-nowrap">
         <button
           onClick={() => onViewResume(application.resume_url)}
           disabled={!application.resume_url}
@@ -56,7 +59,9 @@ const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
           View Resume
         </button>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
+      <td className="px-4 py-3 whitespace-nowrap">
+        {/* Debug: Show status temporarily */}
+        <div className="text-xs text-purple-600 mb-1">Status: {currentStatus}</div>
         <div className="flex space-x-2">
           {currentStatus === 'pending' ? (
             <>
@@ -77,7 +82,7 @@ const ApplicationRow = ({ application, onUpdateStatus, onViewResume }) => {
             </>
           ) : (
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              No actions available
+              No actions available ({currentStatus})
             </span>
           )}
         </div>
