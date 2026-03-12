@@ -126,13 +126,7 @@ const CertificateTemplate = ({
                 {qr_code && (
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
                     <img src={qr_code} alt="QR Code" className="w-20" />
-                    <button 
-                      onClick={() => window.open(`https://lhfzzqiqzzzlybpwntjf.supabase.co/storage/v1/object/public/certificates/generated/certificate_${intern_id}_${Date.now()}.png`, '_blank')}
-                      className="bg-blue-600 text-white px-3 py-1 rounded text-xs hover:bg-blue-700 transition-colors"
-                      style={{ fontSize: '11px', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer' }}
-                    >
-                      Search
-                    </button>
+                  
                   </div>
                 )}
               </div>

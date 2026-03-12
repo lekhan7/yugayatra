@@ -46,7 +46,7 @@ const CertificatesTab = () => {
     if (!confirm('Are you sure you want to delete this certificate?')) return;
 
     try {
-      // Get certificate data to delete files
+      // Get certificate Data to delete files
       const { data: certificate } = await supabase
         .from('certificates')
         .select('*')
@@ -85,6 +85,33 @@ const CertificatesTab = () => {
     } catch (error) {
       console.error('Error deleting certificate:', error);
       alert('Error deleting certificate');
+    }
+  };
+
+  const handleSendWhatsApp = async (certificate) => {
+    try {
+      // Get certificate Data
+      const { data: certData } = await supabase
+        .from('certificates')
+        .select('*')
+        .eq('id', certificate.id)
+        .single();
+
+      if (certData) {
+        // Create WhatsApp message
+        const message = `Hello ${certData.intern_name},\n\nCongratulations on completing your internship as ${certData.role}!\n\nPlease find your certificate at: ${window.location.origin}/certificate/${certData.intern_id}\n\nBest regards,\nYuga Yatra Retail Team`;
+        
+        // Open WhatsApp with phone number if available, otherwise default
+        const phoneNumber = certData.phone_number ? certData.phone_number.replace(/[^\d+]/g, '') : '';
+        const whatsappUrl = phoneNumber 
+          ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+          : `https://wa.me/?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappUrl, '_blank');
+      }
+    } catch (error) {
+      console.error('Error sending WhatsApp:', error);
+      alert('Error sending WhatsApp message');
     }
   };
 
@@ -188,10 +215,10 @@ const CertificatesTab = () => {
                           View
                         </a>
                         <button
-                          onClick={() => handleDeleteCertificate(certificate.id)}
-                          className="inline-flex items-center px-3 py-1 border border-red-300 shadow-sm text-xs font-medium rounded text-red-700 bg-white hover:bg-red-50"
+                          onClick={() => handleSendWhatsApp(certificate)}
+                          className="inline-flex items-center px-3 py-1 border border-green-300 shadow-sm text-xs font-medium rounded text-green-700 bg-white hover:bg-green-50"
                         >
-                          Delete
+                          Send
                         </button>
                       </div>
                     </div>

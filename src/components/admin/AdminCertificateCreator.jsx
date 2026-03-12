@@ -198,12 +198,7 @@ const AdminCertificateCreator = () => {
                     <p style="font-size: 14px; color: #1a365d;">Intern ID ${formData.intern_id}</p>
                     <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
                       <img src="${qrCodeDataUrl}" alt="QR Code" style="width: 80px;" />
-                      <button 
-                        onclick="window.open('https://lhfzzqiqzzzlybpwntjf.supabase.co/storage/v1/object/public/certificates/generated/certificate_${formData.intern_id}_${Date.now()}.png', '_blank')"
-                        style="background: #2563eb; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; border: none;"
-                      >
-                        Search
-                      </button>
+                     
                     </div>
                   </div>
                 </div>
