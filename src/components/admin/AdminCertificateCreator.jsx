@@ -15,7 +15,8 @@ const AdminCertificateCreator = () => {
     intern_id: '',
     role: '',
     start_date: '',
-    end_date: ''
+    end_date: '',
+    phone_number: ''
   });
   const [loading, setLoading] = useState(false);
   const [previewMode, setPreviewMode] = useState(false);
@@ -195,7 +196,15 @@ const AdminCertificateCreator = () => {
                   </div>
                   <div style="text-align: right;">
                     <p style="font-size: 14px; color: #1a365d;">Intern ID ${formData.intern_id}</p>
-                    <img src="${qrCodeDataUrl}" alt="QR Code" style="width: 80px; margin-top: 8px; margin-left: auto;" />
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+                      <img src="${qrCodeDataUrl}" alt="QR Code" style="width: 80px;" />
+                      <button 
+                        onclick="window.open('https://lhfzzqiqzzzlybpwntjf.supabase.co/storage/v1/object/public/certificates/generated/certificate_${formData.intern_id}_${Date.now()}.png', '_blank')"
+                        style="background: #2563eb; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; border: none;"
+                      >
+                        Search
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -344,6 +353,7 @@ const AdminCertificateCreator = () => {
           role: formData.role,
           start_date: formData.start_date,
           end_date: formData.end_date,
+          phone_number: formData.phone_number,
           certificate_url: certificatePublicUrl,
           qr_code_url: qrPublicUrl
         }, {
@@ -382,8 +392,12 @@ const AdminCertificateCreator = () => {
       // Create WhatsApp message
       const message = `Hello ${formData.intern_name},\n\nCongratulations on completing your internship as ${formData.role}!\n\nPlease find your certificate attached.\n\nYou can verify your certificate at: ${window.location.origin}/certificate/${formData.intern_id}\n\nBest regards,\nYuga Yatra Retail Team`;
       
-      // Open WhatsApp with the message
-      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      // Open WhatsApp with phone number if available, otherwise default
+      const phoneNumber = formData.phone_number ? formData.phone_number.replace(/[^\d+]/g, '') : '';
+      const whatsappUrl = phoneNumber 
+        ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+        : `https://wa.me/?text=${encodeURIComponent(message)}`;
+      
       window.open(whatsappUrl, '_blank');
     }
     
@@ -399,7 +413,8 @@ const AdminCertificateCreator = () => {
       intern_id: '',
       role: '',
       start_date: '',
-      end_date: ''
+      end_date: '',
+      phone_number: ''
     });
     setPreviewMode(false);
     setQrCode(null);
@@ -419,7 +434,8 @@ const AdminCertificateCreator = () => {
       intern_id: '',
       role: '',
       start_date: '',
-      end_date: ''
+      end_date: '',
+      phone_number: ''
     });
     setPreviewMode(false);
     setQrCode(null);
@@ -548,6 +564,23 @@ const AdminCertificateCreator = () => {
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </div>
+
+            {/* Phone Number Field */}
+            <div className="mt-4">
+              <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phone_number"
+                id="phone_number"
+                value={formData.phone_number}
+                onChange={handleInputChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                placeholder="Enter phone number (e.g., +1234567890)"
+              />
+            </div>
+
           </div>
 
           <div className="mt-6 flex justify-end space-x-3">
@@ -558,7 +591,8 @@ const AdminCertificateCreator = () => {
                 intern_id: '',
                 role: '',
                 start_date: '',
-                end_date: ''
+                end_date: '',
+                phone_number: ''
               })}
               className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
             >
