@@ -66,7 +66,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSetti
       </div>
 
       {/* Navigation */}
-      <nav className="p-4">
+      <nav className="p-4 pb-24">
         <ul className="space-y-2">
           {menuItems.map((item) => {
             const Icon = item.icon
@@ -102,9 +102,9 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSetti
 
       {/* User Info & Logout */}
       {!isCollapsed && (
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
           <div className="flex items-center space-x-3 mb-3">
-            <div className="w-8 h-8 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
               <User size={16} className="text-gray-600 dark:text-gray-300" />
             </div>
             <div className="flex-1 min-w-0">
@@ -116,7 +116,7 @@ const AdminSidebar = ({ activeSection, setActiveSection, user, onLogout, onSetti
           </div>
           <button
             onClick={onLogout}
-            className="w-full flex items-center space-x-2 px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+            className="w-full flex items-center justify-center space-x-2 px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
           >
             <LogOut size={16} />
             <span>Logout</span>
