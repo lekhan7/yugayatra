@@ -33,7 +33,7 @@ const Navbar = () => {
     { name: 'Projects', href: '#projects', icon: Globe, isRoute: false },
     { name: 'Alumni', href: '#alumni', icon: User, isRoute: false },
     { name: 'Quiz', href: '#find-perfect-internship', icon: Brain, isRoute: false },
-    { name: ' Contac us ', href: '#contact', icon: MessageSquare, isRoute: false },
+    { name: 'Contact Us', href: '#contact', icon: MessageSquare, isRoute: false },
    
   ]
 
@@ -98,7 +98,7 @@ const Navbar = () => {
                 }}
               >
                 <link.icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
-                <span className="transition-all duration-300 group-hover:font-semibold">{link.name}</span>
+                <span className="transition-all duration-300 group-hover:font-semibold whitespace-nowrap">{link.name}</span>
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </button>
             ))}

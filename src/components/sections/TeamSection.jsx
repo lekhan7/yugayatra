@@ -233,7 +233,7 @@ const TeamSection = () => {
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-accent-main to-accent-main dark:from-dark-blue-accent dark:to-dark-blue-primary text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center"
           >
-            Get in Touch
+            Contact Us
             <ExternalLink className="w-5 h-5 ml-2" />
           </a>
         </motion.div>

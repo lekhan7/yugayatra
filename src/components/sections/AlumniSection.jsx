@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { Users, Star, Calendar, MapPin, ExternalLink, ChevronLeft, ChevronRight, Quote, Award, Building } from 'lucide-react'
+import { Users, Star, Calendar, MapPin, ExternalLink, ChevronLeft, ChevronRight, Quote, Award, Building, Linkedin, Github } from 'lucide-react'
 import { getAlumni } from '../../services/supabase'
 
 const AlumniSection = () => {
@@ -333,7 +333,7 @@ const AlumniSection = () => {
                       <Users className="w-8 h-8 text-white/50" />
                     </div>
                   )}
-                  <div>
+                  <div className="flex-1">
                     <h3 className="text-lg font-bold text-text-main dark:text-dark-blue-primary">
                       {person.name}
                     </h3>
@@ -347,9 +347,29 @@ const AlumniSection = () => {
                   {person.company} • {person.location}
                 </p>
 
-                <div className="flex items-center text-xs text-text-light dark:text-dark-text-secondary">
-                  <Calendar className="w-3 h-3 mr-1" />
-                  <span>Batch {person.batch}</span>
+                <div className="flex items-center justify-between text-xs text-text-light dark:text-dark-text-secondary mb-3">
+                  <div className="flex items-center">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    <span>Batch {person.batch}</span>
+                  </div>
+                  <div className="flex space-x-2">
+                    <a
+                      href={person.linkedin || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={person.github || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             ))}
